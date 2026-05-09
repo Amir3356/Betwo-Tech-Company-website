@@ -1,12 +1,29 @@
+import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
+import Typed from "typed.js";
 import heroImage from "../../assets/Background image.png";
 
 export default function Hero() {
+  const typedRef = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(typedRef.current, {
+      strings: ["Future of Digital Solution"],
+      typeSpeed: 80,
+      backSpeed: 50,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|",
+    });
+
+    return () => typed.destroy();
+  }, []);
+
   return (
     <section id="home" className="px-6 md:px-12 py-20 md:py-32 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-12">
       <div className="flex-1 space-y-8 text-center md:text-left">
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-          Innovating the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-400">Future</span> of Technology
+          Innovating the <span ref={typedRef} className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-400"></span>
         </h1>
         <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto md:mx-0">
           Betwoch Tech specializes in building cutting-edge software solutions that empower businesses to scale and thrive in the digital age.
