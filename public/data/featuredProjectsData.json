@@ -1,0 +1,34 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Smart Garage Management System",
+      "category": "Automotive",
+      "uptime": "99.9% Uptime",
+      "buildTime": "Built in 6 weeks",
+      "description": "Digital system serving 50+ auto repair shops with 99.9% uptime",
+      "technologies": ["React", "Node.js", "MongoDB", "Express"],
+      "image": "/assets/Smart Garage Management System.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Construction Project Management System",
+      "category": "Construction",
+      "uptime": "99.9% Uptime",
+      "buildTime": "Built in 10 weeks",
+      "description": "Managing 100+ construction sites with real-time tracking",
+      "technologies": ["React", "Node.js", "PostgreSQL", "TypeScript"],
+      "image": "/assets/Construction Project Management System.jpeg"
+    },
+    {
+      "id": 6,
+      "name": "Gofa Primary School ERP",
+      "category": "Education",
+      "uptime": "99.9% Uptime",
+      "buildTime": "Built in 8 weeks",
+      "description": "Managing student records, attendance, and academic reporting for Gofa Primary School",
+      "technologies": ["React", "Node.js", "PostgreSQL", "Express"],
+      "image": "/assets/Gofa primary School ERP.png"
+    }
+  ]
+}

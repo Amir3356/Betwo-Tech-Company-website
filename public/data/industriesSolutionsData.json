@@ -1,0 +1,58 @@
+{
+  "title": "Industries & Solutions",
+  "description": "We design and build digital solutions tailored to the unique challenges of each industry. From enterprise to healthcare, we deliver excellence across every sector.",
+  "stats": [
+    { "value": "6+", "label": "Industries" },
+    { "value": "100%", "label": "Compliance" },
+    { "value": "24/7", "label": "Support" }
+  ],
+  "industries": [
+    {
+      "name": "Enterprise & Corporate",
+      "metric": "50+ Enterprises",
+      "description": "Scalable internal systems, ERP platforms, and enterprise-grade digital tools.",
+      "tag": "Mission Critical",
+      "link": "#"
+    },
+    {
+      "name": "Finance & FinTech",
+      "metric": "$2B+ Processed",
+      "description": "Secure financial platforms, dashboards, and data-driven decision systems.",
+      "tag": "Bank-Grade Security",
+      "link": "#"
+    },
+    {
+      "name": "Healthcare",
+      "metric": "100K+ Patients",
+      "description": "HIPAA-ready solutions, telemedicine platforms, and health data systems.",
+      "tag": "HIPAA Compliant",
+      "link": "#"
+    },
+    {
+      "name": "E-Commerce",
+      "metric": "1M+ Transactions",
+      "description": "High-performance online stores, inventory systems, and payment integrations.",
+      "tag": "99.9% Uptime",
+      "link": "#"
+    },
+    {
+      "name": "Manufacturing",
+      "metric": "50+ Factories",
+      "description": "Operational dashboards, automation tools, and supply-chain systems.",
+      "tag": "Real-time Monitoring",
+      "link": "#"
+    },
+    {
+      "name": "Education",
+      "metric": "200K+ Students",
+      "description": "Learning platforms, portals, and digital education ecosystems.",
+      "tag": "Scalable Learning",
+      "link": "#"
+    }
+  ],
+  "badges": [
+    "Industry Compliant",
+    "Cutting-edge Technology",
+    "24/7 Dedicated Support"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "title": "What We Do Best",
+  "description": "We partner with forward-thinking organizations to design, build, and scale digital products that drive real business outcomes.",
+  "services": [
+    {
+      "icon": "Code2",
+      "title": "Custom Software Development",
+      "description": "We build tailor-made applications designed around your specific workflows, not generic templates.",
+      "features": ["Web Applications", "Mobile Apps", "API Development"]
+    },
+    {
+      "icon": "Cloud",
+      "title": "Cloud & Infrastructure",
+      "description": "Scalable cloud solutions that grow with your business, ensuring reliability and cost efficiency.",
+      "features": ["Cloud Migration", "DevOps", "Serverless Architecture"]
+    },
+    {
+      "icon": "Shield",
+      "title": "Cybersecurity",
+      "description": "Enterprise-grade security practices baked into every solution from day one.",
+      "features": ["Security Audits", "Compliance", "Threat Monitoring"]
+    },
+    {
+      "icon": "BarChart3",
+      "title": "Data & Analytics",
+      "description": "Turn raw data into actionable insights with custom dashboards and reporting tools.",
+      "features": ["Business Intelligence", "Data Visualization", "Predictive Analytics"]
+    },
+    {
+      "icon": "Zap",
+      "title": "Digital Transformation",
+      "description": "Modernize legacy systems and automate manual processes for maximum efficiency.",
+      "features": ["Process Automation", "Legacy Modernization", "System Integration"]
+    },
+    {
+      "icon": "Users",
+      "title": "IT Consulting",
+      "description": "Strategic technology guidance to align your IT investments with business objectives.",
+      "features": ["Tech Strategy", "Architecture Review", "Team Augmentation"]
+    }
+  ],
+  "stats": [
+    { "value": "150+", "label": "Projects Delivered" },
+    { "value": "50+", "label": "Happy Clients" },
+    { "value": "3+", "label": "Years Experience" },
+    { "value": "24/7", "label": "Support Available" }
+  ]
+}
