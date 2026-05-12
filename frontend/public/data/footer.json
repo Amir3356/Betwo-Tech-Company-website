@@ -1,0 +1,33 @@
+{
+  "brand": {
+    "name": "Betwo Tech",
+    "logo": "B"
+  },
+  "backgroundImage": "/assets/Business Process Digitalization.jpeg",
+  "socialLinks": [
+    { "name": "Telegram", "url": "#", "icon": "telegram" },
+    { "name": "WhatsApp", "url": "#", "icon": "whatsapp" },
+    { "name": "Twitter", "url": "#", "icon": "twitter" }
+  ],
+  "quickLinks": [
+    { "text": "Home", "link": "#home" },
+    { "text": "About Us", "link": "#about" },
+    { "text": "Our Projects", "link": "#projects" }
+  ],
+  "services": [
+    { "text": "Web Application Development", "link": "#" },
+    { "text": "Mobile iOS & Android Apps", "link": "#" },
+    { "text": "Enterprise Custom Software", "link": "#" }
+  ],
+  "contact": {
+    "address": "Addis Ababa, Ethiopia",
+    "addressDetail": "Bole, 1000",
+    "phone": "+251 911 234 567",
+    "email": "hello@betwoch.tech"
+  },
+  "bottomLinks": [
+    { "text": "Privacy Policy", "link": "#" },
+    { "text": "Terms of Service", "link": "#" },
+    { "text": "Cookie Policy", "link": "#" }
+  ]
+}

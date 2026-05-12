@@ -1,0 +1,81 @@
+{
+  "title": "Featured Projects",
+  "description": "Explore our portfolio of successful digital solutions — from automotive to healthcare and beyond.",
+  "metrics": [
+    {
+      "value": "6+",
+      "label": "Projects Delivered"
+    },
+    {
+      "value": "100%",
+      "label": "Success Rate"
+    },
+    {
+      "value": "24/7",
+      "label": "Support"
+    }
+  ],
+  "categories": ["All", "Automotive", "Construction", "Inventory", "Procurement", "Healthcare", "Industrial"],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Smart Garage Management System",
+      "category": "Automotive",
+      "uptime": "99.9%",
+      "duration": "6 weeks",
+      "description": "Digital system serving 50+ auto repair shops with 99.9% uptime",
+      "technologies": ["React", "Node.js", "MongoDB", "Express", "+1"],
+      "image": "/assets/Smart Garage Management System.png"
+    },
+    {
+      "id": 2,
+      "title": "Construction Project Management System",
+      "category": "Construction",
+      "uptime": "99.9%",
+      "duration": "10 weeks",
+      "description": "Managing 100+ construction sites with real-time tracking",
+      "technologies": ["React", "Node.js", "PostgreSQL", "TypeScript", "+1"],
+      "image": "/assets/Construction Project Management System.png"
+    },
+    {
+      "id": 3,
+      "title": "Betwo Inventory",
+      "category": "Inventory",
+      "uptime": "99.9%",
+      "duration": "8 weeks",
+      "description": "Tracking 500,000+ SKUs across 10+ warehouses",
+      "technologies": ["React", "Node.js", "PostgreSQL", "Redis", "+1"],
+      "image": "/assets/Betwo Inventory.png"
+    },
+    {
+      "id": 4,
+      "title": "GPO Management System",
+      "category": "Procurement",
+      "uptime": "99.9%",
+      "duration": "12 weeks",
+      "description": "Managing $50M+ in procurement volume annually",
+      "technologies": ["React", "Node.js", "PostgreSQL", "TypeScript", "+1"],
+      "image": "/assets/GPO Management System.jpeg"
+    },
+    {
+      "id": 5,
+      "title": "Pharmacy Management System",
+      "category": "Healthcare",
+      "uptime": "99.9%",
+      "duration": "7 weeks",
+      "description": "Serving 200+ pharmacies with 99.9% accuracy",
+      "technologies": ["React", "Node.js", "PostgreSQL", "Redis", "+1"],
+      "image": "/assets/Pharmacy Management System.png"
+    },
+    {
+      "id": 6,
+      "title": "Workshop Management System",
+      "category": "Industrial",
+      "uptime": "99.9%",
+      "duration": "9 weeks",
+      "description": "Managing 1,000+ industrial assets across 5 facilities",
+      "technologies": ["React", "Node.js", "PostgreSQL", "TypeScript", "+1"],
+      "image": "/assets/Workshop Management System.png"
+    }
+  ]
+}

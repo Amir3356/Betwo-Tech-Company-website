@@ -1,0 +1,17 @@
+{
+  "brand": {
+    "name": "Betwo Tech",
+    "logo": "B"
+  },
+  "links": [
+    { "text": "Home", "path": "/" },
+    { "text": "About Us", "path": "/about" },
+    { "text": "Services", "path": "/services" },
+    { "text": "Projects", "path": "/projects" },
+    { "text": "Contact Us", "path": "/contact" }
+  ],
+  "cta": {
+    "text": "Get Started",
+    "link": "#contact"
+  }
+}

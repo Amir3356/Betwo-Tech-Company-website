@@ -1,0 +1,13 @@
+{
+  "titlePrefix": "Innovating the Future of",
+  "typedTexts": ["Digital Solution", "Technology"],
+  "description": "Betwoch Tech specializes in building cutting-edge software solutions that empower businesses to scale and thrive in the digital age.",
+  "ctaButtons": [
+    { "text": "Our Services", "link": "#services", "primary": true },
+    { "text": "Contact Us", "link": "#contact", "primary": false }
+  ],
+  "image": {
+    "alt": "Betwoch Tech hero visual",
+    "src": "/assets/Background image.png"
+  }
+}

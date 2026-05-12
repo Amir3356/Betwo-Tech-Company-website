@@ -1,0 +1,130 @@
+{
+  "hero": {
+    "title": "Transform Your Business With",
+    "highlightTitle": "Custom Software Solutions",
+    "description": "We build practical, scalable software that streamlines your operations, automates workflows, and drives real business growth.",
+    "buttons": [
+      { "text": "Start a Project", "primary": true },
+      { "text": "View Services", "primary": false }
+    ],
+    "stats": [
+      { "value": "3+", "label": "Years Experience" },
+      { "value": "150+", "label": "Projects Completed" },
+      { "value": "50+", "label": "Happy Clients" }
+    ],
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  "comprehensive": {
+    "title": "Comprehensive Solutions for Your Business",
+    "description": "From custom management systems to ongoing support, we provide end-to-end software solutions tailored to your unique business needs.",
+    "services": [
+      {
+        "title": "Custom Management Systems",
+        "description": "We design and build tailored management systems based on how your business actually works — not generic software.",
+        "points": ["Business process analysis", "Pain point identification"],
+        "icon": "Database"
+      },
+      {
+        "title": "Web & Mobile Application Development",
+        "description": "Production-ready applications focused on data, workflows, and measurable business outcomes.",
+        "points": ["Secure data management", "Action-based workflows"],
+        "icon": "Smartphone"
+      },
+      {
+        "title": "Business Process Digitalization",
+        "description": "We eliminate inefficient manual workflows and replace them with fast, reliable digital systems.",
+        "points": ["Replace paper files", "Replace Excel-based operations"],
+        "icon": "Lightbulb"
+      },
+      {
+        "title": "UI/UX Design for Management Systems",
+        "description": "Clean, simple, and functional interfaces designed for everyday business users.",
+        "points": ["Simple and intuitive layouts", "Fast learning curve"],
+        "icon": "LayoutTemplate"
+      },
+      {
+        "title": "System Upgrade & Optimization",
+        "description": "We modernize and improve existing systems to match current business needs.",
+        "points": ["UI redesign", "Performance optimization"],
+        "icon": "Settings"
+      },
+      {
+        "title": "Support & Long-Term Partnership",
+        "description": "We provide continuous support so your system evolves as your business grows.",
+        "points": ["System maintenance", "Feature updates"],
+        "icon": "Repeat"
+      }
+    ]
+  },
+  "featureDeepDivesSection": {
+    "title": "How We Bring Your Vision to Life",
+    "description": "Each service is delivered with meticulous attention to detail and a focus on measurable business outcomes."
+  },
+  "featureDeepDives": [
+    {
+      "title": "Custom Management Systems",
+      "description": "We design and build tailored management systems based on how your business actually works — not generic software.",
+      "features": ["Business process analysis", "Pain point identification", "End-to-end system automation"],
+      "benefits": ["Web-based", "Mobile-friendly", "Highly scalable"],
+      "tech": ["React", "Node.js", "Python", "PostgreSQL", "MongoDB"],
+      "image": "/assets/Custom Management System.jpeg",
+      "reverse": false
+    },
+    {
+      "title": "Web & Mobile Application Development",
+      "description": "Production-ready applications focused on data, workflows, and measurable business outcomes.",
+      "features": ["Secure data management", "Action-based workflows", "Tracking, reporting & dashboards", "Decision-support systems"],
+      "benefits": ["Built for real users", "Business-driven logic"],
+      "tech": ["React Native", "Flutter", "Vue.js", "AWS", "Firebase"],
+      "image": "/assets/Web-Mobile-Application-Development.jpeg",
+      "reverse": true
+    },
+    {
+      "title": "Business Process Digitalization",
+      "description": "We eliminate inefficient manual workflows and replace them with fast, reliable digital systems.",
+      "features": ["Replace paper files", "Replace Excel-based operations", "Remove repetitive manual work"],
+      "benefits": ["Faster operations", "Fewer errors", "Higher productivity"],
+      "tech": ["Workflow Automation", "API Integration", "Cloud Services"],
+      "image": "/assets/Business Process Digitalization.jpeg",
+      "reverse": false
+    },
+    {
+      "title": "UI/UX Design for Management Systems",
+      "description": "Clean, simple, and functional interfaces designed for everyday business users.",
+      "features": ["Simple and intuitive layouts", "Fast learning curve", "Optimized for all devices"],
+      "benefits": ["Reduces confusion", "Improves adoption", "A powerful system must be usable"],
+      "tech": ["Figma", "Adobe XD", "User Testing", "Prototyping"],
+      "image": "/assets/System-Upgrade-Optimization.jpeg",
+      "reverse": true
+    },
+    {
+      "title": "System Upgrade & Optimization",
+      "description": "We modernize and improve existing systems to match current business needs.",
+      "features": ["UI redesign", "Performance optimization", "Feature enhancement"],
+      "benefits": ["Future-ready systems", "Better performance"],
+      "tech": ["Code Refactoring", "Database Optimization", "Security Audit"],
+      "image": "/assets/System-Upgrade-Optimization.jpeg",
+      "reverse": false
+    },
+    {
+      "title": "Support & Long-Term Partnership",
+      "description": "We provide continuous support so your system evolves as your business grows.",
+      "features": ["System maintenance", "Feature updates", "Performance improvements", "Ongoing technical support"],
+      "benefits": ["Reliable partnership", "Long-term growth"],
+      "tech": ["24/7 Monitoring", "Regular Updates", "Priority Support"],
+      "image": "/assets/Support & Long-Term Partnership.jpeg",
+      "reverse": true
+    }
+  ],
+  "process": {
+    "title": "How We Bring Ideas to Life",
+    "steps": [
+      { "number": "01", "title": "Understand Your Vision", "description": "We carefully listen to your goals and requirements" },
+      { "number": "02", "title": "Strategic Planning", "description": "We design a clear plan to build the right solution for you" },
+      { "number": "03", "title": "Secure Development", "description": "We build your product using modern technologies and secure practices" },
+      { "number": "04", "title": "Collaborative Review", "description": "We work closely with you, refining the product based on feedback" },
+      { "number": "05", "title": "Quality and Security Testing", "description": "We rigorously test the system to ensure reliabilit, performance, and security" },
+      { "number": "06", "title": "Launch and Continous Support", "description": "We deploy your solution and support it to ensure long-term-success" }
+    ]
+  }
+}

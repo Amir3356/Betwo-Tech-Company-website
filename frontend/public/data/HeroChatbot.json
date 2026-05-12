@@ -1,0 +1,17 @@
+{
+  "title": "Betwo AI",
+  "model": "openai/gpt-oss-120b:free",
+  "initialMessages": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?"
+    }
+  ],
+  "placeholder": "Ask about Betwo...",
+  "sendButtonText": "Send",
+  "typingText": "AI is typing...",
+  "openButtonAriaLabel": "Open chat",
+  "closeButtonAriaLabel": "Close chat",
+  "rateLimitMessage": "Too many requests. Please wait a moment and try again.",
+  "fallbackErrorMessage": "Sorry, I am having trouble connecting right now. Please try again later."
+}

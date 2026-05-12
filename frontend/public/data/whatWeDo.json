@@ -1,0 +1,26 @@
+{
+  "title": "What We Do?",
+  "description": "We deliver custom software solutions that drive digital transformation and business growth.",
+  "services": [
+    {
+      "icon": "Code",
+      "title": "Custom Software Development",
+      "description": "Tailor-made web and mobile applications designed to solve your unique business challenges with scalable, secure, and maintainable code."
+    },
+    {
+      "icon": "Database",
+      "title": "Management Systems",
+      "description": "Comprehensive ERP and management platforms that streamline operations, automate workflows, and provide real-time business intelligence."
+    },
+    {
+      "icon": "Smartphone",
+      "title": "Mobile Applications",
+      "description": "Native and cross-platform mobile apps that deliver seamless user experiences and keep your business in your customers' pockets."
+    },
+    {
+      "icon": "Settings",
+      "title": "System Integration",
+      "description": "Connect and unify your existing tools and platforms into a cohesive ecosystem that eliminates data silos and boosts productivity."
+    }
+  ]
+}

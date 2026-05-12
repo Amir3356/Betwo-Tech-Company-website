@@ -1,0 +1,49 @@
+{
+	"title": "Trusted by Industry Leaders",
+	"description": "See what our partners have to say about our digital solutions and commitment to excellence.",
+	"metrics": [
+		{ "value": "50+", "label": "Happy Clients" },
+		{ "value": "5.0", "label": "Average Rating" },
+		{ "value": "100%", "label": "Satisfaction" }
+	],
+	"testimonials": [
+		{
+			"quote": "Betwoch Tech transformed our digital infrastructure. Their attention to detail in the healthcare sector is unmatched.",
+			"name": "Abebe Speaker",
+			"role": "Lead Designer",
+			"company": "Design Hub Ethiopia",
+			"initials": "A",
+			"image": "/public/assets/Abebe Speaker.png"
+		},
+		{
+			"quote": "The event management system they built is intuitive and robust. It handled our peak traffic without a single glitch.",
+			"name": "Sara Tekle",
+			"role": "Project Manager",
+			"company": "EventPro Solutions",
+			"initials": "S",
+			"image": "/public/assets/Sara Tekle.png"
+		},
+		{
+			"quote": "Professional, timely, and highly skilled developers. They understand the local context while delivering world-class code.",
+			"name": "Samuel Girma",
+			"role": "Operations Manager",
+			"company": "Logistics Corp",
+			"initials": "S",
+			"image": "/public/assets/Samuel Girma.png"
+		},
+		{
+			"quote": "Their fintech platform exceeded our expectations. Security, scalability, and user experience all top-notch.",
+			"name": "From Tig to Hai",
+			"role": "CTO",
+			"company": "FinTech Ethiopia",
+			"initials": "T",
+			"image": "/public/assets/From Tig to Hai.png"
+		}
+	],
+	"badges": [
+		{ "text": "Verified Reviews", "icon": "ShieldCheck" },
+		{ "text": "Real Clients", "icon": "Users" },
+		{ "text": "Long-term Partnerships", "icon": "Handshake" }
+	],
+	"footerText": "Join 12+ satisfied clients who trust our solutions"
+}

@@ -1,0 +1,81 @@
+{
+  "hero": {
+    "title": "Let's Discuss Your",
+    "highlightText": "Next Big Idea",
+    "description": "Whether you have a question about our services, need a quote, or want to discuss a project — we're here to help."
+  },
+  "contactInfo": [
+    {
+      "title": "Email Us",
+      "content": "Betwotech@gmail.com",
+      "subtext": "We reply within 24 hours",
+      "icon": "Mail"
+    },
+    {
+      "title": "Call Us",
+      "content": "+251 912882357",
+      "subtext": "Mon-Sat 8am-6pm",
+      "icon": "Phone"
+    },
+    {
+      "title": "Visit Us",
+      "content": "Meskel Flower, Addis Ababa",
+      "subtext": "Near Jackros & Alamayehu Building",
+      "icon": "MapPin"
+    },
+    {
+      "title": "Business Hours",
+      "content": "Monday - Saturday",
+      "subtext": "8:00 AM - 6:00 PM",
+      "icon": "Clock"
+    }
+  ],
+  "guaranteedResponse": {
+    "title": "Guaranteed Response Within 24 Hours",
+    "description": "We value your time and respond to every inquiry promptly."
+  },
+  "form": {
+    "title": "Send Us a Message",
+    "fields": [
+      { "name": "name", "label": "Full Name", "type": "text", "required": true, "placeholder": "Your full name" },
+      { "name": "email", "label": "Email Address", "type": "email", "required": true, "placeholder": "your@email.com" },
+      { "name": "subject", "label": "Subject", "type": "text", "required": true, "placeholder": "How can we help you?" },
+      { "name": "message", "label": "How can we help you?", "type": "textarea", "required": true, "placeholder": "Tell us about your project...", "rows": 5 }
+    ],
+    "submitButton": "Send Message"
+  },
+  "office": {
+    "title": "Visit Our Office in Meskel Flower, Addis Ababa",
+    "description": "Located near Jackros Restaurant and Alamayehu Building",
+    "address": {
+      "title": "Meskel Office",
+      "lines": ["Near Jackros Restaurant", "Alamayehu Building, 3rd Floor", "Meskel Flower, Addis Ababa"]
+    },
+    "directionsButton": "Get Directions",
+    "landmarks": [
+      "Jackros Restaurant (2 min walk)",
+      "Alamayehu Building",
+      "Goro Roundabout"
+    ],
+    "parking": "Free parking available behind Alamayehu Building",
+    "transport": "Buses and minibuses available at Goro Roundabout"
+  },
+  "faq": [
+    {
+      "question": "How quickly do you respond to inquiries?",
+      "answer": "We guarantee a response within 24 hours. Most inquiries are answered within a few hours during business hours (Monday to Saturday, 8:00 AM - 6:00 PM)."
+    },
+    {
+      "question": "Do you work with international clients?",
+      "answer": "Absolutely! We work with clients from around the world. Our team is experienced in remote collaboration and can accommodate different time zones for meetings and communication."
+    },
+    {
+      "question": "What information should I provide for a project quote?",
+      "answer": "To provide an accurate quote, please share details about your project scope, desired features, timeline expectations, and any specific requirements or preferences you have. The more detail you provide, the more accurate our estimate will be."
+    },
+    {
+      "question": "Can I schedule a consultation call?",
+      "answer": "Yes, we'd be happy to schedule a consultation call. Simply fill out the contact form with your preferred date and time, or email us directly at yanoltech@gmail.com and we'll arrange a convenient time."
+    }
+  ]
+}

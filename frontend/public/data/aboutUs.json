@@ -1,0 +1,141 @@
+{
+  "hero": {
+    "title": "Company Overview",
+    "subtitle": "Reliable digital solutions",
+    "highlightText": "built with long-term vision",
+    "highlightParts": ["built with long-term", "vision"],
+    "description": "We are a technology-driven company focused on building scalable, secure, and future-proof digital products. Our work is grounded in strong engineering principles and long-term partnerships.",
+    "trustText": "Trusted by Industry Leaders",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ,
+    "isolatedViewLabel": "Isolated View"
+  },
+  "purpose": {
+    "sectionLabel": "Our Purpose?",
+    "heading": "Driving Innovation Through Purpose",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To empower businesses through thoughtfully engineered software solutions that solve real problems and scale with confidence."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To become a trusted technology partner known for reliability, transparency, and long-term impact across industries."
+    }
+  },
+  "coreValues": [
+    {
+      "title": "Integrity",
+      "description": "We operate with honesty, transparency, and accountability in every interaction.",
+      "icon": "Shield"
+    },
+    {
+      "title": "Excellence",
+      "description": "We focus on quality, performance, and sustainable engineering practices.",
+      "icon": "Award"
+    },
+    {
+      "title": "Collaboration",
+      "description": "Strong partnerships and teamwork drive our collective success.",
+      "icon": "Users"
+    },
+    {
+      "title": "Innovation",
+      "description": "We embrace creative thinking and continuous improvement in all we do.",
+      "icon": "Lightbulb"
+    },
+    {
+      "title": "Quality",
+      "description": "We deliver exceptional results through attention to detail and craftsmanship.",
+      "icon": "Star"
+    },
+    {
+      "title": "Customer Focus",
+      "description": "Our clients' success is at the heart of every decision we make.",
+      "icon": "Handshake"
+    }
+  ],
+  "leadership": {
+    "description": "Our leadership team brings a strong technical background, business insight, and a commitment to building long-lasting products and partnerships.",
+    "ceo": {
+      "sectionTitle": "Chief Executive Officer",
+      "countLabel": "1 Leader",
+      "name": "Debeb Ketema Adugna",
+      "role": "Founder & CEO",
+      "description": "Visionary tech leader with 15+ years of experience driving digital transformation across Ethiopian enterprises.",
+      "image": "/assets/Executive Leadership.jpg"
+    },
+    "executives": [
+      {
+        "name": "Muluken Tilahun Molla",
+        "role": "Chief Operating Officer",
+        "description": "Technology innovator specializing in scalable cloud architectures and enterprise software systems.",
+        "image": "/assets/Executive Leadership  1.jpeg"
+      },
+      {
+        "name": "Ayana Basha Challie",
+        "role": "Chief Technology Officer",
+        "description": "Operations excellence expert focused on scaling business processes and ensuring exceptional client delivery.",
+        "image": "/assets/Executive Leadership  2.jpeg"
+      },
+      {
+        "name": "Fikiru Ababe",
+        "role": "Industry Consultant",
+        "description": "Product strategist passionate about creating user-centric solutions that solve real Ethiopian business challenges.",
+        "image": "/assets/Executive Leadership 4.jpeg"
+      }
+    ]
+    ,
+    "sectionLabelExperienced": "Experienced Leadership",
+    "heading": "Visionary Leaders Driving Innovation",
+    "executivesSectionTitle": "Executive Leadership",
+    "executivesCountLabel": "3 Leaders"
+  },
+  "history": [
+    { "year": "2022", "title": "The Beginning", "description": "Company founded with a vision for scalable solutions." },
+    { "year": "2023", "title": "First Milestone", "description": "Delivered first enterprise-grade products." },
+    { "year": "2024", "title": "Expansion", "description": "Expanded into multi-industry solutions." },
+    { "year": "2025", "title": "Future Vision", "description": "Focused on long-term partnerships and growth." }
+  ],
+  "historySection": {
+    "sectionLabel": "Our History",
+    "heading": "The Journey",
+    "description": "From foundation to future — our path of growth and innovation"
+  },
+  "impact": {
+    "sectionLabel": "Our Impact",
+    "title": "Company Achievements",
+    "subtitle": "Measurable results that demonstrate our commitment to excellence",
+    "stats": [
+      { "value": "123+", "label": "Clients Served", "description": "Enterprise companies trust our solutions" },
+      { "value": "840+", "label": "Projects Delivered", "description": "Successful implementations worldwide" },
+      { "value": "10+", "label": "Countries Reached", "description": "Global presence across continents" },
+      { "value": "3", "label": "Years Exp.", "description": "Building since 2022" }
+    ],
+    "trustText": "Trusted by industry leaders worldwide"
+  },
+  "culture": {
+    "sectionLabel": "",
+    "title": "How We Work?",
+    "description": "We've built an environment where collaboration, innovation, and growth are part of everyday life. We believe in cross-functional collaboration where every voice matters. Our teams work together in an open, supportive environment that encourages innovation and continuous learning. We celebrate wins together and support each other through challenges.",
+    "points": [
+      { "title": "Collaboration", "description": "Cross-functional teams working together to solve complex problems", "icon": "Users" },
+      { "title": "Innovation", "description": "Freedom to experiment and bring new ideas to life", "icon": "Lightbulb" },
+      { "title": "Growth", "description": "Continuous learning and opportunities to advance", "icon": "Zap" }
+    ],
+    "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  "cta": {
+    "title": "Work With Us",
+    "description": "Ready to bring your ideas to life? Let's collaborate on your next project.",
+    "backgroundImage": "/assets/Support & Long-Term Partnership.jpeg",
+    "buttons": [
+      { "text": "Start a Conversation", "primary": true },
+      { "text": "Join Our Team", "primary": false }
+    ],
+    "badges": [
+      { "text": "Quick Response", "icon": "Activity" },
+      { "text": "Free Consultation", "icon": "Briefcase" },
+      { "text": "No Commitment", "icon": "Globe" }
+    ]
+  }
+}
