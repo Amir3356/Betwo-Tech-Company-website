@@ -186,13 +186,12 @@ export default function Projects() {
                 <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
                   initial={{ scale: 0.98, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{ duration: 0.6 }}
                 />
-                <div className="absolute inset-0 bg-blue-400/25" />
                 <div className="absolute top-4 left-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
                   {project.category}
                 </div>
