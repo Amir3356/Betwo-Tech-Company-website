@@ -181,7 +181,6 @@ export default function Contact() {
       <div className="bg-slate-50 dark:bg-slate-900 py-24 border-y border-slate-100 dark:border-slate-800">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16 space-y-4">
-            <h3 className="text-blue-400 font-semibold uppercase tracking-wider">FAQ</h3>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">Frequently Asked Questions</h2>
           </div>
           <motion.div className="space-y-4" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
