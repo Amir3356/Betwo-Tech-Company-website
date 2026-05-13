@@ -164,7 +164,7 @@ export default function Projects() {
                   <span className="text-xs text-slate-500 dark:text-slate-400">Built in {project.duration}</span>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-500 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                   {project.title}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">{project.description}</p>
