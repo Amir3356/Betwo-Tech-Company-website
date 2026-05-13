@@ -267,14 +267,10 @@ export default function Services() {
               <div className="flex-1 w-full relative">
                 <motion.div className="aspect-4/3 bg-linear-to-tr from-blue-100 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-3xl overflow-hidden flex items-center justify-center border border-slate-200 dark:border-slate-700 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg" variants={cardVariant}>
                   {item.image ? (
-                    <motion.img
+                    <img
                       src={item.image}
                       alt={item.title}
                       className="w-full h-full object-cover"
-                      initial={{ scale: 0.98, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      viewport={{ once: true, amount: 0.6 }}
-                      transition={{ duration: 0.6 }}
                     />
                   ) : (
                     <LayoutTemplate className="w-32 h-32 text-blue-200 dark:text-blue-900/50" />
