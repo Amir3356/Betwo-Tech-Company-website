@@ -2,7 +2,6 @@ import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Typed from "typed.js";
-import { motion } from "framer-motion";
 
 export default function Hero() {
   const [heroData, setHeroData] = useState(null);
@@ -56,8 +55,13 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="px-6 md:px-12 py-20 md:py-32 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-12">
-      <div className="flex-1 space-y-8 text-center md:text-left">
+    <section 
+      id="home" 
+      className="relative px-6 md:px-12 py-20 md:py-32 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-12 overflow-hidden"
+    >
+      <div 
+        className="flex-1 space-y-8 text-center md:text-left relative z-10"
+      >
         <h1 className="hero-title text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
           {(
             heroData.titlePrefix ??
@@ -97,16 +101,22 @@ export default function Hero() {
             ))}
         </div>
       </div>
-<div className="flex-1 w-full max-w-lg flex flex-col items-center">
-          {heroData.image?.src ? (
-            <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <img src={heroData.image.src} alt={heroData.image?.alt ?? "Hero"} className="w-full h-auto object-contain transform transition-all duration-500 hover:scale-105 hover:shadow-2xl rounded-2xl" />
-            </motion.div>
-          ) : null}
-        </div>
+
+      <div 
+        className="flex-1 w-full max-w-lg flex flex-col items-center relative z-10"
+      >
+        {heroData.image?.src ? (
+          <div
+            className="relative"
+          >
+            <img 
+              src={heroData.image.src} 
+              alt={heroData.image?.alt ?? "Hero"} 
+              className="w-full h-auto object-contain transform transition-all duration-500 hover:scale-105 hover:shadow-2xl rounded-2xl relative z-10" 
+            />
+          </div>
+        ) : null}
+      </div>
     </section>
   );
 }
