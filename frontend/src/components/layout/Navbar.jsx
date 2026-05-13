@@ -51,9 +51,10 @@ export default function Navbar() {
           <Link 
             key={i} 
             to={link.path} 
-            className="px-3 py-2 rounded-lg transition-all duration-300 hover:text-black dark:hover:text-slate-100"
+            className="relative px-3 py-2 rounded-lg transition-all duration-300 group hover:text-black dark:hover:text-slate-300"
           >
             {link.text}
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black dark:bg-slate-300 transition-all duration-300 group-hover:w-full rounded-full"></span>
           </Link>
         ))}
       </nav>
@@ -117,9 +118,10 @@ export default function Navbar() {
                 key={i} 
                 to={link.path} 
                 onClick={() => setIsOpen(false)}
-                className="px-4 py-3 rounded-lg transition-all duration-300 hover:text-black dark:hover:text-slate-100"
+                className="relative px-4 py-3 rounded-lg transition-all duration-300 group hover:text-black dark:hover:text-slate-300"
               >
                 {link.text}
+                <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-black dark:bg-slate-300 transition-all duration-300 group-hover:w-full rounded-full"></span>
               </Link>
             ))}
             <a 
