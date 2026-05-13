@@ -68,7 +68,7 @@ export default function Footer() {
           {/* Brand Column */}
           <motion.div className="lg:col-span-1 space-y-6" variants={colVariants}>
             <div className="flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 dark:from-blue-500 dark:to-cyan-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-blue-400/30 dark:shadow-blue-500/30 group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-slate-700/30 dark:shadow-slate-600/30 group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
                 B
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-blue-400 dark:via-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
