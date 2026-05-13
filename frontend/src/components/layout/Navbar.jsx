@@ -51,10 +51,9 @@ export default function Navbar() {
           <Link 
             key={i} 
             to={link.path} 
-            className="relative px-2 py-1 transition-all duration-300 group hover:text-slate-900 dark:hover:text-blue-400 hover:scale-105 hover:bg-slate-100 dark:hover:bg-blue-900/20 rounded-lg"
+            className="px-3 py-2 rounded-lg transition-all duration-300 hover:text-black dark:hover:text-slate-100"
           >
             {link.text}
-            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-slate-900 dark:bg-blue-400 transition-all duration-300 group-hover:w-full rounded-full"></span>
           </Link>
         ))}
       </nav>
@@ -118,7 +117,7 @@ export default function Navbar() {
                 key={i} 
                 to={link.path} 
                 onClick={() => setIsOpen(false)}
-                className="px-4 py-3 rounded-lg transition-all duration-300 hover:text-slate-900 dark:hover:text-blue-400 hover:scale-105 hover:bg-slate-100 dark:hover:bg-blue-900/20"
+                className="px-4 py-3 rounded-lg transition-all duration-300 hover:text-black dark:hover:text-slate-100"
               >
                 {link.text}
               </Link>
@@ -126,7 +125,7 @@ export default function Navbar() {
             <a 
               href={cta.link} 
               onClick={() => setIsOpen(false)}
-              className="mt-2 text-center px-5 py-3 rounded-full bg-slate-900 dark:bg-sky-400 hover:bg-slate-800 dark:hover:bg-sky-500 text-white dark:text-black font-extrabold"
+              className="mt-2 text-center px-5 py-3 rounded-full bg-slate-900 dark:bg-sky-400 hover:bg-slate-800 dark:hover:bg-sky-500 text-white dark:text-black font-extrabold transition-all"
             >
               {cta.text}
             </a>
