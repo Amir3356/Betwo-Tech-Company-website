@@ -508,7 +508,7 @@ export default function About() {
               className="history-card"
             >
               <div className="history-card-content">
-                <h3 className="history-year" style={{ fontSize: "0.8rem", lineHeight: 1.05 }}>
+                <h3 className="history-year" style={{ fontSize: "2rem", lineHeight: 1.05 }}>
                   {timeline.year}
                 </h3>
                 <h4 className="history-title">{timeline.title}</h4>

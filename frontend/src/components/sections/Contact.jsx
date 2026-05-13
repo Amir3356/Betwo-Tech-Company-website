@@ -142,7 +142,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-800 dark:text-white text-lg">{office.address?.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">{(office.address?.lines || []).join("<br/>")}</p>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">{(office.address?.lines || []).join(" ")}</p>
                 </div>
               </div>
               <button className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-blue-400 dark:hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20 dark:shadow-blue-500/20">
