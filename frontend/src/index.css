@@ -860,16 +860,6 @@ section {
   transition: all 0.3s ease;
 }
 
-#home .hero-title:hover {
-  color: #0ea5e9;
-  text-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
-}
-
-.dark #home .hero-title:hover {
-  color: #38bdf8;
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-}
-
 /* Service Card Specific Hover */
 .services-section .service-card:hover,
 .services-overview .service-card:hover {
