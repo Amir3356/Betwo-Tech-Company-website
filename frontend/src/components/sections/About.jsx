@@ -512,7 +512,7 @@ export default function About() {
               transition={{ type: "spring", stiffness: 240, damping: 18 }}
               className="history-card bg-white dark:bg-slate-950 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 text-center relative transform transition-all duration-300"
             >
-              <div className="history-year-badge w-12 h-12 rounded-full bg-blue-400 text-white flex items-center justify-center font-bold text-lg mx-auto mb-4 border-4 border-white dark:border-slate-950">
+              <div className="history-year-badge w-12 h-12 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-lg mx-auto mb-4 border-4 border-white dark:border-slate-950 transition-colors duration-300 hover:bg-slate-700 dark:hover:bg-slate-700">
                 {timeline.year}
               </div>
               <h4 className="history-title text-xl font-bold text-slate-900 dark:text-white mb-2">{timeline.title}</h4>
