@@ -51,6 +51,58 @@ const valueCardVariants = {
   },
 };
 
+// Tech Stack Data
+const techStack = {
+  frontend: {
+    title: "Frontend",
+    icon: Code2,
+    color: "blue",
+    technologies: [
+      { name: "React", logo: "⚛️" },
+      { name: "Vue.js", logo: "💚" },
+      { name: "Next.js", logo: "▲" },
+      { name: "TypeScript", logo: "🔷" },
+      { name: "Tailwind CSS", logo: "🎨" },
+    ]
+  },
+  backend: {
+    title: "Backend",
+    icon: Database,
+    color: "green",
+    technologies: [
+      { name: "Node.js", logo: "🟢" },
+      { name: "Python", logo: "🐍" },
+      { name: "Django", logo: "🎸" },
+      { name: "Express", logo: "🚂" },
+      { name: "PostgreSQL", logo: "🐘" },
+    ]
+  },
+  mobile: {
+    title: "Mobile",
+    icon: Smartphone,
+    color: "purple",
+    technologies: [
+      { name: "React Native", logo: "📱" },
+      { name: "Flutter", logo: "🦋" },
+      { name: "iOS", logo: "🍎" },
+      { name: "Android", logo: "🤖" },
+      { name: "PWA", logo: "⚡" },
+    ]
+  },
+  cloud: {
+    title: "Cloud & DevOps",
+    icon: Cloud,
+    color: "cyan",
+    technologies: [
+      { name: "AWS", logo: "☁️" },
+      { name: "Docker", logo: "🐳" },
+      { name: "Kubernetes", logo: "☸️" },
+      { name: "CI/CD", logo: "🔄" },
+      { name: "Git", logo: "📦" },
+    ]
+  }
+};
+
 export default function AboutUsOverview() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -279,6 +331,100 @@ export default function AboutUsOverview() {
               </motion.div>
             );
           })}
+        </motion.div>
+
+        {/* Tech Stack Section */}
+        <motion.div
+          className="mt-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+              Our Tech Stack
+            </h3>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Cutting-edge technologies we use to build powerful solutions
+            </p>
+          </div>
+
+          {/* Tech Stack Grid */}
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            {Object.entries(techStack).map(([key, category], index) => {
+              const IconComponent = category.icon;
+              const colorClasses = {
+                blue: "bg-blue-400/10 text-blue-400 border-blue-400/20",
+                green: "bg-green-400/10 text-green-400 border-green-400/20",
+                purple: "bg-purple-400/10 text-purple-400 border-purple-400/20",
+                cyan: "bg-cyan-400/10 text-cyan-400 border-cyan-400/20",
+              };
+              
+              return (
+                <motion.div
+                  key={key}
+                  variants={valueCardVariants}
+                  whileHover={{ y: -8, scale: 1.03 }}
+                  className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl"
+                >
+                  {/* Category Header */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${colorClasses[category.color]}`}>
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                      {category.title}
+                    </h4>
+                  </div>
+
+                  {/* Technologies List */}
+                  <div className="space-y-3">
+                    {category.technologies.map((tech, idx) => (
+                      <motion.div
+                        key={idx}
+                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: index * 0.1 + idx * 0.05 }}
+                      >
+                        <span className="text-2xl">{tech.logo}</span>
+                        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                          {tech.name}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          {/* Tech Stack CTA */}
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <p className="text-slate-600 dark:text-slate-400 mb-6">
+              Want to see how we can leverage these technologies for your project?
+            </p>
+            <a
+              href="/services"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-slate-800 border-2 border-slate-900 dark:border-slate-200 text-slate-900 dark:text-white font-bold text-base hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all shadow-sm hover:shadow-lg"
+            >
+              Explore Our Services <ArrowRight size={18} />
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

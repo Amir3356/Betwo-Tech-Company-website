@@ -178,19 +178,25 @@ body {
 
 /* Contact Section - Friendly, Approachable */
 .contact-section h1,
-.contact-section h2 {
+.contact-section h2,
+.contact-overview h2,
+.contact-overview h3 {
   font-family: var(--font-heading);
   font-weight: 700;
 }
 
 .contact-section p,
-.contact-section label {
+.contact-section label,
+.contact-overview p,
+.contact-overview label {
   font-family: var(--font-body);
   font-weight: 400;
 }
 
 .contact-section input,
-.contact-section textarea {
+.contact-section textarea,
+.contact-overview input,
+.contact-overview textarea {
   font-family: var(--font-primary);
   font-weight: 400;
 }
