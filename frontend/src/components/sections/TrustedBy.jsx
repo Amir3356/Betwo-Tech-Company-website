@@ -76,7 +76,7 @@ export default function TrustedBy() {
     const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
     const animateIndex = (i, target, decimals, suffix) => {
-      const duration = 3000;
+      const duration = 5000;
       const start = performance.now();
 
       const step = (now) => {
