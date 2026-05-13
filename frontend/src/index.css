@@ -788,7 +788,7 @@ html {
 .history-year {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   background: linear-gradient(135deg, #0ea5e9, #06b6d4);
   -webkit-background-clip: text;
   background-clip: text;
@@ -847,7 +847,7 @@ html {
   }
   
   .history-year {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
   }
   
   .history-title {

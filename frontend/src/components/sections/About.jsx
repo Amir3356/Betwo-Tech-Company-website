@@ -421,7 +421,7 @@ export default function About() {
                       />
                     </div>
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white">{aboutData.leadership.ceo.name}</h4>
-                  <p className="text-blue-400 font-medium mb-4">{aboutData.leadership.ceo.role}</p>
+                    <p className="text-slate-700 dark:text-slate-300 font-medium mb-4">{aboutData.leadership.ceo.role}</p>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mb-6">{aboutData.leadership.ceo.description}</p>
                   </div>
               </div>
@@ -446,7 +446,7 @@ export default function About() {
                       />
                     </div>
                     <h4 className="text-lg font-bold text-slate-900 dark:text-white">{leader.name}</h4>
-                    <p className="text-blue-400 font-medium text-sm mb-4">{leader.role}</p>
+                      <p className="text-slate-700 dark:text-slate-300 font-medium text-sm mb-4">{leader.role}</p>
                     <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 grow">{leader.description}</p>
                   </div>
                 ))}
@@ -508,7 +508,9 @@ export default function About() {
               className="history-card"
             >
               <div className="history-card-content">
-                <h3 className="history-year">{timeline.year}</h3>
+                <h3 className="history-year text-[0.45rem] md:text-[0.5rem]" style={{ fontSize: "0.32rem", lineHeight: 1 }}>
+                  {timeline.year}
+                </h3>
                 <h4 className="history-title">{timeline.title}</h4>
                 <p className="history-description">{timeline.description}</p>
               </div>
