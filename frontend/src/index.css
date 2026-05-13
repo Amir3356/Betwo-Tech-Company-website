@@ -793,19 +793,19 @@ a:visited {
 }
 
 a:hover {
-  color: #000000;
+  color: inherit;
 }
 
 a:active {
-  color: #000000;
+  color: inherit;
 }
 
 .dark a:hover {
-  color: #cbd5e1;
+  color: inherit;
 }
 
 .dark a:active {
-  color: #cbd5e1;
+  color: inherit;
 }
 
 .contact-overview-cta,
