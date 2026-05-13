@@ -57,7 +57,7 @@ export default function Hero() {
 
   return (
     <section id="home" className="px-6 md:px-12 py-20 md:py-32 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-12">
-      <div className="flex-1 space-y-8 text-center md:text-left">
+      <div className="flex-1 space-y-8 text-center md:text-left" style={{ fontFamily: 'Poppins, sans-serif' }}>
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
           {(
             heroData.titlePrefix ??
