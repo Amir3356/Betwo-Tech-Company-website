@@ -12,6 +12,16 @@ const iconMap = {
   Repeat
 };
 
+// Map service titles to images
+const imageMap = {
+  "Custom Management Systems": "/assets/Custom Management System.jpeg",
+  "Web & Mobile Application Development": "/assets/Web-Mobile-Application-Development.jpeg",
+  "Business Process Digitalization": "/assets/Business Process Digitalization.jpeg",
+  "UI/UX Design for Management Systems": "/assets/UI/UX Design for Management Systems.jpeg",
+  "System Upgrade & Optimization": "/assets/System-Upgrade-Optimization.jpeg",
+  "Support & Long-Term Partnership": "/assets/Support & Long-Term Partnership.jpeg"
+};
+
 const sectionVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -84,26 +94,26 @@ export default function ServicesOverview() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.h3 
-            className="text-blue-400 font-semibold uppercase tracking-wider text-sm"
+          <motion.h2
+            className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             Our Services
-          </motion.h3>
-          <motion.h2 
-            className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white"
+          </motion.h2>
+          <motion.h3 
+            className="text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-300"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {comprehensive.title}
-          </motion.h2>
+          </motion.h3>
           <motion.p 
-            className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto"
+            className="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -123,46 +133,67 @@ export default function ServicesOverview() {
         >
           {services.map((service, index) => {
             const IconComponent = iconMap[service.icon];
+            const serviceImage = imageMap[service.title];
             return (
               <motion.div
                 key={index}
                 variants={cardVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="group bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl"
+                className="group bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl overflow-hidden"
               >
-                {/* Icon */}
-                <div className="w-14 h-14 bg-white dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-slate-900 dark:text-blue-400 mb-6 transition-all duration-300 group-hover:bg-blue-400 group-hover:text-white dark:group-hover:bg-blue-500 group-hover:scale-110 group-hover:rotate-3">
-                  {IconComponent && <IconComponent className="w-7 h-7" />}
+                {/* Image */}
+                {serviceImage && (
+                  <div className="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-800">
+                    <motion.img
+                      src={serviceImage}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      initial={{ opacity: 0, scale: 1.1 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Floating Icon */}
+                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-slate-900 dark:text-blue-400 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
+                      {IconComponent && <IconComponent className="w-6 h-6" />}
+                    </div>
+                  </div>
+                )}
+
+                {/* Content */}
+                <div className="p-8">
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-300">
+                    {service.description}
+                  </p>
+
+                  {/* Key Points */}
+                  <ul className="space-y-2 mb-6">
+                    {service.points.map((point, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-1.5 shrink-0"></span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Learn More Link */}
+                  <a
+                    href="/services"
+                    className="inline-flex items-center gap-2 text-slate-900 dark:text-blue-400 font-semibold text-sm hover:gap-3 transition-all group-hover:text-blue-600 dark:group-hover:text-blue-300"
+                  >
+                    Learn more <ArrowRight size={16} />
+                  </a>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-300">
-                  {service.description}
-                </p>
-
-                {/* Key Points */}
-                <ul className="space-y-2 mb-6">
-                  {service.points.map((point, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-1.5 shrink-0"></span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Learn More Link */}
-                <a
-                  href="/services"
-                  className="inline-flex items-center gap-2 text-slate-900 dark:text-blue-400 font-semibold text-sm hover:gap-3 transition-all group-hover:text-blue-600 dark:group-hover:text-blue-300"
-                >
-                  Learn more <ArrowRight size={16} />
-                </a>
               </motion.div>
             );
           })}
