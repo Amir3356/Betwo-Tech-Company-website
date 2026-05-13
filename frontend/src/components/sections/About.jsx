@@ -195,7 +195,7 @@ export default function About() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const highlightBlueClass = "text-gray-700";
+  const highlightBlueClass = "text-slate-800";
 
   useEffect(() => {
     const fetchAboutData = async () => {
