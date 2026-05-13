@@ -140,7 +140,7 @@ export default function ServicesOverview() {
                 variants={cardVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="group bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-slate-500 dark:hover:border-slate-600 transition-all duration-300 hover:shadow-xl overflow-hidden"
+                className="group bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-slate-700 dark:hover:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-slate-300/50 dark:hover:shadow-slate-900/30 overflow-hidden"
               >
                 {/* Image */}
                 {serviceImage && (
@@ -167,7 +167,7 @@ export default function ServicesOverview() {
                 {/* Content */}
                 <div className="p-8">
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-300">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-300">
                     {service.title}
                   </h3>
 
