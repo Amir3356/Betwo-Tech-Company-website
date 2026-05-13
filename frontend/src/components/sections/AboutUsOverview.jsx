@@ -162,7 +162,7 @@ export default function AboutUsOverview() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              {hero.title} - <span className="text-blue-400">{hero.highlightText}</span>
+              {hero.title} - <span className="text-slate-700 dark:text-slate-300">{hero.highlightText}</span>
             </motion.h3>
 
             <motion.p
