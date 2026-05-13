@@ -246,7 +246,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 bg-white dark:bg-slate-950 overflow-hidden">
       {/* 1. Company Overview */}
-      <div id="company-overview" className="max-w-7xl mx-auto px-6 lg:px-8 mb-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-24">
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
           variants={overviewVariants}
