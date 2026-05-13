@@ -265,7 +265,7 @@ export default function Services() {
                 </div>
               </div>
               <div className="flex-1 w-full relative">
-                <motion.div className="aspect-4/3 bg-linear-to-tr from-blue-100 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-3xl overflow-hidden flex items-center justify-center border border-slate-200 dark:border-slate-700 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg" variants={cardVariant}>
+                <motion.div className="w-full max-w-lg mx-auto aspect-[5/4] bg-linear-to-tr from-blue-100 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-3xl overflow-hidden flex items-center justify-center border border-slate-200 dark:border-slate-700 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg" variants={cardVariant}>
                   {item.image ? (
                     <img
                       src={item.image}
