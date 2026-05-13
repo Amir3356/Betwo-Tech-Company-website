@@ -157,11 +157,6 @@ export default function ServicesOverview() {
                     />
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    
-                    {/* Floating Icon */}
-                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-slate-900 dark:text-slate-300 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
-                      {IconComponent && <IconComponent className="w-6 h-6" />}
-                    </div>
                   </div>
                 )}
 
