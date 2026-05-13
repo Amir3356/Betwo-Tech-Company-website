@@ -8,7 +8,6 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [counts, setCounts] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("All");
   const metricsRef = useRef(null);
   const animatedRef = useRef(false);
 
@@ -90,10 +89,7 @@ export default function Projects() {
     return () => observer.disconnect();
   }, [data]);
 
-  const filteredProjects = data?.projects?.filter((project) => {
-    const matchesCategory = activeCategory === "All" ? true : project.category === activeCategory;
-    return matchesCategory;
-  });
+  const filteredProjects = data?.projects;
 
   if (loading) {
     return <section className="py-20 bg-slate-50 dark:bg-slate-900">Loading...</section>;
@@ -136,28 +132,6 @@ export default function Projects() {
             </motion.div>
           ))}
         </motion.div>
-
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {data.categories.map((category) => (
-            <motion.button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              variants={fadeUp}
-              whileHover={{ scale: 1.04 }}
-              className={`px-5 py-2 rounded-full font-medium text-sm transition-all ${
-                activeCategory === category
-                  ? "bg-blue-400 text-white shadow-lg"
-                  : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
-              }`}
-            >
-              {category}
-            </motion.button>
-          ))}
-        </div>
-
-        <p className="text-center text-slate-500 dark:text-slate-400 mb-8">
-          Showing {filteredProjects?.length || 0} of {data.projects?.length || 0} projects
-        </p>
 
         <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           {filteredProjects?.map((project) => (
