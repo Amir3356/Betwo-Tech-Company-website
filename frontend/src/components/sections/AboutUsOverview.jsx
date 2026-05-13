@@ -240,7 +240,7 @@ export default function AboutUsOverview() {
             >
               <a
                 href="/about"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-800 hover:bg-slate-700 dark:bg-blue-400 dark:hover:bg-blue-500 text-white font-extrabold text-lg transition-all shadow-lg shadow-slate-900/20 dark:shadow-blue-500/20 hover:-translate-y-1 hover:shadow-xl"
+                className="relative z-10 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-black hover:bg-gray-800 dark:bg-blue-400 dark:hover:bg-blue-500 text-white font-extrabold text-lg transition-all shadow-lg hover:-translate-y-1 hover:shadow-xl"
               >
                 Learn More About Us <ArrowRight size={20} />
               </a>
