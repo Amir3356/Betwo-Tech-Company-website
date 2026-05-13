@@ -361,10 +361,10 @@ export default function AboutUsOverview() {
             {Object.entries(techStack).map(([key, category], index) => {
               const IconComponent = category.icon;
               const colorClasses = {
-                blue: "bg-blue-400/10 text-blue-400 border-blue-400/20",
-                green: "bg-green-400/10 text-green-400 border-green-400/20",
-                purple: "bg-purple-400/10 text-purple-400 border-purple-400/20",
-                cyan: "bg-cyan-400/10 text-cyan-400 border-cyan-400/20",
+                blue: "bg-slate-200/30 dark:bg-slate-700/30 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-700",
+                green: "bg-slate-200/30 dark:bg-slate-700/30 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-700",
+                purple: "bg-slate-200/30 dark:bg-slate-700/30 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-700",
+                cyan: "bg-slate-200/30 dark:bg-slate-700/30 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-700",
               };
               
               return (
@@ -372,14 +372,14 @@ export default function AboutUsOverview() {
                   key={key}
                   variants={valueCardVariants}
                   whileHover={{ y: -8, scale: 1.03 }}
-                  className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl"
+                  className="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-700 dark:hover:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-slate-300/50 dark:hover:shadow-slate-900/30"
                 >
                   {/* Category Header */}
                   <div className="flex items-center gap-3 mb-6">
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${colorClasses[category.color]}`}>
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-300 ${colorClasses[category.color]}`}>
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-100">
                       {category.title}
                     </h4>
                   </div>
