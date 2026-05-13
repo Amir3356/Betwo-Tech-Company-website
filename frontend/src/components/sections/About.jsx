@@ -337,7 +337,7 @@ export default function About() {
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div
-              className="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02]"
+              className="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02] hover:border-slate-400 dark:hover:border-slate-600"
               variants={purposeCardVariants}
               initial="hidden"
               whileInView="visible"
@@ -345,12 +345,12 @@ export default function About() {
               whileHover={{ y: -8, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 240, damping: 20 }}
             >
-              <Target className="w-12 h-12 text-slate-900 dark:text-blue-400 mb-6" />
+              <Target className="w-12 h-12 text-slate-900 dark:text-slate-300 mb-6" />
               <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white mb-4">{aboutData.purpose.mission.title}</h3>
               <p className="text-slate-600 dark:text-slate-400">{aboutData.purpose.mission.description}</p>
             </motion.div>
             <motion.div
-              className="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02]"
+              className="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02] hover:border-slate-400 dark:hover:border-slate-600"
               variants={purposeCardVariants}
               initial="hidden"
               whileInView="visible"
@@ -358,7 +358,7 @@ export default function About() {
               whileHover={{ y: -8, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 240, damping: 20 }}
             >
-              <Eye className="w-12 h-12 text-slate-900 dark:text-blue-400 mb-6" />
+              <Eye className="w-12 h-12 text-slate-900 dark:text-slate-300 mb-6" />
               <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white mb-4">{aboutData.purpose.vision.title}</h3>
               <p className="text-slate-600 dark:text-slate-400">{aboutData.purpose.vision.description}</p>
             </motion.div>
