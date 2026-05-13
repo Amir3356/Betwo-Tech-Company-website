@@ -186,13 +186,7 @@ export default function ServicesOverview() {
                     ))}
                   </ul>
 
-                  {/* Learn More Link */}
-                  <a
-                    href="/services"
-                    className="inline-flex items-center gap-2 text-slate-900 dark:text-blue-400 font-semibold text-sm hover:gap-3 transition-all group-hover:text-blue-600 dark:group-hover:text-blue-300"
-                  >
-                    Learn more <ArrowRight size={16} />
-                  </a>
+                  
                 </div>
               </motion.div>
             );
