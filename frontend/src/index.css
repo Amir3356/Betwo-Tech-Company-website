@@ -763,26 +763,6 @@ nav a {
   position: relative;
 }
 
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: #0ea5e9;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(-50%);
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-.dark nav a::after {
-  background: #38bdf8;
-}
-
 /* Image Hover Effects */
 img {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
