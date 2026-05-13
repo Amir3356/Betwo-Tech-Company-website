@@ -69,7 +69,7 @@ export default function Contact() {
     <section className="contact-section bg-white dark:bg-slate-950 pt-32 pb-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-24">
         <motion.div className="text-center max-w-3xl mx-auto space-y-6" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.6 }}>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 dark:text-white leading-tight">{hero.title}<br/><span className="text-slate-900 dark:text-blue-400">{hero.highlightText}</span></h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 dark:text-white leading-tight">{hero.title}<br/><span className="text-slate-700 dark:text-blue-400">{hero.highlightText}</span></h1>
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">{hero.description}</p>
         </motion.div>
       </div>

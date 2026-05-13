@@ -286,7 +286,7 @@ export default function Services() {
       <div className="bg-slate-100 dark:bg-slate-900 py-24 text-slate-900 dark:text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold">Our Process</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">Our Process</h2>
             <h3 className="text-2xl md:text-3xl font-semibold text-slate-600 dark:text-slate-400">{process.title}</h3>
           </div>
           

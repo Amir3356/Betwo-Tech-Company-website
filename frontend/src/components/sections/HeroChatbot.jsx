@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { MessageCircle, X } from "lucide-react";
 
-const nvidiaModel = import.meta.env.VITE_NVIDIA_MODEL || "nvidia/nemotron-3-content-safety";
-const nvidiaInvokeUrl = "/api/nvidia/v1/chat/completions";
+const openRouterModel = import.meta.env.VITE_OPENROUTER_MODEL || "inclusionai/ring-2.6-1t:free";
+const openRouterInvokeUrl = "/api/openrouter/chat/completions";
 
 const defaultChatbotData = {
   title: "Betwo AI",
-  model: "openai/gpt-oss-120b:free",
+  model: "inclusionai/ring-2.6-1t:free",
   initialMessages: [{ role: "assistant", content: "Hi! How can I help you today?" }],
   placeholder: "Ask about Betwo...",
   sendButtonText: "Send",
@@ -76,23 +76,24 @@ export default function HeroChatbot() {
 
     try {
       const response = await axios.post(
-        nvidiaInvokeUrl,
+        openRouterInvokeUrl,
         {
-          model: nvidiaModel,
-          messages: apiMessages,
-          max_tokens: 512,
-          temperature: 0.2,
-          top_p: 0.7,
-          stream: false,
+        model: chatbotData.model || openRouterModel,
+        messages: apiMessages,
+        max_tokens: 512,
+        temperature: 0.2,
+        top_p: 0.7,
+        stream: false,
+      },
+      {
+        headers: {
+          Accept: "application/json",
         },
-        {
-          headers: {
-            Accept: "application/json",
-          },
-        }
+      }
       );
 
       const replyText = response.data?.choices?.[0]?.message?.content?.trim();
+
       setMessages([
         ...newMessages,
         {
@@ -102,7 +103,7 @@ export default function HeroChatbot() {
       ]);
     } catch (error) {
       console.error("Chatbot error:", error);
-      const isRateLimit = error?.status === 429 || error?.message?.includes("429");
+      const isRateLimit = error?.response?.status === 429 || error?.status === 429 || error?.message?.includes("429");
       setMessages([...newMessages, { 
         role: "assistant", 
         content: isRateLimit 

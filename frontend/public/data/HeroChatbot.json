@@ -1,6 +1,6 @@
 {
   "title": "Betwo AI",
-  "model": "openai/gpt-oss-120b:free",
+  "model": "inclusionai/ring-2.6-1t:free",
   "initialMessages": [
     {
       "role": "assistant",
