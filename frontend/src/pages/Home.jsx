@@ -1,6 +1,7 @@
 import Hero from "../components/sections/Hero";
 import WhatWeDo from "../components/sections/WhatWeDo";
 import FeaturedProjects from "../components/sections/FeaturedProjects";
+import ServicesOverview from "../components/sections/ServicesOverview";
 import TrustedBy from "../components/sections/TrustedBy";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <WhatWeDo />
       <FeaturedProjects />
+      <ServicesOverview />
       <TrustedBy />
     </>
   );

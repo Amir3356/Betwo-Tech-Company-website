@@ -130,19 +130,22 @@ body {
 
 /* Services Section - Clean, Technical */
 .services-section h1,
-.services-section h2 {
+.services-section h2,
+.services-overview h2 {
   font-family: var(--font-heading);
   font-weight: 700;
 }
 
 .services-section h3,
-.services-section .service-title {
+.services-section .service-title,
+.services-overview h3 {
   font-family: var(--font-primary);
   font-weight: 600;
 }
 
 .services-section p,
-.services-section .service-description {
+.services-section .service-description,
+.services-overview p {
   font-family: var(--font-body);
   font-weight: 400;
 }
