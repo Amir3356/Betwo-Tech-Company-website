@@ -448,7 +448,6 @@ export default function About() {
                     <h4 className="text-lg font-bold text-slate-900 dark:text-white">{leader.name}</h4>
                     <p className="text-blue-400 font-medium text-sm mb-4">{leader.role}</p>
                     <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 grow">{leader.description}</p>
-                    <button className="text-sm font-semibold text-slate-900 dark:text-white hover:text-slate-800 dark:hover:text-slate-300 flex items-center gap-2 mt-auto">View Details <ChevronRight className="w-4 h-4" /></button>
                   </div>
                 ))}
               </div>
