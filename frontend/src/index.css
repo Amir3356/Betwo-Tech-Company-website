@@ -808,6 +808,22 @@ a:active {
   color: #cbd5e1;
 }
 
+.contact-overview-cta,
+.contact-overview-cta:visited,
+.contact-overview-cta:hover,
+.contact-overview-cta:active,
+.contact-overview-cta:focus {
+  color: #ffffff !important;
+}
+
+.dark .contact-overview-cta,
+.dark .contact-overview-cta:visited,
+.dark .contact-overview-cta:hover,
+.dark .contact-overview-cta:active,
+.dark .contact-overview-cta:focus {
+  color: #000000 !important;
+}
+
 /* Navigation Link Hover */
 nav a {
   position: relative;
