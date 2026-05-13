@@ -217,10 +217,6 @@ export default function Projects() {
                     </motion.span>
                   ))}
                 </div>
-
-                <button className="flex items-center gap-2 text-slate-800 dark:text-blue-500 font-medium text-sm hover:gap-3 transition-all">
-                  View Case Study <ArrowRight size={16} />
-                </button>
               </div>
             </motion.div>
           ))}

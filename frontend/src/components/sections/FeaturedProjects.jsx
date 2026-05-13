@@ -109,10 +109,6 @@ export default function FeaturedProjects() {
                     </span>
                   ))}
                 </div>
-                <button className="flex items-center gap-2 font-medium text-sm hover:gap-3 transition-all w-full justify-between group/btn">
-                  <span className="text-slate-800 dark:text-blue-500">View Case Study</span>
-                  <span className="text-slate-400 font-bold">0{index + 1}</span>
-                </button>
               </div>
             </motion.div>
           ))}

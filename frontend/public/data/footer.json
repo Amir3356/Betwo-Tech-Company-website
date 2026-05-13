@@ -12,7 +12,7 @@
   "quickLinks": [
     { "text": "Home", "link": "#home" },
     { "text": "About Us", "link": "/about#about" },
-    { "text": "Our Projects", "link": "#projects" }
+    { "text": "Our Projects", "link": "/projects#projects" }
   ],
   "services": [
     { "text": "Web Application Development", "link": "#" },
