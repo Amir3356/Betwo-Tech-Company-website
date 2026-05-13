@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { Shield, Award, Users, Lightbulb, Star, Handshake, ArrowRight, CheckCircle } from "lucide-react";
+import { Shield, Award, Users, Lightbulb, Star, Handshake, ArrowRight, CheckCircle, Code2, Database, Cloud, Smartphone } from "lucide-react";
 
 const iconMap = {
   Shield,
