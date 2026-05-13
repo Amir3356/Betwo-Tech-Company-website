@@ -423,7 +423,7 @@ export default function About() {
                   <h4 className="text-xl font-bold text-slate-900 dark:text-white">{aboutData.leadership.ceo.name}</h4>
                   <p className="text-blue-400 font-medium mb-4">{aboutData.leadership.ceo.role}</p>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mb-6">{aboutData.leadership.ceo.description}</p>
-                  <button className="text-sm font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2">View Details <ChevronRight className="w-4 h-4" /></button>
+                  <button className="text-sm font-semibold text-slate-900 dark:text-white hover:text-slate-800 dark:hover:text-slate-300 flex items-center gap-2">View Details <ChevronRight className="w-4 h-4" /></button>
                 </div>
               </div>
             </div>
@@ -449,7 +449,7 @@ export default function About() {
                     <h4 className="text-lg font-bold text-slate-900 dark:text-white">{leader.name}</h4>
                     <p className="text-blue-400 font-medium text-sm mb-4">{leader.role}</p>
                     <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 grow">{leader.description}</p>
-                    <button className="text-sm font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 mt-auto">View Details <ChevronRight className="w-4 h-4" /></button>
+                    <button className="text-sm font-semibold text-slate-900 dark:text-white hover:text-slate-800 dark:hover:text-slate-300 flex items-center gap-2 mt-auto">View Details <ChevronRight className="w-4 h-4" /></button>
                   </div>
                 ))}
               </div>
@@ -603,7 +603,7 @@ export default function About() {
                 }}
                 variants={ctaButtonVariants}
                 whileHover={{ scale: 1.03 }}
-                className={button.primary ? "bg-slate-900 dark:bg-blue-400 text-white dark:text-black px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-800 dark:hover:bg-blue-500 transition-colors shadow-lg flex items-center justify-center" : "bg-transparent border-2 border-slate-900 dark:border-slate-200 text-slate-900 dark:text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-900/5 dark:hover:bg-white/10 transition-colors flex items-center justify-center"}
+                className={button.primary ? "bg-slate-800 hover:bg-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg flex items-center justify-center" : "bg-transparent border-2 border-slate-900 dark:border-slate-200 text-slate-900 dark:text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-900/5 dark:hover:bg-white/10 transition-colors flex items-center justify-center"}
               >
                 {button.text}
               </motion.button>
