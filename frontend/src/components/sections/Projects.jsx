@@ -92,8 +92,9 @@ export default function Projects() {
   }, [data]);
 
   const filteredProjects = data?.projects?.filter((project) => {
-    const matchesCategory = activeCategory === "All" || project.category === activeCategory;
+    const matchesCategory = activeCategory === "All" ? true : project.category === activeCategory;
     const matchesSearch =
+      !searchQuery ||
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.technologies.some((tech) => tech.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesSearch;
