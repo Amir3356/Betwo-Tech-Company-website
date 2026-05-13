@@ -41,7 +41,7 @@ export default function Navbar() {
         <div className="w-8 h-8 rounded-lg bg-slate-900 dark:bg-blue-400 flex items-center justify-center text-white font-bold text-xl">
           {brand.logo}
         </div>
-        <span className="text-xl font-bold text-slate-900 dark:text-blue-400">
+        <span className="brand-name text-xl font-bold text-slate-900 dark:text-blue-400">
           {brand.name}
         </span>
       </Link>

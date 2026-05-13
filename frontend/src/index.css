@@ -388,8 +388,25 @@ body {
 /* Navigation & Footer */
 nav,
 .navbar {
-  font-family: var(--font-primary);
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Navigation Links */
+nav a {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Brand Name in Navigation */
+.navbar .brand-name,
+nav .brand-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 footer {
