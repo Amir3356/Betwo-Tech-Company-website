@@ -208,7 +208,7 @@ export default function ServicesOverview() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <a
-            href="/services"
+            href="/services#how-we-bring-your-vision-to-life"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-blue-400 dark:hover:bg-blue-500 text-white dark:text-black font-extrabold text-lg transition-all shadow-lg shadow-slate-900/20 dark:shadow-blue-500/20 hover:-translate-y-1 hover:shadow-xl"
           >
             View All Services <ArrowRight size={20} />
