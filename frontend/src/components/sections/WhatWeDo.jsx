@@ -89,12 +89,12 @@ export default function WhatWeDo() {
               variants={cardVariants}
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 260, damping: 18 }}
-              className="group bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-400"
+              className="group bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:scale-[1.02] hover:border-slate-400 dark:hover:border-slate-600"
             >
-              <div className="w-14 h-14 bg-slate-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-slate-900 dark:text-blue-400 mb-6 transition-colors duration-300 group-hover:bg-slate-200 dark:group-hover:bg-blue-100 group-hover:text-slate-900 dark:group-hover:text-blue-500">
+              <div className="w-14 h-14 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-slate-900 dark:text-slate-300 mb-6 transition-colors duration-300 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-900 dark:group-hover:text-slate-200">
                 {IconComponent && <IconComponent className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" />}
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-blue-600">{service.title}</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-300">{service.title}</h3>
               <p className="text-slate-600 dark:text-slate-400 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-300">{service.description}</p>
             </motion.div>
           );
