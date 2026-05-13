@@ -460,7 +460,7 @@ export default function About() {
       </div>
 
       {/* 5. History */}
-      <div className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="history-section py-24 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           className="text-center max-w-3xl mx-auto mb-16 space-y-4"
           variants={historyHeadingVariants}
@@ -497,27 +497,26 @@ export default function About() {
           </motion.p>
         </motion.div>
         <motion.div
-          className="grid md:grid-cols-4 gap-8 relative"
+          className="history-timeline grid md:grid-cols-4 gap-8 relative"
           variants={historySectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 -z-10"></div>
+          <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 -z-10"></div>
           {aboutData.history.map((timeline, i) => (
             <motion.div
               key={i}
               variants={historyCardVariants}
               whileHover={{ y: -8, scale: 1.04 }}
               transition={{ type: "spring", stiffness: 240, damping: 18 }}
-              className="bg-white dark:bg-slate-950 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 text-center relative transform transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:scale-[1.03]"
+              className="history-card bg-white dark:bg-slate-950 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 text-center relative transform transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-full bg-blue-400 text-slate-800 dark:text-white flex items-center justify-center font-bold text-lg mx-auto mb-4 border-4 border-white dark:border-slate-950">
-                <Calendar className="w-5 h-5" />
+              <div className="history-year-badge w-12 h-12 rounded-full bg-blue-400 text-white flex items-center justify-center font-bold text-lg mx-auto mb-4 border-4 border-white dark:border-slate-950">
+                {timeline.year}
               </div>
-              <h3 className="text-slate-900 dark:text-blue-400 font-bold mb-2">{timeline.year}</h3>
-              <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{timeline.title}</h4>
-              <p className="text-slate-600 dark:text-slate-400 text-sm">{timeline.description}</p>
+              <h4 className="history-title text-xl font-bold text-slate-900 dark:text-white mb-2">{timeline.title}</h4>
+              <p className="history-description text-slate-600 dark:text-slate-400 text-sm">{timeline.description}</p>
             </motion.div>
           ))}
         </motion.div>
