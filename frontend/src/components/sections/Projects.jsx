@@ -123,7 +123,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-20 bg-slate-50 dark:bg-slate-900">
+    <section id="projects" className="projects-section py-20 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div className="text-center mb-16" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">{data.title}</h2>

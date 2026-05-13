@@ -57,8 +57,8 @@ export default function Hero() {
 
   return (
     <section id="home" className="px-6 md:px-12 py-20 md:py-32 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-12">
-      <div className="flex-1 space-y-8 text-center md:text-left" style={{ fontFamily: 'Poppins, sans-serif' }}>
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+      <div className="flex-1 space-y-8 text-center md:text-left">
+        <h1 className="hero-title text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
           {(
             heroData.titlePrefix ??
             (heroData.title
@@ -71,7 +71,7 @@ export default function Hero() {
             {(heroData.typedTexts?.[0] ?? heroData.typedText ?? heroData.highlightText ?? "")}
           </span>
         </h1>
-        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto md:mx-0">
+        <p className="hero-description text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto md:mx-0">
           {heroData.description}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">

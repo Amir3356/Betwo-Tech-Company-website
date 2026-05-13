@@ -128,7 +128,7 @@ export default function TrustedBy() {
   }
 
   return (
-    <section className="relative py-20 bg-slate-100 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 overflow-hidden">
+    <section className="trusted-by relative py-20 bg-slate-100 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 overflow-hidden">
       <div className="absolute -top-24 right-0 h-64 w-64 rounded-full bg-blue-400/10 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 left-0 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl pointer-events-none" />
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">

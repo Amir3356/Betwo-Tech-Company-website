@@ -60,7 +60,7 @@ export default function WhatWeDo() {
   }
 
   return (
-    <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <section className="what-we-do py-20 px-6 md:px-12 max-w-7xl mx-auto">
       <motion.div
         className="text-center mb-16"
         initial={{ opacity: 0, y: 20 }}

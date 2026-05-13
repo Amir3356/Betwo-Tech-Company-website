@@ -52,7 +52,7 @@ export default function FeaturedProjects() {
   const highlights = data?.highlights ?? [];
 
   return (
-    <section id="featured-projects" className="py-12 px-6 md:px-12 bg-white dark:bg-slate-950">
+    <section id="featured-projects" className="featured-projects py-12 px-6 md:px-12 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-12"

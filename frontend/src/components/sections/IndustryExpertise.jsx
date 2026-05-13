@@ -94,7 +94,7 @@ export default function IndustryExpertise() {
   }
 
   return (
-    <section id="industries" className="py-20 bg-slate-50 dark:bg-slate-900">
+    <section id="industries" className="industry-expertise py-20 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div

@@ -135,7 +135,7 @@ export default function Services() {
   };
 
   return (
-    <section className="bg-white dark:bg-slate-950 pt-32 pb-16 overflow-hidden">
+    <section className="services-section bg-white dark:bg-slate-950 pt-32 pb-16 overflow-hidden">
       
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-24">

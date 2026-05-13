@@ -1,14 +1,22 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
   --color-primary-500: #0ea5e9;
   --color-primary-600: #0284c7;
+  
+  /* Font Family Variables */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-mono: 'Space Grotesk', 'Courier New', monospace;
+  --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-primary);
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -58,3 +66,329 @@ body {
 }
 
 
+
+/* Section-Specific Font Families */
+
+/* Hero Section - Bold, Modern */
+#home h1,
+#home .hero-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+#home p,
+#home .hero-description {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* About Section - Professional, Elegant */
+#about h1,
+#about h2,
+#about h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+#about h2.display-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+#about p,
+#about .about-text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* Services Section - Clean, Technical */
+.services-section h1,
+.services-section h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.services-section h3,
+.services-section .service-title {
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+.services-section p,
+.services-section .service-description {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+.services-section .tech-stack {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Projects Section - Modern, Bold */
+.projects-section h1,
+.projects-section h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.projects-section h3,
+.projects-section .project-title {
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+.projects-section p {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* Contact Section - Friendly, Approachable */
+.contact-section h1,
+.contact-section h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.contact-section p,
+.contact-section label {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+.contact-section input,
+.contact-section textarea {
+  font-family: var(--font-primary);
+  font-weight: 400;
+}
+
+/* Featured Projects - Showcase Style */
+.featured-projects h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.featured-projects h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.featured-projects p {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* What We Do Section */
+.what-we-do h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.what-we-do h3 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+.what-we-do p {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* Industry Expertise Section */
+.industry-expertise h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.industry-expertise h3 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+.industry-expertise p {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* Trusted By Section */
+.trusted-by h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.trusted-by p {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* Navigation & Footer */
+nav,
+.navbar {
+  font-family: var(--font-primary);
+  font-weight: 500;
+}
+
+footer {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+footer h3,
+footer h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+/* Buttons & CTAs */
+button,
+.btn,
+.cta-button {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Stats & Numbers */
+.stat-number,
+.counter {
+  font-family: var(--font-heading);
+  font-weight: 800;
+}
+
+/* Badges & Labels */
+.badge,
+.label,
+.tag {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Code & Technical Text */
+code,
+pre,
+.code-block {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+/* Quotes & Testimonials */
+blockquote,
+.testimonial {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Utility Classes for Typography */
+
+/* Heading Styles */
+.heading-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.heading-primary {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.heading-secondary {
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+/* Body Text Styles */
+.text-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.text-body-medium {
+  font-family: var(--font-body);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Technical/Code Styles */
+.text-mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+.text-mono-bold {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  #home h1,
+  #about h1,
+  .services-section h1,
+  .projects-section h1,
+  .contact-section h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  
+  #home p,
+  #about p,
+  .services-section p,
+  .projects-section p,
+  .contact-section p {
+    font-size: clamp(0.95rem, 2.5vw, 1.125rem);
+  }
+}
+
+/* Smooth Font Rendering */
+body,
+h1, h2, h3, h4, h5, h6,
+p, span, a, button {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Letter Spacing Adjustments */
+h1 {
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  letter-spacing: -0.015em;
+}
+
+h3, h4 {
+  letter-spacing: -0.01em;
+}
+
+/* Line Height Adjustments */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.7;
+}
+
+/* Font Weight Variations for Dark Mode */
+.dark h1,
+.dark h2,
+.dark h3 {
+  font-weight: 700;
+}
+
+.dark p,
+.dark span {
+  font-weight: 400;
+}
+
+.dark button,
+.dark .btn {
+  font-weight: 600;
+}
