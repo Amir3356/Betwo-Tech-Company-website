@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Typed from "typed.js";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const [heroData, setHeroData] = useState(null);
@@ -106,7 +107,9 @@ export default function Hero() {
         className="flex-1 w-full max-w-lg flex flex-col items-center relative z-10"
       >
         {heroData.image?.src ? (
-          <div
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             className="relative"
           >
             <img 
@@ -114,7 +117,7 @@ export default function Hero() {
               alt={heroData.image?.alt ?? "Hero"} 
               className="w-full h-auto object-contain transform transition-all duration-500 hover:scale-105 hover:shadow-2xl rounded-2xl relative z-10" 
             />
-          </div>
+          </motion.div>
         ) : null}
       </div>
     </section>

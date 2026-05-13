@@ -221,22 +221,6 @@ body {
   font-weight: 400;
 }
 
-/* Industry Expertise Section */
-.industry-expertise h2 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-}
-
-.industry-expertise h3 {
-  font-family: var(--font-primary);
-  font-weight: 600;
-}
-
-.industry-expertise p {
-  font-family: var(--font-body);
-  font-weight: 400;
-}
-
 /* Trusted By Section */
 .trusted-by h2 {
   font-family: var(--font-heading);
