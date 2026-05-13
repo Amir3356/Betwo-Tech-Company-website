@@ -824,6 +824,22 @@ a:active {
   color: #000000 !important;
 }
 
+.about-us-cta,
+.about-us-cta:visited,
+.about-us-cta:hover,
+.about-us-cta:active,
+.about-us-cta:focus {
+  color: #ffffff !important;
+}
+
+.dark .about-us-cta,
+.dark .about-us-cta:visited,
+.dark .about-us-cta:hover,
+.dark .about-us-cta:active,
+.dark .about-us-cta:focus {
+  color: #ffffff !important;
+}
+
 /* Navigation Link Hover */
 nav a {
   position: relative;
