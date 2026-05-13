@@ -86,7 +86,7 @@ export default function Hero() {
                 <a
                   key={index}
                   href={button.link}
-                  className="px-8 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white dark:text-slate-100 font-extrabold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
+                  className="px-8 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white dark:text-white font-extrabold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
                 >
                   {button.text} <ArrowRight size={20} />
                 </a>
@@ -94,7 +94,7 @@ export default function Hero() {
                 <a
                   key={index}
                   href={button.link}
-                  className="px-8 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white dark:text-slate-100 font-extrabold text-lg transition-colors shadow-sm"
+                  className="px-8 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white dark:text-white font-extrabold text-lg transition-colors shadow-sm"
                 >
                   {button.text}
                 </a>
