@@ -748,14 +748,27 @@ button.primary:hover,
 /* Link Hover Effects */
 a {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
 }
 
 a:hover {
-  color: #0ea5e9;
+  color: #000000;
+}
+
+a:active {
+  color: #000000;
 }
 
 .dark a:hover {
-  color: #38bdf8;
+  color: #cbd5e1;
+}
+
+.dark a:active {
+  color: #cbd5e1;
 }
 
 /* Navigation Link Hover */
