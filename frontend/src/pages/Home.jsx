@@ -4,8 +4,6 @@ import FeaturedProjects from "../components/sections/FeaturedProjects";
 import ServicesOverview from "../components/sections/ServicesOverview";
 import AboutUsOverview from "../components/sections/AboutUsOverview";
 import TrustedBy from "../components/sections/TrustedBy";
-import IndustryExpertise from "../components/sections/IndustryExpertise";
-
 export default function Home() {
   return (
     <>
@@ -15,7 +13,6 @@ export default function Home() {
       <ServicesOverview />
       <AboutUsOverview />
       <TrustedBy />
-      <IndustryExpertise />
     </>
   );
 }
