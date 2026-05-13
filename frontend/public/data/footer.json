@@ -11,7 +11,7 @@
   ],
   "quickLinks": [
     { "text": "Home", "link": "#home" },
-    { "text": "About Us", "link": "/about#company-overview" },
+    { "text": "About Us", "link": "/about#about" },
     { "text": "Our Projects", "link": "#projects" }
   ],
   "services": [
