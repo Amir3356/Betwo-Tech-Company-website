@@ -237,6 +237,16 @@ body {
   font-weight: 400;
   position: relative;
   z-index: 10;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* Hero Description - Professional & Elegant */
+.hero-description {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.015em;
 }
 
 /* About Section - Professional, Elegant */
