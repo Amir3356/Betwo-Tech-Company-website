@@ -140,7 +140,7 @@ export default function ServicesOverview() {
                 variants={cardVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="group bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl overflow-hidden"
+                className="group bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-slate-500 dark:hover:border-slate-600 transition-all duration-300 hover:shadow-xl overflow-hidden"
               >
                 {/* Image */}
                 {serviceImage && (
@@ -158,7 +158,7 @@ export default function ServicesOverview() {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
                     {/* Floating Icon */}
-                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-slate-900 dark:text-blue-400 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
+                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-slate-900 dark:text-slate-300 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
                       {IconComponent && <IconComponent className="w-6 h-6" />}
                     </div>
                   </div>
@@ -167,7 +167,7 @@ export default function ServicesOverview() {
                 {/* Content */}
                 <div className="p-8">
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-300">
                     {service.title}
                   </h3>
 
@@ -180,7 +180,7 @@ export default function ServicesOverview() {
                   <ul className="space-y-2 mb-6">
                     {service.points.map((point, idx) => (
                       <li key={idx} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-1.5 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-500 dark:bg-slate-400 mt-1.5 shrink-0"></span>
                         <span>{point}</span>
                       </li>
                     ))}
