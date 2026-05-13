@@ -195,15 +195,15 @@ export default function Services() {
                 const IconComponent = iconMap[service.icon];
                 return (
                 <motion.div key={i} className="group bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800" variants={cardVariant} whileHover={{ y: -8, scale: 1.02 }}>
-                  <div className="w-14 h-14 bg-slate-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-slate-900 dark:text-blue-400 mb-6 transition-colors duration-300 group-hover:bg-slate-200 dark:group-hover:bg-blue-100 group-hover:text-slate-900 dark:group-hover:text-blue-500">
+                  <div className="w-14 h-14 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-slate-900 dark:text-slate-300 mb-6 transition-colors duration-300 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-900 dark:group-hover:text-slate-100">
                     {IconComponent && <IconComponent className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" />}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-blue-600">{service.title}</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200">{service.title}</h3>
                   <p className="text-slate-600 dark:text-slate-400 mb-6 min-h-20 transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-300">{service.description}</p>
                   <ul className="space-y-3">
                     {service.points.map((pt, idx) => (
                       <li key={idx} className="flex items-start gap-2 text-sm font-medium text-slate-800 dark:text-slate-300">
-                        <CheckCircle className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-slate-500 dark:text-slate-400 mt-0.5 shrink-0" />
                         {pt}
                       </li>
                     ))}
