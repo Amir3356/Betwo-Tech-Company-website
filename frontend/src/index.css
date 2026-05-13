@@ -775,20 +775,20 @@ html {
 
 .history-card:hover .history-card-content {
   transform: translateX(8px);
-  border-color: #0ea5e9;
-  box-shadow: 0 8px 16px rgba(14, 165, 233, 0.2);
+  border-color: #334155;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.18);
 }
 
 .dark .history-card:hover .history-card-content {
-  border-color: #38bdf8;
-  box-shadow: 0 8px 16px rgba(56, 189, 248, 0.2);
+  border-color: #475569;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.28);
 }
 
 /* Timeline Year */
 .history-year {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 0.65rem;
   background: linear-gradient(135deg, #0ea5e9, #06b6d4);
   -webkit-background-clip: text;
   background-clip: text;
@@ -847,7 +847,7 @@ html {
   }
   
   .history-year {
-    font-size: 0.85rem;
+    font-size: 0.6rem;
   }
   
   .history-title {
