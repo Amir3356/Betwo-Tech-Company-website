@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { Search, ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 export default function Projects() {
   const [data, setData] = useState(null);
@@ -9,7 +9,6 @@ export default function Projects() {
   const [error, setError] = useState(null);
   const [counts, setCounts] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
   const metricsRef = useRef(null);
   const animatedRef = useRef(false);
 
@@ -93,11 +92,7 @@ export default function Projects() {
 
   const filteredProjects = data?.projects?.filter((project) => {
     const matchesCategory = activeCategory === "All" ? true : project.category === activeCategory;
-    const matchesSearch =
-      !searchQuery ||
-      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.technologies.some((tech) => tech.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSearch;
+    return matchesCategory;
   });
 
   if (loading) {
@@ -158,17 +153,6 @@ export default function Projects() {
               {category}
             </motion.button>
           ))}
-        </div>
-
-        <div className="relative mb-12 max-w-xl mx-auto">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-          <input
-            type="text"
-            placeholder="Search by name or technology (e.g., React, Node.js)..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
         </div>
 
         <p className="text-center text-slate-500 dark:text-slate-400 mb-8">
