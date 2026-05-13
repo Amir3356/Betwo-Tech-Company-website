@@ -123,7 +123,7 @@ export default function FeaturedProjects() {
         >
           <a
             href="/projects"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-sky-400 dark:hover:bg-sky-500 text-white dark:text-black font-extrabold text-lg transition-all shadow-lg shadow-slate-900/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/30"
+            className="btn-primary inline-flex items-center gap-2 px-8 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-extrabold text-lg transition-all shadow-lg shadow-slate-900/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/30"
           >
             {data?.moreProjectsText ?? "View All Projects"} <ArrowRight size={20} />
           </a>
