@@ -155,7 +155,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="group">
                 <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300">
-                  <div className="w-10 h-10 rounded-lg bg-blue-400/10 dark:bg-blue-400/20 flex items-center justify-center text-blue-500 dark:text-blue-400 shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-lg bg-slate-400/10 dark:bg-slate-400/20 flex items-center justify-center text-slate-600 dark:text-slate-500 shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <MapPin size={18} />
                   </div>
                   <div>
@@ -171,7 +171,7 @@ export default function Footer() {
               
               <li className="group">
                 <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300">
-                  <div className="w-10 h-10 rounded-lg bg-green-400/10 dark:bg-green-400/20 flex items-center justify-center text-green-500 dark:text-green-400 shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-lg bg-slate-400/10 dark:bg-slate-400/20 flex items-center justify-center text-slate-600 dark:text-slate-500 shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <Phone size={18} />
                   </div>
                   <div>
@@ -187,7 +187,7 @@ export default function Footer() {
               
               <li className="group">
                 <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300">
-                  <div className="w-10 h-10 rounded-lg bg-purple-400/10 dark:bg-purple-400/20 flex items-center justify-center text-purple-500 dark:text-purple-400 shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-lg bg-slate-400/10 dark:bg-slate-400/20 flex items-center justify-center text-slate-600 dark:text-slate-500 shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <Mail size={18} />
                   </div>
                   <div>
