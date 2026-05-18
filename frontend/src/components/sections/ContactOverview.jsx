@@ -1,4 +1,4 @@
-re import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, Send, ArrowRight, CheckCircle } from "lucide-react";
