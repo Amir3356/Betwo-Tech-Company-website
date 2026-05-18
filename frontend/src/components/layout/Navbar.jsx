@@ -37,11 +37,13 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 py-4 px-6 md:px-12 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
-      <Link to="/" className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-lg bg-slate-900 dark:bg-blue-400 flex items-center justify-center text-white font-bold text-xl">
-          {brand.logo}
-        </div>
-        <span className="brand-name text-xl font-bold text-slate-900 dark:text-blue-400">
+      <Link to="/" className="flex items-center gap-3">
+        <img
+          src="/assets/Betwo Tech logo.jpg"
+          alt="Betwo Tech logo"
+          className="w-20 h-20 object-contain rounded-lg"
+        />
+        <span className="brand-name text-2xl font-bold text-slate-900 dark:text-blue-400">
           {brand.name}
         </span>
       </Link>
