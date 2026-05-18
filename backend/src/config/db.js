@@ -1,4 +1,5 @@
 import pkg from 'pg';
+import { ensureContactSubmissionsTable } from './schema.js';
 
 const { Pool } = pkg;
 
@@ -29,16 +30,7 @@ const poolConfig = connectionString
 const pool = new Pool(poolConfig);
 
 async function ensureDatabaseSchema() {
-  await pool.query(`
-    CREATE TABLE IF NOT EXISTS contact_submissions (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
-      email VARCHAR(255) NOT NULL,
-      subject VARCHAR(255) NOT NULL,
-      message TEXT NOT NULL,
-      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-    )
-  `);
+  await ensureContactSubmissionsTable(pool);
 }
 
 export { pool, ensureDatabaseSchema };
