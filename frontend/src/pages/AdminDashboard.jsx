@@ -1,21 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Sidebar from '../components/layout/Sidebar';
 
-export default function AdminDashboard() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+export default function AdminDashboard({ onLogout }) {
+  const [sidebarOpen, setSidebarOpen] = useState(() => {
+    // Load from localStorage or default to true on desktop
+    const saved = localStorage.getItem('adminSidebarOpen');
+    if (saved !== null) {
+      return JSON.parse(saved);
+    }
+    // Default to true (open) on desktop
+    return window.innerWidth >= 768;
+  });
+
+  // Persist sidebar state to localStorage
+  useEffect(() => {
+    localStorage.setItem('adminSidebarOpen', JSON.stringify(sidebarOpen));
+  }, [sidebarOpen]);
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex">
       {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} onToggle={toggleSidebar} />
+      <Sidebar isOpen={sidebarOpen} onToggle={toggleSidebar} onLogout={onLogout} />
 
       {/* Main Content */}
-      <main
-        className={`transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}
-      >
-        <div className="p-8 pt-20 md:pt-8">
+      <main className="flex-1 transition-all duration-300">
+        <div className="p-8 pt-20 md:pt-8 md:pl-0">
           {/* Header */}
           <div className="mb-8">
             <h2 className="text-4xl font-bold text-slate-900 dark:text-white">

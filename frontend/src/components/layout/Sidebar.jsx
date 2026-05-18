@@ -1,30 +1,26 @@
-import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 export default function Sidebar({ isOpen, onToggle }) {
   const menuItems = [
-    { label: 'Dashboard', icon: '📊' },
     { label: 'Contact Submissions', icon: '💬' },
-    { label: 'Users', icon: '👥' },
-    { label: 'Reports', icon: '📈' },
-    { label: 'Settings', icon: '⚙️' },
+    { label: 'Projects', icon: '📁' },
   ];
 
   return (
     <>
-      {/* Toggle Button */}
+      {/* Toggle Button - Only visible on mobile */}
       <button
         onClick={onToggle}
-        className="fixed top-4 left-4 z-40 p-2 rounded-lg bg-slate-900 dark:bg-slate-700 text-white hover:bg-slate-800 dark:hover:bg-slate-600 transition-colors"
+        className="fixed md:hidden top-4 left-4 z-40 p-2 rounded-lg bg-slate-900 dark:bg-slate-700 text-white hover:bg-slate-800 dark:hover:bg-slate-600 transition-colors"
         aria-label="Toggle Sidebar"
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Sidebar */}
+      {/* Sidebar - Persistent on desktop, collapsible on mobile */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-64 bg-slate-900 dark:bg-slate-950 text-white shadow-lg transition-transform duration-300 z-30 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed md:relative top-0 left-0 h-screen w-64 bg-slate-900 dark:bg-slate-950 text-white shadow-lg transition-transform duration-300 z-30 ${
+          isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
       >
         {/* Header */}
@@ -57,13 +53,16 @@ export default function Sidebar({ isOpen, onToggle }) {
         </div>
       </aside>
 
-      {/* Overlay when sidebar is open */}
+      {/* Overlay when sidebar is open on mobile */}
       {isOpen && (
         <div
           onClick={onToggle}
           className="fixed inset-0 bg-black/50 z-20 md:hidden"
         />
       )}
+
+      {/* Spacer for mobile layout when sidebar is open */}
+      {isOpen && <div className="md:hidden" style={{ width: '16rem' }} />}
     </>
   );
 }
