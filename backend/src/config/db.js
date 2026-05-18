@@ -1,5 +1,16 @@
-import { ensureContactSubmissionsTable } from './schema.js';
+import 'dotenv/config';
 import mysql from 'mysql2/promise';
+
+const createContactSubmissionsTableQuery = `
+  CREATE TABLE IF NOT EXISTS contact_submissions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  )
+`;
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',
@@ -12,7 +23,7 @@ const pool = mysql.createPool({
 });
 
 async function ensureDatabaseSchema() {
-  await ensureContactSubmissionsTable(pool);
+  await pool.query(createContactSubmissionsTableQuery);
 }
 
 async function checkDatabaseConnection() {

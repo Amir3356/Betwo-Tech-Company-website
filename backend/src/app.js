@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import contactRoutes from './routes/contactRoutes.js';
 import { checkDatabaseConnection } from './config/db.js';
+import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 
 function createApp() {
   const app = express();
@@ -23,6 +24,9 @@ function createApp() {
   });
 
   app.use('/api/contact', contactRoutes);
+
+  app.use(notFoundHandler);
+  app.use(errorHandler);
 
   return app;
 }
