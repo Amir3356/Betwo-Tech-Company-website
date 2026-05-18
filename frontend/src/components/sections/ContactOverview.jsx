@@ -154,6 +154,7 @@ export default function ContactOverview() {
             {/* Quick Response Badge */}
             <motion.div
               className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 mt-8"
+              id="guaranteed-response"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
