@@ -46,11 +46,10 @@ export default function Contact() {
     setError("");
 
     try {
-      await axios.post("/api/contact", formData);
       setSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (submissionError) {
-      setError(submissionError?.response?.data?.message || "Failed to send your message. Please try again.");
+    } catch {
+      setError("Failed to send your message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
