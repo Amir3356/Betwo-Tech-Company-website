@@ -10,6 +10,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 import HeroChatbot from "./components/sections/HeroChatbot";
 import AdminLayout from "./layout/AdminLayout";
 import AdminHome from "./pages/admin/AdminHome";
+import AdminLogin from "./pages/admin/AdminLogin";
 import ContactMessagesAdmin from "./pages/admin/ContactMessagesAdmin";
 import ProjectsAdmin from "./pages/admin/ProjectsAdmin";
 
@@ -59,7 +60,8 @@ function AppContent() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/*" element={<AdminLayout />}>
             <Route index element={<AdminHome />} />
             <Route path="contact-messages" element={<ContactMessagesAdmin />} />
             <Route path="projects" element={<ProjectsAdmin />} />

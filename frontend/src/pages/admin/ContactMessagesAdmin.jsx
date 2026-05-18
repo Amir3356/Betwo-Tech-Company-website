@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Mail, LoaderCircle, AlertCircle, Clock3, User, AtSign } from "lucide-react";
+import { adminAuthHeaders } from "../../services/adminAuth";
 
 function formatDate(value) {
   if (!value) return "Unknown";
@@ -25,7 +26,7 @@ export default function ContactMessagesAdmin() {
 
     const loadMessages = async () => {
       try {
-        const response = await axios.get("/api/contact-messages");
+        const response = await axios.get("/api/contact-messages", { headers: adminAuthHeaders() });
 
         if (isMounted) {
           setMessages(response.data?.data || []);
