@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Clock, Send, ChevronDown, Navigation, Bus, Car, ExternalLink, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, ChevronDown, Navigation, Bus, Car, CheckCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
@@ -30,6 +30,8 @@ export default function Contact() {
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     axios.get("/data/contactUs.json")
@@ -38,7 +40,21 @@ export default function Contact() {
   }, []);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => { e.preventDefault(); setSubmitted(true); };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      await axios.post("/api/contact", formData);
+      setSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (submissionError) {
+      setError(submissionError?.response?.data?.message || "Failed to send your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   if (loading) return <section className="bg-white dark:bg-slate-950 pt-32 pb-16">Loading...</section>;
   if (!data) return <section className="bg-white dark:bg-slate-950 pt-32 pb-16">Error loading data</section>;
@@ -112,6 +128,11 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {error && (
+                  <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
+                    {error}
+                  </div>
+                )}
                 {(form.fields || []).map((field, i) => (
                   field.type === "textarea" ? (
                     <div key={i}>
@@ -125,8 +146,8 @@ export default function Contact() {
                     </div>
                   )
                 ))}
-                <button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-blue-400 dark:hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20 dark:shadow-blue-500/20">
-                  {form.submitButton} <Send className="w-5 h-5" />
+                <button type="submit" disabled={isSubmitting} className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-blue-400 dark:hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20 dark:shadow-blue-500/20 disabled:cursor-not-allowed disabled:opacity-70">
+                  {isSubmitting ? "Sending..." : form.submitButton} <Send className="w-5 h-5" />
                 </button>
               </form>
             )}

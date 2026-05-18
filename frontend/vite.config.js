@@ -13,6 +13,10 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       proxy: {
+        '/api': {
+          target: 'http://localhost:5000',
+          changeOrigin: true,
+        },
         '/api/nvidia': {
           target: 'https://integrate.api.nvidia.com',
           changeOrigin: true,
