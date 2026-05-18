@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { LayoutGrid, Layers3, Gauge, CheckCircle2 } from "lucide-react";
+import { Layers3, Gauge, CheckCircle2 } from "lucide-react";
 
 export default function ProjectsAdmin() {
   const [data, setData] = useState(null);
