@@ -102,7 +102,7 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-24">
         <motion.div className="grid lg:grid-cols-2 gap-16" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-          <motion.div variants={fadeUp}>
+          <motion.div variants={fadeUp} id="guaranteed-response">
             <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-8">{form.title}</h2>
             {submitted ? (
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-8 text-center">
