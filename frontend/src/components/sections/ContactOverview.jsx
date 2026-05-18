@@ -77,7 +77,7 @@ export default function ContactOverview() {
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => {
           setSubmitted(false);
-        }, 3000);
+        }, 5000);
       })
       .catch((submissionError) => {
         setError(getSubmissionErrorMessage(submissionError));

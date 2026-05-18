@@ -63,6 +63,9 @@ export default function Contact() {
       await axios.post("/api/contact-messages", formData);
       setSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
     } catch (submissionError) {
       setError(getSubmissionErrorMessage(submissionError));
     } finally {
