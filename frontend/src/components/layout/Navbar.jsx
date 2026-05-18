@@ -39,9 +39,9 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 py-4 px-6 md:px-12 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
       <Link to="/" className="flex items-center gap-3">
         <img
-          src="/assets/Betwo Tech logo.jpg"
+          src="/assets/Betwo tech logo.jpg"
           alt="Betwo Tech logo"
-          className="w-20 h-20 object-contain rounded-lg"
+          className="w-24 h-24 object-contain rounded-lg"
         />
         <span className="brand-name text-2xl font-bold text-slate-900 dark:text-blue-400">
           {brand.name}
