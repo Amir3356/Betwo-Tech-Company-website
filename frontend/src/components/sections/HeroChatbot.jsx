@@ -40,21 +40,22 @@ export default function HeroChatbot() {
     setInput("");
     setIsLoading(true);
 
-    const openrouter = new OpenRouter({
-      apiKey: import.meta.env.VITE_OPENROUTER_API_KEY
-    });
-
-    try {
-      const stream = await openrouter.chat.send({
-        model: defaultChatbotData.model,
-        messages: newMessages,
-        stream: true,
+try {
+      const openrouter = new OpenRouter({
+        apiKey: import.meta.env.VITE_OPENROUTER_API_KEY
       });
 
       let responseText = "";
-      const assistantMessageId = Date.now();
 
-      setMessages(prev => [...prev, { role: "assistant", content: "", id: assistantMessageId }]);
+      const stream = await openrouter.chat.send({
+        chatRequest: {
+          model: defaultChatbotData.model,
+          messages: newMessages,
+          stream: true,
+        }
+      });
+
+      setMessages(prev => [...prev, { role: "assistant", content: "" }]);
 
       for await (const chunk of stream) {
         const content = chunk.choices?.[0]?.delta?.content;
@@ -74,12 +75,13 @@ export default function HeroChatbot() {
     } catch (error) {
       console.error("Chatbot error:", error);
       const isRateLimit = error?.response?.status === 429 || error?.status === 429 || error?.message?.includes("429");
-      setMessages(prev => prev.map(msg => {
-        if (msg.id === assistantMessageId) {
-          return { ...msg, content: isRateLimit ? defaultChatbotData.rateLimitMessage : defaultChatbotData.fallbackErrorMessage };
+      setMessages(prev => {
+        const lastMsg = prev[prev.length - 1];
+        if (lastMsg && lastMsg.role === "assistant") {
+          return [...prev.slice(0, -1), { ...lastMsg, content: isRateLimit ? defaultChatbotData.rateLimitMessage : defaultChatbotData.fallbackErrorMessage }];
         }
-        return msg;
-      }));
+        return [...prev, { role: "assistant", content: isRateLimit ? defaultChatbotData.rateLimitMessage : defaultChatbotData.fallbackErrorMessage }];
+      });
     } finally {
       setIsLoading(false);
     }
