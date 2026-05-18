@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { OpenRouter } from "@openrouter/sdk";
 import { MessageCircle, X } from "lucide-react";
 
@@ -46,7 +46,7 @@ export default function HeroChatbot() {
 
     try {
       const stream = await openrouter.chat.send({
-        model: chatbotData.model || defaultChatbotData.model,
+        model: defaultChatbotData.model,
         messages: newMessages,
         stream: true,
       });
@@ -68,18 +68,18 @@ export default function HeroChatbot() {
 
       if (!responseText.trim()) {
         setMessages(prev => prev.map((msg, idx) =>
-          idx === prev.length - 1 ? { ...msg, content: chatbotData.fallbackErrorMessage } : msg
+          idx === prev.length - 1 ? { ...msg, content: defaultChatbotData.fallbackErrorMessage } : msg
         ));
       }
     } catch (error) {
       console.error("Chatbot error:", error);
       const isRateLimit = error?.response?.status === 429 || error?.status === 429 || error?.message?.includes("429");
-      setMessages(prev => [...prev.map(msg => {
+      setMessages(prev => prev.map(msg => {
         if (msg.id === assistantMessageId) {
-          return { ...msg, content: isRateLimit ? chatbotData.rateLimitMessage : chatbotData.fallbackErrorMessage };
+          return { ...msg, content: isRateLimit ? defaultChatbotData.rateLimitMessage : defaultChatbotData.fallbackErrorMessage };
         }
         return msg;
-      })]);
+      }));
     } finally {
       setIsLoading(false);
     }
@@ -91,7 +91,7 @@ export default function HeroChatbot() {
         <div className="w-[95vw] sm:w-80 md:w-96 max-w-[350px] mb-4 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transition-all duration-300 transform origin-bottom-right">
           <div className="bg-linear-to-r from-blue-500 via-sky-500 to-cyan-400 p-4 text-white font-bold text-base flex items-center justify-between">
             <div className="flex items-center gap-2 text-lg">
-              <span>{chatbotData.title}</span>
+              <span>{defaultChatbotData.title}</span>
               <span className="flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-white opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
@@ -99,7 +99,7 @@ export default function HeroChatbot() {
             </div>
             <button 
               onClick={() => setIsOpen(false)}
-              aria-label={chatbotData.closeButtonAriaLabel}
+              aria-label={defaultChatbotData.closeButtonAriaLabel}
               className="text-white/80 hover:text-white transition-colors"
             >
               <X size={20} />
@@ -111,18 +111,18 @@ export default function HeroChatbot() {
                 {msg.content}
               </div>
             ))}
-            {isLoading && <div className="text-slate-400 text-base italic self-start animate-pulse px-3">{chatbotData.typingText}</div>}
+            {isLoading && <div className="text-slate-400 text-base italic self-start animate-pulse px-3">{defaultChatbotData.typingText}</div>}
           </div>
           <form onSubmit={sendMessage} className="border-t border-slate-200 dark:border-slate-800 p-3 sm:p-4 flex gap-2 sm:gap-3 bg-white dark:bg-slate-900/50">
             <input 
               type="text" 
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder={chatbotData.placeholder} 
+              placeholder={defaultChatbotData.placeholder} 
               className="flex-1 min-w-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base focus:outline-hidden focus:ring-2 focus:ring-blue-400 dark:text-white transition-all shadow-sm"
             />
             <button type="submit" disabled={isLoading} className="bg-slate-900 hover:bg-slate-800 dark:bg-sky-400 dark:hover:bg-sky-500 text-white dark:text-black focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-semibold transition-all shadow-md disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap">
-              {chatbotData.sendButtonText}
+              {defaultChatbotData.sendButtonText}
             </button>
           </form>
         </div>
@@ -130,7 +130,7 @@ export default function HeroChatbot() {
       
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        aria-label={chatbotData.openButtonAriaLabel}
+        aria-label={defaultChatbotData.openButtonAriaLabel}
         className="w-14 h-14 bg-slate-900 hover:bg-slate-800 dark:bg-sky-400 dark:hover:bg-sky-500 text-white dark:text-black rounded-full flex items-center justify-center shadow-xl shadow-slate-900/30 transition-transform active:scale-95"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
