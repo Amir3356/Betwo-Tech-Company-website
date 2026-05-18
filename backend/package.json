@@ -1,7 +1,7 @@
 {
   "name": "betwo-tech-company-contact-form-backend",
   "version": "1.0.0",
-  "description": "Contact form backend with Express and PostgreSQL",
+  "description": "Contact form backend with Express and MySQL",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "pg": "^8.12.0"
+    "mysql2": "^3.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
