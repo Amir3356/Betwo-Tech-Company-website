@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { OpenRouter } from "@openrouter/sdk";
 import { MessageCircle, X } from "lucide-react";
 
@@ -17,39 +17,9 @@ const defaultChatbotData = {
 
 export default function HeroChatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [chatbotData, setChatbotData] = useState(defaultChatbotData);
   const [messages, setMessages] = useState(defaultChatbotData.initialMessages);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    axios
-      .get("/data/HeroChatbot.json")
-      .then((response) => {
-        if (!isMounted) return;
-
-        const data = response.data || {};
-        const mergedData = {
-          ...defaultChatbotData,
-          ...data,
-          initialMessages: Array.isArray(data.initialMessages) && data.initialMessages.length > 0
-            ? data.initialMessages
-            : defaultChatbotData.initialMessages,
-        };
-
-        setChatbotData(mergedData);
-        setMessages(mergedData.initialMessages);
-      })
-      .catch((error) => {
-        console.error("Failed to load chatbot data:", error);
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   useEffect(() => {
     const handleOpenChatbot = () => setIsOpen(true);
