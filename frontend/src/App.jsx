@@ -8,6 +8,10 @@ import ServicesPage from "./pages/ServicesPage";
 import ContactPage from "./pages/ContactPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import HeroChatbot from "./components/sections/HeroChatbot";
+import AdminLayout from "./layout/AdminLayout";
+import AdminHome from "./pages/admin/AdminHome";
+import ContactMessagesAdmin from "./pages/admin/ContactMessagesAdmin";
+import ProjectsAdmin from "./pages/admin/ProjectsAdmin";
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
@@ -42,20 +46,28 @@ function ScrollToHash() {
 }
 
 function AppContent() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
   return (
     <div className="relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col transition-colors duration-300">
-      <Navbar />
-      <main className="grow">
+      {!isAdminRoute && <Navbar />}
+      <main className={isAdminRoute ? "grow" : "grow"}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminHome />} />
+            <Route path="contact-messages" element={<ContactMessagesAdmin />} />
+            <Route path="projects" element={<ProjectsAdmin />} />
+          </Route>
         </Routes>
       </main>
-      <HeroChatbot />
-      <Footer />
+      {!isAdminRoute && <HeroChatbot />}
+      {!isAdminRoute && <Footer />}
     </div>
   );
 }

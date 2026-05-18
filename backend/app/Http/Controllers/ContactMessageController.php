@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ContactMessageController extends Controller
 {
+    public function index(): JsonResponse
+    {
+        return response()->json([
+            'data' => ContactMessage::latest()->get(),
+        ]);
+    }
+
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
