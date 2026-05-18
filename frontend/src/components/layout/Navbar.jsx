@@ -96,8 +96,10 @@ export default function Navbar() {
         <button 
           onClick={() => setDarkMode(!darkMode)}
           className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors flex items-center justify-center text-slate-600 dark:text-slate-300"
-          aria-label="Toggle Brightness"
+          aria-label={darkMode ? "Switch to Light mode" : "Switch to Dark mode"}
+          title={darkMode ? "Switch to Light mode" : "Switch to Dark mode"}
         >
+          {/* If currently dark, show Sun icon (switch to light). If currently light, show Moon icon (switch to dark). */}
           {darkMode ? <Sun size={20} className="text-amber-400" /> : <Moon size={20} className="text-slate-700" />}
         </button>
         <button 
