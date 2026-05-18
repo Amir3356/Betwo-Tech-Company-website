@@ -5,6 +5,20 @@ import { Mail, Phone, MapPin, Clock, Send, ArrowRight, CheckCircle } from "lucid
 
 const iconMap = { Mail, Phone, MapPin, Clock };
 
+function getSubmissionErrorMessage(error) {
+  const validationErrors = error?.response?.data?.errors;
+
+  if (validationErrors && typeof validationErrors === "object") {
+    const firstError = Object.values(validationErrors).flat()?.[0];
+
+    if (firstError) {
+      return firstError;
+    }
+  }
+
+  return error?.response?.data?.message || "Failed to send your message. Please try again.";
+}
+
 const sectionVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -31,6 +45,8 @@ export default function ContactOverview() {
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     axios
@@ -51,12 +67,24 @@ export default function ContactOverview() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 3000);
+    setIsSubmitting(true);
+    setError("");
+
+    axios
+      .post("/api/contact-messages", formData)
+      .then(() => {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 3000);
+      })
+      .catch((submissionError) => {
+        setError(getSubmissionErrorMessage(submissionError));
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   if (loading) {
@@ -202,6 +230,11 @@ export default function ContactOverview() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {error && (
+                  <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
+                    {error}
+                  </div>
+                )}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
                     Full Name <span className="text-red-500">*</span>
@@ -249,9 +282,10 @@ export default function ContactOverview() {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-blue-400 dark:hover:bg-blue-500 text-white dark:text-black px-6 py-4 rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20 dark:shadow-blue-500/20 hover:-translate-y-1 hover:shadow-xl"
                 >
-                  Send Message <Send className="w-5 h-5" />
+                  {isSubmitting ? "Sending..." : "Send Message"} <Send className="w-5 h-5" />
                 </button>
               </form>
             )}

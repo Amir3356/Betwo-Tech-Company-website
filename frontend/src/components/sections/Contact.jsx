@@ -5,6 +5,20 @@ import axios from "axios";
 
 const iconMap = { Mail, Phone, MapPin, Clock };
 
+function getSubmissionErrorMessage(error) {
+  const validationErrors = error?.response?.data?.errors;
+
+  if (validationErrors && typeof validationErrors === "object") {
+    const firstError = Object.values(validationErrors).flat()?.[0];
+
+    if (firstError) {
+      return firstError;
+    }
+  }
+
+  return error?.response?.data?.message || "Failed to send your message. Please try again.";
+}
+
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false);
   return (
@@ -46,10 +60,11 @@ export default function Contact() {
     setError("");
 
     try {
+      await axios.post("/api/contact-messages", formData);
       setSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch {
-      setError("Failed to send your message. Please try again.");
+    } catch (submissionError) {
+      setError(getSubmissionErrorMessage(submissionError));
     } finally {
       setIsSubmitting(false);
     }
