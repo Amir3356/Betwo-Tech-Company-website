@@ -15,4 +15,9 @@ async function ensureDatabaseSchema() {
   await ensureContactSubmissionsTable(pool);
 }
 
-export { pool, ensureDatabaseSchema };
+async function checkDatabaseConnection() {
+  const [rows] = await pool.query('SELECT 1 AS connected');
+  return rows?.[0]?.connected === 1;
+}
+
+export { pool, ensureDatabaseSchema, checkDatabaseConnection };
