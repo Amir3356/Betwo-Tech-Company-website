@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState, useRef } from "react";
+import { OpenRouter } from "@openrouter/sdk";
 import { MessageCircle, X } from "lucide-react";
-
-const openRouterModel = import.meta.env.VITE_OPENROUTER_MODEL || "inclusionai/ring-2.6-1t:free";
-const openRouterInvokeUrl = "/api/openrouter/chat/completions";
 
 const defaultChatbotData = {
   title: "Betwo AI",
-  model: "inclusionai/ring-2.6-1t:free",
+  model: "openai/gpt-oss-120b:free",
   initialMessages: [{ role: "assistant", content: "Hi! How can I help you today?" }],
   placeholder: "Ask about Betwo...",
   sendButtonText: "Send",
@@ -69,47 +66,50 @@ export default function HeroChatbot() {
     if (!input.trim()) return;
 
     const newMessages = [...messages, { role: "user", content: input }];
-    const apiMessages = newMessages.filter((message, index) => !(index === 0 && message.role === "assistant"));
     setMessages(newMessages);
     setInput("");
     setIsLoading(true);
 
+    const openrouter = new OpenRouter({
+      apiKey: import.meta.env.VITE_OPENROUTER_API_KEY
+    });
+
     try {
-      const response = await axios.post(
-        openRouterInvokeUrl,
-        {
-        model: chatbotData.model || openRouterModel,
-        messages: apiMessages,
-        max_tokens: 512,
-        temperature: 0.2,
-        top_p: 0.7,
-        stream: false,
-      },
-      {
-        headers: {
-          Accept: "application/json",
-        },
+      const stream = await openrouter.chat.send({
+        model: chatbotData.model || defaultChatbotData.model,
+        messages: newMessages,
+        stream: true,
+      });
+
+      let responseText = "";
+      const assistantMessageId = Date.now();
+
+      setMessages(prev => [...prev, { role: "assistant", content: "", id: assistantMessageId }]);
+
+      for await (const chunk of stream) {
+        const content = chunk.choices?.[0]?.delta?.content;
+        if (content) {
+          responseText += content;
+          setMessages(prev => prev.map((msg, idx) =>
+            idx === prev.length - 1 ? { ...msg, content: responseText } : msg
+          ));
+        }
       }
-      );
 
-      const replyText = response.data?.choices?.[0]?.message?.content?.trim();
-
-      setMessages([
-        ...newMessages,
-        {
-          role: "assistant",
-          content: replyText || chatbotData.fallbackErrorMessage,
-        },
-      ]);
+      if (!responseText.trim()) {
+        setMessages(prev => prev.map((msg, idx) =>
+          idx === prev.length - 1 ? { ...msg, content: chatbotData.fallbackErrorMessage } : msg
+        ));
+      }
     } catch (error) {
       console.error("Chatbot error:", error);
       const isRateLimit = error?.response?.status === 429 || error?.status === 429 || error?.message?.includes("429");
-      setMessages([...newMessages, { 
-        role: "assistant", 
-        content: isRateLimit 
-          ? chatbotData.rateLimitMessage 
-          : chatbotData.fallbackErrorMessage 
-      }]);
+      setMessages(prev => [...prev.map(msg => {
+        if (msg.id === assistantMessageId) {
+          return { ...msg, content: isRateLimit ? chatbotData.rateLimitMessage : chatbotData.fallbackErrorMessage };
+        }
+        return msg;
+      })]);
     } finally {
       setIsLoading(false);
     }
