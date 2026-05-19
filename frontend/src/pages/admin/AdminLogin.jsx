@@ -9,6 +9,8 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  console.log("AdminLogin rendered, authenticated:", isAdminAuthenticated());
+
   if (isAdminAuthenticated()) {
     return <Navigate to="/admin/contact-messages" replace />;
   }

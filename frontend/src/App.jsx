@@ -50,6 +50,9 @@ function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
 
+  console.log("Current path:", location.pathname);
+  console.log("isAdminRoute:", isAdminRoute);
+
   return (
     <div className="relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col transition-colors duration-300">
       {!isAdminRoute && <Navbar />}
@@ -60,12 +63,13 @@ function AppContent() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/*" element={<AdminLayout />}>
             <Route index element={<AdminHome />} />
             <Route path="contact-messages" element={<ContactMessagesAdmin />} />
             <Route path="projects" element={<ProjectsAdmin />} />
           </Route>
+          <Route path="*" element={<div className="p-10 text-white">No route matched: {location.pathname}</div>} />
         </Routes>
       </main>
       {!isAdminRoute && <HeroChatbot />}
