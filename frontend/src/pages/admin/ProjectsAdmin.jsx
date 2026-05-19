@@ -12,19 +12,6 @@ import {
   Upload,
 } from "lucide-react";
 
-const CATEGORIES = [
-  "Automotive",
-  "Construction",
-  "Inventory",
-  "Procurement",
-  "Healthcare",
-  "Industrial",
-  "ERP",
-  "CRM",
-  "E-Commerce",
-  "Other",
-];
-
 const INITIAL_FORM = {
   title: "",
   category: "",
@@ -42,7 +29,6 @@ export default function ProjectsAdmin() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
   const [formData, setFormData] = useState(INITIAL_FORM);
-  const [customCategory, setCustomCategory] = useState("");
   const [saving, setSaving] = useState(false);
   const [formError, setFormError] = useState("");
 
@@ -65,24 +51,21 @@ export default function ProjectsAdmin() {
   const openCreateModal = () => {
     setEditingProject(null);
     setFormData(INITIAL_FORM);
-    setCustomCategory("");
     setFormError("");
     setIsModalOpen(true);
   };
 
   const openEditModal = (project) => {
     setEditingProject(project);
-    const isCustom = !CATEGORIES.includes(project.category);
     setFormData({
       title: project.title || "",
-      category: isCustom ? "Other" : (project.category || ""),
+      category: project.category || "",
       uptime: project.uptime || "99.9%",
       duration: project.duration || "",
       description: project.description || "",
       image: null,
       imagePreview: project.image || null,
     });
-    setCustomCategory(isCustom ? project.category : "");
     setFormError("");
     setIsModalOpen(true);
   };
@@ -91,7 +74,6 @@ export default function ProjectsAdmin() {
     setIsModalOpen(false);
     setEditingProject(null);
     setFormData(INITIAL_FORM);
-    setCustomCategory("");
     setFormError("");
   };
 
@@ -120,7 +102,7 @@ export default function ProjectsAdmin() {
     try {
       const formPayload = new FormData();
       formPayload.append("title", formData.title);
-      formPayload.append("category", formData.category === "Other" ? customCategory : formData.category);
+      formPayload.append("category", formData.category);
       formPayload.append("uptime", formData.uptime);
       formPayload.append("duration", formData.duration);
       formPayload.append("description", formData.description);

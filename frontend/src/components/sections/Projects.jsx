@@ -14,10 +14,21 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjectsData = async () => {
       try {
-        const response = await axios.get("/data/projects.json");
-        setData(response.data);
-        if (response.data?.metrics) {
-          setCounts(response.data.metrics.map(() => "0"));
+        const [projectsResponse, jsonResponse] = await Promise.all([
+          axios.get("/api/projects"),
+          axios.get("/data/projects.json")
+        ]);
+        const projects = projectsResponse.data?.data || [];
+        const jsonData = jsonResponse.data;
+        setData({
+          title: jsonData.title,
+          description: jsonData.description,
+          metrics: jsonData.metrics,
+          categories: jsonData.categories,
+          projects: projects
+        });
+        if (jsonData?.metrics) {
+          setCounts(jsonData.metrics.map(() => "0"));
         }
         setLoading(false);
       } catch (err) {
