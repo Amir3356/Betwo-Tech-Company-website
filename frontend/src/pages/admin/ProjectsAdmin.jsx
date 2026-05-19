@@ -19,6 +19,10 @@ const CATEGORIES = [
   "Procurement",
   "Healthcare",
   "Industrial",
+  "ERP",
+  "CRM",
+  "E-Commerce",
+  "Other",
 ];
 
 const INITIAL_FORM = {
@@ -38,6 +42,7 @@ export default function ProjectsAdmin() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
   const [formData, setFormData] = useState(INITIAL_FORM);
+  const [customCategory, setCustomCategory] = useState("");
   const [saving, setSaving] = useState(false);
   const [formError, setFormError] = useState("");
 
@@ -60,21 +65,24 @@ export default function ProjectsAdmin() {
   const openCreateModal = () => {
     setEditingProject(null);
     setFormData(INITIAL_FORM);
+    setCustomCategory("");
     setFormError("");
     setIsModalOpen(true);
   };
 
   const openEditModal = (project) => {
     setEditingProject(project);
+    const isCustom = !CATEGORIES.includes(project.category);
     setFormData({
       title: project.title || "",
-      category: project.category || "",
+      category: isCustom ? "Other" : (project.category || ""),
       uptime: project.uptime || "99.9%",
       duration: project.duration || "",
       description: project.description || "",
       image: null,
       imagePreview: project.image || null,
     });
+    setCustomCategory(isCustom ? project.category : "");
     setFormError("");
     setIsModalOpen(true);
   };
@@ -83,6 +91,7 @@ export default function ProjectsAdmin() {
     setIsModalOpen(false);
     setEditingProject(null);
     setFormData(INITIAL_FORM);
+    setCustomCategory("");
     setFormError("");
   };
 
@@ -111,7 +120,7 @@ export default function ProjectsAdmin() {
     try {
       const formPayload = new FormData();
       formPayload.append("title", formData.title);
-      formPayload.append("category", formData.category);
+      formPayload.append("category", formData.category === "Other" ? customCategory : formData.category);
       formPayload.append("uptime", formData.uptime);
       formPayload.append("duration", formData.duration);
       formPayload.append("description", formData.description);
@@ -277,20 +286,15 @@ export default function ProjectsAdmin() {
                   <label className="mb-1 block text-sm font-medium text-gray-700">
                     Category
                   </label>
-                  <select
+                  <input
+                    type="text"
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  >
-                    <option value="">Select category</option>
-                    {CATEGORIES.map((cat) => (
-                      <option key={cat} value={cat}>
-                        {cat}
-                      </option>
-                    ))}
-                  </select>
+                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                    placeholder="Enter category (e.g. ERP, CRM)"
+                  />
                 </div>
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-700">
