@@ -12,7 +12,7 @@ export default function AdminLayout() {
   const authenticated = isAdminAuthenticated();
 
   if (!authenticated) {
-    return <Navigate to="/admin" replace />;
+    return <Navigate to="/admin/login" replace />;
   }
 
   const handleLogout = () => {
