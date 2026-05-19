@@ -31,7 +31,7 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-slate-950 px-6 py-10 text-slate-100">
       <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-6xl items-center justify-center">
         <div className="grid w-full overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900/80 shadow-2xl shadow-black/30 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="hidden flex-col justify-center border-r border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950/60 p-10 lg:flex">
+          <div className="hidden flex-col justify-center border-r border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950/60 p-10 lg:flex"></div>
 
           <div className="flex items-center justify-center p-8 sm:p-10">
             <form onSubmit={handleSubmit} className="w-full max-w-md space-y-6">
