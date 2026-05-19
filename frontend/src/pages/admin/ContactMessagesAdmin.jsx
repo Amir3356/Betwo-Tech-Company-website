@@ -54,7 +54,6 @@ export default function ContactMessagesAdmin() {
     <div className="min-h-screen bg-gray-100 px-6 py-8 md:px-10 lg:px-12">
       <div className="mx-auto max-w-7xl space-y-8">
         <div className="flex flex-col gap-2">
-          <p className="text-sm uppercase tracking-[0.3em] text-blue-500">Contact Inbox</p>
           <h2 className="text-3xl font-bold text-gray-900">Contact Messages</h2>
           <p className="max-w-2xl text-gray-500">Messages submitted from the public contact form appear here.</p>
         </div>
