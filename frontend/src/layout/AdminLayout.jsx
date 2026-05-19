@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Mail, LayoutGrid, Shield, ChevronRight, LogOut } from "lucide-react";
 import axios from "axios";
-import { getToken, removeToken } from "../main.jsx";
 
 const navigation = [
   { label: "Contact Messages", to: "/admin/contact-messages", icon: Mail },
@@ -15,22 +14,15 @@ export default function AdminLayout() {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    if (!getToken()) {
-      navigate("/admin/login", { replace: true });
-      return;
-    }
-
     axios.get("/api/admin/me")
       .then((res) => {
         if (res.data?.data) {
           setAuthenticated(true);
         } else {
-          removeToken();
           navigate("/admin/login", { replace: true });
         }
       })
       .catch(() => {
-        removeToken();
         navigate("/admin/login", { replace: true });
       })
       .finally(() => setLoading(false));
@@ -45,11 +37,9 @@ export default function AdminLayout() {
   }
 
   const handleLogout = () => {
-    axios.post("/api/admin/logout")
-      .finally(() => {
-        removeToken();
-        window.location.href = "/admin/login";
-      });
+    axios.post("/api/admin/logout").finally(() => {
+      window.location.href = "/admin/login";
+    });
   };
 
   return (
