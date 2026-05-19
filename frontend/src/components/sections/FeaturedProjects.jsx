@@ -33,9 +33,16 @@ export default function FeaturedProjects() {
 
   useEffect(() => {
     axios
-      .get("/data/Featured%20Projects.json")
+      .get("/api/projects")
       .then((response) => {
-        setData(response.data);
+        const projects = response.data?.data || [];
+        setData({
+          title: "Featured Projects",
+          description: "Real-world systems we build to streamline operations, improve visibility, and scale businesses. Each project is crafted with precision and purpose.",
+          projects: projects,
+          moreProjectsText: "View All Projects",
+          highlights: ["Enterprise Grade", "Production Ready", "Scalable Architecture"],
+        });
         setLoading(false);
       })
       .catch((err) => {
