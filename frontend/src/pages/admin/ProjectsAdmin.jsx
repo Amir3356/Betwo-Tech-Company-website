@@ -10,6 +10,7 @@ import {
   X,
   Image,
   Building2,
+  Upload,
 } from "lucide-react";
 
 const CATEGORIES = [
@@ -27,7 +28,8 @@ const INITIAL_FORM = {
   uptime: "99.9%",
   duration: "",
   description: "",
-  image: "",
+  image: null,
+  imagePreview: null,
 };
 
 export default function ProjectsAdmin() {
@@ -71,7 +73,8 @@ export default function ProjectsAdmin() {
       uptime: project.uptime || "99.9%",
       duration: project.duration || "",
       description: project.description || "",
-      image: project.image || "",
+      image: null,
+      imagePreview: project.image || null,
     });
     setFormError("");
     setIsModalOpen(true);
@@ -89,19 +92,46 @@ export default function ProjectsAdmin() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setFormData((prev) => ({
+        ...prev,
+        image: file,
+        imagePreview: previewUrl,
+      }));
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
     setFormError("");
 
     try {
+      const formPayload = new FormData();
+      formPayload.append("title", formData.title);
+      formPayload.append("category", formData.category);
+      formPayload.append("uptime", formData.uptime);
+      formPayload.append("duration", formData.duration);
+      formPayload.append("description", formData.description);
+      if (formData.image) {
+        formPayload.append("image", formData.image);
+      }
+
+      const headers = {
+        ...adminAuthHeaders(),
+        "Content-Type": "multipart/form-data",
+      };
+
       if (editingProject) {
-        await axios.put(`/api/projects/${editingProject.id}`, formData, {
-          headers: adminAuthHeaders(),
+        await axios.post(`/api/projects/${editingProject.id}`, formPayload, {
+          headers,
         });
       } else {
-        await axios.post("/api/projects", formData, {
-          headers: adminAuthHeaders(),
+        await axios.post("/api/projects", formPayload, {
+          headers,
         });
       }
       await fetchProjects();
@@ -219,7 +249,7 @@ export default function ProjectsAdmin() {
 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
+          <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl">
             <div className="mb-6 flex items-center justify-between">
               <h3 className="text-xl font-bold text-gray-900">
                 {editingProject ? "Edit Project" : "Add New Project"}
@@ -306,18 +336,35 @@ export default function ProjectsAdmin() {
                 </div>
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-700">
-                    Image URL
+                    Image
                   </label>
-                  <input
-                    type="text"
-                    name="image"
-                    value={formData.image}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                    placeholder="/assets/image.jpg"
-                  />
+                  <div className="relative">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                    />
+                    <div className="flex items-center gap-2 rounded-xl border border-gray-200 px-4 py-3 text-gray-500 hover:bg-gray-50">
+                      <Upload size={18} />
+                      <span className="truncate text-sm">
+                        {formData.image?.name || "Choose image"}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              {formData.imagePreview && (
+                <div className="rounded-xl border border-gray-200 p-3">
+                  <p className="mb-2 text-sm font-medium text-gray-700">Preview:</p>
+                  <img
+                    src={formData.imagePreview}
+                    alt="Preview"
+                    className="h-32 w-full rounded-lg object-cover"
+                  />
+                </div>
+              )}
 
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-700">
