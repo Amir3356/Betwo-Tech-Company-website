@@ -41,7 +41,7 @@ export default function Navbar() {
         <img
           src="/assets/Betwo tech logo.jpg"
           alt="Betwo Tech logo"
-          className="w-24 h-24 object-contain rounded-lg"
+          className="w-16 h-16 object-contain rounded-lg"
         />
         <span className="brand-name text-2xl font-bold text-slate-900 dark:text-blue-400">
           {brand.name}
