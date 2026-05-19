@@ -16,10 +16,17 @@ export default defineConfig(({ mode }) => {
         '/api': {
           target: 'http://localhost:8000',
           changeOrigin: true,
+          credentials: true,
         },
         '/storage': {
           target: 'http://localhost:8000',
           changeOrigin: true,
+          credentials: true,
+        },
+        '/sanctum': {
+          target: 'http://localhost:8000',
+          changeOrigin: true,
+          credentials: true,
         },
         '/api/nvidia': {
           target: 'https://integrate.api.nvidia.com',
@@ -44,6 +51,6 @@ export default defineConfig(({ mode }) => {
             : undefined,
         },
       },
-    },
+    }
   }
 })

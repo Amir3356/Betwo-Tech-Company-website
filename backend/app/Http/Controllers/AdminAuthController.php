@@ -26,7 +26,6 @@ class AdminAuthController extends Controller
         }
 
         Auth::guard('admin')->login($admin);
-
         $request->session()->regenerate();
 
         return response()->json([
@@ -42,7 +41,6 @@ class AdminAuthController extends Controller
 
     public function me(Request $request): JsonResponse
     {
-        /** @var AdminUser|null $admin */
         $admin = Auth::guard('admin')->user();
 
         if (! $admin) {

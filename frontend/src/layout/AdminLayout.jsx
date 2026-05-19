@@ -1,6 +1,8 @@
-import { NavLink, Outlet, Navigate, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Mail, LayoutGrid, Shield, ChevronRight, LogOut } from "lucide-react";
-import { isAdminAuthenticated, logoutAdmin } from "../services/adminAuth";
+import axios from "axios";
+import { getToken, removeToken } from "../main.jsx";
 
 const navigation = [
   { label: "Contact Messages", to: "/admin/contact-messages", icon: Mail },
@@ -9,16 +11,45 @@ const navigation = [
 
 export default function AdminLayout() {
   const navigate = useNavigate();
-  const authenticated = isAdminAuthenticated();
+  const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if (!getToken()) {
+      navigate("/admin/login", { replace: true });
+      return;
+    }
+
+    axios.get("/api/admin/me")
+      .then((res) => {
+        if (res.data?.data) {
+          setAuthenticated(true);
+        } else {
+          removeToken();
+          navigate("/admin/login", { replace: true });
+        }
+      })
+      .catch(() => {
+        removeToken();
+        navigate("/admin/login", { replace: true });
+      })
+      .finally(() => setLoading(false));
+  }, [navigate]);
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center bg-gray-100">Loading...</div>;
+  }
 
   if (!authenticated) {
-    return <Navigate to="/admin/login" replace />;
+    return null;
   }
 
   const handleLogout = () => {
-    logoutAdmin().finally(() => {
-      navigate("/admin/login", { replace: true });
-    });
+    axios.post("/api/admin/logout")
+      .finally(() => {
+        removeToken();
+        window.location.href = "/admin/login";
+      });
   };
 
   return (

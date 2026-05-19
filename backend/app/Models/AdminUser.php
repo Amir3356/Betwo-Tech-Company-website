@@ -2,23 +2,21 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 
-class AdminUser extends Model
+class AdminUser extends Authenticatable
 {
     use HasFactory;
 
     protected $fillable = [
         'username',
         'password',
-        'api_token',
     ];
 
     protected $hidden = [
         'password',
-        'api_token',
     ];
 
     public function setPasswordAttribute(string $value): void

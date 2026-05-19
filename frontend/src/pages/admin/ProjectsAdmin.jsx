@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { adminAuthHeaders } from "../../services/adminAuth";
 import {
   LoaderCircle,
   AlertCircle,
@@ -44,7 +43,7 @@ export default function ProjectsAdmin() {
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get("/api/projects", { headers: adminAuthHeaders() });
+      const response = await axios.get("/api/projects");
       setProjects(response.data?.data || []);
       setError("");
     } catch (err) {
@@ -120,19 +119,10 @@ export default function ProjectsAdmin() {
         formPayload.append("image", formData.image);
       }
 
-      const headers = {
-        ...adminAuthHeaders(),
-        "Content-Type": "multipart/form-data",
-      };
-
       if (editingProject) {
-        await axios.post(`/api/projects/${editingProject.id}`, formPayload, {
-          headers,
-        });
+        await axios.post(`/api/projects/${editingProject.id}`, formPayload);
       } else {
-        await axios.post("/api/projects", formPayload, {
-          headers,
-        });
+        await axios.post("/api/projects", formPayload);
       }
       await fetchProjects();
       closeModal();
@@ -147,9 +137,7 @@ export default function ProjectsAdmin() {
     if (!window.confirm(`Delete "${project.title}"?`)) return;
 
     try {
-      await axios.delete(`/api/projects/${project.id}`, {
-        headers: adminAuthHeaders(),
-      });
+      await axios.delete(`/api/projects/${project.id}`);
       await fetchProjects();
     } catch (err) {
       alert("Failed to delete project.");

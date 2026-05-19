@@ -1,29 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { LockKeyhole, UserRound, AlertCircle, LogIn } from "lucide-react";
-import { isAdminAuthenticated, loginAdmin } from "../../services/adminAuth";
+import axios from "axios";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  console.log("AdminLogin rendered, authenticated:", isAdminAuthenticated());
+  useEffect(() => {
+    axios.get("/api/admin/me")
+      .then((res) => {
+        if (res.data?.data) {
+          navigate("/admin", { replace: true });
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [navigate]);
 
-  if (isAdminAuthenticated()) {
-    return <Navigate to="/admin/contact-messages" replace />;
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center bg-gray-100">Loading...</div>;
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    loginAdmin(username, password)
+    axios.post("/api/admin/login", { username, password })
       .then(() => {
-        navigate("/admin/contact-messages", { replace: true });
+        navigate("/admin", { replace: true });
       })
       .catch(() => {
-      setError("Invalid username or password.");
+        setError("Invalid username or password.");
       });
   };
 
@@ -36,7 +46,6 @@ export default function AdminLogin() {
               <LockKeyhole size={28} />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Admin Login</h2>
-            
           </div>
 
           {error ? (
