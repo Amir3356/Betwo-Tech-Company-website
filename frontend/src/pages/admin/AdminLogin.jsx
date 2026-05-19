@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { Shield, LockKeyhole, UserRound, AlertCircle, LogIn } from "lucide-react";
+import { LockKeyhole, UserRound, AlertCircle, LogIn } from "lucide-react";
 import { isAdminAuthenticated, loginAdmin } from "../../services/adminAuth";
 
 export default function AdminLogin() {
@@ -31,18 +31,12 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-slate-950 px-6 py-10 text-slate-100">
       <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-6xl items-center justify-center">
         <div className="grid w-full overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900/80 shadow-2xl shadow-black/30 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="hidden flex-col justify-between border-r border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950/60 p-10 lg:flex">
-            <div className="inline-flex w-fit items-center gap-3 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
-              <Shield size={16} /> Admin Access
-            </div>
+          <div className="hidden flex-col justify-center border-r border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950/60 p-10 lg:flex">
             <div className="space-y-4">
-              <h1 className="text-4xl font-black leading-tight text-white">Sign in to manage contact messages and projects.</h1>
+              <h1 className="text-4xl font-black leading-tight text-white">Admin Dashboard</h1>
               <p className="max-w-md text-sm leading-7 text-slate-400">
-                This area is protected by a simple admin login. After sign-in, the persistent sidebar stays visible while you switch between dashboard sections.
+                Sign in to continue to the admin panel.
               </p>
-            </div>
-            <div className="rounded-3xl border border-slate-800 bg-slate-950/80 p-5 text-sm text-slate-400">
-              Demo credentials: <span className="text-slate-200">admin</span> / <span className="text-slate-200">admin123</span>
             </div>
           </div>
 
