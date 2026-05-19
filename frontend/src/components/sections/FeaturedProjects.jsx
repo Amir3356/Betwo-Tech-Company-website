@@ -101,21 +101,14 @@ export default function FeaturedProjects() {
                   <span className="text-xs text-slate-500 dark:text-slate-400">Built in {project.duration}</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">{project.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">{project.description}</p>
-                <div className="flex flex-wrap gap-1 mb-3">
-                  {project.technologies.slice(0, 4).map((tech, i) => (
-                    <span key={i} className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded-md text-xs font-medium">
-                      {tech}
-                    </span>
-                  ))}
+                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-2 leading-relaxed">{project.description}</p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
 
-        <motion.div
-          className="text-center mt-12"
+          <motion.div
+            className="text-center mt-12"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}

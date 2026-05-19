@@ -169,15 +169,8 @@ export default function Projects() {
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">{project.description}</p>
 
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {project.technologies.map((tech, i) => (
-                    <motion.span key={i} className={`px-2 py-1 rounded-md text-xs font-medium ${tech === "+1" ? "bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400" : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"}`} variants={fadeUp}>
-                      {tech}
-                    </motion.span>
-                  ))}
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
           ))}
         </motion.div>
       </div>

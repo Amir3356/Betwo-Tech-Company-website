@@ -9,7 +9,6 @@
 			"uptime": "99.9%",
 			"duration": "6 weeks",
 			"description": "Digital system serving 50+ auto repair shops with 99.9% uptime",
-			"technologies": ["React", "Node.js", "MongoDB", "Express", "+1"],
 			"image": "/assets/Smart Garage Management System.png"
 		},
 		{
@@ -19,7 +18,6 @@
 			"uptime": "99.9%",
 			"duration": "10 weeks",
 			"description": "Managing 100+ construction sites with real-time tracking",
-			"technologies": ["React", "Node.js", "PostgreSQL", "TypeScript", "+1"],
 			"image": "/public/assets/Construction Project Management System.png"
 		},
 		{
@@ -29,7 +27,6 @@
 			"uptime": "99.9%",
 			"duration": "8 weeks",
 			"description": "Tracking 500,000+ SKUs across 10+ warehouses",
-			"technologies": ["React", "Node.js", "PostgreSQL", "Redis", "+1"],
 			"image": "/public/assets/Betwo Inventory.png"
 		}
 	],
