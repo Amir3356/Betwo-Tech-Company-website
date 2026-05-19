@@ -1,12 +1,360 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { adminAuthHeaders } from "../../services/adminAuth";
+import {
+  LoaderCircle,
+  AlertCircle,
+  Plus,
+  Pencil,
+  Trash2,
+  X,
+  Image,
+  Building2,
+} from "lucide-react";
+
+const CATEGORIES = [
+  "Automotive",
+  "Construction",
+  "Inventory",
+  "Procurement",
+  "Healthcare",
+  "Industrial",
+];
+
+const INITIAL_FORM = {
+  title: "",
+  category: "",
+  uptime: "99.9%",
+  duration: "",
+  description: "",
+  image: "",
+};
+
 export default function ProjectsAdmin() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingProject, setEditingProject] = useState(null);
+  const [formData, setFormData] = useState(INITIAL_FORM);
+  const [saving, setSaving] = useState(false);
+  const [formError, setFormError] = useState("");
+
+  const fetchProjects = async () => {
+    try {
+      const response = await axios.get("/api/projects", { headers: adminAuthHeaders() });
+      setProjects(response.data?.data || []);
+      setError("");
+    } catch (err) {
+      setError("Unable to load projects.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const openCreateModal = () => {
+    setEditingProject(null);
+    setFormData(INITIAL_FORM);
+    setFormError("");
+    setIsModalOpen(true);
+  };
+
+  const openEditModal = (project) => {
+    setEditingProject(project);
+    setFormData({
+      title: project.title || "",
+      category: project.category || "",
+      uptime: project.uptime || "99.9%",
+      duration: project.duration || "",
+      description: project.description || "",
+      image: project.image || "",
+    });
+    setFormError("");
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setEditingProject(null);
+    setFormData(INITIAL_FORM);
+    setFormError("");
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    setFormError("");
+
+    try {
+      if (editingProject) {
+        await axios.put(`/api/projects/${editingProject.id}`, formData, {
+          headers: adminAuthHeaders(),
+        });
+      } else {
+        await axios.post("/api/projects", formData, {
+          headers: adminAuthHeaders(),
+        });
+      }
+      await fetchProjects();
+      closeModal();
+    } catch (err) {
+      setFormError(err.response?.data?.message || "Failed to save project.");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async (project) => {
+    if (!window.confirm(`Delete "${project.title}"?`)) return;
+
+    try {
+      await axios.delete(`/api/projects/${project.id}`, {
+        headers: adminAuthHeaders(),
+      });
+      await fetchProjects();
+    } catch (err) {
+      alert("Failed to delete project.");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 px-6 py-8 md:px-10 lg:px-12">
-      <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-2">
-          <p className="text-sm uppercase tracking-[0.3em] text-blue-500">Project Overview</p>
-          <h2 className="text-3xl font-bold text-gray-900">Projects</h2>
+      <div className="mx-auto max-w-7xl space-y-8">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2">
+            <p className="text-sm uppercase tracking-[0.3em] text-blue-500">
+              Project Overview
+            </p>
+            <h2 className="text-3xl font-bold text-gray-900">Projects</h2>
+          </div>
+          <button
+            onClick={openCreateModal}
+            className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
+          >
+            <Plus size={18} />
+            Add Project
+          </button>
         </div>
+
+        {loading ? (
+          <div className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-5 py-6 text-gray-600">
+            <LoaderCircle className="h-5 w-5 animate-spin text-blue-500" />
+            Loading projects...
+          </div>
+        ) : error ? (
+          <div className="flex items-center gap-3 rounded-2xl border border-red-300 bg-red-50 px-5 py-6 text-red-600">
+            <AlertCircle className="h-5 w-5" />
+            {error}
+          </div>
+        ) : projects.length === 0 ? (
+          <div className="rounded-3xl border border-gray-200 bg-white p-10 text-center text-gray-500">
+            <Building2 className="mx-auto mb-4 h-10 w-10 text-gray-400" />
+            No projects yet. Click "Add Project" to create one.
+          </div>
+        ) : (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <article
+                key={project.id}
+                className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg"
+              >
+                <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center text-gray-400">
+                      <Image size={40} />
+                    </div>
+                  )}
+                </div>
+                <div className="p-6">
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600">
+                      {project.category}
+                    </span>
+                    <span className="text-xs text-gray-500">{project.uptime}</span>
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold text-gray-900">
+                    {project.title}
+                  </h3>
+                  <p className="mb-4 text-sm text-gray-500 line-clamp-2">
+                    {project.description}
+                  </p>
+                  <div className="flex items-center justify-between border-t border-gray-100 pt-4">
+                    <span className="text-sm text-gray-500">{project.duration}</span>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => openEditModal(project)}
+                        className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-blue-600"
+                      >
+                        <Pencil size={18} />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(project)}
+                        className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-red-600"
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
+            <div className="mb-6 flex items-center justify-between">
+              <h3 className="text-xl font-bold text-gray-900">
+                {editingProject ? "Edit Project" : "Add New Project"}
+              </h3>
+              <button
+                onClick={closeModal}
+                className="rounded-lg p-2 hover:bg-gray-100"
+              >
+                <X size={20} className="text-gray-500" />
+              </button>
+            </div>
+
+            {formError && (
+              <div className="mb-4 rounded-xl border border-red-300 bg-red-50 p-3 text-sm text-red-600">
+                {formError}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="mb-1 block text-sm font-medium text-gray-700">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  placeholder="Project title"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">
+                    Category
+                  </label>
+                  <select
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  >
+                    <option value="">Select category</option>
+                    {CATEGORIES.map((cat) => (
+                      <option key={cat} value={cat}>
+                        {cat}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">
+                    Duration
+                  </label>
+                  <input
+                    type="text"
+                    name="duration"
+                    value={formData.duration}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                    placeholder="e.g., 8 weeks"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">
+                    Uptime
+                  </label>
+                  <input
+                    type="text"
+                    name="uptime"
+                    value={formData.uptime}
+                    onChange={handleChange}
+                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                    placeholder="e.g., 99.9%"
+                  />
+                </div>
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">
+                    Image URL
+                  </label>
+                  <input
+                    type="text"
+                    name="image"
+                    value={formData.image}
+                    onChange={handleChange}
+                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                    placeholder="/assets/image.jpg"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="mb-1 block text-sm font-medium text-gray-700">
+                  Description
+                </label>
+                <textarea
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  required
+                  rows={3}
+                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  placeholder="Project description"
+                />
+              </div>
+
+              <div className="flex justify-end gap-3 pt-4">
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="rounded-xl border border-gray-200 px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={saving}
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+                >
+                  {saving && <LoaderCircle className="h-4 w-4 animate-spin" />}
+                  {editingProject ? "Update Project" : "Create Project"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
