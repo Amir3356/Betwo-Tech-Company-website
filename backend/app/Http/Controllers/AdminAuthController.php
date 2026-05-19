@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AdminUser;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class AdminAuthController extends Controller
 {
@@ -26,13 +25,13 @@ class AdminAuthController extends Controller
             ], 422);
         }
 
-        $token = Str::random(60);
-        $admin->forceFill(['api_token' => $token])->save();
+        Auth::guard('admin')->login($admin);
+
+        $request->session()->regenerate();
 
         return response()->json([
             'message' => 'Signed in successfully.',
             'data' => [
-                'token' => $token,
                 'admin' => [
                     'id' => $admin->id,
                     'username' => $admin->username,
@@ -44,26 +43,25 @@ class AdminAuthController extends Controller
     public function me(Request $request): JsonResponse
     {
         /** @var AdminUser|null $admin */
-        $admin = $request->attributes->get('admin_user');
+        $admin = Auth::guard('admin')->user();
+
+        if (! $admin) {
+            return response()->json(['message' => 'Unauthenticated.'], 401);
+        }
 
         return response()->json([
             'data' => [
-                'id' => $admin?->id,
-                'username' => $admin?->username,
+                'id' => $admin->id,
+                'username' => $admin->username,
             ],
         ]);
     }
 
     public function logout(Request $request): JsonResponse
     {
-        /** @var AdminUser|null $admin */
-        $admin = $request->attributes->get('admin_user');
-
-        if ($admin) {
-            $admin->forceFill(['api_token' => null])->save();
-        } elseif ($token = $request->bearerToken()) {
-            DB::table('admin_users')->where('api_token', $token)->update(['api_token' => null]);
-        }
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return response()->json([
             'message' => 'Signed out successfully.',
