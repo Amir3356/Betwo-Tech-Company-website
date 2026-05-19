@@ -28,15 +28,15 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 px-6 py-10 text-slate-100">
-      <div className="w-full max-w-md overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8 shadow-2xl shadow-black/30 sm:p-10">
+    <div className="min-h-screen flex items-center justify-center bg-neutral-900 px-6 py-10 text-neutral-100">
+      <div className="w-full max-w-md overflow-hidden rounded-[2rem] border border-neutral-700 bg-neutral-800/80 p-8 shadow-2xl shadow-black/30 sm:p-10">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-3 text-center">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-500/15 text-blue-400">
               <LockKeyhole size={28} />
             </div>
             <h2 className="text-3xl font-bold text-white">Admin Login</h2>
-            <p className="text-sm text-slate-400">Enter your username and password to continue.</p>
+            <p className="text-sm text-neutral-400">Enter your username and password to continue.</p>
           </div>
 
           {error ? (
@@ -47,15 +47,15 @@ export default function AdminLogin() {
           ) : null}
 
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-slate-300">Username</label>
-            <div className="flex items-center gap-3 rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 focus-within:border-blue-500">
-              <UserRound size={18} className="text-slate-500" />
+            <label className="block text-sm font-medium text-neutral-300">Username</label>
+            <div className="flex items-center gap-3 rounded-2xl border border-neutral-600 bg-neutral-900 px-4 py-3 focus-within:border-blue-500">
+              <UserRound size={18} className="text-neutral-500" />
               <input
                 type="text"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
                 placeholder="Enter username"
-                className="w-full bg-transparent text-white outline-none placeholder:text-slate-600"
+                className="w-full bg-transparent text-white outline-none placeholder:text-neutral-500"
                 autoComplete="username"
                 required
               />
@@ -63,15 +63,15 @@ export default function AdminLogin() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-slate-300">Password</label>
-            <div className="flex items-center gap-3 rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 focus-within:border-blue-500">
-              <LockKeyhole size={18} className="text-slate-500" />
+            <label className="block text-sm font-medium text-neutral-300">Password</label>
+            <div className="flex items-center gap-3 rounded-2xl border border-neutral-600 bg-neutral-900 px-4 py-3 focus-within:border-blue-500">
+              <LockKeyhole size={18} className="text-neutral-500" />
               <input
                 type="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder="Enter password"
-                className="w-full bg-transparent text-white outline-none placeholder:text-slate-600"
+                className="w-full bg-transparent text-white outline-none placeholder:text-neutral-500"
                 autoComplete="current-password"
                 required
               />
