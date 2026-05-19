@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -21,10 +22,15 @@ class ProjectController extends Controller
             'uptime' => 'nullable|string|max:50',
             'duration' => 'required|string|max:100',
             'description' => 'required|string',
-            'image' => 'nullable|string|max:500',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ]);
 
-        $project = Project::create($validated);
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('projects', 'public');
+        }
+
+        $project = Project::create(array_merge($validated, ['image' => $imagePath ? '/storage/' . $imagePath : null]));
         return response()->json(['data' => $project], 201);
     }
 
@@ -41,8 +47,17 @@ class ProjectController extends Controller
             'uptime' => 'nullable|string|max:50',
             'duration' => 'sometimes|string|max:100',
             'description' => 'sometimes|string',
-            'image' => 'nullable|string|max:500',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            if ($project->image) {
+                $oldPath = str_replace('/storage/', '', $project->image);
+                Storage::disk('public')->delete($oldPath);
+            }
+            $imagePath = $request->file('image')->store('projects', 'public');
+            $validated['image'] = '/storage/' . $imagePath;
+        }
 
         $project->update($validated);
         return response()->json(['data' => $project]);
@@ -50,6 +65,10 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
+        if ($project->image) {
+            $path = str_replace('/storage/', '', $project->image);
+            Storage::disk('public')->delete($path);
+        }
         $project->delete();
         return response()->json(['message' => 'Project deleted successfully']);
     }
