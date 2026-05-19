@@ -17,6 +17,10 @@ export default defineConfig(({ mode }) => {
           target: 'http://localhost:8000',
           changeOrigin: true,
         },
+        '/storage': {
+          target: 'http://localhost:8000',
+          changeOrigin: true,
+        },
         '/api/nvidia': {
           target: 'https://integrate.api.nvidia.com',
           changeOrigin: true,
