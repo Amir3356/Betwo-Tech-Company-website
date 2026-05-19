@@ -67,7 +67,7 @@ export default function AdminLayout() {
             onClick={handleLogout}
             className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-red-500/50 hover:bg-red-50 hover:text-red-600"
           >
-            <LogOut size={16} /> Sign Out
+            <LogOut size={16} /> Logout
           </button>
         </aside>
 
