@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const sectionVariants = {
@@ -91,11 +91,17 @@ export default function FeaturedProjects() {
               className="rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all group"
             >
               <div className="relative h-36 overflow-hidden bg-slate-200 dark:bg-slate-800">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-slate-400">
+                    <Building2 size={48} />
+                  </div>
+                )}
                 <div className="absolute top-2 left-2 px-2 py-0.5 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
                   {project.category}
                 </div>
