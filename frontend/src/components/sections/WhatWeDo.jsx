@@ -60,22 +60,22 @@ export default function WhatWeDo() {
   }
 
   return (
-    <section className="what-we-do py-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <section className="what-we-do py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
       <motion.div
-        className="text-center mb-16"
+        className="text-center mb-10 md:mb-16"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <h2 className="text-3xl md:text-5xl font-bold mb-4">{data.title}</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">{data.title}</h2>
         <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
           {data.description}
         </p>
       </motion.div>
 
       <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -89,9 +89,9 @@ export default function WhatWeDo() {
               variants={cardVariants}
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 260, damping: 18 }}
-              className="group bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:scale-[1.02] hover:border-slate-400 dark:hover:border-slate-600"
+              className="group bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:scale-[1.02] hover:border-slate-400 dark:hover:border-slate-600"
             >
-              <div className="w-14 h-14 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-slate-900 dark:text-slate-300 mb-6 transition-colors duration-300 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-900 dark:group-hover:text-slate-200">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-slate-900 dark:text-slate-300 mb-4 sm:mb-6 transition-colors duration-300 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-900 dark:group-hover:text-slate-200">
                 {IconComponent && <IconComponent className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" />}
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-300">{service.title}</h3>

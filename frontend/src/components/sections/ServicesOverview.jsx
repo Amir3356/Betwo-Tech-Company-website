@@ -84,18 +84,18 @@ export default function ServicesOverview() {
   const services = comprehensive.services || [];
 
   return (
-    <section className="services-overview py-20 bg-white dark:bg-slate-950 border-y border-slate-100 dark:border-slate-800">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="services-overview py-12 sm:py-16 md:py-20 bg-white dark:bg-slate-950 border-y border-slate-100 dark:border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16 space-y-4"
+          className="text-center mb-8 md:mb-16 space-y-4"
           variants={headingVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.h2
-            className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white"
+            className="text-2xl sm:text-4xl md:text-6xl font-bold text-slate-900 dark:text-white"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -104,7 +104,7 @@ export default function ServicesOverview() {
             Our Services
           </motion.h2>
           <motion.h3 
-            className="text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-300"
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-300"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -125,7 +125,7 @@ export default function ServicesOverview() {
 
         {/* Services Grid */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -145,7 +145,7 @@ export default function ServicesOverview() {
               >
                 {/* Image */}
                 {serviceImage && (
-                  <div className="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-800">
+                  <div className="relative h-40 sm:h-48 overflow-hidden bg-slate-200 dark:bg-slate-800">
                     <motion.img
                       src={serviceImage}
                       alt={service.title}
@@ -161,7 +161,7 @@ export default function ServicesOverview() {
                 )}
 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-5 sm:p-8">
                   {/* Title */}
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-300">
                     {service.title}

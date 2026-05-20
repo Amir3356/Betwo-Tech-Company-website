@@ -59,16 +59,16 @@ export default function FeaturedProjects() {
   const highlights = data?.highlights ?? [];
 
   return (
-    <section id="featured-projects" className="featured-projects py-12 px-6 md:px-12 bg-white dark:bg-slate-950">
+    <section id="featured-projects" className="featured-projects py-12 sm:py-16 md:py-12 px-4 sm:px-6 md:px-12 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">{data?.title ?? "Featured Projects"}</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">{data?.title ?? "Featured Projects"}</h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
             {data?.description ??
               "Real-world systems we build to streamline operations, improve visibility, and scale businesses. Each project is crafted with precision and purpose."}
@@ -76,7 +76,7 @@ export default function FeaturedProjects() {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"

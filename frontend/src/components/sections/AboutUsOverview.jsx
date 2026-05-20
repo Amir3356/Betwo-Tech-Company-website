@@ -133,20 +133,20 @@ export default function AboutUsOverview() {
   const coreValues = data.coreValues || [];
 
   return (
-    <section className="about-us-overview py-20 bg-slate-50 dark:bg-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="about-us-overview py-12 sm:py-16 md:py-20 bg-slate-50 dark:bg-slate-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         {/* Main Content - Two Column Layout */}
         <motion.div
-          className="grid lg:grid-cols-2 gap-16 items-center mb-20"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-12 lg:mb-20"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
           {/* Left Column - Text Content */}
-          <motion.div className="space-y-6" variants={leftPanelVariants}>
+          <motion.div className="space-y-4 sm:space-y-6" variants={leftPanelVariants}>
             <motion.h2
-              className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight"
+              className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -156,7 +156,7 @@ export default function AboutUsOverview() {
             </motion.h2>
             
             <motion.h3
-              className="text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-300"
+              className="text-xl sm:text-2xl lg:text-3xl font-semibold text-slate-700 dark:text-slate-300"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -166,7 +166,7 @@ export default function AboutUsOverview() {
             </motion.h3>
 
             <motion.p
-              className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
+              className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

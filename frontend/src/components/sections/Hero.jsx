@@ -58,12 +58,12 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="relative px-6 md:px-12 py-20 md:py-32 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-12 overflow-hidden"
+      className="relative px-4 sm:px-6 md:px-12 py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto gap-8 lg:gap-12 overflow-hidden"
     >
       <div 
-        className="flex-1 space-y-8 text-center md:text-left relative z-10"
+        className="flex-1 space-y-6 lg:space-y-8 text-center lg:text-left relative z-10"
       >
-        <h1 className="hero-title text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+        <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight">
           {(
             heroData.titlePrefix ??
             (heroData.title
@@ -76,7 +76,7 @@ export default function Hero() {
             {(heroData.typedTexts?.[0] ?? heroData.typedText ?? heroData.highlightText ?? "")}
           </span>
         </h1>
-        <p className="hero-description text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto md:mx-0">
+        <p className="hero-description text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 px-4 lg:px-0">
           {heroData.description}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
