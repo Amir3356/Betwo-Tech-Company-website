@@ -51,7 +51,7 @@ export default function AdminLayout() {
               <Shield size={22} />
             </div>
             <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-gray-500">Admin Panel</p>
+              <p className="text-xs uppercase tracking-[0.25em] text-gray-500 font-bold">Admin Panel</p>
               <h1 className="text-lg font-bold text-gray-900">Betwo Tech</h1>
             </div>
           </div>
