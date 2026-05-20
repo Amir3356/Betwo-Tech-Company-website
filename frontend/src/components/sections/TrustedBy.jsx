@@ -128,25 +128,25 @@ export default function TrustedBy() {
   }
 
   return (
-    <section className="trusted-by relative py-20 bg-slate-100 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 overflow-hidden">
+    <section className="trusted-by relative py-12 sm:py-16 md:py-20 bg-slate-100 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 overflow-hidden">
       <div className="absolute -top-24 right-0 h-64 w-64 rounded-full bg-blue-400/10 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 left-0 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl pointer-events-none" />
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">{data.title}</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">{data.title}</h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">{data.description}</p>
         </motion.div>
 
         {/* Metrics */}
         <motion.div
           ref={metricsRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-center divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-slate-800"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-16 text-center"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
