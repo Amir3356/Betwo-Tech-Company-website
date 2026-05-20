@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Building2 } from "lucide-react";
+import { CheckCircle, Building2 } from "lucide-react";
 
 export default function Projects() {
   const [data, setData] = useState(null);
