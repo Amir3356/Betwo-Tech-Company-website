@@ -132,7 +132,6 @@ export default function ServicesOverview() {
           viewport={{ once: true, amount: 0.15 }}
         >
           {services.map((service, index) => {
-            const IconComponent = iconMap[service.icon];
             const serviceImage = imageMap[service.title];
             return (
               <motion.div
