@@ -103,11 +103,11 @@ export default function Projects() {
   const filteredProjects = data?.projects;
 
   if (loading) {
-    return <section className="py-20 bg-slate-50 dark:bg-slate-900">Loading...</section>;
+    return <section className="py-12 sm:py-16 lg:py-20 bg-slate-50 dark:bg-slate-900">Loading...</section>;
   }
 
   if (error || !data) {
-    return <section className="py-20 bg-slate-50 dark:bg-slate-900">Error loading projects data</section>;
+    return <section className="py-12 sm:py-16 lg:py-20 bg-slate-50 dark:bg-slate-900">Error loading projects data</section>;
   }
 
   const sectionVariants = {
@@ -126,17 +126,17 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="projects-section py-20 bg-slate-50 dark:bg-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <motion.div className="text-center mb-16" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">{data.title}</h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">{data.description}</p>
+    <section id="projects" className="projects-section py-12 sm:py-16 lg:py-20 bg-slate-50 dark:bg-slate-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+        <motion.div className="text-center mb-10 sm:mb-12 lg:mb-16" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }}>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">{data.title}</h2>
+          <p className="text-slate-600 dark:text-slate-400 max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg">{data.description}</p>
         </motion.div>
 
-        <motion.div ref={metricsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-center" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+        <motion.div ref={metricsRef} className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 text-center" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           {data.metrics?.map((metric, index) => (
-            <motion.div key={metric.label} variants={cardVariant} whileHover={{ y: -6, scale: 1.02 }} className="rounded-2xl border border-slate-100/50 dark:border-slate-800/50 bg-white dark:bg-slate-800 px-3 py-3 shadow-sm">
-              <div className="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-blue-400 mb-0.5">
+            <motion.div key={metric.label} variants={cardVariant} whileHover={{ y: -6, scale: 1.02 }} className="rounded-2xl border border-slate-100/50 dark:border-slate-800/50 bg-white dark:bg-slate-800 px-2 sm:px-3 py-2 sm:py-3 shadow-sm">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-blue-400 mb-0.5">
                 {counts[index] || "0"}
               </div>
               <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{metric.label}</div>
@@ -144,7 +144,7 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           {filteredProjects?.map((project) => (
             <motion.div
               key={project.id}
@@ -152,7 +152,7 @@ export default function Projects() {
               whileHover={{ y: -8, scale: 1.02 }}
               className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-700 group"
             >
-              <div className="h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden">
+              <div className="h-36 sm:h-40 lg:h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden">
                 {project.image ? (
                   <motion.img
                     src={project.image}
@@ -165,26 +165,26 @@ export default function Projects() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-400">
-                    <Building2 size={48} />
+                    <Building2 size={32} className="sm:size-12" />
                   </div>
                 )}
-                <div className="absolute top-4 left-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
+                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 px-2 sm:px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
                   {project.category}
                 </div>
               </div>
 
-              <div className="p-6">
-                <div className="flex items-center gap-4 mb-3">
+              <div className="p-4 sm:p-6">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-2 sm:mb-3">
                   <span className="flex items-center gap-1 text-xs font-medium text-slate-500 dark:text-slate-400">
-                    <CheckCircle size={14} className="text-green-500" /> {project.uptime} Uptime
+                    <CheckCircle size={12} className="text-green-500 sm:size-14" /> {project.uptime} Uptime
                   </span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Built in {project.duration}</span>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1 sm:mb-2">
                   {project.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">{project.description}</p>
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-3 sm:mb-4 line-clamp-2">{project.description}</p>
 
                 </div>
               </motion.div>
