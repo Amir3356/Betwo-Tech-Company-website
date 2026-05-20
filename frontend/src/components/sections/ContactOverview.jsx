@@ -99,18 +99,18 @@ export default function ContactOverview() {
   const contactInfo = data.contactInfo || [];
 
   return (
-    <section className="contact-overview py-20 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="contact-overview py-12 sm:py-16 md:py-20 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16 space-y-4"
+          className="text-center mb-8 sm:mb-16 space-y-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white"
+            className="text-2xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -119,7 +119,7 @@ export default function ContactOverview() {
             Get In Touch
           </motion.h2>
           <motion.h3
-            className="text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-300"
+            className="text-lg sm:text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-300"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -139,7 +139,7 @@ export default function ContactOverview() {
         </motion.div>
 
         {/* Two Column Layout */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-10 sm:mb-16">
           {/* Left Column - Contact Info */}
           <motion.div
             className="space-y-6"
@@ -148,11 +148,11 @@ export default function ContactOverview() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6">
               Contact Information
             </h3>
 
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {contactInfo.map((info, index) => {
                 const IconComponent = iconMap[info.icon];
                 return (
