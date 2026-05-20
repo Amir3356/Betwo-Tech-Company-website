@@ -1,7 +1,5 @@
 import { Mail, Phone, MapPin, ArrowRight, Heart } from "lucide-react";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
 
 const iconMap = {
   telegram: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.5 3.5 2.8 11.1c-1 .4-1 1.8.1 2.2l4.7 1.5 1.8 5.6c.3.8 1.3 1 1.9.5l2.7-2.2 4.9 3.6c.7.5 1.7.1 1.9-.8l2.9-15.1c.2-1-1-1.7-1.9-1.3z"/><path d="m8.8 14.8 8.8-6.3"/></svg>,
@@ -9,22 +7,31 @@ const iconMap = {
   twitter: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 5.8c-.8.4-1.7.7-2.6.8a4.5 4.5 0 0 0-7.8 3v1A12.7 12.7 0 0 1 3 5.4s-4 9 5 13a13.7 13.7 0 0 1-8 2c9 5 20 0 20-11.5 0-.2 0-.5-.1-.7.9-.6 1.7-1.4 2.1-2.4z"/></svg>,
 };
 
+const quickLinks = [
+  { text: "Home", link: "#home" },
+  { text: "About Us", link: "/about#about" },
+  { text: "Our Projects", link: "/projects#projects" }
+];
+
+const services = [
+  { text: "Web Application Development", link: "#" },
+  { text: "Mobile iOS & Android Apps", link: "#" },
+  { text: "Enterprise Custom Software", link: "#" }
+];
+
+const socialLinks = [
+  { name: "Telegram", url: "#", icon: "telegram" },
+  { name: "WhatsApp", url: "#", icon: "whatsapp" },
+  { name: "Twitter", url: "#", icon: "twitter" }
+];
+
+const bottomLinks = [
+  { text: "Privacy Policy", link: "#" },
+  { text: "Terms of Service", link: "#" },
+  { text: "Cookie Policy", link: "#" }
+];
+
 export default function Footer() {
-  const [footerData, setFooterData] = useState(null);
-
-  useEffect(() => {
-    axios.get("/data/footer.json")
-      .then((res) => setFooterData(res.data))
-      .catch(console.error);
-  }, []);
-
-  const brand = footerData?.brand || { name: "Betwoch Tech" };
-  const socialLinks = footerData?.socialLinks || [];
-  const quickLinks = footerData?.quickLinks || [];
-  const services = footerData?.services || [];
-  const contact = footerData?.contact || {};
-  const bottomLinks = footerData?.bottomLinks || [];
-
   const sectionVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -49,30 +56,27 @@ export default function Footer() {
       id="contact"
       className="relative bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 border-t border-slate-200 dark:border-slate-800 mt-auto overflow-hidden"
     >
-      {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/5 dark:bg-blue-400/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-400/5 dark:bg-cyan-400/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-400/3 dark:bg-purple-400/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-        {/* Main Footer Content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 py-12 sm:py-16"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Brand Column */}
           <motion.div className="lg:col-span-1 space-y-6" variants={colVariants}>
             <div className="flex items-center gap-3 group">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-slate-700/30 dark:shadow-slate-600/30 group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
                 B
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-blue-400 dark:via-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
-                {brand.name}
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-blue-400 dark:via-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
+                Betwo Tech
               </span>
             </div>
             
@@ -80,7 +84,6 @@ export default function Footer() {
               Building innovative digital solutions that transform businesses and drive growth.
             </p>
 
-            {/* Social Links */}
             <div>
               <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider">
                 Connect With Us
@@ -91,7 +94,7 @@ export default function Footer() {
                     key={i}
                     href={social.url}
                     aria-label={social.name}
-                    className="group relative w-12 h-12 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:border-transparent transition-all duration-300 shadow-sm hover:shadow-lg overflow-hidden"
+                    className="group relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-white hover:border-transparent transition-all duration-300 shadow-sm hover:shadow-lg overflow-hidden"
                     variants={iconVariants}
                     whileHover={{ y: -4, scale: 1.1 }}
                   >
@@ -103,9 +106,8 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* Quick Links Column */}
           <motion.div variants={colVariants}>
-            <h3 className="font-bold text-slate-900 dark:text-white mb-6 text-lg">
+            <h3 className="font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 text-lg">
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -125,9 +127,8 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Services Column */}
           <motion.div variants={colVariants}>
-            <h3 className="font-bold text-slate-900 dark:text-white mb-6 text-lg">
+            <h3 className="font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 text-lg">
               Our Services
             </h3>
             <ul className="space-y-3">
@@ -147,9 +148,8 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Contact Column */}
           <motion.div variants={colVariants}>
-            <h3 className="font-bold text-slate-900 dark:text-white mb-6 text-lg">
+            <h3 className="font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 text-lg">
               Get In Touch
             </h3>
             <ul className="space-y-4">
@@ -163,7 +163,7 @@ export default function Footer() {
                       Address
                     </p>
                     <p className="text-sm text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
-                      {contact.address}<br/>{contact.addressDetail}
+                      Addis Ababa, Ethiopia<br/>Bole, 1000
                     </p>
                   </div>
                 </div>
@@ -178,8 +178,8 @@ export default function Footer() {
                     <p className="text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase tracking-wider mb-1">
                       Phone
                     </p>
-                    <a href={`tel:${contact.phone}`} className="text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-                      {contact.phone}
+                    <a href="tel:+251911234567" className="text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                      +251 911 234 567
                     </a>
                   </div>
                 </div>
@@ -194,8 +194,8 @@ export default function Footer() {
                     <p className="text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase tracking-wider mb-1">
                       Email
                     </p>
-                    <a href={`mailto:${contact.email}`} className="text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-colors break-all">
-                      {contact.email}
+                    <a href="mailto:hello@betwoch.tech" className="text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-colors break-all">
+                      hello@betwoch.tech
                     </a>
                   </div>
                 </div>
@@ -204,22 +204,21 @@ export default function Footer() {
           </motion.div>
         </motion.div>
 
-        {/* Bottom Bar */}
         <motion.div
-          className="border-t border-slate-200 dark:border-slate-800 py-8"
+          className="border-t border-slate-200 dark:border-slate-800 py-6 sm:py-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
-              © {new Date().getFullYear()} {brand.name}. Made with 
+              © {new Date().getFullYear()} Betwo Tech. Made with 
               <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" /> 
               in Ethiopia
             </p>
             
-            <div className="flex flex-wrap gap-6 text-sm">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm">
               {bottomLinks.map((link, i) => (
                 <motion.a
                   key={i}
