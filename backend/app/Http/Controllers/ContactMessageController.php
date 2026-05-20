@@ -36,4 +36,14 @@ class ContactMessageController extends Controller
             'data' => $contactMessage,
         ], 201);
     }
+
+    public function destroy(Request $request, int $id): JsonResponse
+    {
+        $contactMessage = ContactMessage::findOrFail($id);
+        $contactMessage->delete();
+
+        return response()->json([
+            'message' => 'Message deleted successfully.',
+        ]);
+    }
 }

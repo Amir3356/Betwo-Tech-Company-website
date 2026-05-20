@@ -107,6 +107,13 @@ export default function ContactMessagesAdmin() {
                     <Clock3 size={16} className="text-blue-500" />
                     {formatDate(message.created_at)}
                   </div>
+                  <button
+                    onClick={() => handleDelete(message.id)}
+                    className="rounded-xl p-2 text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors"
+                    title="Delete message"
+                  >
+                    <Trash2 size={18} />
+                  </button>
                 </div>
               </article>
             ))}

@@ -16,6 +16,7 @@ Route::get('/projects/{project}', [ProjectController::class, 'show']);
 Route::middleware(['web', 'admin.auth'])->group(function () {
     Route::get('/admin/me', [AdminAuthController::class, 'me']);
     Route::get('/contact-messages', [ContactMessageController::class, 'index']);
+    Route::delete('/contact-messages/{id}', [ContactMessageController::class, 'destroy']);
     Route::post('/projects', [ProjectController::class, 'store']);
     Route::put('/projects/{project}', [ProjectController::class, 'update']);
     Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
