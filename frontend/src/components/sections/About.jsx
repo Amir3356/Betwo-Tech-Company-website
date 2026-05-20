@@ -200,15 +200,12 @@ export default function About() {
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
-        console.log("Fetching about data...");
         const response = await fetch("/data/aboutUs.json");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        console.log("About data response:", data);
         setAboutData(data);
         setLoading(false);
       } catch (err) {
-        console.error("Error fetching about data:", err);
         setError(err.message);
         setLoading(false);
       }
@@ -226,7 +223,6 @@ export default function About() {
   }
 
   if (!aboutData || !aboutData.hero) {
-    console.log("aboutData:", aboutData);
     return <section id="about" className="py-24 bg-white dark:bg-slate-950 overflow-hidden">No data available</section>;
   }
 
