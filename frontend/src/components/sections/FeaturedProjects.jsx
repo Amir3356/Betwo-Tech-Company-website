@@ -55,7 +55,7 @@ export default function FeaturedProjects() {
     return <p className="px-6 md:px-12 py-20">Loading...</p>;
   }
 
-  const projects = data?.projects ?? [];
+  const projects = (data?.projects ?? []).slice(0, 3);
   const highlights = data?.highlights ?? [];
 
   return (
