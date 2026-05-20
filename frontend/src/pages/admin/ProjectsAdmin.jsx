@@ -130,7 +130,7 @@ export default function ProjectsAdmin() {
     try {
       await axios.delete(`/api/projects/${project.id}`);
       await fetchProjects();
-    } catch (err) {
+    } catch {
       alert("Failed to delete project.");
     }
   };
