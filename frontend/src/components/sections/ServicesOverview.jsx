@@ -1,16 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { Database, Smartphone, Lightbulb, LayoutTemplate, Settings, Repeat, ArrowRight } from "lucide-react";
-
-const iconMap = {
-  Database,
-  Smartphone,
-  Lightbulb,
-  LayoutTemplate,
-  Settings,
-  Repeat
-};
+import { ArrowRight } from "lucide-react";
 
 // Map service titles to images
 const imageMap = {

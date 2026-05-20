@@ -37,7 +37,7 @@ export default function ProjectsAdmin() {
       const response = await axios.get("/api/projects");
       setProjects(response.data?.data || []);
       setError("");
-    } catch (err) {
+    } catch {
       setError("Unable to load projects.");
     } finally {
       setLoading(false);
