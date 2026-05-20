@@ -65,7 +65,6 @@ export default function ContactMessagesAdmin() {
       <div className="mx-auto max-w-7xl space-y-8">
         <div className="flex flex-col gap-2">
           <h2 className="text-3xl font-bold text-gray-900">Contact Messages</h2>
-          <p className="max-w-2xl text-gray-500">Messages submitted from the public contact form appear here.</p>
         </div>
 
         {loading ? (
