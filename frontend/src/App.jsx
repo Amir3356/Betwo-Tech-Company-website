@@ -50,9 +50,6 @@ function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
 
-  console.log("Current path:", location.pathname);
-  console.log("isAdminRoute:", isAdminRoute);
-
   return (
     <div className="relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col transition-colors duration-300">
       {!isAdminRoute && <Navbar />}
