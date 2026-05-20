@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ContactMessage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactMessageController extends Controller
 {
@@ -30,6 +31,17 @@ class ContactMessageController extends Controller
             'subject' => $validated['subject'] ?? null,
             'message' => $validated['message'],
         ]);
+
+        Mail::send('emails.contact', [
+            'name' => $contactMessage->name,
+            'email' => $contactMessage->email,
+            'subject' => $contactMessage->subject,
+            'message' => $contactMessage->message,
+        ], function ($message) use ($contactMessage) {
+            $message->to(config('mail.from.address'))
+                ->subject('New Contact Message: ' . ($contactMessage->subject ?: 'No Subject'))
+                ->from($contactMessage->email, $contactMessage->name);
+        });
 
         return response()->json([
             'message' => 'Your message has been received.',
