@@ -11,10 +11,8 @@ import {
   Lightbulb,
   Star,
   Handshake,
-  ChevronRight,
   Activity,
   Globe,
-  Calendar,
   Briefcase,
   Zap,
 } from "lucide-react";

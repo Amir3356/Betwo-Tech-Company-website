@@ -142,59 +142,9 @@ body {
 }
 
 /* Thin Scrollbar Variant */
-.thin-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
 
-.thin-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
 
-.thin-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.4);
-  border-radius: 10px;
-}
 
-.dark .thin-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(14, 165, 233, 0.4);
-}
-
-/* Overlay Scrollbar (macOS style) */
-.overlay-scrollbar {
-  overflow: overlay;
-}
-
-.overlay-scrollbar::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-.overlay-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.overlay-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.5);
-  border-radius: 10px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-
-.dark .overlay-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(14, 165, 233, 0.5);
-  background-clip: padding-box;
-}
-
-.overlay-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.7);
-  background-clip: padding-box;
-}
-
-.dark .overlay-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(14, 165, 233, 0.7);
-  background-clip: padding-box;
-}
 
 
 
@@ -447,8 +397,7 @@ button,
 
 /* Code & Technical Text */
 code,
-pre,
-.code-block {
+pre {
   font-family: var(--font-mono);
   font-weight: 400;
 }
@@ -572,25 +521,7 @@ p {
   font-weight: 600;
 }
 
-/* Parallax Effects */
-.parallax-section {
-  position: relative;
-  overflow: hidden;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
 
-.parallax-layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.parallax-bg {
-  will-change: transform;
-  backface-visibility: hidden;
-}
 
 /* Smooth Scrolling */
 html {
@@ -863,23 +794,7 @@ html {
   }
 }
 
-/* Hero Parallax Enhancements */
-#home .hero-floating-element {
-  animation: float 6s ease-in-out infinite;
-}
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(5deg);
-  }
-}
-
-#home .hero-pulse {
-  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
 
 @keyframes pulse {
   0%, 100% {
@@ -902,53 +817,14 @@ html {
   }
 }
 
-.animated-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 15s ease infinite;
-}
 
-/* 3D Transform Effects */
-.transform-3d {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.transform-3d-child {
-  transform: translateZ(50px);
-}
-
-/* Depth Layers for Parallax */
-.depth-layer-1 {
-  transform: translateZ(0px);
-}
-
-.depth-layer-2 {
-  transform: translateZ(20px);
-}
-
-.depth-layer-3 {
-  transform: translateZ(40px);
-}
-
-.depth-layer-4 {
-  transform: translateZ(60px);
-}
-
-/* Performance Optimizations */
-.parallax-optimized {
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
 
 /* Smooth Transitions */
 .smooth-transition {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.smooth-transition-slow {
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
+
 
 /* ============================================
    COMPREHENSIVE HOVER EFFECTS
@@ -956,7 +832,6 @@ html {
    ============================================ */
 
 /* Card Hover Effects */
-.card-hover,
 .service-card,
 .project-card,
 .value-card,
@@ -964,7 +839,6 @@ html {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card-hover:hover,
 .service-card:hover,
 .project-card:hover,
 .value-card:hover,
@@ -973,7 +847,6 @@ html {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.dark .card-hover:hover,
 .dark .service-card:hover,
 .dark .project-card:hover,
 .dark .value-card:hover,
@@ -1104,25 +977,12 @@ img {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.image-hover:hover img,
 .project-card:hover img,
 .service-card:hover img {
   transform: scale(1.1);
 }
 
-/* Icon Hover Effects */
-.icon-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.icon-hover:hover {
-  transform: scale(1.15) rotate(5deg);
-  color: #0ea5e9;
-}
-
-.dark .icon-hover:hover {
-  color: #38bdf8;
-}
 
 /* Input Focus & Hover Effects */
 input:hover,
@@ -1328,79 +1188,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Glow Effect on Hover */
-.glow-on-hover:hover {
-  box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
-}
 
-.dark .glow-on-hover:hover {
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
-}
-
-/* Underline Animation */
-.underline-hover {
-  position: relative;
-}
-
-.underline-hover::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #0ea5e9;
-  transition: width 0.3s ease;
-}
-
-.underline-hover:hover::after {
-  width: 100%;
-}
-
-.dark .underline-hover::after {
-  background: #38bdf8;
-}
-
-/* Scale Animation */
-.scale-hover {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.scale-hover:hover {
-  transform: scale(1.05);
-}
-
-/* Rotate Animation */
-.rotate-hover {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.rotate-hover:hover {
-  transform: rotate(5deg);
-}
-
-/* Slide Animation */
-.slide-hover {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.slide-hover:hover {
-  transform: translateX(5px);
-}
-
-/* Pulse Animation */
-@keyframes pulse-hover {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-.pulse-hover:hover {
-  animation: pulse-hover 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
 
 /* Accessibility - Focus Visible */
 *:focus-visible {
@@ -1764,11 +1552,7 @@ details summary::-webkit-details-marker {
   overflow: hidden;
 }
 
-/* Webkit Mask Image */
-.mask-gradient {
-  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-}
+
 
 /* Smooth Scrolling */
 html {
