@@ -294,13 +294,13 @@ export default function ContactOverview() {
 
         {/* CTA Section */}
         <motion.div
-          className="text-center bg-slate-50 dark:bg-slate-900 rounded-2xl p-12 border border-slate-200 dark:border-slate-800 mb-16"
+          className="text-center bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 sm:p-8 md:p-12 border border-slate-200 dark:border-slate-800 mb-8 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">
             Need More Information?
           </h3>
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
