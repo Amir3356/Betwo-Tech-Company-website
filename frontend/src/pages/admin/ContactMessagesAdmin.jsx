@@ -61,7 +61,7 @@ export default function ContactMessagesAdmin() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 px-6 py-8 md:px-10 lg:px-12">
+    <div className="min-h-screen bg-gray-100 px-4 py-8 md:px-6 lg:px-10 lg:py-8">
       <div className="mx-auto max-w-7xl space-y-8">
         <div className="flex flex-col gap-2">
           <h2 className="text-3xl font-bold text-gray-900">Contact Messages</h2>
