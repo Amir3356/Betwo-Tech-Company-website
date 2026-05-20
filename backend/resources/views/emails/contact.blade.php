@@ -28,11 +28,11 @@
             </div>
             <div class="field">
                 <div class="label">Subject</div>
-                <div class="value">{{ $subject ?: 'No Subject' }}</div>
+                <div class="value">{{ $subject ?? 'No Subject' }}</div>
             </div>
             <div class="field">
                 <div class="label">Message</div>
-                <div class="message-box">{{ $message }}</div>
+                <div class="message-box">{{ $content }}</div>
             </div>
             <div class="footer">
                 Sent from Betwo Tech website contact form

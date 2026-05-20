@@ -36,9 +36,9 @@ class ContactMessageController extends Controller
             'name' => $contactMessage->name,
             'email' => $contactMessage->email,
             'subject' => $contactMessage->subject,
-            'message' => $contactMessage->message,
-        ], function ($message) use ($contactMessage) {
-            $message->to(config('mail.from.address'))
+            'content' => $contactMessage->message,
+        ], function ($mail) use ($contactMessage) {
+            $mail->to(config('mail.from.address'))
                 ->subject('New Contact Message: ' . ($contactMessage->subject ?: 'No Subject'))
                 ->from($contactMessage->email, $contactMessage->name);
         });
