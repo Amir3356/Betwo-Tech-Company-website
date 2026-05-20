@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Mail, LoaderCircle, AlertCircle, Clock3, User, AtSign } from "lucide-react";
+import { Mail, LoaderCircle, AlertCircle, Clock3, User, AtSign, Trash2 } from "lucide-react";
 
 function formatDate(value) {
   if (!value) return "Unknown";
@@ -19,6 +19,17 @@ export default function ContactMessagesAdmin() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this message?")) return;
+
+    try {
+      await axios.delete(`/api/contact-messages/${id}`);
+      setMessages((prev) => prev.filter((msg) => msg.id !== id));
+    } catch {
+      alert("Failed to delete message.");
+    }
+  };
 
   useEffect(() => {
     let isMounted = true;
