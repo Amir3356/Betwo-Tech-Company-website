@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { Mail, LayoutGrid, Shield, ChevronRight, LogOut } from "lucide-react";
+import { Mail, LayoutGrid, Shield, ChevronRight, LogOut, Menu, X } from "lucide-react";
 import axios from "axios";
 
 const navigation = [
@@ -12,6 +12,7 @@ export default function AdminLayout() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     axios.get("/api/admin/me")
@@ -45,7 +46,7 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
       <div className="flex min-h-screen">
-        <aside className="sticky top-0 h-screen w-[280px] shrink-0 border-r border-gray-200 bg-white px-5 py-6">
+        <aside className="sticky top-0 h-screen w-[280px] shrink-0 border-r border-gray-200 bg-white px-5 py-6 max-lg:hidden">
           <div className="mb-8 flex items-center gap-3 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/15 text-blue-500">
               <Shield size={22} />
