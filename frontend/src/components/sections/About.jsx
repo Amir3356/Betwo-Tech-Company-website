@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   CheckCircle,
@@ -11,10 +10,8 @@ import {
   Lightbulb,
   Star,
   Handshake,
-  ChevronRight,
   Activity,
   Globe,
-  Calendar,
   Briefcase,
   Zap,
 } from "lucide-react";
@@ -71,17 +68,6 @@ const badgeVariants = {
     y: 0,
     scale: 1,
     transition: { duration: 0.5, ease: "easeOut", delay: 0.2 },
-  },
-};
-
-const purposeSectionVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.14,
-      delayChildren: 0.12,
-    },
   },
 };
 
