@@ -139,12 +139,7 @@ export default function ProjectsAdmin() {
     <div className="min-h-screen bg-gray-100 px-6 py-8 md:px-10 lg:px-12">
       <div className="mx-auto max-w-7xl space-y-8">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-2">
-            <p className="text-sm uppercase tracking-[0.3em] text-blue-500">
-              Project Overview
-            </p>
-            <h2 className="text-3xl font-bold text-gray-900">Projects</h2>
-          </div>
+          <h2 className="text-3xl font-bold text-gray-900">Projects</h2>
           <button
             onClick={openCreateModal}
             className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
