@@ -22,7 +22,7 @@ class ProjectController extends Controller
             'uptime' => 'nullable|string|max:50',
             'duration' => 'required|string|max:100',
             'description' => 'required|string',
-            'image' => 'nullable',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
         ]);
 
         $imagePath = null;
