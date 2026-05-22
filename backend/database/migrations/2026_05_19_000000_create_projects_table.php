@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('uptime')->default('99.9%');
             $table->string('duration');
             $table->text('description');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
