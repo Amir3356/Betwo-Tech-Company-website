@@ -8,7 +8,7 @@ const imageMap = {
   "Custom Management Systems": "/assets/Custom Management System.jpeg",
   "Web & Mobile Application Development": "/assets/Web-Mobile-Application-Development.jpeg",
   "Business Process Digitalization": "/assets/Business Process Digitalization.jpeg",
-  "UI/UX Design for Management Systems": "/assets/UI/UX Design for Management Systems.jpeg",
+  "UI/UX Design for Management Systems": "/assets/UX Design for Management Systems.jpeg",
   "System Upgrade & Optimization": "/assets/System-Upgrade-Optimization.jpeg",
   "Support & Long-Term Partnership": "/assets/Support & Long-Term Partnership.jpeg"
 };
