@@ -8,12 +8,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ProjectController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Facade;
 
 // Create a test image file
 $testImagePath = __DIR__.'/storage/app/public/projects/test.png';
 file_put_contents($testImagePath, base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAGgJJlKUABQKAAAABJRU5ErkJggg=='));
 
 echo "Created test image at: $testImagePath".PHP_EOL;
+
+Facade::setFacadeApplication($app);
+$app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
 // Create request with file
 $request = Request::create('/api/projects', 'POST', [
