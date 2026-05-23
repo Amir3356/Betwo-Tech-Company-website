@@ -3,4 +3,3 @@ node_modules/
 storage/projects/*
 !storage/projects/.gitkeep
 
-/src/generated/prisma
