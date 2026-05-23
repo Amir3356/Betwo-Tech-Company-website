@@ -1,8 +1,8 @@
 import createApp from "./app.js";
-import { ensureDatabaseSchema } from "./config/db.js";
+import { pool, ensureDatabaseSchema } from "./config/db.js";
 
 const port = process.env.PORT || 5000;
-const app = createApp();
+const app = createApp(pool);
 
 async function startServer() {
   try {
