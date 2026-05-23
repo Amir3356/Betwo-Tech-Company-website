@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { ArrowRight, CheckCircle, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { resolveProjectImageUrl } from "../../utils/projectImageUrl";
 
 const sectionVariants = {
   hidden: { opacity: 0 },
@@ -93,7 +94,7 @@ export default function FeaturedProjects() {
               <div className="relative h-36 overflow-hidden bg-slate-200 dark:bg-slate-800">
                 {project.image ? (
                   <img
-                    src={project.image}
+                    src={resolveProjectImageUrl(project.image)}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />

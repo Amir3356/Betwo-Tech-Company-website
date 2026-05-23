@@ -11,6 +11,7 @@ import {
   Building2,
   Upload,
 } from "lucide-react";
+import { resolveProjectImageUrl } from "../../utils/projectImageUrl";
 
 const INITIAL_FORM = {
   title: "",
@@ -45,7 +46,32 @@ export default function ProjectsAdmin() {
   };
 
   useEffect(() => {
-    fetchProjects();
+    let isActive = true;
+
+    const loadProjects = async () => {
+      try {
+        const response = await axios.get("/api/projects");
+        if (!isActive) {
+          return;
+        }
+        setProjects(response.data?.data || []);
+        setError("");
+      } catch {
+        if (isActive) {
+          setError("Unable to load projects.");
+        }
+      } finally {
+        if (isActive) {
+          setLoading(false);
+        }
+      }
+    };
+
+    void loadProjects();
+
+    return () => {
+      isActive = false;
+    };
   }, []);
 
   const openCreateModal = () => {
@@ -64,7 +90,7 @@ export default function ProjectsAdmin() {
       duration: project.duration || "",
       description: project.description || "",
       image: null,
-      imagePreview: project.image || null,
+      imagePreview: resolveProjectImageUrl(project.image) || null,
     });
     setFormError("");
     setIsModalOpen(true);
@@ -182,7 +208,7 @@ export default function ProjectsAdmin() {
                 <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100">
                   {project.image ? (
                     <img
-                      src={project.image}
+                      src={resolveProjectImageUrl(project.image)}
                       alt={project.title}
                       className="h-full w-full object-cover transition group-hover:scale-105"
                     />

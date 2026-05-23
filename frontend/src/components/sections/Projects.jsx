@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { CheckCircle, Building2 } from "lucide-react";
+import { resolveProjectImageUrl } from "../../utils/projectImageUrl";
 
 export default function Projects() {
   const [data, setData] = useState(null);
@@ -155,7 +156,7 @@ export default function Projects() {
               <div className="h-36 sm:h-40 lg:h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden">
                 {project.image ? (
                   <motion.img
-                    src={project.image}
+                    src={resolveProjectImageUrl(project.image)}
                     alt={project.title}
                     className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
                     initial={{ scale: 0.98, opacity: 0 }}
