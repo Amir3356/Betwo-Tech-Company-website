@@ -118,7 +118,15 @@ export default function ProjectsAdmin() {
       await fetchProjects();
       closeModal();
     } catch (err) {
-      setFormError(err.response?.data?.message || "Failed to save project.");
+      if (err.response && err.response.data && err.response.data.errors) {
+        // Handle validation errors
+        const firstError = Object.values(err.response.data.errors)[0][0];
+        setFormError(firstError);
+      } else if (err.response && err.response.data && err.response.data.message) {
+        setFormError(err.response.data.message);
+      } else {
+        setFormError("Failed to save project.");
+      }
     } finally {
       setSaving(false);
     }
