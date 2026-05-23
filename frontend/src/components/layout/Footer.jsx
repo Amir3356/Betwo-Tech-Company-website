@@ -163,7 +163,7 @@ export default function Footer() {
                       Address
                     </p>
                     <p className="text-sm text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
-                      Addis Ababa, Ethiopia<br/>Bole, 1000
+                      Addis Ababa Meskel Flower<br/>YIBE Real Estate And Trading  second floor
                     </p>
                   </div>
                 </div>
