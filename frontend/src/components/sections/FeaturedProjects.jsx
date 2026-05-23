@@ -91,12 +91,12 @@ export default function FeaturedProjects() {
               transition={{ type: "spring", stiffness: 260, damping: 18 }}
               className="rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all group"
             >
-              <div className="relative h-36 overflow-hidden bg-slate-200 dark:bg-slate-800">
+              <div className="relative h-36 overflow-hidden bg-slate-100 dark:bg-slate-800">
                 {project.image ? (
                   <img
                     src={resolveProjectImageUrl(project.image)}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-contain bg-white/70 p-2 transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-400">

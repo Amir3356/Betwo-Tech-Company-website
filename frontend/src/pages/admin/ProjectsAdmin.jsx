@@ -205,12 +205,12 @@ export default function ProjectsAdmin() {
                 key={project.id}
                 className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg"
               >
-                <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100">
+                <div className="aspect-[16/10] w-full overflow-hidden bg-gray-50">
                   {project.image ? (
                     <img
                       src={resolveProjectImageUrl(project.image)}
                       alt={project.title}
-                      className="h-full w-full object-cover transition group-hover:scale-105"
+                      className="h-full w-full object-contain bg-white/80 p-3 transition group-hover:scale-105"
                     />
                   ) : (
                     <div className="flex h-full items-center justify-center text-gray-400">
@@ -363,7 +363,7 @@ export default function ProjectsAdmin() {
                   <img
                     src={formData.imagePreview}
                     alt="Preview"
-                    className="h-32 w-full rounded-lg object-cover"
+                    className="h-32 w-full rounded-lg object-contain bg-white p-2"
                   />
                 </div>
               )}

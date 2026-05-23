@@ -153,12 +153,12 @@ export default function Projects() {
               whileHover={{ y: -8, scale: 1.02 }}
               className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-700 group"
             >
-              <div className="h-36 sm:h-40 lg:h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden">
+              <div className="h-36 sm:h-40 lg:h-48 bg-slate-100 dark:bg-slate-700 relative overflow-hidden">
                 {project.image ? (
                   <motion.img
                     src={resolveProjectImageUrl(project.image)}
                     alt={project.title}
-                    className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="h-full w-full object-contain bg-white/70 p-2 transition-transform duration-300 group-hover:scale-105"
                     initial={{ scale: 0.98, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true, amount: 0.6 }}
