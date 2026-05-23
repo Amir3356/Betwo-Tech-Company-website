@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { ArrowRight, CheckCircle, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
-import { resolveProjectImageUrl } from "../../utils/projectImageUrl";
 
 const sectionVariants = {
   hidden: { opacity: 0 },
@@ -33,21 +31,22 @@ export default function FeaturedProjects() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("/api/projects")
-      .then((response) => {
-        const projects = response.data?.data || [];
+    fetch("/data/projects.json")
+      .then((res) => {
+        if (res.ok) return res.json();
+        throw new Error("Failed to load");
+      })
+      .then((json) => {
         setData({
           title: "Featured Projects",
           description: "Real-world systems we build to streamline operations, improve visibility, and scale businesses. Each project is crafted with precision and purpose.",
-          projects: projects,
+          projects: json.projects || [],
           moreProjectsText: "View All Projects",
           highlights: ["Enterprise Grade", "Production Ready", "Scalable Architecture"],
         });
         setLoading(false);
       })
-      .catch((err) => {
-        console.error("Failed to load featured projects data:", err);
+      .catch(() => {
         setLoading(false);
       });
   }, []);
@@ -94,7 +93,7 @@ export default function FeaturedProjects() {
               <div className="relative h-36 overflow-hidden bg-slate-100 dark:bg-slate-800">
                 {project.image ? (
                   <img
-                    src={resolveProjectImageUrl(project.image)}
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-contain bg-white/70 p-2 transition-transform duration-300 group-hover:scale-105"
                   />

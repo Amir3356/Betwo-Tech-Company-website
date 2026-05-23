@@ -1,23 +1,10 @@
 import { Mail, Phone, MapPin, Clock, Send, ChevronDown, Navigation, Bus, Car, CheckCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
 
 const iconMap = { Mail, Phone, MapPin, Clock };
 
-function getSubmissionErrorMessage(error) {
-  const validationErrors = error?.response?.data?.errors;
 
-  if (validationErrors && typeof validationErrors === "object") {
-    const firstError = Object.values(validationErrors).flat()?.[0];
-
-    if (firstError) {
-      return firstError;
-    }
-  }
-
-  return error?.response?.data?.message || "Failed to send your message. Please try again.";
-}
 
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false);
@@ -48,29 +35,26 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    axios.get("/data/contactUs.json")
-      .then((res) => { setData(res.data); setLoading(false); })
+    fetch("/data/contactUs.json")
+      .then((res) => { if (res.ok) return res.json(); throw new Error("Failed to load"); })
+      .then((data) => { setData(data); setLoading(false); })
       .catch(() => setLoading(false));
   }, []);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError("");
 
-    try {
-      await axios.post("/api/contact-messages", formData);
+    setTimeout(() => {
       setSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
+      setIsSubmitting(false);
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
-    } catch (submissionError) {
-      setError(getSubmissionErrorMessage(submissionError));
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   if (loading) return <section className="bg-white dark:bg-slate-950 pt-20 sm:pt-24 lg:pt-32 pb-10 sm:pb-12 lg:pb-16">Loading...</section>;

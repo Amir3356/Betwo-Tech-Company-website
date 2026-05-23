@@ -1,23 +1,10 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, Send, ArrowRight, CheckCircle } from "lucide-react";
 
 const iconMap = { Mail, Phone, MapPin, Clock };
 
-function getSubmissionErrorMessage(error) {
-  const validationErrors = error?.response?.data?.errors;
 
-  if (validationErrors && typeof validationErrors === "object") {
-    const firstError = Object.values(validationErrors).flat()?.[0];
-
-    if (firstError) {
-      return firstError;
-    }
-  }
-
-  return error?.response?.data?.message || "Failed to send your message. Please try again.";
-}
 
 const sectionVariants = {
   hidden: { opacity: 0 },
@@ -49,14 +36,16 @@ export default function ContactOverview() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    axios
-      .get("/data/contactUs.json")
+    fetch("/data/contactUs.json")
       .then((response) => {
-        setData(response.data);
+        if (response.ok) return response.json();
+        throw new Error("Failed to load");
+      })
+      .then((data) => {
+        setData(data);
         setLoading(false);
       })
-      .catch((err) => {
-        console.error("Failed to load contact data:", err);
+      .catch(() => {
         setLoading(false);
       });
   }, []);
@@ -70,21 +59,14 @@ export default function ContactOverview() {
     setIsSubmitting(true);
     setError("");
 
-    axios
-      .post("/api/contact-messages", formData)
-      .then(() => {
-        setSubmitted(true);
-        setFormData({ name: "", email: "", message: "" });
-        setTimeout(() => {
-          setSubmitted(false);
-        }, 5000);
-      })
-      .catch((submissionError) => {
-        setError(getSubmissionErrorMessage(submissionError));
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+    setTimeout(() => {
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    }, 1000);
   };
 
   if (loading) {

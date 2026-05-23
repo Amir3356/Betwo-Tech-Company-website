@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Mail, LayoutGrid, Shield, ChevronRight, LogOut, Menu, X } from "lucide-react";
-import axios from "axios";
 
 const navigation = [
   { label: "Contact Messages", to: "/admin/contact-messages", icon: Mail },
@@ -10,37 +9,10 @@ const navigation = [
 
 export default function AdminLayout() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [authenticated, setAuthenticated] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  useEffect(() => {
-    axios.get("/api/admin/me")
-      .then((res) => {
-        if (res.data?.data) {
-          setAuthenticated(true);
-        } else {
-          navigate("/admin/login", { replace: true });
-        }
-      })
-      .catch(() => {
-        navigate("/admin/login", { replace: true });
-      })
-      .finally(() => setLoading(false));
-  }, [navigate]);
-
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center bg-gray-100">Loading...</div>;
-  }
-
-  if (!authenticated) {
-    return null;
-  }
-
   const handleLogout = () => {
-    axios.post("/api/admin/logout").finally(() => {
-      window.location.href = "/admin/login";
-    });
+    window.location.href = "/admin/login";
   };
 
   const SidebarNav = () => (

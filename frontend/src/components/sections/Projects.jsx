@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
 import { CheckCircle, Building2 } from "lucide-react";
-import { resolveProjectImageUrl } from "../../utils/projectImageUrl";
 
 export default function Projects() {
   const [data, setData] = useState(null);
@@ -13,32 +11,28 @@ export default function Projects() {
   const animatedRef = useRef(false);
 
   useEffect(() => {
-    const fetchProjectsData = async () => {
-      try {
-        const [projectsResponse, jsonResponse] = await Promise.all([
-          axios.get("/api/projects"),
-          axios.get("/data/projects.json")
-        ]);
-        const projects = projectsResponse.data?.data || [];
-        const jsonData = jsonResponse.data;
+    fetch("/data/projects.json")
+      .then((res) => {
+        if (res.ok) return res.json();
+        throw new Error("Failed to load");
+      })
+      .then((jsonData) => {
         setData({
           title: jsonData.title,
           description: jsonData.description,
           metrics: jsonData.metrics,
           categories: jsonData.categories,
-          projects: projects
+          projects: jsonData.projects || []
         });
         if (jsonData?.metrics) {
           setCounts(jsonData.metrics.map(() => "0"));
         }
         setLoading(false);
-      } catch (err) {
+      })
+      .catch((err) => {
         setError(err.message);
         setLoading(false);
-      }
-    };
-
-    fetchProjectsData();
+      });
   }, []);
 
   useEffect(() => {
@@ -156,7 +150,7 @@ export default function Projects() {
               <div className="h-36 sm:h-40 lg:h-48 bg-slate-100 dark:bg-slate-700 relative overflow-hidden">
                 {project.image ? (
                   <motion.img
-                    src={resolveProjectImageUrl(project.image)}
+                    src={project.image}
                     alt={project.title}
                     className="h-full w-full object-contain bg-white/70 p-2 transition-transform duration-300 group-hover:scale-105"
                     initial={{ scale: 0.98, opacity: 0 }}
