@@ -137,6 +137,7 @@ export default function ProjectsAdmin() {
       }
 
       if (editingProject) {
+        formPayload.append("_method", "PUT");
         await axios.post(`/api/projects/${editingProject.id}`, formPayload);
       } else {
         await axios.post("/api/projects", formPayload);
