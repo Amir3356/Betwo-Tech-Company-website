@@ -12,7 +12,10 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::orderBy('created_at', 'desc')->get();
-        return response()->json(['data' => $projects]);
+
+        return response()->json([
+            'data' => $projects->map(fn (Project $project) => $this->formatProject($project, request())),
+        ]);
     }
 
     public function store(Request $request)
@@ -32,12 +35,13 @@ class ProjectController extends Controller
         }
 
         $project = Project::create(array_merge($validated, ['image' => $imagePath ? '/storage/' . $imagePath : null]));
-        return response()->json(['data' => $project], 201);
+
+        return response()->json(['data' => $this->formatProject($project, $request)], 201);
     }
 
-    public function show(Project $project)
+    public function show(Request $request, Project $project)
     {
-        return response()->json(['data' => $project]);
+        return response()->json(['data' => $this->formatProject($project, $request)]);
     }
 
     public function update(Request $request, Project $project)
@@ -61,7 +65,8 @@ class ProjectController extends Controller
         }
 
         $project->update($validated);
-        return response()->json(['data' => $project]);
+
+        return response()->json(['data' => $this->formatProject($project->fresh(), $request)]);
     }
 
     public function destroy(Project $project)
@@ -72,5 +77,16 @@ class ProjectController extends Controller
         }
         $project->delete();
         return response()->json(['message' => 'Project deleted successfully']);
+    }
+
+    private function formatProject(Project $project, Request $request): array
+    {
+        $projectData = $project->toArray();
+
+        if (!empty($projectData['image']) && str_starts_with($projectData['image'], '/storage/')) {
+            $projectData['image'] = $request->getSchemeAndHttpHost() . $projectData['image'];
+        }
+
+        return $projectData;
     }
 }

@@ -20,7 +20,7 @@ Facade::setFacadeApplication($app);
 $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
 // Create request with file
-$request = Request::create('/api/projects', 'POST', [
+$request = Request::create('http://localhost:8000/api/projects', 'POST', [
     'title' => 'Test Project Fix',
     'category' => 'Testing',
     'uptime' => '99.9%',
@@ -52,7 +52,8 @@ try {
     
     // Check if file was actually stored
     if ($data['data']['image']) {
-        $imagePath = str_replace('/storage/', '', $data['data']['image']);
+        $imagePath = parse_url($data['data']['image'], PHP_URL_PATH) ?: $data['data']['image'];
+        $imagePath = str_replace('/storage/', '', $imagePath);
         $fullPath = storage_path('app/public/').$imagePath;
         echo 'File exists: '.(file_exists($fullPath) ? 'Yes' : 'No').PHP_EOL;
         if (file_exists($fullPath)) {
