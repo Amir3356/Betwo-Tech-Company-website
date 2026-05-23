@@ -318,7 +318,6 @@ export default function ProjectsAdmin() {
                   <div className="relative">
                     <input
                       type="file"
-                      accept="image/*"
                       onChange={handleImageChange}
                       className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
                     />
