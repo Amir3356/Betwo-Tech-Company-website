@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -16,14 +17,14 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $validated = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'uptime' => 'nullable|string|max:50',
             'duration' => 'required|string|max:100',
             'description' => 'required|string',
             'image' => 'nullable',
-        ]);
+        ])->validate();
 
         $imagePath = null;
         if ($request->hasFile('image')) {
@@ -41,14 +42,14 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project)
     {
-        $validated = $request->validate([
+        $validated = Validator::make($request->all(), [
             'title' => 'sometimes|string|max:255',
             'category' => 'sometimes|string|max:255',
             'uptime' => 'nullable|string|max:50',
             'duration' => 'sometimes|string|max:100',
             'description' => 'sometimes|string',
             'image' => 'nullable',
-        ]);
+        ])->validate();
 
         if ($request->hasFile('image')) {
             if ($project->image) {
