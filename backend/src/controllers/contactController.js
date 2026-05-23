@@ -1,5 +1,4 @@
 import { pool } from "../config/db.js";
-
 export async function createContactMessage(req, res) {
   const { name, email, subject, message } = req.body || {};
 
