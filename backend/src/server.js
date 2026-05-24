@@ -1,3 +1,4 @@
+import "dotenv/config";
 import createApp from "./app.js";
 import { pool, ensureDatabaseSchema } from "./config/db.js";
 
