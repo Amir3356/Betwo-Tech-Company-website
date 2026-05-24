@@ -42,19 +42,37 @@ export default function Contact() {
   }, []);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError("");
 
-    setTimeout(() => {
+    try {
+      const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const response = await fetch(`${apiBaseUrl}/api/contact-messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to send message.");
+      }
+
       setSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
-      setIsSubmitting(false);
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
-    }, 1000);
+    } catch (submitError) {
+      setError(submitError.message || "Failed to send message.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (loading) return <section className="bg-white dark:bg-slate-950 pt-20 sm:pt-24 lg:pt-32 pb-10 sm:pb-12 lg:pb-16">Loading...</section>;
