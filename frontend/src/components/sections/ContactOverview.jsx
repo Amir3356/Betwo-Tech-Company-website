@@ -59,14 +59,34 @@ export default function ContactOverview() {
     setIsSubmitting(true);
     setError("");
 
-    setTimeout(() => {
-      setSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-      setIsSubmitting(false);
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    }, 1000);
+    (async () => {
+      try {
+        const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+        const response = await fetch(`${apiBaseUrl}/api/contact-messages`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...formData, subject: "" }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || "Failed to send message.");
+        }
+
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      } catch (submitError) {
+        setError(submitError.message || "Failed to send message.");
+      } finally {
+        setIsSubmitting(false);
+      }
+    })();
   };
 
   if (loading) {
