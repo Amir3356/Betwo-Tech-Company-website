@@ -48,8 +48,13 @@ export default function FeaturedProjects() {
         const contentJson = await contentResponse.json();
         const projectsJson = projectsResponse.ok ? await projectsResponse.json() : { data: [] };
 
-        const publicProjects = Array.isArray(projectsJson?.data) ? projectsJson.data : [];
-        const staticProjects = contentJson.projects || [];
+        const publicProjects = Array.isArray(projectsJson?.data)
+          ? projectsJson.data.map((project) => ({ ...project, source: "dynamic" }))
+          : [];
+        const staticProjects = (contentJson.projects || []).map((project) => ({
+          ...project,
+          source: "static",
+        }));
         const mergedProjects = [...publicProjects, ...staticProjects];
 
         setData({
@@ -110,7 +115,7 @@ export default function FeaturedProjects() {
         >
           {projects.map((project) => (
             <motion.div
-              key={project.id}
+              key={`${project.source || "project"}-${project.id}`}
               variants={cardVariants}
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 260, damping: 18 }}
