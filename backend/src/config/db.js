@@ -60,6 +60,20 @@ async function ensureDatabaseSchema() {
       updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
   `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS services (
+      id INTEGER PRIMARY KEY DEFAULT 1 CHECK (id = 1),
+      content JSONB NOT NULL DEFAULT '{}'::jsonb,
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+  `);
+
+  await pool.query(`
+    INSERT INTO services (id, content, updated_at)
+    VALUES (1, '{}'::jsonb, NOW())
+    ON CONFLICT (id) DO NOTHING;
+  `);
 }
 
 export { pool, ensureDatabaseSchema };
