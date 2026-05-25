@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle, Building2 } from "lucide-react";
+import { resolveProjectImageUrl } from "../../utils/projectImageUrl";
 
 export default function Projects() {
   const [data, setData] = useState(null);
@@ -11,28 +12,41 @@ export default function Projects() {
   const animatedRef = useRef(false);
 
   useEffect(() => {
-    fetch("/data/projects.json")
-      .then((res) => {
-        if (res.ok) return res.json();
-        throw new Error("Failed to load");
-      })
-      .then((jsonData) => {
+    const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
+    const loadProjects = async () => {
+      try {
+        const [contentResponse, projectsResponse] = await Promise.all([
+          fetch("/data/projects.json"),
+          fetch(`${apiBaseUrl}/api/projects`),
+        ]);
+
+        if (!contentResponse.ok) {
+          throw new Error("Failed to load");
+        }
+
+        const jsonData = await contentResponse.json();
+        const projectsJson = projectsResponse.ok ? await projectsResponse.json() : { data: [] };
+        const backendProjects = Array.isArray(projectsJson?.data) ? projectsJson.data : [];
+
         setData({
           title: jsonData.title,
           description: jsonData.description,
           metrics: jsonData.metrics,
           categories: jsonData.categories,
-          projects: jsonData.projects || []
+          projects: [...backendProjects, ...(jsonData.projects || [])],
         });
         if (jsonData?.metrics) {
           setCounts(jsonData.metrics.map(() => "0"));
         }
-        setLoading(false);
-      })
-      .catch((err) => {
+      } catch (err) {
         setError(err.message);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    loadProjects();
   }, []);
 
   useEffect(() => {
@@ -150,7 +164,7 @@ export default function Projects() {
               <div className="h-36 sm:h-40 lg:h-48 bg-slate-100 dark:bg-slate-700 relative overflow-hidden">
                 {project.image ? (
                   <motion.img
-                    src={project.image}
+                    src={resolveProjectImageUrl(project.image)}
                     alt={project.title}
                     className="h-full w-full object-contain bg-white/70 p-2 transition-transform duration-300 group-hover:scale-105"
                     initial={{ scale: 0.98, opacity: 0 }}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Plus, Building2, X, Upload, LoaderCircle } from "lucide-react";
+import { Plus, Building2, X, Upload, LoaderCircle, Pencil, Trash2 } from "lucide-react";
 import { resolveProjectImageUrl } from "../../utils/projectImageUrl";
 
 export default function ProjectsAdmin() {
@@ -8,6 +8,7 @@ export default function ProjectsAdmin() {
   const [error, setError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [editingProjectId, setEditingProjectId] = useState(null);
   const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -53,6 +54,7 @@ export default function ProjectsAdmin() {
   };
 
   const resetForm = () => {
+    setEditingProjectId(null);
     setFormData({
       title: "",
       category: "",
@@ -63,53 +65,62 @@ export default function ProjectsAdmin() {
     });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setIsSubmitting(true);
+  const openCreateModal = () => {
+    resetForm();
+    setIsModalOpen(true);
+  };
+
+  const openEditModal = (project) => {
+    setEditingProjectId(project.id);
+    setFormData({
+      title: project.title || "",
+      category: project.category || "",
+      uptime: project.uptime || "99.9%",
+      duration: project.duration || "",
+      description: project.description || "",
+      image: null,
+    });
+    setIsModalOpen(true);
+    setError("");
+  };
+
+  const handleDelete = async (id) => {
+    const shouldDelete = window.confirm("Delete this project permanently?");
+    if (!shouldDelete) return;
+
     setError("");
 
     try {
-      const payload = new FormData();
-      payload.append("title", formData.title);
-      payload.append("category", formData.category);
-      payload.append("uptime", formData.uptime);
-      payload.append("duration", formData.duration);
-      payload.append("description", formData.description);
-
-      if (formData.image) {
-        payload.append("image", formData.image);
-      }
-
-      const response = await fetch(`${apiBaseUrl}/api/projects`, {
-        method: "POST",
+      const response = await fetch(`${apiBaseUrl}/api/projects/${id}`, {
+        method: "DELETE",
         credentials: "include",
-        body: payload,
       });
 
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result?.message || "Failed to create project.");
+        throw new Error(result?.message || "Failed to delete project.");
       }
 
-      setProjects((current) => [result.data, ...current]);
-      resetForm();
-      setIsModalOpen(false);
-    } catch (submitError) {
-      setError(submitError.message || "Failed to create project.");
-    } finally {
-      setIsSubmitting(false);
+      setProjects((current) => current.filter((project) => project.id !== id));
+    } catch (deleteError) {
+      setError(deleteError.message || "Failed to delete project.");
     }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    resetForm();
   };
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8 md:px-6 lg:px-10 lg:py-8">
       <div className="mx-auto max-w-7xl space-y-8">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-3xl font-bold text-gray-900">Projects</h2>
+          <h2 className="text-3xl font-bold text-gray-900">Project Admin</h2>
           <button
             type="button"
-            onClick={() => setIsModalOpen(true)}
+            onClick={openCreateModal}
             className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
           >
             <Plus size={18} />
@@ -159,6 +170,25 @@ export default function ProjectsAdmin() {
                   </div>
                   <p className="text-sm leading-6 text-gray-600 line-clamp-3">{project.description}</p>
                   <p className="text-xs text-gray-500">Built in {project.duration || ""}</p>
+
+                  <div className="flex gap-2 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => openEditModal(project)}
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+                    >
+                      <Pencil size={16} />
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(project.id)}
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm font-medium text-red-600 transition hover:bg-red-100"
+                    >
+                      <Trash2 size={16} />
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </article>
             ))}
@@ -170,20 +200,72 @@ export default function ProjectsAdmin() {
             <div className="w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
               <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">Add Project</h3>
-                  <p className="text-sm text-gray-500">Create a new project card for the public portfolio.</p>
+                  <h3 className="text-xl font-bold text-gray-900">{editingProjectId ? "Edit Project" : "Add Project"}</h3>
+                  <p className="text-sm text-gray-500">
+                    {editingProjectId ? "Update the project details shown on the public site." : "Create a new project card for the public portfolio."}
+                  </p>
                 </div>
                 <button
                   type="button"
-                  onClick={() => setIsModalOpen(false)}
+                  onClick={handleCloseModal}
                   className="rounded-full p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900"
-                  aria-label="Close add project form"
+                  aria-label="Close project form"
                 >
                   <X size={18} />
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4 px-6 py-6">
+              <form
+                onSubmit={async (event) => {
+                  event.preventDefault();
+                  setIsSubmitting(true);
+                  setError("");
+
+                  try {
+                    const payload = new FormData();
+                    payload.append("title", formData.title);
+                    payload.append("category", formData.category);
+                    payload.append("uptime", formData.uptime);
+                    payload.append("duration", formData.duration);
+                    payload.append("description", formData.description);
+
+                    if (formData.image) {
+                      payload.append("image", formData.image);
+                    }
+
+                    const endpoint = editingProjectId
+                      ? `${apiBaseUrl}/api/projects/${editingProjectId}`
+                      : `${apiBaseUrl}/api/projects`;
+
+                    const response = await fetch(endpoint, {
+                      method: editingProjectId ? "POST" : "POST",
+                      credentials: "include",
+                      body: payload,
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                      throw new Error(result?.message || (editingProjectId ? "Failed to update project." : "Failed to create project."));
+                    }
+
+                    setProjects((current) => {
+                      if (editingProjectId) {
+                        return current.map((project) => (project.id === editingProjectId ? result.data : project));
+                      }
+
+                      return [result.data, ...current];
+                    });
+
+                    handleCloseModal();
+                  } catch (submitError) {
+                    setError(submitError.message || "Failed to save project.");
+                  } finally {
+                    setIsSubmitting(false);
+                  }
+                }}
+                className="space-y-4 px-6 py-6"
+              >
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="space-y-2 text-sm font-medium text-gray-700">
                     <span>Title</span>
@@ -263,7 +345,7 @@ export default function ProjectsAdmin() {
                 <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
                   <button
                     type="button"
-                    onClick={() => setIsModalOpen(false)}
+                    onClick={handleCloseModal}
                     className="rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
                   >
                     Cancel
@@ -274,7 +356,7 @@ export default function ProjectsAdmin() {
                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {isSubmitting ? <LoaderCircle size={18} className="animate-spin" /> : <Plus size={18} />}
-                    {isSubmitting ? "Saving..." : "Save Project"}
+                    {isSubmitting ? "Saving..." : editingProjectId ? "Update Project" : "Save Project"}
                   </button>
                 </div>
               </form>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Code, Database, Smartphone, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -38,18 +37,28 @@ export default function WhatWeDo() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
   useEffect(() => {
-    axios
-      .get("/data/whatWeDo.json")
-      .then((response) => {
-        setData(response.data);
-        setLoading(false);
-      })
-      .catch((err) => {
+    const loadWhatWeDo = async () => {
+      try {
+        const response = await fetch(`${apiBaseUrl}/api/what-we-do`);
+        const payload = await response.json();
+
+        if (!response.ok) {
+          throw new Error(payload?.message || "Failed to load what we do data.");
+        }
+
+        setData(payload?.data || null);
+      } catch (err) {
         console.error("Failed to load what we do data:", err);
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    loadWhatWeDo();
+  }, [apiBaseUrl]);
 
   if (loading) {
     return <p className="px-6 md:px-12 py-20">Loading...</p>;

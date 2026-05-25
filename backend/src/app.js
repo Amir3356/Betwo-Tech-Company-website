@@ -5,6 +5,7 @@ import pgSession from "connect-pg-simple";
 import authRoutes from "./routes/authRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
+import whatWeDoRoutes from "./routes/whatWeDoRoutes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -37,6 +38,7 @@ function createApp(pool) {
   app.use("/api/admin", authRoutes);
   app.use("/api/contact-messages", contactRoutes);
   app.use("/api/projects", projectRoutes);
+  app.use("/api/what-we-do", whatWeDoRoutes);
 
   return app;
 }

@@ -48,6 +48,18 @@ async function ensureDatabaseSchema() {
       updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
   `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS what_we_do_services (
+      id SERIAL PRIMARY KEY,
+      icon VARCHAR(100) NOT NULL,
+      title VARCHAR(255) NOT NULL,
+      description TEXT NOT NULL,
+      position INTEGER NOT NULL DEFAULT 0,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+  `);
 }
 
 export { pool, ensureDatabaseSchema };

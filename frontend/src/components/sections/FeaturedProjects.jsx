@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, CheckCircle, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { resolveProjectImageUrl } from "../../utils/projectImageUrl";
 
 const sectionVariants = {
   hidden: { opacity: 0 },
@@ -30,26 +31,51 @@ export default function FeaturedProjects() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
   useEffect(() => {
-    fetch("/data/projects.json")
-      .then((res) => {
-        if (res.ok) return res.json();
-        throw new Error("Failed to load");
-      })
-      .then((json) => {
+    const loadProjects = async () => {
+      try {
+        const [contentResponse, projectsResponse] = await Promise.all([
+          fetch("/data/projects.json"),
+          fetch(`${apiBaseUrl}/api/projects`),
+        ]);
+
+        if (!contentResponse.ok) {
+          throw new Error("Failed to load project content.");
+        }
+
+        const contentJson = await contentResponse.json();
+        const projectsJson = projectsResponse.ok ? await projectsResponse.json() : { data: [] };
+
+        const publicProjects = Array.isArray(projectsJson?.data) ? projectsJson.data : [];
+        const staticProjects = contentJson.projects || [];
+        const mergedProjects = [...publicProjects, ...staticProjects];
+
         setData({
           title: "Featured Projects",
-          description: "Real-world systems we build to streamline operations, improve visibility, and scale businesses. Each project is crafted with precision and purpose.",
-          projects: json.projects || [],
+          description:
+            "Real-world systems we build to streamline operations, improve visibility, and scale businesses. Each project is crafted with precision and purpose.",
+          projects: mergedProjects,
           moreProjectsText: "View All Projects",
           highlights: ["Enterprise Grade", "Production Ready", "Scalable Architecture"],
         });
+      } catch {
+        setData({
+          title: "Featured Projects",
+          description:
+            "Real-world systems we build to streamline operations, improve visibility, and scale businesses. Each project is crafted with precision and purpose.",
+          projects: [],
+          moreProjectsText: "View All Projects",
+          highlights: ["Enterprise Grade", "Production Ready", "Scalable Architecture"],
+        });
+      } finally {
         setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    loadProjects();
+  }, [apiBaseUrl]);
 
   if (loading) {
     return <p className="px-6 md:px-12 py-20">Loading...</p>;
@@ -93,7 +119,7 @@ export default function FeaturedProjects() {
               <div className="relative h-36 overflow-hidden bg-slate-100 dark:bg-slate-800">
                 {project.image ? (
                   <img
-                    src={project.image}
+                    src={resolveProjectImageUrl(project.image)}
                     alt={project.title}
                     className="w-full h-full object-contain bg-white/70 p-2 transition-transform duration-300 group-hover:scale-105"
                   />
