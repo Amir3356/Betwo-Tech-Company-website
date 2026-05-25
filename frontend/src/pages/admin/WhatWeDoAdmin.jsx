@@ -145,6 +145,23 @@ export function WhatWeDoAdmin() {
     }
   };
 
+  const handleSaveSection = async () => {
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      await saveContent({
+        title: content.title,
+        description: content.description,
+        services: content.services || [],
+      });
+    } catch (saveError) {
+      setError(saveError.message || "Failed to save section content.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   if (loading) {
     return <div className="rounded-3xl border border-gray-200 bg-white p-10 text-center text-gray-500">Loading What We Do content...</div>;
   }
@@ -172,7 +189,19 @@ export function WhatWeDoAdmin() {
 
         <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
           <section className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm space-y-4">
-            <h3 className="text-xl font-bold text-gray-900">Section Content</h3>
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="text-xl font-bold text-gray-900">Section Content</h3>
+              <button
+                type="button"
+                onClick={handleSaveSection}
+                disabled={isSubmitting}
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {isSubmitting ? <LoaderCircle size={18} className="animate-spin" /> : <Sparkles size={18} />}
+                Save Section
+              </button>
+            </div>
+            <p className="text-sm text-gray-500">Edit the title and description shown above the services.</p>
             <label className="block space-y-2 text-sm font-medium text-gray-700">
               <span>Title</span>
               <input
