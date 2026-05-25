@@ -13,7 +13,9 @@ import AdminHome from "./pages/admin/AdminHome";
 import AdminLogin from "./pages/admin/AdminLogin";
 import ContactMessagesAdmin from "./pages/admin/ContactMessagesAdmin";
 import ProjectsAdmin from "./pages/admin/ProjectsAdmin";
-import WhatWeDoAdmin from "./pages/admin/WhatWeDoAdmin";
+import * as WhatWeDoAdminModule from "./pages/admin/WhatWeDoAdmin";
+
+const WhatWeDoAdmin = WhatWeDoAdminModule.default || WhatWeDoAdminModule.WhatWeDoAdmin;
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();

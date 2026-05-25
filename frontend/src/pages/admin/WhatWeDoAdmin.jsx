@@ -3,7 +3,7 @@ import { Plus, Pencil, Trash2, Sparkles, X, LoaderCircle } from "lucide-react";
 
 const iconOptions = ["Code", "Database", "Smartphone", "Settings"];
 
-export default function WhatWeDoAdmin() {
+export function WhatWeDoAdmin() {
   const [content, setContent] = useState({ title: "", description: "", services: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -258,3 +258,5 @@ export default function WhatWeDoAdmin() {
     </div>
   );
 }
+
+export default WhatWeDoAdmin;
