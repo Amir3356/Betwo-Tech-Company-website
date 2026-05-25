@@ -41,8 +41,14 @@ export default function HeroChatbot() {
     setIsLoading(true);
 
 try {
+      const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
+      if (!apiKey) {
+        setMessages(prev => [...prev, { role: "assistant", content: defaultChatbotData.fallbackErrorMessage }]);
+        return;
+      }
+
       const openrouter = new OpenRouter({
-        apiKey: import.meta.env.VITE_OPENROUTER_API_KEY
+        apiKey
       });
 
       let responseText = "";
