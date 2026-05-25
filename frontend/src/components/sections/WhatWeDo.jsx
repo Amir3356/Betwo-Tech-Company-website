@@ -52,6 +52,18 @@ export default function WhatWeDo() {
         setData(payload?.data || null);
       } catch (err) {
         console.error("Failed to load what we do data:", err);
+        try {
+          const fallbackResponse = await fetch("/data/whatWeDo.json");
+          if (!fallbackResponse.ok) {
+            console.error("Failed to load fallback content.");
+            return;
+          }
+
+          const fallbackData = await fallbackResponse.json();
+          setData(fallbackData);
+        } catch (fallbackError) {
+          console.error("Failed to load fallback what we do data:", fallbackError);
+        }
       } finally {
         setLoading(false);
       }
