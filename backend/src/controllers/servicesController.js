@@ -1,10 +1,4 @@
-import fs from "fs/promises";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const servicesFilePath = path.join(__dirname, "../data/services.json");
+import { pool } from "../config/db.js";
 
 const defaultContent = {
   hero: {
@@ -22,16 +16,16 @@ const defaultContent = {
 };
 
 async function readServices() {
-  try {
-    const raw = await fs.readFile(servicesFilePath, "utf8");
-    return JSON.parse(raw);
-  } catch {
-    return defaultContent;
-  }
+  const result = await pool.query("SELECT content FROM services WHERE id = 1");
+  if (result.rows.length === 0) return defaultContent;
+  return result.rows[0].content || defaultContent;
 }
 
 async function writeServices(content) {
-  await fs.writeFile(servicesFilePath, `${JSON.stringify(content, null, 2)}\n`, "utf8");
+  await pool.query(
+    "UPDATE services SET content = $1::jsonb, updated_at = NOW() WHERE id = 1",
+    [JSON.stringify(content)]
+  );
 }
 
 export async function getServices(req, res) {
