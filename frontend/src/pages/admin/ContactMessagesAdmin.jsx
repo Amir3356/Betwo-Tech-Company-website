@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Mail, RefreshCw, Trash2 } from "lucide-react";
+import { Mail, Trash2 } from "lucide-react";
 
 export default function ContactMessagesAdmin() {
   const [messages, setMessages] = useState([]);
@@ -8,32 +8,32 @@ export default function ContactMessagesAdmin() {
 
   const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
-  const loadMessages = async () => {
-    setLoading(true);
-    setError("");
-
-    try {
-      const response = await fetch(`${apiBaseUrl}/api/contact-messages`, {
-        credentials: "include",
-      });
-
-      const payload = await response.json();
-
-      if (!response.ok) {
-        throw new Error(payload?.message || "Failed to load messages.");
-      }
-
-      setMessages(Array.isArray(payload?.data) ? payload.data : []);
-    } catch (fetchError) {
-      setError(fetchError.message || "Failed to load messages.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const loadMessages = async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const response = await fetch(`${apiBaseUrl}/api/contact-messages`, {
+          credentials: "include",
+        });
+
+        const payload = await response.json();
+
+        if (!response.ok) {
+          throw new Error(payload?.message || "Failed to load messages.");
+        }
+
+        setMessages(Array.isArray(payload?.data) ? payload.data : []);
+      } catch (fetchError) {
+        setError(fetchError.message || "Failed to load messages.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
     loadMessages();
-  }, []);
+  }, [apiBaseUrl]);
 
   const handleDelete = async (id) => {
     try {
@@ -62,14 +62,6 @@ export default function ContactMessagesAdmin() {
             <h2 className="text-3xl font-bold text-gray-900">Contact Messages</h2>
             <p className="text-sm text-gray-600">Messages submitted from the public contact form are shown here.</p>
           </div>
-
-          <button
-            type="button"
-            onClick={loadMessages}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
-          >
-            <RefreshCw size={16} /> Refresh
-          </button>
         </div>
 
         {error ? (
