@@ -50,10 +50,10 @@ export default function WhatWeDoAdmin() {
   const handleContentChange = (event) => {
     const { name, value } = event.target;
     setContent((current) => ({ ...current, [name]: value }));
-  };
+    const [isSaving, setIsSaving] = useState(false);
 
   const handleServiceChange = (event) => {
-    const { name, value } = event.target;
+    const [formData, setFormData] = useState({ icon: "Code", title: "", description: "" });
     setServiceForm((current) => ({ ...current, [name]: value }));
   };
 
@@ -74,7 +74,7 @@ export default function WhatWeDoAdmin() {
       icon: service.icon || "Code",
       title: service.title || "",
       description: service.description || "",
-    });
+            setFormData({
     setError("");
   };
 
@@ -97,13 +97,13 @@ export default function WhatWeDoAdmin() {
   const handleSaveSection = async () => {
     setIsSubmitting(true);
     setError("");
-
+      setFormData((current) => ({ ...current, [name]: value }));
     try {
       await saveContent({
         title: content.title,
         description: content.description,
         services: content.services || [],
-      });
+      setFormData({ icon: "Code", title: "", description: "" });
     } catch (saveError) {
       setError(saveError.message || "Failed to save section content.");
     } finally {
@@ -113,7 +113,7 @@ export default function WhatWeDoAdmin() {
 
   const handleAddOrUpdateService = async (event) => {
     event.preventDefault();
-    setIsSubmitting(true);
+      setFormData({
     setError("");
 
     try {
@@ -202,7 +202,7 @@ export default function WhatWeDoAdmin() {
         icon: service.icon || "Code",
         title: service.title || "",
         description: service.description || "",
-      });
+        setFormData({ icon: "Code", title: "", description: "" });
     } catch (deleteError) {
       setError(deleteError.message || "Failed to delete service.");
     } finally {
