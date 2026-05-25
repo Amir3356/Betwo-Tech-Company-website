@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import whatWeDoRoutes from "./routes/whatWeDoRoutes.js";
+import servicesRoutes from "./routes/servicesRoutes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -39,6 +40,7 @@ function createApp(pool) {
   app.use("/api/contact-messages", contactRoutes);
   app.use("/api/projects", projectRoutes);
   app.use("/api/what-we-do", whatWeDoRoutes);
+  app.use("/api/services", servicesRoutes);
 
   return app;
 }

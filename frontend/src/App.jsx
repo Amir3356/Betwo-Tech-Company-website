@@ -14,6 +14,7 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import ContactMessagesAdmin from "./pages/admin/ContactMessagesAdmin";
 import ProjectsAdmin from "./pages/admin/ProjectsAdmin";
 import * as WhatWeDoAdminModule from "./pages/admin/WhatWeDoAdmin";
+import ServicesAdmin from "./pages/admin/ServicesAdmin";
 
 const WhatWeDoAdmin = WhatWeDoAdminModule.default || WhatWeDoAdminModule.WhatWeDoAdmin;
 
@@ -69,6 +70,7 @@ function AppContent() {
             <Route index element={<AdminHome />} />
             <Route path="contact-messages" element={<ContactMessagesAdmin />} />
             <Route path="projects" element={<ProjectsAdmin />} />
+            <Route path="services" element={<ServicesAdmin />} />
             <Route path="what-we-do" element={<WhatWeDoAdmin />} />
           </Route>
           <Route path="*" element={<div className="p-10 text-white">No route matched: {location.pathname}</div>} />

@@ -12,6 +12,8 @@ const iconMap = {
   Repeat
 };
 
+const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
 export default function Services() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,19 +27,31 @@ export default function Services() {
   const process = data?.process || { title: "", steps: [] };
 
   useEffect(() => {
-    axios
-      .get("/data/services.json")
-      .then((response) => {
-        setData(response.data);
-        if (response.data?.hero?.stats) {
-          setCounts(response.data.hero.stats.map(() => "0"));
+    const loadData = async () => {
+      try {
+        const response = await axios.get(`${apiBaseUrl}/api/services`);
+        const payload = response.data?.data;
+        if (payload) {
+          setData(payload);
+          if (payload?.hero?.stats) {
+            setCounts(payload.hero.stats.map(() => "0"));
+          }
         }
+      } catch {
+        try {
+          const fallback = await axios.get("/data/services.json");
+          setData(fallback.data);
+          if (fallback.data?.hero?.stats) {
+            setCounts(fallback.data.hero.stats.map(() => "0"));
+          }
+        } catch (err) {
+          console.error("Failed to load services data:", err);
+        }
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to load services data:", err);
-        setLoading(false);
-      });
+      }
+    };
+    loadData();
   }, []);
 
     useEffect(() => {

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { Mail, LayoutGrid, Shield, ChevronRight, LogOut, Menu, X, Sparkles } from "lucide-react";
+import { Mail, LayoutGrid, Shield, ChevronRight, LogOut, Menu, X, Sparkles, Settings } from "lucide-react";
 
 const navigation = [
   { label: "Contact Messages", to: "/admin/contact-messages", icon: Mail },
   { label: "Projects", to: "/admin/projects", icon: LayoutGrid },
+  { label: "Services", to: "/admin/services", icon: Settings },
   { label: "What We Do", to: "/admin/what-we-do", icon: Sparkles },
 ];
 

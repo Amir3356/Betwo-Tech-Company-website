@@ -46,21 +46,30 @@ const headingVariants = {
   },
 };
 
+const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
 export default function ServicesOverview() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("/data/services.json")
-      .then((response) => {
-        setData(response.data);
+    const loadData = async () => {
+      try {
+        const response = await axios.get(`${apiBaseUrl}/api/services`);
+        const payload = response.data?.data;
+        if (payload) setData(payload);
+      } catch {
+        try {
+          const fallback = await axios.get("/data/services.json");
+          setData(fallback.data);
+        } catch (err) {
+          console.error("Failed to load services data:", err);
+        }
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to load services data:", err);
-        setLoading(false);
-      });
+      }
+    };
+    loadData();
   }, []);
 
   if (loading) {
