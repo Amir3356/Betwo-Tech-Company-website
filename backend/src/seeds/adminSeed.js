@@ -13,8 +13,8 @@ const pool = new Pool({
 });
 
 async function seedAdmin() {
-  const username = "admin";
-  const password = "admin";
+  const username = "Betwo";
+  const password = "1234";
   const passwordHash = await bcrypt.hash(password, 10);
 
   try {
