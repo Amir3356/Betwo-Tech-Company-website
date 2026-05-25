@@ -11,11 +11,33 @@ export default function AdminLogin() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (username === "admin" && password === "admin") {
-      navigate("/admin", { replace: true });
-    } else {
-      setError("Invalid username or password.");
-    }
+    const login = async () => {
+      setError("");
+
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5001"}/api/admin/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({ username, password }),
+        });
+
+        const payload = await response.json();
+
+        if (!response.ok) {
+          setError(payload?.message || "Invalid username or password.");
+          return;
+        }
+
+        navigate("/admin/contact-messages", { replace: true });
+      } catch (requestError) {
+        setError("Unable to sign in right now. Please try again.");
+      }
+    };
+
+    login();
   };
 
   return (
