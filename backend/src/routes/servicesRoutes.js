@@ -6,9 +6,6 @@ import { fileURLToPath } from "url";
 import {
   getServices,
   updateServices,
-  addComprehensiveService,
-  updateComprehensiveService,
-  deleteComprehensiveService,
   addDeepDive,
   updateDeepDive,
   deleteDeepDive,
@@ -18,9 +15,9 @@ import {
 } from "../controllers/servicesController.js";
 import {
   getComprehensiveServices,
-  addComprehensiveService as addNewComprehensiveService,
-  updateComprehensiveService as updateNewComprehensiveService,
-  deleteComprehensiveService as deleteNewComprehensiveService,
+  addComprehensiveService,
+  updateComprehensiveService,
+  deleteComprehensiveService,
 } from "../controllers/comprehensiveServiceController.js";
 import { ensureAdmin } from "../middleware/adminAuth.js";
 
@@ -46,13 +43,10 @@ router.get("/", getServices);
 router.put("/", ensureAdmin, updateServices);
 
 router.get("/comprehensive-table", ensureAdmin, getComprehensiveServices);
-router.post("/comprehensive-table", ensureAdmin, upload.single("image"), addNewComprehensiveService);
-router.put("/comprehensive-table/:id", ensureAdmin, upload.single("image"), updateNewComprehensiveService);
-router.delete("/comprehensive-table/:id", ensureAdmin, deleteNewComprehensiveService);
+router.post("/comprehensive-table", ensureAdmin, upload.single("image"), addComprehensiveService);
+router.put("/comprehensive-table/:id", ensureAdmin, upload.single("image"), updateComprehensiveService);
+router.delete("/comprehensive-table/:id", ensureAdmin, deleteComprehensiveService);
 
-router.post("/comprehensive", ensureAdmin, upload.single("image"), addComprehensiveService);
-router.put("/comprehensive/:index", ensureAdmin, upload.single("image"), updateComprehensiveService);
-router.delete("/comprehensive/:index", ensureAdmin, deleteComprehensiveService);
 router.post("/deepdives", ensureAdmin, addDeepDive);
 router.put("/deepdives/:index", ensureAdmin, updateDeepDive);
 router.delete("/deepdives/:index", ensureAdmin, deleteDeepDive);

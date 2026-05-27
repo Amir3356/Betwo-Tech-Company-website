@@ -12,32 +12,7 @@ const defaultContent = {
   comprehensive: {
     title: "Solutions Built Around Your Business",
     description: "From product engineering to long-term support, we design software that fits the way your team already works.",
-    services: [
-      {
-        icon: "Code",
-        title: "Custom Software Development",
-        description: "Tailor-made web and mobile applications designed to solve your unique business challenges with scalable, secure, and maintainable code.",
-        points: ["MVPs and internal tools", "Scalable architecture", "Clean handoff and documentation"],
-      },
-      {
-        icon: "Database",
-        title: "Management Systems",
-        description: "Comprehensive ERP and management platforms that streamline operations, automate workflows, and provide real-time business intelligence.",
-        points: ["Centralized dashboards", "Workflow automation", "Role-based access and reporting"],
-      },
-      {
-        icon: "Smartphone",
-        title: "Mobile Applications",
-        description: "Native and cross-platform mobile apps that deliver seamless user experiences and keep your business in your customers' pockets.",
-        points: ["iOS and Android support", "Smooth user experience", "API-driven integrations"],
-      },
-      {
-        icon: "Settings",
-        title: "System Integration",
-        description: "Connect and unify your existing tools and platforms into a cohesive ecosystem that eliminates data silos and boosts productivity.",
-        points: ["Legacy system bridging", "Secure data flow", "Operational visibility"],
-      },
-    ],
+    services: [],
   },
   featureDeepDivesSection: {
     title: "How We Bring Your Vision to Life",
@@ -147,98 +122,6 @@ export async function updateServices(req, res) {
   } catch (error) {
     console.error("Failed to update services content:", error);
     return res.status(500).json({ message: "Failed to update services content." });
-  }
-}
-
-export async function addComprehensiveService(req, res) {
-  const { title, description, points, icon } = req.body || {};
-  let image = null;
-
-  if (req.file) {
-    image = `/storage/services/${req.file.filename}`;
-  }
-
-  if (!title || !description) {
-    return res.status(400).json({ message: "Title and description are required." });
-  }
-
-  try {
-    const current = await readServices();
-    const services = Array.isArray(current.comprehensive?.services) ? [...current.comprehensive.services] : [];
-    services.push({
-      title: title.trim(),
-      description: description.trim(),
-      points: Array.isArray(points) ? points : [],
-      icon: icon || "Code",
-      image,
-    });
-
-    const nextContent = { ...current, comprehensive: { ...current.comprehensive, services } };
-    await writeServices(nextContent);
-    return res.status(201).json({ message: "Comprehensive service added.", data: nextContent });
-  } catch (error) {
-    console.error("Failed to add comprehensive service:", error);
-    return res.status(500).json({ message: "Failed to add service." });
-  }
-}
-
-export async function updateComprehensiveService(req, res) {
-  const { index } = req.params;
-  const serviceIndex = Number(index);
-  const { title, description, points, icon } = req.body || {};
-
-  if (!Number.isInteger(serviceIndex) || serviceIndex < 0) {
-    return res.status(400).json({ message: "Invalid service index." });
-  }
-
-  try {
-    const current = await readServices();
-    const services = Array.isArray(current.comprehensive?.services) ? [...current.comprehensive.services] : [];
-
-    if (!services[serviceIndex]) {
-      return res.status(404).json({ message: "Service not found." });
-    }
-
-    services[serviceIndex] = {
-      title: typeof title === "string" ? title.trim() : services[serviceIndex].title,
-      description: typeof description === "string" ? description.trim() : services[serviceIndex].description,
-      points: Array.isArray(points) ? points : services[serviceIndex].points,
-      icon: icon || services[serviceIndex].icon,
-      image: req.file ? `/storage/services/${req.file.filename}` : services[serviceIndex].image,
-    };
-
-    const nextContent = { ...current, comprehensive: { ...current.comprehensive, services } };
-    await writeServices(nextContent);
-    return res.json({ message: "Comprehensive service updated.", data: nextContent });
-  } catch (error) {
-    console.error("Failed to update comprehensive service:", error);
-    return res.status(500).json({ message: "Failed to update service." });
-  }
-}
-
-export async function deleteComprehensiveService(req, res) {
-  const { index } = req.params;
-  const serviceIndex = Number(index);
-
-  if (!Number.isInteger(serviceIndex) || serviceIndex < 0) {
-    return res.status(400).json({ message: "Invalid service index." });
-  }
-
-  try {
-    const current = await readServices();
-    const services = Array.isArray(current.comprehensive?.services) ? [...current.comprehensive.services] : [];
-
-    if (!services[serviceIndex]) {
-      return res.status(404).json({ message: "Service not found." });
-    }
-
-    services.splice(serviceIndex, 1);
-    const nextContent = { ...current, comprehensive: { ...current.comprehensive, services } };
-    await writeServices(nextContent);
-    return res.json({ message: "Comprehensive service deleted.", data: nextContent });
-  } catch (error) {
-    console.error("Failed to delete comprehensive service:", error);
-    return res.status(500).json({ message: "Failed to delete service." });
   }
 }
 
