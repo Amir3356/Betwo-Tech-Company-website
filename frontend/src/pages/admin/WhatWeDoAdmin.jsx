@@ -13,7 +13,7 @@ export default function WhatWeDoAdmin() {
   const [editingIndex, setEditingIndex] = useState(null);
   const [formData, setFormData] = useState({ icon: "Code", title: "", description: "" });
 
-  const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+  const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   useEffect(() => {
     loadContent();

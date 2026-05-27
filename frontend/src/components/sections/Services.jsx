@@ -3,7 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { CheckCircle, LayoutTemplate } from "lucide-react";
 
-const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 function resolveImageUrl(image) {
   if (!image) return "";

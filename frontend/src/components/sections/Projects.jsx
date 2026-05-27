@@ -12,7 +12,7 @@ export default function Projects() {
   const animatedRef = useRef(false);
 
   useEffect(() => {
-    const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+    const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
     const loadProjects = async () => {
       try {

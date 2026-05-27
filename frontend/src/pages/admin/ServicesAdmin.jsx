@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Plus, X, LoaderCircle, Pencil, Trash2, Upload, LayoutTemplate } from "lucide-react";
 
-const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const iconOptions = ["Database", "Smartphone", "Lightbulb", "LayoutTemplate", "Settings", "Repeat", "Code"];
 
