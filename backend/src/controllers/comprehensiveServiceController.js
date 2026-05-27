@@ -1,5 +1,13 @@
 import { pool } from "../config/db.js";
 
+function parsePoints(raw) {
+  if (Array.isArray(raw)) return raw;
+  if (typeof raw === "string") {
+    try { return JSON.parse(raw); } catch { return []; }
+  }
+  return [];
+}
+
 export async function getComprehensiveServices(req, res) {
   try {
     const result = await pool.query(
@@ -34,7 +42,7 @@ export async function addComprehensiveService(req, res) {
       `INSERT INTO comprehensive_services (icon, title, description, points, image, position)
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
-      [icon || "Code", title.trim(), description.trim(), JSON.stringify(points || []), image, position]
+      [icon || "Code", title.trim(), description.trim(), JSON.stringify(parsePoints(points)), image, position]
     );
 
     return res.status(201).json({ message: "Comprehensive service added.", data: result.rows[0] });
@@ -66,7 +74,7 @@ export async function updateComprehensiveService(req, res) {
         icon || current.icon,
         typeof title === "string" ? title.trim() : current.title,
         typeof description === "string" ? description.trim() : current.description,
-        JSON.stringify(Array.isArray(points) ? points : current.points),
+        JSON.stringify(parsePoints(points ?? current.points)),
         image,
         id,
       ]
