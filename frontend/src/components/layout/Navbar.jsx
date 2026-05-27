@@ -74,7 +74,7 @@ export default function Navbar() {
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-        <a href={cta.link} className="btn-primary hidden md:flex items-center justify-center px-5 py-2 rounded-full bg-slate-800 hover:bg-slate-700 dark:bg-fuchsia-500 dark:hover:bg-fuchsia-600 text-white font-extrabold transition-all ml-2">
+        <a href={cta.link} className="btn-primary hidden md:flex items-center justify-center px-5 py-2 rounded-full bg-slate-800 hover:bg-slate-700 dark:bg-blue-400 dark:hover:bg-blue-500 text-black dark:text-white font-extrabold transition-all ml-2">
           {cta.text}
         </a>
       </div>
@@ -96,7 +96,7 @@ export default function Navbar() {
             <a 
               href={cta.link} 
               onClick={() => setIsOpen(false)}
-              className="btn-primary mt-2 text-center px-5 py-3 rounded-full bg-slate-800 hover:bg-slate-700 dark:bg-fuchsia-500 dark:hover:bg-fuchsia-600 text-white font-extrabold transition-all"
+              className="btn-primary mt-2 text-center px-5 py-3 rounded-full bg-slate-800 hover:bg-slate-700 dark:bg-blue-400 dark:hover:bg-blue-500 text-black dark:text-white font-extrabold transition-all"
             >
               {cta.text}
             </a>

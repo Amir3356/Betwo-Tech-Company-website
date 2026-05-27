@@ -97,7 +97,7 @@ try {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       {isOpen && (
         <div className="w-[95vw] sm:w-80 md:w-96 max-w-[350px] mb-4 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transition-all duration-300 transform origin-bottom-right">
-          <div className="bg-linear-to-r from-blue-500 via-sky-500 to-cyan-400 dark:bg-linear-to-r dark:from-fuchsia-600 dark:via-fuchsia-500 dark:to-pink-500 p-4 text-white font-bold text-base flex items-center justify-between">
+          <div className="bg-linear-to-r from-blue-500 via-sky-500 to-cyan-400 dark:bg-linear-to-r dark:from-blue-400 dark:via-sky-400 dark:to-cyan-300 p-4 text-white font-bold text-base flex items-center justify-between">
             <div className="flex items-center gap-2 text-lg">
               <span>{defaultChatbotData.title}</span>
               <span className="flex h-3 w-3">
@@ -115,7 +115,7 @@ try {
           </div>
           <div className="p-5 h-80 overflow-y-auto flex flex-col gap-4 scroll-smooth">
             {messages.map((msg, idx) => (
-              <div key={idx} className={`max-w-[85%] p-3.5 rounded-2xl text-base leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-blue-500 dark:bg-fuchsia-500 text-white self-end rounded-br-none' : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 self-start rounded-bl-none border border-slate-200 dark:border-slate-700'}`}>
+              <div key={idx} className={`max-w-[85%] p-3.5 rounded-2xl text-base leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-blue-500 dark:bg-sky-400 text-white self-end rounded-br-none' : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 self-start rounded-bl-none border border-slate-200 dark:border-slate-700'}`}>
                 {msg.content}
               </div>
             ))}
@@ -127,9 +127,9 @@ try {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={defaultChatbotData.placeholder} 
-              className="flex-1 min-w-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base focus:outline-hidden focus:ring-2 focus:ring-blue-400 dark:focus:ring-fuchsia-400 dark:text-white transition-all shadow-sm"
+              className="flex-1 min-w-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base focus:outline-hidden focus:ring-2 focus:ring-blue-400 dark:focus:ring-sky-400 dark:text-white transition-all shadow-sm"
             />
-            <button type="submit" disabled={isLoading} className="bg-slate-900 hover:bg-slate-800 dark:bg-fuchsia-500 dark:hover:bg-fuchsia-600 text-white dark:text-black focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-semibold transition-all shadow-md disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap">
+            <button type="submit" disabled={isLoading} className="bg-slate-900 hover:bg-slate-800 dark:bg-sky-400 dark:hover:bg-sky-500 text-white dark:text-black focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-sm sm:text-base font-semibold transition-all shadow-md disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap">
               {defaultChatbotData.sendButtonText}
             </button>
           </form>
@@ -139,7 +139,7 @@ try {
       <button 
         onClick={() => setIsOpen(!isOpen)}
         aria-label={defaultChatbotData.openButtonAriaLabel}
-        className="w-14 h-14 bg-slate-900 hover:bg-slate-800 dark:bg-fuchsia-500 dark:hover:bg-fuchsia-600 text-white dark:text-black rounded-full flex items-center justify-center shadow-xl shadow-slate-900/30 transition-transform active:scale-95"
+        className="w-14 h-14 bg-slate-900 hover:bg-slate-800 dark:bg-sky-400 dark:hover:bg-sky-500 text-white dark:text-black rounded-full flex items-center justify-center shadow-xl shadow-slate-900/30 transition-transform active:scale-95"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </button>

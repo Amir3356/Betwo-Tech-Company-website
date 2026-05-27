@@ -185,7 +185,7 @@ export default function AboutUsOverview() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="w-10 h-10 bg-fuchsia-500/10 dark:bg-fuchsia-500/15 rounded-lg flex items-center justify-center text-fuchsia-500 dark:text-fuchsia-400 mb-4">
+                <div className="w-10 h-10 bg-sky-500/10 dark:bg-sky-500/15 rounded-lg flex items-center justify-center text-sky-500 dark:text-sky-400 mb-4">
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200">
@@ -204,7 +204,7 @@ export default function AboutUsOverview() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="w-10 h-10 bg-fuchsia-500/10 dark:bg-fuchsia-500/15 rounded-lg flex items-center justify-center text-fuchsia-500 dark:text-fuchsia-400 mb-4">
+                <div className="w-10 h-10 bg-sky-500/10 dark:bg-sky-500/15 rounded-lg flex items-center justify-center text-sky-500 dark:text-sky-400 mb-4">
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200">
@@ -240,7 +240,7 @@ export default function AboutUsOverview() {
             >
               <a
                 href="/about"
-                className="about-us-cta relative z-10 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-black hover:bg-gray-800 dark:bg-fuchsia-500 dark:hover:bg-fuchsia-600 text-white font-extrabold text-lg transition-all shadow-lg hover:-translate-y-1 hover:shadow-xl"
+                className="about-us-cta relative z-10 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-black hover:bg-gray-800 dark:bg-sky-400 dark:hover:bg-sky-500 text-white font-extrabold text-lg transition-all shadow-lg hover:-translate-y-1 hover:shadow-xl"
               >
                 Learn More About Us <ArrowRight size={20} />
               </a>

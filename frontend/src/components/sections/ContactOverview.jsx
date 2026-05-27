@@ -162,9 +162,9 @@ export default function ContactOverview() {
                     key={index}
                     variants={cardVariants}
                     whileHover={{ y: -4, scale: 1.02 }}
-                    className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300"
+                    className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-fuchsia-400 dark:hover:border-blue-500 transition-all duration-300"
                   >
-                    <div className="w-12 h-12 bg-blue-400/10 rounded-lg flex items-center justify-center text-blue-400 mb-4">
+                    <div className="w-12 h-12 bg-fuchsia-500/10 dark:bg-blue-900/20 rounded-lg flex items-center justify-center text-fuchsia-500 dark:text-blue-400 mb-4">
                       {IconComponent && <IconComponent className="w-6 h-6" />}
                     </div>
                     <h4 className="font-bold text-slate-900 dark:text-white mb-2">
@@ -191,7 +191,7 @@ export default function ContactOverview() {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-6 h-6 text-blue-500 shrink-0 mt-1" />
+                <CheckCircle className="w-6 h-6 text-blue-500 dark:text-blue-400 shrink-0 mt-1" />
                 <div>
                   <h4 className="font-bold text-slate-900 dark:text-white mb-2">
                     Guaranteed Response Within 24 Hours

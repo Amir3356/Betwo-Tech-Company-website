@@ -59,9 +59,9 @@ body {
 
 /* Dark Mode Scrollbar Thumb */
 :root.dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #d946ef, #c026d3);
+  background: linear-gradient(to bottom, #38bdf8, #0ea5e9);
   border: 2px solid #1e293b;
-  box-shadow: 0 2px 4px rgba(217, 70, 239, 0.3);
+  box-shadow: 0 2px 4px rgba(56, 189, 248, 0.3);
 }
 
 /* Light Mode Scrollbar Thumb Hover */
@@ -80,9 +80,9 @@ body {
 
 /* Dark Mode Scrollbar Thumb Hover */
 :root.dark ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #e879f9, #d946ef);
+  background: linear-gradient(to bottom, #7dd3fc, #38bdf8);
   border-color: #334155;
-  box-shadow: 0 4px 8px rgba(217, 70, 239, 0.4), 0 0 12px rgba(217, 70, 239, 0.2);
+  box-shadow: 0 4px 8px rgba(56, 189, 248, 0.4), 0 0 12px rgba(56, 189, 248, 0.2);
 }
 
 /* Scrollbar Thumb Active */
@@ -95,7 +95,7 @@ body {
 }
 
 :root.dark ::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(to bottom, #c026d3, #a21caf);
+  background: linear-gradient(to bottom, #0ea5e9, #0284c7);
 }
 
 /* Horizontal Scrollbar */
@@ -130,7 +130,7 @@ body {
 }
 
 .dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(217, 70, 239, 0.3);
+  background: rgba(56, 189, 248, 0.3);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
@@ -138,7 +138,7 @@ body {
 }
 
 .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(217, 70, 239, 0.5);
+  background: rgba(56, 189, 248, 0.5);
 }
 
 /* Thin Scrollbar Variant */
@@ -157,7 +157,7 @@ body {
 }
 
 .dark .thin-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(217, 70, 239, 0.4);
+  background: rgba(56, 189, 248, 0.4);
 }
 
 /* Overlay Scrollbar (macOS style) */
@@ -182,7 +182,7 @@ body {
 }
 
 .dark .overlay-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(217, 70, 239, 0.5);
+  background: rgba(56, 189, 248, 0.5);
   background-clip: padding-box;
 }
 
@@ -192,7 +192,7 @@ body {
 }
 
 .dark .overlay-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(217, 70, 239, 0.7);
+  background: rgba(56, 189, 248, 0.7);
   background-clip: padding-box;
 }
 
@@ -1012,7 +1012,7 @@ button.primary,
 
 .dark button.primary,
 .dark .btn-primary {
-  background: linear-gradient(135deg, #d946ef 0%, #c026d3 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
   color: #ffffff;
 }
 
@@ -1025,8 +1025,8 @@ button.primary:hover,
 
 .dark button.primary:hover,
 .dark .btn-primary:hover {
-  background: linear-gradient(135deg, #e879f9 0%, #d946ef 100%);
-  box-shadow: 0 20px 25px -5px rgba(217, 70, 239, 0.4), 0 10px 10px -5px rgba(217, 70, 239, 0.3);
+  background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
+  box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.4), 0 10px 10px -5px rgba(56, 189, 248, 0.3);
   color: #ffffff;
 }
 

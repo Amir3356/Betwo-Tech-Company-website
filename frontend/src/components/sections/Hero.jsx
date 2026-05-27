@@ -72,7 +72,7 @@ export default function Hero() {
                 : heroData.title
               : "")
           ) + " "}
-          <span ref={typedTextRef} className="inline-block min-w-[12ch] text-fuchsia-500 dark:text-fuchsia-400">
+          <span ref={typedTextRef} className="inline-block min-w-[12ch] text-fuchsia-500 dark:text-blue-300">
             {(heroData.typedTexts?.[0] ?? heroData.typedText ?? heroData.highlightText ?? "")}
           </span>
         </h1>
@@ -86,7 +86,7 @@ export default function Hero() {
                 <a
                   key={index}
                   href={button.link}
-                  className="btn-primary px-8 py-3 rounded-full bg-slate-800 hover:bg-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-extrabold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
+                  className="btn-primary px-8 py-3 rounded-full bg-slate-800 hover:bg-slate-700 dark:bg-sky-400 dark:hover:bg-sky-500 text-white font-extrabold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20"
                 >
                   {button.text} <ArrowRight size={20} />
                 </a>
@@ -94,7 +94,7 @@ export default function Hero() {
                 <a
                   key={index}
                   href={button.link}
-                  className="btn-primary px-8 py-3 rounded-full bg-slate-800 hover:bg-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-extrabold text-lg transition-colors shadow-sm"
+                  className="btn-primary px-8 py-3 rounded-full bg-slate-800 hover:bg-slate-700 dark:bg-sky-400 dark:hover:bg-sky-500 text-white font-extrabold text-lg transition-colors shadow-sm"
                 >
                   {button.text}
                 </a>

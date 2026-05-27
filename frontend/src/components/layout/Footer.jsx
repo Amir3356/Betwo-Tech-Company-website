@@ -75,7 +75,7 @@ export default function Footer() {
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-slate-700/30 dark:shadow-slate-600/30 group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
                 B
               </div>
-              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-fuchsia-500 dark:via-fuchsia-400 dark:to-fuchsia-500 bg-clip-text text-transparent">
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-sky-400 dark:via-sky-300 dark:to-sky-400 bg-clip-text text-transparent">
                 Betwo Tech
               </span>
             </div>
