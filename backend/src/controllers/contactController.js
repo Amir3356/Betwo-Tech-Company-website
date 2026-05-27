@@ -1,4 +1,14 @@
+import nodemailer from "nodemailer";
 import { pool } from "../config/db.js";
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.SMTP_EMAIL,
+    pass: process.env.SMTP_PASSWORD,
+  },
+});
+
 export async function createContactMessage(req, res) {
   const { name, email, subject, message } = req.body || {};
 
@@ -11,6 +21,24 @@ export async function createContactMessage(req, res) {
       `INSERT INTO contact_messages (name, email, subject, message) VALUES ($1, $2, $3, $4) RETURNING *`,
       [name.trim(), email.trim(), (subject || "").trim(), message.trim()]
     );
+
+    try {
+      await transporter.sendMail({
+        from: process.env.SMTP_EMAIL,
+        to: process.env.SMTP_EMAIL,
+        subject: `New Contact Message from ${name.trim()}`,
+        html: `
+          <h2>New Contact Message</h2>
+          <p><strong>Name:</strong> ${name.trim()}</p>
+          <p><strong>Email:</strong> ${email.trim()}</p>
+          <p><strong>Subject:</strong> ${(subject || "N/A").trim()}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.trim()}</p>
+        `,
+      });
+    } catch (emailErr) {
+      console.error("Failed to send email notification:", emailErr);
+    }
 
     return res.status(201).json({ message: "Message sent successfully.", data: result.rows[0] });
   } catch (error) {
