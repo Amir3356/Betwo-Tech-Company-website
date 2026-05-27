@@ -72,7 +72,7 @@ export default function Hero() {
                 : heroData.title
               : "")
           ) + " "}
-          <span ref={typedTextRef} className="inline-block min-w-[12ch] text-blue-400">
+          <span ref={typedTextRef} className="inline-block min-w-[12ch] text-fuchsia-500 dark:text-fuchsia-400">
             {(heroData.typedTexts?.[0] ?? heroData.typedText ?? heroData.highlightText ?? "")}
           </span>
         </h1>
