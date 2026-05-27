@@ -13,8 +13,8 @@ import AdminHome from "./pages/admin/AdminHome";
 import AdminLogin from "./pages/admin/AdminLogin";
 import ContactMessagesAdmin from "./pages/admin/ContactMessagesAdmin";
 import ProjectsAdmin from "./pages/admin/ProjectsAdmin";
-import * as WhatWeDoAdminModule from "./pages/admin/WhatWeDoAdmin";
 import ServicesAdmin from "./pages/admin/ServicesAdmin";
+import * as WhatWeDoAdminModule from "./pages/admin/WhatWeDoAdmin";
 
 const WhatWeDoAdmin = WhatWeDoAdminModule.default || WhatWeDoAdminModule.WhatWeDoAdmin;
 
