@@ -174,7 +174,7 @@ export default function Projects() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-400">
-                    <Building2 size={32} className="sm:size-12" />
+                    <Building2 size={32} className="text-fuchsia-500 sm:size-12" />
                   </div>
                 )}
                 <div className="absolute top-3 sm:top-4 left-3 sm:left-4 px-2 sm:px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
@@ -185,7 +185,7 @@ export default function Projects() {
               <div className="p-4 sm:p-6">
                 <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-2 sm:mb-3">
                   <span className="flex items-center gap-1 text-xs font-medium text-slate-500 dark:text-slate-400">
-                    <CheckCircle size={12} className="text-green-500 sm:size-14" /> {project.uptime} Uptime
+                    <CheckCircle size={12} className="text-fuchsia-500 sm:size-14" /> {project.uptime} Uptime
                   </span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Built in {project.duration}</span>
                 </div>

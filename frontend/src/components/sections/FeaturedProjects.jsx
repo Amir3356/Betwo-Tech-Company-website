@@ -130,7 +130,7 @@ export default function FeaturedProjects() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-400">
-                    <Building2 size={48} />
+                    <Building2 size={48} className="text-fuchsia-500" />
                   </div>
                 )}
                 <div className="absolute top-2 left-2 px-2 py-0.5 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
@@ -140,7 +140,7 @@ export default function FeaturedProjects() {
               <div className="p-2">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="flex items-center gap-1 text-xs font-medium text-slate-500 dark:text-slate-400">
-                    <CheckCircle size={14} className="text-green-500" /> {project.uptime} Uptime
+                    <CheckCircle size={14} className="text-fuchsia-500" /> {project.uptime} Uptime
                   </span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Built in {project.duration}</span>
                 </div>
@@ -175,7 +175,7 @@ export default function FeaturedProjects() {
         >
           {highlights.map((highlight) => (
             <div key={highlight} className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
-              <CheckCircle size={16} className="text-blue-500" /> {highlight}
+              <CheckCircle size={16} className="text-fuchsia-500" /> {highlight}
             </div>
           ))}
         </motion.div>
