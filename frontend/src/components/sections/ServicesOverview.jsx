@@ -3,16 +3,6 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-// Map service titles to images
-const imageMap = {
-  "Custom Management Systems": "/assets/Custom Management System.jpeg",
-  "Web & Mobile Application Development": "/assets/Web-Mobile-Application-Development.jpeg",
-  "Business Process Digitalization": "/assets/Business Process Digitalization.jpeg",
-  "UI/UX Design for Management Systems": "/assets/UX Design for Management Systems.jpeg",
-  "System Upgrade & Optimization": "/assets/System-Upgrade-Optimization.jpeg",
-  "Support & Long-Term Partnership": "/assets/Support & Long-Term Partnership.jpeg"
-};
-
 const sectionVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -132,7 +122,6 @@ export default function ServicesOverview() {
           viewport={{ once: true, amount: 0.15 }}
         >
           {services.map((service, index) => {
-            const serviceImage = imageMap[service.title];
             return (
               <motion.div
                 key={index}
@@ -142,24 +131,6 @@ export default function ServicesOverview() {
                 className="group bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-slate-700 dark:hover:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-slate-300/50 dark:hover:shadow-slate-900/30 overflow-hidden select-none"
                 style={{ WebkitTapHighlightColor: "transparent" }}
               >
-                {/* Image */}
-                {serviceImage && (
-                  <div className="relative h-40 sm:h-48 overflow-hidden bg-slate-200 dark:bg-slate-800">
-                    <motion.img
-                      src={serviceImage}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      initial={{ opacity: 0, scale: 1.1 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
-                    />
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                )}
-
-                {/* Content */}
                 <div className="p-5 sm:p-8">
                   {/* Title */}
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-300">

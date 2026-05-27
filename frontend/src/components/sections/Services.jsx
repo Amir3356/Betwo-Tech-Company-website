@@ -1,16 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { CheckCircle, Database, Smartphone, Lightbulb, LayoutTemplate, Settings, Repeat } from "lucide-react";
-
-const iconMap = {
-  Database,
-  Smartphone,
-  Lightbulb,
-  LayoutTemplate,
-  Settings,
-  Repeat
-};
+import { CheckCircle, LayoutTemplate } from "lucide-react";
 
 const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
 

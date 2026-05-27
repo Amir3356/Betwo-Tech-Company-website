@@ -3,7 +3,7 @@
   "description": "Explore our portfolio of successful digital solutions — from automotive to healthcare and beyond.",
   "metrics": [
     {
-      "value": "6+",
+      "value": "0+",
       "label": "Projects Delivered"
     },
     {
@@ -16,60 +16,5 @@
     }
   ],
   "categories": ["All", "Automotive", "Construction", "Inventory", "Procurement", "Healthcare", "Industrial"],
-  "projects": [
-    {
-      "id": 1,
-      "title": "Business Process Digitalization",
-      "category": "Industrial",
-      "uptime": "99.9%",
-      "duration": "12 weeks",
-      "description": "End-to-end digital transformation for manufacturing operations, automating workflows and reducing manual overhead by 60%.",
-      "image": "/assets/Business Process Digitalization.jpeg"
-    },
-    {
-      "id": 2,
-      "title": "Custom Management System",
-      "category": "ERP",
-      "uptime": "99.9%",
-      "duration": "10 weeks",
-      "description": "Tailored enterprise resource planning solution with real-time analytics, inventory tracking, and multi-department coordination.",
-      "image": "/assets/Custom Management System.jpeg"
-    },
-    {
-      "id": 3,
-      "title": "Web & Mobile Application Development",
-      "category": "Healthcare",
-      "uptime": "99.8%",
-      "duration": "14 weeks",
-      "description": "Cross-platform patient management system with appointment scheduling, telemedicine integration, and secure data handling.",
-      "image": "/assets/Web-Mobile-Application-Development.jpeg"
-    },
-    {
-      "id": 4,
-      "title": "UX Design for Management Systems",
-      "category": "Design",
-      "uptime": "99.9%",
-      "duration": "6 weeks",
-      "description": "Complete UX/UI redesign for an enterprise dashboard platform, improving user satisfaction scores by 45%.",
-      "image": "/assets/UX Design for Management Systems.jpeg"
-    },
-    {
-      "id": 5,
-      "title": "System Upgrade & Optimization",
-      "category": "Infrastructure",
-      "uptime": "99.99%",
-      "duration": "8 weeks",
-      "description": "Legacy system modernization with cloud migration, performance tuning, and zero-downtime deployment strategy.",
-      "image": "/assets/System-Upgrade-Optimization.jpeg"
-    },
-    {
-      "id": 6,
-      "title": "Support & Long-Term Partnership",
-      "category": "Managed Services",
-      "uptime": "99.99%",
-      "duration": "Ongoing",
-      "description": "Comprehensive managed IT services including 24/7 monitoring, proactive maintenance, and dedicated support team.",
-      "image": "/assets/Support & Long-Term Partnership.jpeg"
-    }
-  ]
+  "projects": []
 }

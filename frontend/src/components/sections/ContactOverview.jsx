@@ -339,7 +339,7 @@ export default function ContactOverview() {
                 href="https://www.google.com/maps/search/?api=1&query=Meskel+Flower+Addis+Ababa+Ethiopia"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-all shadow-sm hover:shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-900 dark:bg-sky-400 dark:hover:bg-sky-500 dark:text-black font-semibold transition-all shadow-sm hover:shadow-md"
               >
                 Get Directions <ArrowRight size={16} />
               </a>

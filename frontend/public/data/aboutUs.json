@@ -127,7 +127,7 @@
   "cta": {
     "title": "Work With Us",
     "description": "Ready to bring your ideas to life? Let's collaborate on your next project.",
-    "backgroundImage": "/assets/Support & Long-Term Partnership.jpeg",
+    "backgroundImage": "",
     "buttons": [
       { "text": "Start a Conversation", "primary": true },
       { "text": "Join Our Team", "primary": false }
