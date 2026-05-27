@@ -16,6 +16,12 @@ import {
   updateProcessStep,
   deleteProcessStep,
 } from "../controllers/servicesController.js";
+import {
+  getComprehensiveServices,
+  addComprehensiveService as addNewComprehensiveService,
+  updateComprehensiveService as updateNewComprehensiveService,
+  deleteComprehensiveService as deleteNewComprehensiveService,
+} from "../controllers/comprehensiveServiceController.js";
 import { ensureAdmin } from "../middleware/adminAuth.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -38,6 +44,12 @@ const router = express.Router();
 
 router.get("/", getServices);
 router.put("/", ensureAdmin, updateServices);
+
+router.get("/comprehensive-table", ensureAdmin, getComprehensiveServices);
+router.post("/comprehensive-table", ensureAdmin, upload.single("image"), addNewComprehensiveService);
+router.put("/comprehensive-table/:id", ensureAdmin, upload.single("image"), updateNewComprehensiveService);
+router.delete("/comprehensive-table/:id", ensureAdmin, deleteNewComprehensiveService);
+
 router.post("/comprehensive", ensureAdmin, upload.single("image"), addComprehensiveService);
 router.put("/comprehensive/:index", ensureAdmin, upload.single("image"), updateComprehensiveService);
 router.delete("/comprehensive/:index", ensureAdmin, deleteComprehensiveService);

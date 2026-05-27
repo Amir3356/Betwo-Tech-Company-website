@@ -18,7 +18,7 @@ export default function ServicesAdmin() {
   const [error, setError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({ icon: "Code", title: "", description: "", points: [], image: null });
 
   useEffect(() => {
@@ -29,10 +29,10 @@ export default function ServicesAdmin() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch(`${apiBaseUrl}/api/services`);
+      const response = await fetch(`${apiBaseUrl}/api/services/comprehensive-table`, { credentials: "include" });
       const payload = await response.json();
       if (!response.ok) throw new Error(payload?.message || "Failed to load services.");
-      setServices(payload?.data?.comprehensive?.services || []);
+      setServices(payload?.data || []);
     } catch (err) {
       setError(err.message || "Failed to load services.");
     } finally {
@@ -41,7 +41,7 @@ export default function ServicesAdmin() {
   };
 
   const resetForm = () => {
-    setEditingIndex(null);
+    setEditingId(null);
     setFormData({ icon: "Code", title: "", description: "", points: [], image: null });
   };
 
@@ -51,8 +51,8 @@ export default function ServicesAdmin() {
     setError("");
   };
 
-  const openEditModal = (svc, index) => {
-    setEditingIndex(index);
+  const openEditModal = (svc) => {
+    setEditingId(svc.id);
     setFormData({
       icon: svc.icon || "Code",
       title: svc.title || "",
@@ -73,17 +73,17 @@ export default function ServicesAdmin() {
     setFormData((p) => ({ ...p, image: e.target.files[0] || null }));
   };
 
-  const handleDelete = async (index) => {
+  const handleDelete = async (id) => {
     if (!window.confirm("Delete this service?")) return;
     setIsSubmitting(true);
     setError("");
     try {
-      const response = await fetch(`${apiBaseUrl}/api/services/comprehensive/${index}`, {
+      const response = await fetch(`${apiBaseUrl}/api/services/comprehensive-table/${id}`, {
         method: "DELETE", credentials: "include",
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result?.message || "Failed to delete.");
-      setServices(result.data?.comprehensive?.services || []);
+      setServices(result.data || []);
     } catch (err) {
       setError(err.message || "Failed to delete.");
     } finally {
@@ -96,9 +96,9 @@ export default function ServicesAdmin() {
     setIsSubmitting(true);
     setError("");
     try {
-      const url = editingIndex === null
-        ? `${apiBaseUrl}/api/services/comprehensive`
-        : `${apiBaseUrl}/api/services/comprehensive/${editingIndex}`;
+      const url = editingId === null
+        ? `${apiBaseUrl}/api/services/comprehensive-table`
+        : `${apiBaseUrl}/api/services/comprehensive-table/${editingId}`;
       const payload = new FormData();
       payload.append("icon", formData.icon);
       payload.append("title", formData.title);
@@ -108,13 +108,13 @@ export default function ServicesAdmin() {
         payload.append("image", formData.image);
       }
       const response = await fetch(url, {
-        method: editingIndex === null ? "POST" : "PUT",
+        method: editingId === null ? "POST" : "PUT",
         credentials: "include",
         body: payload,
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result?.message || "Failed to save service.");
-      setServices(result.data?.comprehensive?.services || []);
+      await loadServices();
       handleCloseModal();
     } catch (err) {
       setError(err.message || "Failed to save service.");
@@ -161,8 +161,8 @@ export default function ServicesAdmin() {
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {services.map((svc, i) => (
-              <article key={i} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+            {services.map((svc) => (
+              <article key={svc.id} className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
                 <div className="space-y-3 p-5">
                   <div className="flex items-start justify-between gap-3">
                     <div>
@@ -186,7 +186,7 @@ export default function ServicesAdmin() {
                   <div className="flex gap-2 pt-1">
                     <button
                       type="button"
-                      onClick={() => openEditModal(svc, i)}
+                      onClick={() => openEditModal(svc)}
                       className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
                     >
                       <Pencil size={16} />
@@ -194,7 +194,7 @@ export default function ServicesAdmin() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleDelete(i)}
+                      onClick={() => handleDelete(svc.id)}
                       className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm font-medium text-red-600 transition hover:bg-red-100"
                     >
                       <Trash2 size={16} />
@@ -212,9 +212,9 @@ export default function ServicesAdmin() {
             <div className="w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
               <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">{editingIndex !== null ? "Edit Service" : "Add Service"}</h3>
+                  <h3 className="text-xl font-bold text-gray-900">{editingId !== null ? "Edit Service" : "Add Service"}</h3>
                   <p className="text-sm text-gray-500">
-                    {editingIndex !== null ? "Update the service details shown on the public site." : "Create a new service card for the public portfolio."}
+                    {editingId !== null ? "Update the service details shown on the public site." : "Create a new service card for the public portfolio."}
                   </p>
                 </div>
                 <button

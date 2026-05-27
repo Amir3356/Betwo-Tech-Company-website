@@ -62,6 +62,20 @@ async function ensureDatabaseSchema() {
   `);
 
   await pool.query(`
+    CREATE TABLE IF NOT EXISTS comprehensive_services (
+      id SERIAL PRIMARY KEY,
+      icon VARCHAR(100) DEFAULT 'Code',
+      title VARCHAR(255) NOT NULL,
+      description TEXT NOT NULL,
+      points JSONB DEFAULT '[]'::jsonb,
+      image VARCHAR(500) DEFAULT NULL,
+      position INTEGER NOT NULL DEFAULT 0,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+  `);
+
+  await pool.query(`
     CREATE TABLE IF NOT EXISTS services (
       id INTEGER PRIMARY KEY DEFAULT 1 CHECK (id = 1),
       content JSONB NOT NULL DEFAULT '{}'::jsonb,
