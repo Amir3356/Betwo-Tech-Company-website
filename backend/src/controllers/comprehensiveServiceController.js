@@ -11,7 +11,7 @@ function parsePoints(raw) {
 export async function getComprehensiveServices(req, res) {
   try {
     const result = await pool.query(
-      "SELECT * FROM comprehensive_services ORDER BY position ASC, id ASC"
+      "SELECT * FROM services ORDER BY position ASC, id ASC"
     );
     return res.json({ data: result.rows });
   } catch (error) {
@@ -34,12 +34,12 @@ export async function addComprehensiveService(req, res) {
 
   try {
     const posResult = await pool.query(
-      "SELECT COALESCE(MAX(position), -1) + 1 AS next_pos FROM comprehensive_services"
+      "SELECT COALESCE(MAX(position), -1) + 1 AS next_pos FROM services"
     );
     const position = posResult.rows[0].next_pos;
 
     const result = await pool.query(
-      `INSERT INTO comprehensive_services (icon, title, description, points, image, position)
+      `INSERT INTO services (icon, title, description, points, image, position)
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
       [icon || "Code", title.trim(), description.trim(), JSON.stringify(parsePoints(points)), image, position]
@@ -57,7 +57,7 @@ export async function updateComprehensiveService(req, res) {
   const { title, description, points, icon } = req.body || {};
 
   try {
-    const existing = await pool.query("SELECT * FROM comprehensive_services WHERE id = $1", [id]);
+    const existing = await pool.query("SELECT * FROM services WHERE id = $1", [id]);
     if (existing.rows.length === 0) {
       return res.status(404).json({ message: "Service not found." });
     }
@@ -66,7 +66,7 @@ export async function updateComprehensiveService(req, res) {
     const image = req.file ? `/storage/services/${req.file.filename}` : current.image;
 
     const result = await pool.query(
-      `UPDATE comprehensive_services
+      `UPDATE services
        SET icon = $1, title = $2, description = $3, points = $4, image = $5, updated_at = NOW()
        WHERE id = $6
        RETURNING *`,
@@ -92,7 +92,7 @@ export async function deleteComprehensiveService(req, res) {
 
   try {
     const del = await pool.query(
-      "DELETE FROM comprehensive_services WHERE id = $1 RETURNING *",
+      "DELETE FROM services WHERE id = $1 RETURNING *",
       [id]
     );
 
@@ -101,7 +101,7 @@ export async function deleteComprehensiveService(req, res) {
     }
 
     const remaining = await pool.query(
-      "SELECT * FROM comprehensive_services ORDER BY position ASC, id ASC"
+      "SELECT * FROM services ORDER BY position ASC, id ASC"
     );
     return res.json({ message: "Comprehensive service deleted.", data: remaining.rows });
   } catch (error) {
