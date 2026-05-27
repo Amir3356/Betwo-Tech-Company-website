@@ -185,7 +185,7 @@ export default function AboutUsOverview() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="w-10 h-10 bg-sky-500/10 dark:bg-sky-500/15 rounded-lg flex items-center justify-center text-sky-500 dark:text-sky-400 mb-4">
+                <div className="w-10 h-10 bg-fuchsia-500/10 dark:bg-sky-500/15 rounded-lg flex items-center justify-center text-fuchsia-500 dark:text-sky-400 mb-4">
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200">
@@ -204,7 +204,7 @@ export default function AboutUsOverview() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="w-10 h-10 bg-sky-500/10 dark:bg-sky-500/15 rounded-lg flex items-center justify-center text-sky-500 dark:text-sky-400 mb-4">
+                <div className="w-10 h-10 bg-fuchsia-500/10 dark:bg-sky-500/15 rounded-lg flex items-center justify-center text-fuchsia-500 dark:text-sky-400 mb-4">
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200">
@@ -224,7 +224,7 @@ export default function AboutUsOverview() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Shield className="w-5 h-5 text-blue-400" />
+              <Shield className="w-5 h-5 text-fuchsia-500 dark:text-blue-400" />
               <span className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                 {hero.trustText}
               </span>
@@ -270,7 +270,7 @@ export default function AboutUsOverview() {
               whileHover={{ y: -4, scale: 1.05 }}
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-400/10 rounded-full flex items-center justify-center text-blue-400">
+                <div className="w-12 h-12 bg-fuchsia-500/10 dark:bg-blue-400/10 rounded-full flex items-center justify-center text-fuchsia-500 dark:text-blue-400">
                   <Award className="w-6 h-6" />
                 </div>
                 <div>
@@ -316,7 +316,7 @@ export default function AboutUsOverview() {
                 className="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-700 dark:hover:border-slate-600 transition-all duration-300 hover:shadow-lg hover:shadow-slate-300/50 dark:hover:shadow-slate-900/30"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-slate-200/30 dark:bg-slate-700/30 rounded-lg flex items-center justify-center text-slate-700 dark:text-slate-400 shrink-0 transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-300">
+                  <div className="w-12 h-12 bg-fuchsia-50 dark:bg-slate-700/30 rounded-lg flex items-center justify-center text-fuchsia-500 dark:text-slate-400 shrink-0 transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-300">
                     {IconComponent && <IconComponent className="w-6 h-6" />}
                   </div>
                   <div>
