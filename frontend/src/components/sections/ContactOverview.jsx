@@ -127,7 +127,7 @@ export default function ContactOverview() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {hero.title} <span className="text-blue-400">{hero.highlightText}</span>
+            {hero.title} <span className="text-slate-900 dark:text-white">{hero.highlightText}</span>
           </motion.h3>
           <motion.p
             className="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto"
