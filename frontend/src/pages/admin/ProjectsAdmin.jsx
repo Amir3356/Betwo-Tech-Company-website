@@ -117,7 +117,7 @@ export default function ProjectsAdmin() {
     <div className="min-h-screen bg-gray-100 px-4 py-8 md:px-6 lg:px-10 lg:py-8">
       <div className="mx-auto max-w-7xl space-y-8">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-3xl font-bold text-gray-900">Project Admin</h2>
+          <h2 className="text-3xl font-bold text-gray-900">Projects</h2>
           <button
             type="button"
             onClick={openCreateModal}

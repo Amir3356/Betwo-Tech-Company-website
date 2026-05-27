@@ -1,7 +1,16 @@
 import { useEffect, useState } from "react";
-import { Plus, X, LoaderCircle, Pencil, Trash2, LayoutTemplate } from "lucide-react";
+import { Plus, X, LoaderCircle, Pencil, Trash2, Upload, LayoutTemplate } from "lucide-react";
+
+const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
 const iconOptions = ["Database", "Smartphone", "Lightbulb", "LayoutTemplate", "Settings", "Repeat", "Code"];
+
+function resolveImageUrl(image) {
+  if (!image) return "";
+  if (/^https?:\/\//i.test(image)) return image;
+  if (image.startsWith("/storage/")) return `${apiBaseUrl}${image}`;
+  return image;
+}
 
 export default function ServicesAdmin() {
   const [services, setServices] = useState([]);
@@ -10,9 +19,7 @@ export default function ServicesAdmin() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [formData, setFormData] = useState({ icon: "Code", title: "", description: "", points: [] });
-
-  const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+  const [formData, setFormData] = useState({ icon: "Code", title: "", description: "", points: [], image: null });
 
   useEffect(() => {
     loadServices();
@@ -35,7 +42,7 @@ export default function ServicesAdmin() {
 
   const resetForm = () => {
     setEditingIndex(null);
-    setFormData({ icon: "Code", title: "", description: "", points: [] });
+    setFormData({ icon: "Code", title: "", description: "", points: [], image: null });
   };
 
   const openCreateModal = () => {
@@ -51,6 +58,7 @@ export default function ServicesAdmin() {
       title: svc.title || "",
       description: svc.description || "",
       points: Array.isArray(svc.points) ? svc.points : [],
+      image: null,
     });
     setIsModalOpen(true);
     setError("");
@@ -59,6 +67,10 @@ export default function ServicesAdmin() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     resetForm();
+  };
+
+  const handleFileChange = (e) => {
+    setFormData((p) => ({ ...p, image: e.target.files[0] || null }));
   };
 
   const handleDelete = async (index) => {
@@ -87,11 +99,18 @@ export default function ServicesAdmin() {
       const url = editingIndex === null
         ? `${apiBaseUrl}/api/services/comprehensive`
         : `${apiBaseUrl}/api/services/comprehensive/${editingIndex}`;
+      const payload = new FormData();
+      payload.append("icon", formData.icon);
+      payload.append("title", formData.title);
+      payload.append("description", formData.description);
+      payload.append("points", JSON.stringify(formData.points));
+      if (formData.image) {
+        payload.append("image", formData.image);
+      }
       const response = await fetch(url, {
         method: editingIndex === null ? "POST" : "PUT",
         credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: payload,
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result?.message || "Failed to save service.");
@@ -151,6 +170,11 @@ export default function ServicesAdmin() {
                       <h3 className="text-lg font-semibold text-gray-900 mt-1">{svc.title}</h3>
                     </div>
                   </div>
+                  {svc.image && (
+                    <div className="aspect-[16/10] bg-gray-100 rounded-xl overflow-hidden">
+                      <img src={resolveImageUrl(svc.image)} alt={svc.title} className="h-full w-full object-contain bg-white/70 p-2" />
+                    </div>
+                  )}
                   <p className="text-sm leading-6 text-gray-600 line-clamp-3">{svc.description}</p>
                   {svc.points?.length > 0 && (
                     <div className="flex flex-wrap gap-1">
@@ -248,6 +272,19 @@ export default function ServicesAdmin() {
                     className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-blue-500"
                     placeholder="Point 1, Point 2, Point 3"
                   />
+                </label>
+
+                <label className="space-y-2 text-sm font-medium text-gray-700">
+                  <span>Image</span>
+                  <div className="flex items-center gap-3 rounded-xl border border-dashed border-gray-300 bg-gray-50 px-4 py-4">
+                    <Upload size={18} className="text-gray-500" />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      className="w-full text-sm text-gray-600 file:mr-4 file:rounded-lg file:border-0 file:bg-blue-600 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-blue-700"
+                    />
+                  </div>
                 </label>
 
                 <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">

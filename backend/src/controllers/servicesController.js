@@ -148,6 +148,11 @@ export async function updateServices(req, res) {
 
 export async function addComprehensiveService(req, res) {
   const { title, description, points, icon } = req.body || {};
+  let image = null;
+
+  if (req.file) {
+    image = `/storage/services/${req.file.filename}`;
+  }
 
   if (!title || !description) {
     return res.status(400).json({ message: "Title and description are required." });
@@ -161,6 +166,7 @@ export async function addComprehensiveService(req, res) {
       description: description.trim(),
       points: Array.isArray(points) ? points : [],
       icon: icon || "Code",
+      image,
     });
 
     const nextContent = { ...current, comprehensive: { ...current.comprehensive, services } };
@@ -194,6 +200,7 @@ export async function updateComprehensiveService(req, res) {
       description: typeof description === "string" ? description.trim() : services[serviceIndex].description,
       points: Array.isArray(points) ? points : services[serviceIndex].points,
       icon: icon || services[serviceIndex].icon,
+      image: req.file ? `/storage/services/${req.file.filename}` : services[serviceIndex].image,
     };
 
     const nextContent = { ...current, comprehensive: { ...current.comprehensive, services } };
