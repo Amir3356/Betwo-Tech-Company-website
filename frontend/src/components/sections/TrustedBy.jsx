@@ -217,7 +217,7 @@ export default function TrustedBy() {
           <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-8 lg:max-w-2xl">
             {data.badges.map((badge, index) => (
               <div key={index} className="flex items-center gap-2 text-sm font-extrabold text-slate-800 dark:text-white">
-                {renderIcon(badge.icon, "text-blue-400", 20)} {badge.text}
+                {renderIcon(badge.icon, "text-fuchsia-500", 20)} {badge.text}
               </div>
             ))}
           </div>
