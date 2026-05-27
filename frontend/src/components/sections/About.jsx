@@ -327,7 +327,7 @@ export default function About() {
               whileHover={{ y: -8, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 240, damping: 20 }}
             >
-              <Target className="w-10 h-10 sm:w-12 sm:h-12 text-slate-900 dark:text-slate-300 mb-4 sm:mb-6" />
+              <Target className="w-10 h-10 sm:w-12 sm:h-12 text-fuchsia-500 dark:text-fuchsia-400 mb-4 sm:mb-6" />
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 sm:mb-4">{aboutData.purpose.mission.title}</h3>
               <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">{aboutData.purpose.mission.description}</p>
             </motion.div>
@@ -340,7 +340,7 @@ export default function About() {
               whileHover={{ y: -8, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 240, damping: 20 }}
             >
-              <Eye className="w-10 h-10 sm:w-12 sm:h-12 text-slate-900 dark:text-slate-300 mb-4 sm:mb-6" />
+              <Eye className="w-10 h-10 sm:w-12 sm:h-12 text-fuchsia-500 dark:text-fuchsia-400 mb-4 sm:mb-6" />
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 sm:mb-4">{aboutData.purpose.vision.title}</h3>
               <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">{aboutData.purpose.vision.description}</p>
             </motion.div>

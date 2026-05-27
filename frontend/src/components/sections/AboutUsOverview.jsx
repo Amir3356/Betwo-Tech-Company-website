@@ -185,7 +185,7 @@ export default function AboutUsOverview() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="w-10 h-10 bg-blue-400/10 rounded-lg flex items-center justify-center text-blue-400 mb-4">
+                <div className="w-10 h-10 bg-fuchsia-500/10 dark:bg-fuchsia-500/15 rounded-lg flex items-center justify-center text-fuchsia-500 dark:text-fuchsia-400 mb-4">
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200">
@@ -204,7 +204,7 @@ export default function AboutUsOverview() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="w-10 h-10 bg-blue-400/10 rounded-lg flex items-center justify-center text-blue-400 mb-4">
+                <div className="w-10 h-10 bg-fuchsia-500/10 dark:bg-fuchsia-500/15 rounded-lg flex items-center justify-center text-fuchsia-500 dark:text-fuchsia-400 mb-4">
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200">
