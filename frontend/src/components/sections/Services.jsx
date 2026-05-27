@@ -5,6 +5,13 @@ import { CheckCircle, LayoutTemplate } from "lucide-react";
 
 const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
+function resolveImageUrl(image) {
+  if (!image) return "";
+  if (/^https?:\/\//i.test(image)) return image;
+  if (image.startsWith("/storage/")) return `${apiBaseUrl}${image}`;
+  return image;
+}
+
 export default function Services() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -203,6 +210,11 @@ export default function Services() {
                   <div className="w-12 h-12 sm:w-14 sm:h-14 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-slate-900 dark:text-slate-300 mb-4 sm:mb-6 transition-colors duration-300 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-slate-900 dark:group-hover:text-slate-100">
                     {IconComponent && <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:scale-110" />}
                   </div>
+                  {service.image && (
+                    <div className="aspect-[16/10] bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden mb-4 sm:mb-6">
+                      <img src={resolveImageUrl(service.image)} alt={service.title} className="h-full w-full object-scale-down p-2" />
+                    </div>
+                  )}
                   <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3 transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200">{service.title}</h3>
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 sm:mb-6 min-h-16 sm:min-h-20 transition-colors duration-300 group-hover:text-slate-800 dark:group-hover:text-slate-300">{service.description}</p>
                   <ul className="space-y-2 sm:space-y-3">

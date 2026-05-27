@@ -38,6 +38,13 @@ const headingVariants = {
 
 const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
+function resolveImageUrl(image) {
+  if (!image) return "";
+  if (/^https?:\/\//i.test(image)) return image;
+  if (image.startsWith("/storage/")) return `${apiBaseUrl}${image}`;
+  return image;
+}
+
 export default function ServicesOverview() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -141,6 +148,12 @@ export default function ServicesOverview() {
                   <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed transition-colors duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-300">
                     {service.description}
                   </p>
+
+                  {service.image && (
+                    <div className="aspect-[16/10] bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden mb-6">
+                      <img src={resolveImageUrl(service.image)} alt={service.title} className="h-full w-full object-scale-down p-2" />
+                    </div>
+                  )}
 
                   {/* Key Points */}
                   <ul className="space-y-2 mb-6">
