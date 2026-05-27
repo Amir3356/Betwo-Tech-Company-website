@@ -3,13 +3,13 @@ import multer from "multer";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { getServices } from "../controllers/servicesController.js";
+import { getServices as getPublicServices } from "../controllers/servicesController.js";
 import {
-  getComprehensiveServices as getAdminServices,
-  addComprehensiveService as addAdminService,
-  updateComprehensiveService as updateAdminService,
-  deleteComprehensiveService as deleteAdminService,
-} from "../controllers/comprehensiveServiceController.js";
+  getServices as getAdminServices,
+  addService,
+  updateService,
+  deleteService,
+} from "../controllers/servicesAdminController.js";
 import { ensureAdmin } from "../middleware/adminAuth.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -30,11 +30,11 @@ const upload = multer({ storage });
 
 const router = express.Router();
 
-router.get("/", getServices);
+router.get("/", getPublicServices);
 
 router.get("/admin", ensureAdmin, getAdminServices);
-router.post("/admin", ensureAdmin, upload.single("image"), addAdminService);
-router.put("/admin/:id", ensureAdmin, upload.single("image"), updateAdminService);
-router.delete("/admin/:id", ensureAdmin, deleteAdminService);
+router.post("/admin", ensureAdmin, upload.single("image"), addService);
+router.put("/admin/:id", ensureAdmin, upload.single("image"), updateService);
+router.delete("/admin/:id", ensureAdmin, deleteService);
 
 export default router;

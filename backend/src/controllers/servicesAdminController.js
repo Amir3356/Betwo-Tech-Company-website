@@ -8,19 +8,19 @@ function parsePoints(raw) {
   return [];
 }
 
-export async function getComprehensiveServices(req, res) {
+export async function getServices(req, res) {
   try {
     const result = await pool.query(
       "SELECT * FROM services ORDER BY position ASC, id ASC"
     );
     return res.json({ data: result.rows });
   } catch (error) {
-    console.error("Failed to load comprehensive services:", error);
-    return res.status(500).json({ message: "Failed to load comprehensive services." });
+    console.error("Failed to load services:", error);
+    return res.status(500).json({ message: "Failed to load services." });
   }
 }
 
-export async function addComprehensiveService(req, res) {
+export async function addService(req, res) {
   const { title, description, points, icon } = req.body || {};
   let image = null;
 
@@ -45,14 +45,14 @@ export async function addComprehensiveService(req, res) {
       [icon || "Code", title.trim(), description.trim(), JSON.stringify(parsePoints(points)), image, position]
     );
 
-    return res.status(201).json({ message: "Comprehensive service added.", data: result.rows[0] });
+    return res.status(201).json({ message: "Service added.", data: result.rows[0] });
   } catch (error) {
-    console.error("Failed to add comprehensive service:", error);
+    console.error("Failed to add service:", error);
     return res.status(500).json({ message: "Failed to add service." });
   }
 }
 
-export async function updateComprehensiveService(req, res) {
+export async function updateService(req, res) {
   const { id } = req.params;
   const { title, description, points, icon } = req.body || {};
 
@@ -80,14 +80,14 @@ export async function updateComprehensiveService(req, res) {
       ]
     );
 
-    return res.json({ message: "Comprehensive service updated.", data: result.rows[0] });
+    return res.json({ message: "Service updated.", data: result.rows[0] });
   } catch (error) {
-    console.error("Failed to update comprehensive service:", error);
+    console.error("Failed to update service:", error);
     return res.status(500).json({ message: "Failed to update service." });
   }
 }
 
-export async function deleteComprehensiveService(req, res) {
+export async function deleteService(req, res) {
   const { id } = req.params;
 
   try {
@@ -103,9 +103,9 @@ export async function deleteComprehensiveService(req, res) {
     const remaining = await pool.query(
       "SELECT * FROM services ORDER BY position ASC, id ASC"
     );
-    return res.json({ message: "Comprehensive service deleted.", data: remaining.rows });
+    return res.json({ message: "Service deleted.", data: remaining.rows });
   } catch (error) {
-    console.error("Failed to delete comprehensive service:", error);
+    console.error("Failed to delete service:", error);
     return res.status(500).json({ message: "Failed to delete service." });
   }
 }
