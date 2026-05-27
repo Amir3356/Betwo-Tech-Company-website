@@ -118,6 +118,10 @@ async function writeServices(content) {
 export async function getServices(req, res) {
   try {
     const content = await readServices();
+    const tableResult = await pool.query(
+      "SELECT * FROM comprehensive_services ORDER BY position ASC, id ASC"
+    );
+    content.comprehensive.services = tableResult.rows;
     return res.json({ data: content });
   } catch (error) {
     console.error("Failed to load services content:", error);

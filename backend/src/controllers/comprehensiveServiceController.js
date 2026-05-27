@@ -83,16 +83,19 @@ export async function deleteComprehensiveService(req, res) {
   const { id } = req.params;
 
   try {
-    const result = await pool.query(
+    const del = await pool.query(
       "DELETE FROM comprehensive_services WHERE id = $1 RETURNING *",
       [id]
     );
 
-    if (result.rows.length === 0) {
+    if (del.rows.length === 0) {
       return res.status(404).json({ message: "Service not found." });
     }
 
-    return res.json({ message: "Comprehensive service deleted.", data: result.rows });
+    const remaining = await pool.query(
+      "SELECT * FROM comprehensive_services ORDER BY position ASC, id ASC"
+    );
+    return res.json({ message: "Comprehensive service deleted.", data: remaining.rows });
   } catch (error) {
     console.error("Failed to delete comprehensive service:", error);
     return res.status(500).json({ message: "Failed to delete service." });
