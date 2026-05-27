@@ -126,7 +126,7 @@ export default function FeaturedProjects() {
                   <img
                     src={resolveProjectImageUrl(project.image)}
                     alt={project.title}
-                    className="w-full h-full object-contain bg-white/70 p-2 transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-400">

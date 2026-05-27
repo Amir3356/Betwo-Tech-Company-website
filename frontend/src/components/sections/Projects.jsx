@@ -166,7 +166,7 @@ export default function Projects() {
                   <motion.img
                     src={resolveProjectImageUrl(project.image)}
                     alt={project.title}
-                    className="h-full w-full object-contain bg-white/70 p-2 transition-transform duration-300 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     initial={{ scale: 0.98, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true, amount: 0.6 }}

@@ -152,7 +152,7 @@ export default function ProjectsAdmin() {
                     <img
                       src={resolveProjectImageUrl(project.image)}
                       alt={project.title}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-contain bg-white/70 p-2"
                     />
                   ) : (
                     <div className="flex h-full items-center justify-center text-gray-400">
