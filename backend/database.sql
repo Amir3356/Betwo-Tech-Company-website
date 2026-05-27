@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS contact_messages (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE IF NOT EXISTS comprehensive_services (
+CREATE TABLE IF NOT EXISTS services (
   id SERIAL PRIMARY KEY,
   icon VARCHAR(100) DEFAULT 'Code',
   title VARCHAR(255) NOT NULL,

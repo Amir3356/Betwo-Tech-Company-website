@@ -29,7 +29,7 @@ export default function ServicesAdmin() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch(`${apiBaseUrl}/api/services/comprehensive-table`, { credentials: "include" });
+      const response = await fetch(`${apiBaseUrl}/api/services/admin`, { credentials: "include" });
       const payload = await response.json();
       if (!response.ok) throw new Error(payload?.message || "Failed to load services.");
       setServices(payload?.data || []);
@@ -78,7 +78,7 @@ export default function ServicesAdmin() {
     setIsSubmitting(true);
     setError("");
     try {
-      const response = await fetch(`${apiBaseUrl}/api/services/comprehensive-table/${id}`, {
+      const response = await fetch(`${apiBaseUrl}/api/services/admin/${id}`, {
         method: "DELETE", credentials: "include",
       });
       const result = await response.json();
@@ -97,8 +97,8 @@ export default function ServicesAdmin() {
     setError("");
     try {
       const url = editingId === null
-        ? `${apiBaseUrl}/api/services/comprehensive-table`
-        : `${apiBaseUrl}/api/services/comprehensive-table/${editingId}`;
+        ? `${apiBaseUrl}/api/services/admin`
+        : `${apiBaseUrl}/api/services/admin/${editingId}`;
       const payload = new FormData();
       payload.append("icon", formData.icon);
       payload.append("title", formData.title);

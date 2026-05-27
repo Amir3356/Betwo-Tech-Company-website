@@ -3,21 +3,12 @@ import multer from "multer";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { getServices } from "../controllers/servicesController.js";
 import {
-  getServices,
-  updateServices,
-  addDeepDive,
-  updateDeepDive,
-  deleteDeepDive,
-  addProcessStep,
-  updateProcessStep,
-  deleteProcessStep,
-} from "../controllers/servicesController.js";
-import {
-  getComprehensiveServices,
-  addComprehensiveService,
-  updateComprehensiveService,
-  deleteComprehensiveService,
+  getComprehensiveServices as getAdminServices,
+  addComprehensiveService as addAdminService,
+  updateComprehensiveService as updateAdminService,
+  deleteComprehensiveService as deleteAdminService,
 } from "../controllers/comprehensiveServiceController.js";
 import { ensureAdmin } from "../middleware/adminAuth.js";
 
@@ -40,18 +31,10 @@ const upload = multer({ storage });
 const router = express.Router();
 
 router.get("/", getServices);
-router.put("/", ensureAdmin, updateServices);
 
-router.get("/comprehensive-table", ensureAdmin, getComprehensiveServices);
-router.post("/comprehensive-table", ensureAdmin, upload.single("image"), addComprehensiveService);
-router.put("/comprehensive-table/:id", ensureAdmin, upload.single("image"), updateComprehensiveService);
-router.delete("/comprehensive-table/:id", ensureAdmin, deleteComprehensiveService);
-
-router.post("/deepdives", ensureAdmin, addDeepDive);
-router.put("/deepdives/:index", ensureAdmin, updateDeepDive);
-router.delete("/deepdives/:index", ensureAdmin, deleteDeepDive);
-router.post("/process-steps", ensureAdmin, addProcessStep);
-router.put("/process-steps/:index", ensureAdmin, updateProcessStep);
-router.delete("/process-steps/:index", ensureAdmin, deleteProcessStep);
+router.get("/admin", ensureAdmin, getAdminServices);
+router.post("/admin", ensureAdmin, upload.single("image"), addAdminService);
+router.put("/admin/:id", ensureAdmin, upload.single("image"), updateAdminService);
+router.delete("/admin/:id", ensureAdmin, deleteAdminService);
 
 export default router;
