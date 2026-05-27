@@ -129,7 +129,7 @@ export default function Contact() {
 
       <motion.div className="bg-slate-100 dark:bg-blue-400 py-8 sm:py-10 lg:py-12 mb-12 sm:mb-16 lg:mb-24" initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center text-slate-900 dark:text-white space-y-3 sm:space-y-4">
-          <CheckCircle className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 mx-auto text-slate-700 dark:text-white/80" />
+          <CheckCircle className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 mx-auto text-fuchsia-500 dark:text-white/80" />
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">{guaranteed.title}</h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-white/90">{guaranteed.description}</p>
         </div>
