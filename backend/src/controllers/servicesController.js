@@ -9,16 +9,103 @@ const defaultContent = {
     stats: [{ value: "3+", label: "Years Experience" }, { value: "150+", label: "Projects Completed" }, { value: "50+", label: "Happy Clients" }],
     image: "",
   },
-  comprehensive: { title: "", description: "", services: [] },
-  featureDeepDivesSection: { title: "", description: "" },
-  featureDeepDives: [],
-  process: { title: "", steps: [] },
+  comprehensive: {
+    title: "Solutions Built Around Your Business",
+    description: "From product engineering to long-term support, we design software that fits the way your team already works.",
+    services: [
+      {
+        icon: "Code",
+        title: "Custom Software Development",
+        description: "Tailor-made web and mobile applications designed to solve your unique business challenges with scalable, secure, and maintainable code.",
+        points: ["MVPs and internal tools", "Scalable architecture", "Clean handoff and documentation"],
+      },
+      {
+        icon: "Database",
+        title: "Management Systems",
+        description: "Comprehensive ERP and management platforms that streamline operations, automate workflows, and provide real-time business intelligence.",
+        points: ["Centralized dashboards", "Workflow automation", "Role-based access and reporting"],
+      },
+      {
+        icon: "Smartphone",
+        title: "Mobile Applications",
+        description: "Native and cross-platform mobile apps that deliver seamless user experiences and keep your business in your customers' pockets.",
+        points: ["iOS and Android support", "Smooth user experience", "API-driven integrations"],
+      },
+      {
+        icon: "Settings",
+        title: "System Integration",
+        description: "Connect and unify your existing tools and platforms into a cohesive ecosystem that eliminates data silos and boosts productivity.",
+        points: ["Legacy system bridging", "Secure data flow", "Operational visibility"],
+      },
+    ],
+  },
+  featureDeepDivesSection: {
+    title: "How We Bring Your Vision to Life",
+    description: "Each service is delivered with meticulous attention to detail and a focus on measurable business outcomes.",
+  },
+  featureDeepDives: [
+    {
+      title: "Discovery and Planning",
+      description: "We translate your goals into a practical roadmap before any code is written.",
+      features: ["Stakeholder interviews", "Scope definition", "Delivery milestones"],
+      benefits: ["Less rework", "Clear timeline", "Aligned expectations"],
+      tech: ["Figma", "Notion", "Jira"],
+      image: "",
+      reverse: false,
+    },
+    {
+      title: "Implementation and Integration",
+      description: "We build the product and connect the systems that keep your team moving.",
+      features: ["Frontend and backend delivery", "API integrations", "Data model design"],
+      benefits: ["Faster operations", "Less manual work", "Reliable data"],
+      tech: ["React", "Node.js", "PostgreSQL"],
+      image: "",
+      reverse: true,
+    },
+  ],
+  process: {
+    title: "How We Bring Ideas to Life",
+    steps: [
+      { number: "01", title: "Understand Your Vision", description: "We carefully listen to your goals and requirements" },
+      { number: "02", title: "Strategic Planning", description: "We design a clear plan to build the right solution for you" },
+      { number: "03", title: "Secure Development", description: "We build your product using modern technologies and secure practices" },
+      { number: "04", title: "Collaborative Review", description: "We work closely with you, refining the product based on feedback" },
+      { number: "05", title: "Quality and Security Testing", description: "We rigorously test the system to ensure reliability, performance, and security" },
+      { number: "06", title: "Launch and Continuous Support", description: "We deploy your solution and support it to ensure long-term success" },
+    ],
+  },
 };
+
+function normalizeServicesContent(content) {
+  const safeContent = content && typeof content === "object" && !Array.isArray(content) ? content : {};
+
+  return {
+    hero: { ...defaultContent.hero, ...(safeContent.hero || {}) },
+    comprehensive: {
+      ...defaultContent.comprehensive,
+      ...(safeContent.comprehensive || {}),
+      services: Array.isArray(safeContent.comprehensive?.services) ? safeContent.comprehensive.services : defaultContent.comprehensive.services,
+    },
+    featureDeepDivesSection: { ...defaultContent.featureDeepDivesSection, ...(safeContent.featureDeepDivesSection || {}) },
+    featureDeepDives: Array.isArray(safeContent.featureDeepDives) ? safeContent.featureDeepDives : defaultContent.featureDeepDives,
+    process: {
+      ...defaultContent.process,
+      ...(safeContent.process || {}),
+      steps: Array.isArray(safeContent.process?.steps) ? safeContent.process.steps : defaultContent.process.steps,
+    },
+  };
+}
 
 async function readServices() {
   const result = await pool.query("SELECT content FROM services WHERE id = 1");
   if (result.rows.length === 0) return defaultContent;
-  return result.rows[0].content || defaultContent;
+
+  const content = result.rows[0].content;
+  if (!content || Object.keys(content).length === 0) {
+    return defaultContent;
+  }
+
+  return normalizeServicesContent(content);
 }
 
 async function writeServices(content) {
@@ -43,13 +130,13 @@ export async function updateServices(req, res) {
 
   try {
     const current = await readServices();
-    const nextContent = {
+    const nextContent = normalizeServicesContent({
       hero: hero || current.hero,
       comprehensive: comprehensive || current.comprehensive,
       featureDeepDivesSection: featureDeepDivesSection || current.featureDeepDivesSection,
       featureDeepDives: featureDeepDives || current.featureDeepDives,
       process: process || current.process,
-    };
+    });
 
     await writeServices(nextContent);
     return res.json({ message: "Services content updated.", data: nextContent });
