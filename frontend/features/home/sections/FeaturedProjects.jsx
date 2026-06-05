@@ -140,7 +140,7 @@ export default function FeaturedProjects() {
                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-grow">{project.description}</p>
                  <button
                    onClick={() => setSelectedProject(project)}
-                   className="mt-auto inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white/80 dark:bg-slate-800/80 px-5 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-200 transition-all hover:border-sky-500 hover:text-sky-600 dark:hover:border-sky-400 dark:hover:text-sky-400 hover:shadow-lg"
+                    className="mt-auto inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white/80 dark:bg-slate-800/80 px-5 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-200 transition-all hover:border-slate-800 hover:text-slate-900 dark:hover:border-sky-400 dark:hover:text-sky-400 hover:shadow-lg"
                  >
                    View Detail <ArrowRight size={16} />
                  </button>
