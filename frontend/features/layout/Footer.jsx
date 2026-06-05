@@ -1,5 +1,6 @@
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Mail, Phone, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import footerData from "../../shared/data/footer.json";
 
 const iconMap = {
   telegram: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.5 3.5 2.8 11.1c-1 .4-1 1.8.1 2.2l4.7 1.5 1.8 5.6c.3.8 1.3 1 1.9.5l2.7-2.2 4.9 3.6c.7.5 1.7.1 1.9-.8l2.9-15.1c.2-1-1-1.7-1.9-1.3z"/><path d="m8.8 14.8 8.8-6.3"/></svg>,
@@ -7,29 +8,7 @@ const iconMap = {
   tiktok: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>,
 };
 
-const quickLinks = [
-  { text: "Home", link: "#home" },
-  { text: "About Us", link: "/about#about" },
-  { text: "Our Projects", link: "/projects#projects" }
-];
-
-const services = [
-  { text: "Web Application Development", link: "#" },
-  { text: "Mobile iOS & Android Apps", link: "#" },
-  { text: "Enterprise Custom Software", link: "#" }
-];
-
-const socialLinks = [
-  { name: "Telegram", url: "https://t.me/ForChristAlone", icon: "telegram" },
-  { name: "WhatsApp", url: "https://wa.me/251912882357", icon: "whatsapp" },
-  { name: "TikTok", url: "https://tiktok.com/@Betwo tech", icon: "tiktok" }
-];
-
-const bottomLinks = [
-  { text: "Privacy Policy", link: "#" },
-  { text: "Terms of Service", link: "#" },
-  { text: "Cookie Policy", link: "#" }
-];
+const { quickLinks, services, socialLinks, bottomLinks, contact } = footerData;
 
 export default function Footer() {
   const sectionVariants = {
@@ -157,7 +136,7 @@ export default function Footer() {
                   </div>
                   <div className="inline-flex items-baseline gap-2 flex-wrap">
                     <span className="text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase tracking-wider">Phone:</span>
-                    <a href="tel:+251911234567" className="text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-colors">+251 911 234 567</a>
+                    <a href={`tel:${contact.phoneHref}`} className="text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-colors">{contact.phone}</a>
                   </div>
                 </div>
               </li>
@@ -169,7 +148,7 @@ export default function Footer() {
                   </div>
                   <div className="inline-flex items-baseline gap-2 flex-wrap">
                     <span className="text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase tracking-wider">Email:</span>
-                    <a href="mailto:hello@betwoch.tech" className="text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-colors break-all">hello@betwoch.tech</a>
+                    <a href={`mailto:${contact.email}`} className="text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-blue-500 dark:hover:text-blue-400 transition-colors break-all">{contact.email}</a>
                   </div>
                 </div>
               </li>

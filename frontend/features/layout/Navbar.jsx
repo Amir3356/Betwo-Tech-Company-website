@@ -3,7 +3,7 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDarkMode } from "../../shared/hooks/useDarkMode";
-import navDataImport from "../../shared/data/navigation.json";
+import navDataImport from "../../shared/data/navbar.json";
 import { getAssetUrl } from "../../assets/index.js";
 
 export default function Navbar() {

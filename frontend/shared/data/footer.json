@@ -1,0 +1,30 @@
+{
+  "brand": {
+    "name": "Betwo Tech"
+  },
+  "quickLinks": [
+    { "text": "Home", "link": "#home" },
+    { "text": "About Us", "link": "/about#about" },
+    { "text": "Our Projects", "link": "/projects#projects" }
+  ],
+  "services": [
+    { "text": "Web Application Development", "link": "#" },
+    { "text": "Mobile iOS & Android Apps", "link": "#" },
+    { "text": "Enterprise Custom Software", "link": "#" }
+  ],
+  "socialLinks": [
+    { "name": "Telegram", "url": "https://t.me/ForChristAlone", "icon": "telegram" },
+    { "name": "WhatsApp", "url": "https://wa.me/251912882357", "icon": "whatsapp" },
+    { "name": "TikTok", "url": "https://tiktok.com/@betwo_tech", "icon": "tiktok" }
+  ],
+  "contact": {
+    "phone": "+251 911 234 567",
+    "phoneHref": "+251911234567",
+    "email": "hello@betwoch.tech"
+  },
+  "bottomLinks": [
+    { "text": "Privacy Policy", "link": "#" },
+    { "text": "Terms of Service", "link": "#" },
+    { "text": "Cookie Policy", "link": "#" }
+  ]
+}
