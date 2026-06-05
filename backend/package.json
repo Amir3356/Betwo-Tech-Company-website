@@ -1,0 +1,28 @@
+{
+  "name": "betwo-tech-backend",
+  "version": "1.0.0",
+  "description": "Betwo Tech Company backend API",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "migrate": "node --input-type=module -e \"import 'dotenv/config'; import {pool} from './config/db.js'; import migrate from './config/migrate.js'; migrate(pool).then(() => { console.log('Done.'); process.exit(0); }).catch((err) => { console.error(err); process.exit(1); });\"",
+    "migrate:fresh": "node scripts/migrateFresh.js",
+    "seed": "node seeds/adminSeed.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-pg-simple": "^9.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^8.0.9",
+    "pg": "^8.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

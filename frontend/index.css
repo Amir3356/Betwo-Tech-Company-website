@@ -1,0 +1,952 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --color-primary-500: #0ea5e9;
+    --color-primary-600: #0284c7;
+
+    /* Font Family Variables */
+    /*
+   * Plus Jakarta Sans  — headings, nav, brand, CTA buttons (modern, geometric, tech-forward)
+   * Inter              — body text, descriptions, inputs, labels (the UI industry standard)
+   * Space Grotesk      — stats/numbers, tech tags, code, badges (technical character)
+   */
+    --font-primary: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+    --font-heading: "Figtree", "Plus Jakarta Sans", -apple-system,
+        BlinkMacSystemFont, sans-serif;
+    --font-display: "Figtree", "Plus Jakarta Sans", -apple-system,
+        BlinkMacSystemFont, sans-serif;
+    --font-mono: "Space Grotesk", "Courier New", monospace;
+    --font-body: "Figtree", "Inter", -apple-system, BlinkMacSystemFont,
+        sans-serif;
+}
+
+body {
+    font-family: var(--font-primary); /* Inter */
+    font-weight: 400;
+    font-optical-sizing: auto;
+    transition:
+        background-color 0.3s,
+        color 0.3s;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+/* Light Mode Scrollbar Track */
+::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+    border-radius: 10px;
+    margin: 4px;
+}
+
+:root:not(.dark) ::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Mode Scrollbar Track */
+:root.dark ::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #64748b, #475569);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #64748b, #475569);
+    border: 2px solid #f1f5f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Scrollbar Thumb */
+:root.dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #38bdf8, #0ea5e9);
+    border: 2px solid #1e293b;
+    box-shadow: 0 2px 4px rgba(56, 189, 248, 0.3);
+}
+
+/* Light Mode Scrollbar Thumb Hover */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #475569, #334155);
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #475569, #334155);
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Mode Scrollbar Thumb Hover */
+:root.dark ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #7dd3fc, #38bdf8);
+    border-color: #334155;
+    box-shadow:
+        0 4px 8px rgba(56, 189, 248, 0.4),
+        0 0 12px rgba(56, 189, 248, 0.2);
+}
+
+/* Scrollbar Thumb Active */
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(to bottom, #334155, #1e293b);
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(to bottom, #334155, #1e293b);
+}
+
+:root.dark ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(to bottom, #0ea5e9, #0284c7);
+}
+
+/* Horizontal Scrollbar */
+::-webkit-scrollbar:horizontal {
+    height: 12px;
+}
+
+/* Scrollbar Corner */
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Scrollbar Button (arrows) */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Section-Specific Font Families */
+
+/* Hero Section - Bold, Modern */
+#home {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+#home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(59, 130, 246, 0.05) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(14, 165, 233, 0.05) 0%,
+            transparent 50%
+        );
+    pointer-events: none;
+    z-index: 0;
+}
+
+#home h1,
+#home .hero-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 10;
+}
+
+#home p,
+#home .hero-description {
+    font-family: var(--font-body);
+    font-weight: 400;
+    position: relative;
+    z-index: 10;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+}
+
+/* Navigation & Footer */
+nav,
+.navbar {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+/* Navigation Links */
+nav a {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Brand Name in Navigation */
+.navbar .brand-name,
+nav .brand-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+footer {
+    font-family: var(--font-body);
+    font-weight: 400;
+}
+
+footer h3,
+footer h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+/* Buttons & CTAs */
+button,
+.btn,
+.cta-button {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+/* Stats & Numbers — Space Grotesk gives a distinctive technical feel */
+.stat-number,
+.counter {
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+/* Badges & Labels */
+.badge,
+.label,
+.tag {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Code, Technical Text & Tech Tags — Space Grotesk */
+code,
+pre,
+.code-block,
+.tech-tag {
+    font-family: var(--font-mono);
+    font-weight: 500;
+}
+
+/* Quotes & Testimonials */
+blockquote,
+.testimonial {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Smooth Font Rendering */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+button {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings:
+        "kern" 1,
+        "liga" 1,
+        "calt" 1;
+}
+
+/* Letter Spacing Adjustments */
+h1 {
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    letter-spacing: -0.015em;
+}
+
+h3,
+h4 {
+    letter-spacing: -0.01em;
+}
+
+/* Line Height Adjustments */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.2;
+}
+
+p {
+    line-height: 1.7;
+}
+
+/* Font Weight Variations for Dark Mode */
+.dark h1,
+.dark h2,
+.dark h3 {
+    font-weight: 700;
+}
+
+.dark p,
+.dark span {
+    font-weight: 400;
+}
+
+.dark button {
+    font-weight: 600;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   OUR HISTORY SECTION STYLING - VERTICAL TIMELINE
+   ============================================ */
+
+/* History Section Container */
+.history-section {
+    position: relative;
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+}
+
+.dark .history-section {
+    background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+}
+
+/* History Section Header */
+.history-section h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.dark .history-section h3 {
+    background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.history-section h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: #0f172a;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.dark .history-section h2 {
+    color: #f8fafc;
+}
+
+.history-section > div > div:first-child p {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #64748b;
+    line-height: 1.8;
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.dark .history-section > div > div:first-child p {
+    color: #94a3b8;
+}
+
+/* Vertical Timeline Container */
+.history-timeline {
+    position: relative;
+    max-width: 56rem;
+    margin: 4rem auto 0;
+    padding-left: 0;
+}
+
+/* Vertical Timeline Line */
+.history-timeline::before {
+    content: "";
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(
+        to bottom,
+        #e2e8f0 0%,
+        #cbd5e1 50%,
+        #e2e8f0 100%
+    );
+    z-index: 0;
+}
+
+.dark .history-timeline::before {
+    background: linear-gradient(
+        to bottom,
+        #334155 0%,
+        #475569 50%,
+        #334155 100%
+    );
+}
+
+@media (max-width: 768px) {
+    .history-timeline::before {
+        left: 1rem;
+    }
+}
+
+/* Timeline Item */
+.history-card {
+    position: relative;
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-left: 5rem;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .history-card {
+        padding-left: 3.5rem;
+        gap: 1rem;
+    }
+}
+
+/* Timeline Dot */
+.history-card::before {
+    content: "";
+    position: absolute;
+    left: 1.4375rem;
+    top: 0.5rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+    transition: all 0.3s ease;
+}
+
+.dark .history-card::before {
+    background: linear-gradient(135deg, #38bdf8, #22d3ee);
+    border-color: #0f172a;
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
+}
+
+@media (max-width: 768px) {
+    .history-card::before {
+        left: 0.5625rem;
+    }
+}
+
+.history-card:hover::before {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 8px rgba(14, 165, 233, 0.15);
+}
+
+.dark .history-card:hover::before {
+    box-shadow: 0 0 0 8px rgba(56, 189, 248, 0.15);
+}
+
+/* Timeline Content */
+.history-card-content {
+    flex: 1;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dark .history-card-content {
+    background: #0f172a;
+    border-color: #334155;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.history-card:hover .history-card-content {
+    transform: translateX(8px);
+    border-color: #334155;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.18);
+}
+
+.dark .history-card:hover .history-card-content {
+    border-color: #475569;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.28);
+}
+
+/* Timeline Year */
+.history-year {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.55rem;
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.dark .history-year {
+    background: linear-gradient(135deg, #38bdf8, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Timeline Title */
+.history-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #0f172a;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+.dark .history-title {
+    color: #f8fafc;
+}
+
+/* Timeline Description */
+.history-description {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.7;
+}
+
+.dark .history-description {
+    color: #94a3b8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .history-section {
+        padding: 4rem 0;
+    }
+
+    .history-timeline {
+        margin-top: 3rem;
+    }
+
+    .history-card {
+        margin-bottom: 2rem;
+    }
+
+    .history-year {
+        font-size: 0.5rem;
+    }
+
+    .history-title {
+        font-size: 1.25rem;
+    }
+
+    .history-description {
+        font-size: 0.9375rem;
+    }
+
+    .history-card-content {
+        padding: 1.25rem;
+    }
+}
+
+/* Hero Parallax Enhancements */
+#home .hero-floating-element {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+#home .hero-pulse {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* Accessibility - Focus Visible */
+*:focus-visible {
+    outline: 2px solid #0ea5e9;
+    outline-offset: 2px;
+}
+
+.dark *:focus-visible {
+    outline-color: #38bdf8;
+}
+
+/* Reduce Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================
+   WEBKIT FORM ELEMENTS STYLING
+   ============================================ */
+
+/* Input Autofill Styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #0f172a;
+    -webkit-box-shadow: 0 0 0px 1000px #f8fafc inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark textarea:-webkit-autofill,
+.dark textarea:-webkit-autofill:hover,
+.dark textarea:-webkit-autofill:focus,
+.dark select:-webkit-autofill,
+.dark select:-webkit-autofill:hover,
+.dark select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #f8fafc;
+    -webkit-box-shadow: 0 0 0px 1000px #1e293b inset;
+}
+
+/* Search Input Cancel Button */
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+    background-size: 16px 16px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+input[type="search"]::-webkit-search-cancel-button:hover {
+    opacity: 1;
+}
+
+.dark input[type="search"]::-webkit-search-cancel-button {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+}
+
+/* Number Input Spinner */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Date Input Calendar Icon */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+    transition: filter 0.3s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(0.3);
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator,
+.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+.dark input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator:hover,
+.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover,
+.dark input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(1);
+}
+
+/* File Input Button */
+input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+}
+
+.dark input[type="file"]::-webkit-file-upload-button {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: #334155;
+}
+
+.dark input[type="file"]::-webkit-file-upload-button:hover {
+    background: #334155;
+    border-color: #475569;
+}
+
+/* Range Input (Slider) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(14, 165, 233, 0.3);
+    transition: all 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.4);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #e2e8f0, #cbd5e1);
+    border-radius: 3px;
+}
+
+.dark input[type="range"]::-webkit-slider-thumb {
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    box-shadow: 0 2px 4px rgba(56, 189, 248, 0.3);
+}
+
+.dark input[type="range"]::-webkit-slider-thumb:hover {
+    box-shadow: 0 4px 8px rgba(56, 189, 248, 0.4);
+}
+
+.dark input[type="range"]::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #334155, #475569);
+}
+
+/* Progress Bar */
+progress::-webkit-progress-bar {
+    background-color: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+progress::-webkit-progress-value {
+    background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.dark progress::-webkit-progress-bar {
+    background-color: #334155;
+}
+
+.dark progress::-webkit-progress-value {
+    background: linear-gradient(90deg, #38bdf8, #22d3ee);
+}
+
+/* Meter Element */
+meter::-webkit-meter-bar {
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+meter::-webkit-meter-optimum-value {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+meter::-webkit-meter-suboptimum-value {
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+meter::-webkit-meter-even-less-good-value {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.dark meter::-webkit-meter-bar {
+    background: #334155;
+}
+
+/* Details/Summary */
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Selection Styling */
+::selection {
+    background-color: rgba(14, 165, 233, 0.2);
+    color: #0f172a;
+}
+
+.dark ::selection {
+    background-color: rgba(56, 189, 248, 0.3);
+    color: #f8fafc;
+}
+
+::-moz-selection {
+    background-color: rgba(14, 165, 233, 0.2);
+    color: #0f172a;
+}
+
+.dark ::-moz-selection {
+    background-color: rgba(56, 189, 248, 0.3);
+    color: #f8fafc;
+}
+
+/* Placeholder Styling */
+::-webkit-input-placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+.dark ::-webkit-input-placeholder {
+    color: #64748b;
+}
+
+::-moz-placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+.dark ::-moz-placeholder {
+    color: #64748b;
+}
+
+:-ms-input-placeholder {
+    color: #94a3b8;
+}
+
+.dark :-ms-input-placeholder {
+    color: #64748b;
+}
+
+::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+.dark ::placeholder {
+    color: #64748b;
+}
+
+/* Webkit Tap Highlight */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.dark * {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Webkit Focus Ring */
+*:focus {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid #cbd5e1;
+    outline-offset: 2px;
+}
+
+.dark *:focus-visible {
+    outline-color: #64748b;
+}
+
+/* Webkit Line Clamp */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
