@@ -403,15 +403,15 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
       >
-        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+        <span className="text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-widest">
           Scroll Down
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="text-slate-400 dark:text-slate-500"
+          className="text-slate-500 dark:text-slate-400"
         >
-          <ChevronDown size={20} />
+          <ChevronDown size={24} />
         </motion.div>
       </motion.div>
     </section>
