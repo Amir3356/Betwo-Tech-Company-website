@@ -76,8 +76,8 @@ export default function Navbar() {
                 className={`relative px-3 py-2 rounded-lg transition-all duration-300 group flex flex-col items-center
                   ${
                     isActive
-                      ? "text-sky-600 dark:text-sky-400"
-                      : "hover:text-sky-600 dark:hover:text-sky-400"
+                       ? "text-slate-900 font-bold dark:text-sky-400"
+                      : "hover:text-slate-900 dark:hover:text-sky-400"
                   }`}
               >
                 {link.text}
@@ -191,8 +191,8 @@ export default function Navbar() {
                     className={`relative px-4 py-3 rounded-xl transition-all duration-300 group
                       ${
                         isActive
-                          ? "text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-900/20"
-                          : "hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                          ? "text-slate-900 font-bold dark:text-sky-400 bg-sky-50 dark:bg-sky-900/20"
+                          : "hover:text-slate-900 dark:hover:text-sky-400 hover:bg-slate-50 dark:hover:bg-slate-800/50"
                       }`}
                   >
                     <span className="flex items-center gap-2">
