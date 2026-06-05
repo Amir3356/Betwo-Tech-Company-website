@@ -559,7 +559,7 @@ className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 dark:text
           <motion.h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mx-auto" variants={ctaButtonVariants}>{aboutData.cta.title}</motion.h2>
           <motion.p className="text-base sm:text-xl text-slate-700 dark:text-white/90 max-w-xl lg:max-w-2xl mx-auto" variants={ctaButtonVariants}>{aboutData.cta.description}</motion.p>
           <div className="flex w-full flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 pt-2 sm:pt-4">
-            {aboutData.cta.buttons.map((button, i) => (
+            {aboutData.cta.buttons.filter(b => b.text !== "Join Our Team").map((button, i) => (
               <motion.button
                 key={i}
                 type="button"
