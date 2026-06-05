@@ -431,7 +431,7 @@ export default function Contact() {
         >
           <div className="bg-slate-50 dark:bg-slate-900 p-6 border-b border-slate-200 dark:border-slate-800">
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Meskel+Flower+Addis+Ababa+Ethiopia"
+              href="https://www.google.com/maps/search/?api=1&query=8.99485,38.76457"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-900 dark:bg-sky-400 dark:hover:bg-sky-500 dark:text-black font-semibold transition-all shadow-sm hover:shadow-md"
@@ -442,7 +442,7 @@ export default function Contact() {
           </div>
           <div className="relative w-full h-96 bg-slate-200 dark:bg-slate-800">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3598.8894444363227!2d38.76696689242792!3d8.99646765861126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2set!4v1780560661639!5m2!1sen!2set"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940!2d38.76457!3d8.99485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2set!4v1"
               width="100%"
               height="100%"
               style={{ border: 0 }}
