@@ -417,7 +417,7 @@ export default function Hero() {
         >
           <ChevronDown size={24} />
         </motion.div>
-      </motion.div>
+      </motion.button>
     </section>
   );
 }
