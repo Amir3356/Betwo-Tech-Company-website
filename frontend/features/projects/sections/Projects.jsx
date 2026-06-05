@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import projectsImport from "../../../shared/data/projects.json";
 import { motion, AnimatePresence } from "framer-motion";
-import { Building2, Layers, ArrowUpRight, X, Search } from "lucide-react";
+import { Building2, Layers, ArrowUpRight, X } from "lucide-react";
 import { resolveProjectImageUrl } from "../../../shared/utils/projectImageUrl";
 
 export default function Projects() {
@@ -159,16 +159,21 @@ export default function Projects() {
           />
         </motion.div>
 
-        {/* ── Search Filter ── */}
-        <div className="relative max-w-md mx-auto mb-8 sm:mb-10">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 pointer-events-none" size={18} />
-          <input
-            type="text"
-            placeholder="Search projects..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-sky-500 focus:border-transparent transition-all"
-          />
+        {/* ── Category Filters ── */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10">
+          {data.categories?.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-slate-900 text-white dark:bg-sky-500 dark:text-white shadow-md"
+                  : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:border-slate-500 dark:hover:border-sky-400"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
         {/* ── Projects Grid ── */}
