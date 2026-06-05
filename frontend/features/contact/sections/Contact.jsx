@@ -25,7 +25,7 @@ function FAQItem({ question, answer }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between p-4 sm:p-6 text-left bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
       >
-        <span className="font-semibold text-slate-800 dark:text-white pr-4 text-sm sm:text-base">
+        <span className="font-semibold text-slate-800 dark:text-white pr-4 text-base sm:text-lg">
           {question}
         </span>
         <ChevronDown
@@ -44,7 +44,7 @@ function FAQItem({ question, answer }) {
             className="overflow-hidden"
           >
             <div className="px-4 sm:px-6 pb-4 sm:pb-6 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
-              <p className="text-slate-600 dark:text-slate-400 pt-3 sm:pt-4 text-sm">
+              <p className="text-slate-600 dark:text-slate-400 pt-3 sm:pt-4 text-base sm:text-lg">
                 {answer}
               </p>
             </div>
