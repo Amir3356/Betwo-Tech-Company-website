@@ -344,9 +344,9 @@ export default function ContactOverview() {
 
 
           {/* Google Map Embed */}
-          <div className="relative w-full h-96 bg-slate-200 dark:bg-slate-800">
+          <div className="relative w-full h-[500px] bg-slate-200 dark:bg-slate-800">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.3076234567!2d38.7577!3d9.0192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b037a24d49!2sMeskel%20Square!5e0!3m2!1sen!2set!4v1234567890"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=38.76257,8.99285,38.76657,8.99685&layer=mapnik&marker=8.99485,38.76457"
               width="100%"
               height="100%"
               style={{ border: 0 }}

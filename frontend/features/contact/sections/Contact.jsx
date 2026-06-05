@@ -228,6 +228,40 @@ export default function Contact() {
         </div>
       </motion.div>
 
+      {/* ── Google Map Section ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 lg:mb-24">
+        <motion.div
+          className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="bg-slate-50 dark:bg-slate-900 p-6 border-b border-slate-200 dark:border-slate-800">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=8.99485,38.76457"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-900 dark:bg-sky-400 dark:hover:bg-sky-500 dark:text-black font-semibold transition-all shadow-sm hover:shadow-md"
+            >
+              <MapPin className="w-4 h-4" />
+              Get Directions
+            </a>
+          </div>
+          <div className="relative w-full h-[500px] bg-slate-200 dark:bg-slate-800">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=38.76257,8.99285,38.76657,8.99685&layer=mapnik&marker=8.99485,38.76457"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </motion.div>
+      </div>
+
       {/* ── Contact Form ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 lg:mb-24">
         <motion.div
@@ -417,40 +451,6 @@ export default function Contact() {
               </form>
             )}
           </motion.div>
-        </motion.div>
-      </div>
-
-      {/* ── Google Map Section (matching homepage) ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 lg:mb-24">
-        <motion.div
-          className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="bg-slate-50 dark:bg-slate-900 p-6 border-b border-slate-200 dark:border-slate-800">
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=8.99485,38.76457"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-900 dark:bg-sky-400 dark:hover:bg-sky-500 dark:text-black font-semibold transition-all shadow-sm hover:shadow-md"
-            >
-              <MapPin className="w-4 h-4" />
-              Get Directions
-            </a>
-          </div>
-          <div className="relative w-full h-96 bg-slate-200 dark:bg-slate-800">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940!2d38.76457!3d8.99485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2set!4v1"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
         </motion.div>
       </div>
 
