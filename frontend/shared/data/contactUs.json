@@ -36,6 +36,11 @@
     ],
     "submitButton": "Send Message"
   },
+  "socialMedia": [
+    { "name": "Telegram", "url": "https://t.me/ForChristAlone", "icon": "telegram" },
+    { "name": "WhatsApp", "url": "https://wa.me/0912882357", "icon": "whatsapp" },
+    { "name": "TikTok", "url": "https://tiktok.com/@betwo_tech", "icon": "tiktok" }
+  ],
   "faq": [
     {
       "question": "How quickly do you respond to inquiries?",
