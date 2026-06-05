@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import heroDataImport from "../../../shared/data/hero.json";
 import Typed from "typed.js";
@@ -395,6 +395,25 @@ export default function Hero() {
           ) : null}
         </motion.div>
       </div>
+
+      {/* ── Scroll Down Indicator ── */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+      >
+        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+          Scroll Down
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="text-slate-400 dark:text-slate-500"
+        >
+          <ChevronDown size={20} />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

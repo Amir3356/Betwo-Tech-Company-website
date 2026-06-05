@@ -2,55 +2,5 @@
   "title": "Our Projects",
   "description": "Explore our portfolio of successful digital solutions — from automotive to healthcare and beyond.",
   "categories": ["All", "Automotive", "Construction", "Inventory", "Procurement", "Healthcare", "Industrial", "Tourism"],
-  "projects": [
-    {
-      "id": 1,
-      "title": "AutoParts Inventory System",
-      "category": "Automotive",
-      "description": "A comprehensive inventory management system for automotive parts with real-time stock tracking.",
-      "detail": "This project involved building a full-featured inventory management system for an automotive parts distributor. The system tracks over 10,000 SKUs across multiple warehouses, provides real-time stock levels, automated reorder points, and detailed analytics dashboards. Built with React and Node.js, the system handles thousands of transactions daily."
-    },
-    {
-      "id": 2,
-      "title": "BuildPro Construction Platform",
-      "category": "Construction",
-      "description": "Project management and resource allocation platform for construction companies.",
-      "detail": "A digital platform for construction project management including resource scheduling, budget tracking, subcontractor management, and compliance documentation. The system serves over 200 active construction sites with real-time progress reporting and mobile access for field workers."
-    },
-    {
-      "id": 3,
-      "title": "MediTrack Healthcare System",
-      "category": "Healthcare",
-      "description": "Electronic health records and patient management system for clinics.",
-      "detail": "A secure, HIPAA-compliant electronic health records system featuring patient intake, appointment scheduling, prescription management, and telehealth integration. The system processes over 50,000 patient records and supports multiple clinic locations."
-    },
-    {
-      "id": 4,
-      "title": "WarehousePro Inventory",
-      "category": "Inventory",
-      "description": "Multi-warehouse inventory optimization system with barcode scanning.",
-      "detail": "An enterprise-grade inventory management solution with barcode/QR code scanning, batch tracking, expiry date management, and integrations with major ERP systems. The system handles real-time inventory across 15 warehouses with sub-2-second sync times."
-    },
-    {
-      "id": 5,
-      "title": "ProcureFlow Platform",
-      "category": "Procurement",
-      "description": "End-to-end procurement automation platform for enterprise purchasing.",
-      "detail": "A comprehensive procurement platform covering purchase requisitions, approval workflows, vendor management, PO generation, and invoice matching. The system reduced procurement cycle time by 60% for the client and processes over $50M in annual purchases."
-    },
-    {
-      "id": 6,
-      "title": "FactorySense Industrial IoT",
-      "category": "Industrial",
-      "description": "IoT monitoring system for industrial equipment and production lines.",
-      "detail": "An Industrial IoT solution that monitors equipment health, production metrics, energy consumption, and predictive maintenance alerts. The system connects to over 500 sensors across the factory floor and provides real-time dashboards and automated alerting."
-    },
-    {
-      "id": 7,
-      "title": "TourConnect Booking System",
-      "category": "Tourism",
-      "description": "Online booking and tour management platform for travel agencies.",
-      "detail": "A full-featured tourism booking platform with package management, real-time availability, online payments, itinerary builder, and customer portal. The system handles bookings for 50+ tour packages and integrates with multiple payment gateways."
-    }
-  ]
+  "projects": []
 }

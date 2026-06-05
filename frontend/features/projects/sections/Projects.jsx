@@ -9,7 +9,7 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+
 
 
   useEffect(() => {
@@ -27,7 +27,12 @@ export default function Projects() {
           projects: [...backendProjects, ...(jsonData.projects || [])],
         });
       } catch (err) {
-        setError(err.message);
+        setData({
+          title: jsonData.title,
+          description: jsonData.description,
+          categories: jsonData.categories,
+          projects: [...(jsonData.projects || [])],
+        });
       } finally {
         setLoading(false);
       }
@@ -36,9 +41,7 @@ export default function Projects() {
     loadProjects();
   }, []);
 
-  const filteredProjects = data?.projects?.filter((project) => {
-    return selectedCategory === "All" || project.category === selectedCategory;
-  });
+  const filteredProjects = data?.projects;
 
   if (loading) {
     return (
@@ -155,23 +158,6 @@ export default function Projects() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           />
         </motion.div>
-
-        {/* ── Category Filters ── */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10">
-          {data.categories?.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                selectedCategory === category
-                  ? "bg-slate-900 text-white dark:bg-sky-500 dark:text-white shadow-md"
-                  : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:border-slate-500 dark:hover:border-sky-400"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
 
         {/* ── Projects Grid ── */}
         <motion.div
