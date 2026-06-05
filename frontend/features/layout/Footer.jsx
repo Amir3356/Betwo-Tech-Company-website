@@ -50,11 +50,11 @@ export default function Footer() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.div className="lg:col-span-1 space-y-6" variants={colVariants}>
-            <div className="flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-slate-700/30 dark:shadow-slate-600/30 group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+                <div className="flex items-center gap-2 sm:gap-3 group">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center text-white font-bold text-lg sm:text-2xl shadow-lg shadow-slate-700/30 dark:shadow-slate-600/30 group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
                 B
               </div>
-              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-sky-400 dark:via-sky-300 dark:to-sky-400 bg-clip-text text-transparent">
+              <span className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-sky-400 dark:via-sky-300 dark:to-sky-400 bg-clip-text text-transparent">
                 Betwo Tech
               </span>
             </div>
@@ -82,7 +82,7 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={colVariants}>
-            <h3 className="font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 text-lg">
+            <h3 className="font-bold text-slate-900 dark:text-white mb-3 sm:mb-6 text-base sm:text-lg">
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -103,7 +103,7 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={colVariants}>
-            <h3 className="font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 text-lg">
+            <h3 className="font-bold text-slate-900 dark:text-white mb-3 sm:mb-6 text-base sm:text-lg">
               Services
             </h3>
             <ul className="space-y-3">
@@ -124,7 +124,7 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={colVariants}>
-            <h3 className="font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 text-lg">
+            <h3 className="font-bold text-slate-900 dark:text-white mb-3 sm:mb-6 text-base sm:text-lg">
               Get In Touch
             </h3>
             <ul className="space-y-3">

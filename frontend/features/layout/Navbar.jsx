@@ -49,13 +49,13 @@ export default function Navbar() {
         backdrop-blur-md`}
     >
       {/* Brand */}
-      <Link to="/" className="flex items-center gap-3 group">
+      <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
         <img
           src={getAssetUrl("Betwo tech logo.jpg")}
           alt="Betwo Tech logo"
-          className="w-16 h-16 object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
+          className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
         />
-        <span className="brand-name text-2xl font-bold text-slate-900 dark:text-sky-400 transition-colors duration-300">
+        <span className="brand-name text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 dark:text-sky-400 transition-colors duration-300">
           {brand.name}
         </span>
       </Link>
@@ -93,7 +93,7 @@ export default function Navbar() {
       </nav>
 
       {/* Right Controls */}
-      <div className="relative flex items-center gap-2 md:gap-4">
+      <div className="relative flex items-center gap-1 sm:gap-2 md:gap-4">
         {/* Dark mode toggle */}
         <button
           onClick={() => setDarkMode(!darkMode)}
@@ -178,9 +178,9 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 md:hidden overflow-hidden"
+            className="absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 md:hidden overflow-hidden shadow-xl"
           >
-            <nav className="flex flex-col p-6 gap-1 font-semibold dark:font-bold text-slate-700 dark:text-slate-100">
+            <nav className="flex flex-col p-4 sm:p-6 gap-1 font-semibold dark:font-bold text-slate-700 dark:text-slate-100">
               {links.map((link, i) => {
                 const isActive = location.pathname === link.path;
                 return (

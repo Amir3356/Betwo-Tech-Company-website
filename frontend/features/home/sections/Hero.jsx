@@ -250,7 +250,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-7xl
+            className="hero-title text-[26px] sm:text-4xl md:text-5xl lg:text-7xl
               font-extrabold tracking-tight leading-tight"
           >
             {(heroData.titlePrefix ??
@@ -346,7 +346,7 @@ export default function Hero() {
             scale: scaleImage,
             rotate: rotateImage,
           }}
-          className="flex-1 w-full max-w-lg flex flex-col items-center relative z-10"
+          className="flex-1 w-full max-w-md sm:max-w-lg flex flex-col items-center relative z-10"
         >
           {heroData.image?.src ? (
             <div className="relative w-full">
@@ -402,12 +402,12 @@ export default function Hero() {
           const next = document.querySelector("section:nth-child(2)");
           if (next) next.scrollIntoView({ behavior: "smooth" });
         }}
-        className="absolute bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 cursor-pointer"
+        className="absolute bottom-16 sm:bottom-24 lg:bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 sm:gap-2 z-10 cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
       >
-        <span className="text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-widest">
+        <span className="text-[10px] sm:text-xs lg:text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-widest">
           Scroll Down
         </span>
         <motion.div
@@ -415,7 +415,7 @@ export default function Hero() {
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="text-slate-500 dark:text-slate-400"
         >
-          <ChevronDown size={24} />
+          <ChevronDown size={20} className="sm:w-6 sm:h-6" />
         </motion.div>
       </motion.button>
     </section>

@@ -150,18 +150,18 @@ export default function ContactOverview() {
                     key={index}
                     variants={cardVariants}
                     whileHover={{ y: -4, scale: 1.02 }}
-                    className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-700 dark:hover:border-blue-500 transition-all duration-300"
+                    className="bg-slate-50 dark:bg-slate-900 p-4 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-700 dark:hover:border-blue-500 transition-all duration-300"
                   >
-                    <div className="w-12 h-12 bg-slate-200/50 dark:bg-slate-700/30 rounded-lg flex items-center justify-center text-slate-800 dark:text-slate-300 mb-4">
-                      {IconComponent && <IconComponent className="w-6 h-6" />}
+                    <div className="w-9 h-9 sm:w-12 sm:h-12 bg-slate-200/50 dark:bg-slate-700/30 rounded-lg flex items-center justify-center text-slate-800 dark:text-slate-300 mb-3 sm:mb-4">
+                      {IconComponent && <IconComponent className="w-4 h-4 sm:w-6 sm:h-6" />}
                     </div>
-                    <h4 className="font-bold text-slate-900 dark:text-white mb-2">
+                    <h4 className="font-bold text-slate-900 dark:text-white mb-1 sm:mb-2 text-sm sm:text-base">
                       {info.title}
                     </h4>
-                    <p className="text-slate-700 dark:text-slate-300 font-medium mb-1">
+                    <p className="text-slate-700 dark:text-slate-300 font-medium mb-1 text-xs sm:text-sm">
                       {info.content}
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-500">
+                    <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-500">
                       {info.subtext}
                     </p>
                   </motion.div>

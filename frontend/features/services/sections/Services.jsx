@@ -218,13 +218,13 @@ export default function Services() {
       {/* ── Comprehensive Services ── */}
       <div id="our-services" className="bg-slate-50 dark:bg-slate-900 py-12 sm:py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/50 dark:bg-slate-700/30 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-300 text-sm font-semibold">
-              <Zap size={14} /> Comprehensive Solutions
-            </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-              Our Services
-            </h2>
+              <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 space-y-3 sm:space-y-4">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/50 dark:bg-slate-700/30 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-300 text-sm font-semibold">
+                  <Zap size={14} /> Comprehensive Solutions
+                </div>
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-black bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+                  Our Services
+                </h2>
             <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
               {comprehensive.description}
             </p>
@@ -362,9 +362,9 @@ export default function Services() {
                   </div>
                 </div>
               </div>
-              <div className="flex-1 w-full relative mt-6 lg:mt-0">
+                  <div className="flex-1 w-full relative mt-6 lg:mt-0">
                 <motion.div
-                  className="w-full max-w-lg mx-auto aspect-[5/4] bg-linear-to-tr from-blue-100 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl sm:rounded-3xl overflow-hidden flex items-center justify-center border border-slate-200 dark:border-slate-700 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
+                  className="w-full max-w-sm sm:max-w-lg mx-auto aspect-[4/3] sm:aspect-[5/4] bg-linear-to-tr from-blue-100 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl sm:rounded-3xl overflow-hidden flex items-center justify-center border border-slate-200 dark:border-slate-700 transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
                   variants={cardVariant}
                 >
                   {item.image ? (

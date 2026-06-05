@@ -139,7 +139,7 @@ export default function Projects() {
           </div>
 
           {/* Gradient title */}
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl md:text-7xl font-bold mb-3 sm:mb-4">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
             <span className="bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
               {data.title}
             </span>
@@ -176,7 +176,7 @@ export default function Projects() {
               className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-fuchsia-500/10 dark:hover:shadow-blue-500/10 border border-slate-200/50 dark:border-slate-800/80 group transition-all duration-500"
             >
               {/* Image area */}
-              <div className="h-52 sm:h-60 bg-slate-100 dark:bg-slate-700 relative overflow-hidden">
+              <div className="h-44 sm:h-52 lg:h-60 bg-slate-100 dark:bg-slate-700 relative overflow-hidden">
                 {project.image ? (
                   <motion.img
                     src={resolveProjectImageUrl(project.image)}
@@ -203,8 +203,8 @@ export default function Projects() {
               </div>
 
               {/* Card body */}
-              <div className="p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1 sm:mb-2">
+                <div className="p-3 sm:p-6">
+                <h3 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white mb-1 sm:mb-2">
                   {project.title}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-3 sm:mb-4 line-clamp-2">

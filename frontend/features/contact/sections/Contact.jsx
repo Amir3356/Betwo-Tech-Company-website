@@ -189,18 +189,18 @@ export default function Contact() {
                 key={i}
                 variants={cardVariant}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className="bg-slate-50 dark:bg-slate-900 p-5 sm:p-6 lg:p-8 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all duration-300"
+                className="bg-slate-50 dark:bg-slate-900 p-4 sm:p-6 lg:p-8 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all duration-300"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-200/50 dark:bg-slate-700/30 rounded-xl flex items-center justify-center text-slate-800 dark:text-slate-300 mb-4 sm:mb-5">
-                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
+                <div className="w-9 h-9 sm:w-12 sm:h-12 bg-slate-200/50 dark:bg-slate-700/30 rounded-xl flex items-center justify-center text-slate-800 dark:text-slate-300 mb-3 sm:mb-5">
+                  <IconComponent className="w-4 h-4 sm:w-6 sm:h-6" />
                 </div>
-                <h3 className="font-bold text-slate-800 dark:text-white mb-1 sm:mb-2">
+                <h3 className="font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 text-sm sm:text-base">
                   {info.title}
                 </h3>
-                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 break-all">
+                <p className="text-xs sm:text-base text-slate-600 dark:text-slate-400 break-all">
                   {info.content}
                 </p>
-                <p className="text-xs text-slate-500 dark:text-slate-500 mt-1 sm:mt-2">
+                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-500 mt-1 sm:mt-2">
                   {info.subtext}
                 </p>
               </motion.div>
@@ -291,18 +291,18 @@ export default function Contact() {
                     key={index}
                     variants={cardVariant}
                     whileHover={{ y: -4, scale: 1.02 }}
-                    className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-700 dark:hover:border-blue-500 transition-all duration-300"
+                    className="bg-slate-50 dark:bg-slate-900 p-4 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-700 dark:hover:border-blue-500 transition-all duration-300"
                   >
-                    <div className="w-12 h-12 bg-slate-200/50 dark:bg-slate-700/30 rounded-lg flex items-center justify-center text-slate-800 dark:text-slate-300 mb-4">
-                      {IconComponent && <IconComponent className="w-6 h-6" />}
+                    <div className="w-9 h-9 sm:w-12 sm:h-12 bg-slate-200/50 dark:bg-slate-700/30 rounded-lg flex items-center justify-center text-slate-800 dark:text-slate-300 mb-3 sm:mb-4">
+                      {IconComponent && <IconComponent className="w-4 h-4 sm:w-6 sm:h-6" />}
                     </div>
-                    <h4 className="font-bold text-slate-900 dark:text-white mb-2">
+                    <h4 className="font-bold text-slate-900 dark:text-white mb-1 sm:mb-2 text-sm sm:text-base">
                       {info.title}
                     </h4>
-                    <p className="text-slate-700 dark:text-slate-300 font-medium mb-1">
+                    <p className="text-slate-700 dark:text-slate-300 font-medium mb-1 text-xs sm:text-sm">
                       {info.content}
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-500">
+                    <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-500">
                       {info.subtext}
                     </p>
                   </motion.div>

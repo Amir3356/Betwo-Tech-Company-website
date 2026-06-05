@@ -255,23 +255,23 @@ export default function About() {
             <motion.img
               src={aboutData.hero.image}
               alt={aboutData.hero.title}
-              className="rounded-2xl shadow-xl w-full object-cover h-64 sm:h-80 md:h-100 lg:h-100"
+              className="rounded-2xl shadow-xl w-full object-cover h-52 sm:h-80 md:h-96 lg:h-100"
               whileHover={{ scale: 1.04, rotate: -0.5 }}
               transition={{ type: "spring", stiffness: 220, damping: 18 }}
             />
             <motion.div
-              className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-800"
+              className="absolute -bottom-3 sm:-bottom-6 -left-2 sm:-left-6 bg-white dark:bg-slate-900 p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-slate-100 dark:border-slate-800"
               variants={badgeVariants}
               whileHover={{ y: -4, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
             >
-              <div className="flex items-center gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center text-slate-900 dark:text-blue-400">
-                  <Activity className="w-5 h-5 sm:w-6 sm:h-6" />
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 bg-slate-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center text-slate-900 dark:text-blue-400">
+                  <Activity className="w-4 h-4 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <p className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white"><AnimatedCounter target={100} suffix="%" duration={2000} /></p>
-                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">{aboutData.hero?.isolatedViewLabel || 'Isolated View'}</p>
+                  <p className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white"><AnimatedCounter target={100} suffix="%" duration={2000} /></p>
+                  <p className="text-[10px] sm:text-sm text-slate-500 dark:text-slate-400">{aboutData.hero?.isolatedViewLabel || 'Isolated View'}</p>
                 </div>
               </div>
             </motion.div>
@@ -379,7 +379,7 @@ className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 dark:text
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 sm:mb-8 border-b border-slate-200 dark:border-slate-800 pb-3 sm:pb-4">{aboutData.leadership?.ceo?.sectionTitle || 'Chief Executive Officer'} <span className="text-xs sm:text-sm font-normal text-slate-500 bg-slate-200 dark:bg-slate-800 px-2 sm:px-3 py-1 rounded-full ml-2 sm:ml-4">{aboutData.leadership?.ceo?.countLabel || '1 Leader'}</span></h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div className="bg-white dark:bg-slate-950 rounded-2xl p-4 sm:p-6 flex flex-col items-center text-center shadow-sm border border-slate-100 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02]">
-                    <div className="w-full max-w-xs aspect-video rounded-xl overflow-hidden mb-3 sm:mb-4 bg-slate-200 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    <div className="w-full max-w-[260px] sm:max-w-xs aspect-video rounded-xl overflow-hidden mb-3 sm:mb-4 bg-slate-200 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
                       <motion.img
                         src={getAssetUrl(aboutData.leadership.ceo.image)}
                         alt={aboutData.leadership.ceo.name}
@@ -536,7 +536,7 @@ className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 dark:text
             <motion.img
               src={aboutData.culture.image}
               alt={aboutData.culture.title}
-              className="rounded-2xl shadow-xl w-full object-cover h-64 sm:h-80 lg:h-100 xl:h-125"
+              className="rounded-2xl shadow-xl w-full object-cover h-52 sm:h-80 lg:h-96 xl:h-125"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.6 }}

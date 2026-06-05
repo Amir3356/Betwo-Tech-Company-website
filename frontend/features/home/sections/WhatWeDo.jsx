@@ -210,7 +210,7 @@ export default function WhatWeDo() {
               key={i}
               variants={cardVariants}
               whileHover={{ y: -10 }}
-              className="group relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-8 rounded-3xl
+              className="group relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-5 sm:p-8 rounded-2xl sm:rounded-3xl
                 border border-slate-200 dark:border-slate-700
                 shadow-md hover:shadow-2xl hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/30
                 transition-all duration-300 overflow-hidden"
@@ -227,21 +227,21 @@ export default function WhatWeDo() {
                 <motion.div
                   whileHover={{ rotate: [0, -10, 10, 0] }}
                   transition={{ duration: 0.5 }}
-                  className="w-14 h-14 bg-slate-200/50 dark:bg-slate-700/30 rounded-2xl flex items-center justify-center
-                    text-slate-800 dark:text-slate-300 mb-6
+                  className="w-12 h-12 sm:w-14 sm:h-14 bg-slate-200/50 dark:bg-slate-700/30 rounded-xl sm:rounded-2xl flex items-center justify-center
+                    text-slate-800 dark:text-slate-300 mb-4 sm:mb-6
                     group-hover:bg-slate-800 group-hover:text-white
                     dark:group-hover:bg-slate-700 dark:group-hover:text-white
                     transition-colors duration-300 shadow-sm"
                 >
                   {IconComponent && (
-                    <IconComponent className="w-7 h-7 transform group-hover:scale-110 transition-transform duration-300" />
+                    <IconComponent className="w-5 h-5 sm:w-7 sm:h-7 transform group-hover:scale-110 transition-transform duration-300" />
                   )}
                 </motion.div>
 
-                <h3 className="text-xl font-bold text-slate-800 dark:text-slate-300 mb-3">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-300 mb-2 sm:mb-3">
                   {service.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-xs sm:text-sm">
                   {service.description}
                 </p>
               </div>

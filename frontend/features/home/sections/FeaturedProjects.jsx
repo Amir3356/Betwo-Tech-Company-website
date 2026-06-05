@@ -119,7 +119,7 @@ export default function FeaturedProjects() {
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
               className="rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:shadow-fuchsia-500/10 dark:hover:shadow-blue-500/10 transition-all duration-500 group flex flex-col"
             >
-              <div className="relative h-56 overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <div className="relative h-48 sm:h-56 overflow-hidden bg-slate-100 dark:bg-slate-800">
                 {project.image ? (
                   <img
                     src={resolveProjectImageUrl(project.image)}
@@ -135,9 +135,9 @@ export default function FeaturedProjects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
               </div>
-              <div className="p-6 md:p-8 flex flex-col flex-grow">
-                <h3 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white">{project.title}</h3>
-                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-grow">{project.description}</p>
+              <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-slate-900 dark:text-white">{project.title}</h3>
+                 <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 flex-grow">{project.description}</p>
                  <button
                    onClick={() => setSelectedProject(project)}
                     className="mt-auto inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 dark:border-slate-600 bg-white/80 dark:bg-slate-800/80 px-5 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-200 transition-all hover:border-slate-800 hover:text-slate-900 dark:hover:border-sky-400 dark:hover:text-sky-400 hover:shadow-lg"
@@ -166,14 +166,14 @@ export default function FeaturedProjects() {
         </motion.div>
 
         <motion.div
-          className="flex justify-center gap-6 mt-8"
+          className="flex flex-wrap justify-center gap-3 sm:gap-6 mt-6 sm:mt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.45 }}
         >
           {highlights.map((highlight) => (
-            <div key={highlight} className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
+            <div key={highlight} className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
               <CheckCircle size={16} className="text-sky-500 dark:text-sky-300" /> {highlight}
             </div>
           ))}
