@@ -455,7 +455,7 @@ export default function Services() {
                 whileHover={{ y: -8 }}
               >
                 <div className="relative z-10">
-                  <h4 className="text-xl sm:text-2xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                  <h4 className="text-xl sm:text-2xl font-bold mb-3 text-slate-900 dark:text-white">
                     {step.title}
                   </h4>
                   <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
