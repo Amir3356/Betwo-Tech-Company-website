@@ -237,27 +237,18 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="bg-slate-50 dark:bg-slate-900 p-6 border-b border-slate-200 dark:border-slate-800">
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=8.99485,38.76457"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-slate-900 dark:bg-sky-400 dark:hover:bg-sky-500 dark:text-black font-semibold transition-all shadow-sm hover:shadow-md"
-            >
-              <MapPin className="w-4 h-4" />
-              Get Directions
-            </a>
-          </div>
-          <div className="relative w-full h-[500px] bg-slate-200 dark:bg-slate-800">
+          <div className="relative w-full h-[500px] overflow-hidden bg-slate-200 dark:bg-slate-800">
             <iframe
               src="https://www.openstreetmap.org/export/embed.html?bbox=38.76257,8.99285,38.76657,8.99685&layer=mapnik&marker=8.99485,38.76457"
               width="100%"
               height="100%"
+              className="w-full h-full"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
+            <div className="absolute bottom-0 left-0 right-0 h-10 bg-slate-200 dark:bg-slate-800 pointer-events-none" />
           </div>
         </motion.div>
       </div>

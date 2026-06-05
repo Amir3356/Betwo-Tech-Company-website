@@ -344,18 +344,19 @@ export default function ContactOverview() {
 
 
           {/* Google Map Embed */}
-          <div className="relative w-full h-[500px] bg-slate-200 dark:bg-slate-800">
+          <div className="relative w-full h-[500px] overflow-hidden bg-slate-200 dark:bg-slate-800">
             <iframe
               src="https://www.openstreetmap.org/export/embed.html?bbox=38.76257,8.99285,38.76657,8.99685&layer=mapnik&marker=8.99485,38.76457"
               width="100%"
               height="100%"
+              className="w-full h-full"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Office Location Map"
-              className="w-full h-full"
             />
+            <div className="absolute bottom-0 left-0 right-0 h-10 bg-slate-200 dark:bg-slate-800 pointer-events-none" />
           </div>
         </motion.div>
       </div>
