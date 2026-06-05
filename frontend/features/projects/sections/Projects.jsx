@@ -249,8 +249,8 @@ export default function Projects() {
                 </button>
               </div>
 
-              <div className="overflow-y-auto p-6 md:p-8 pt-6 break-words text-wrap">
-                <div className="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap break-all md:break-words">
+              <div className="overflow-y-auto p-6 md:p-8 pt-6">
+                <div className="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed whitespace-pre-wrap break-words">
                   {selectedProject.detail}
                 </div>
               </div>
