@@ -164,21 +164,21 @@ export default function TechStackAdmin() {
                 No technologies yet. Add your first one.
               </div>
             ) : (
-              <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-                <table className="w-full text-left text-sm">
+              <div className="overflow-x-auto rounded-3xl border border-gray-200 bg-white shadow-sm">
+                <table className="w-full min-w-[500px] text-left text-sm">
                   <thead>
                     <tr className="border-b border-gray-200 bg-gray-50">
-                      <th className="px-5 py-4 font-semibold text-gray-700">Icon</th>
-                      <th className="px-5 py-4 font-semibold text-gray-700">Name</th>
-                      <th className="px-5 py-4 font-semibold text-gray-700">Category</th>
-                      <th className="px-5 py-4 font-semibold text-gray-700">Description</th>
-                      <th className="px-5 py-4 font-semibold text-gray-700 text-right">Actions</th>
+                      <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Icon</th>
+                      <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Name</th>
+                      <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Category</th>
+                      <th className="hidden sm:table-cell px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Description</th>
+                      <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700 text-right">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {items.map((item) => (
                       <tr key={item.id} className="border-b border-gray-100 last:border-0 hover:bg-gray-50">
-                        <td className="px-5 py-4">
+                        <td className="px-3 sm:px-5 py-3 sm:py-4">
                           {(() => {
                             const IconComponent = iconMap[item.icon];
                             return IconComponent ? (
@@ -188,19 +188,19 @@ export default function TechStackAdmin() {
                             );
                           })()}
                         </td>
-                        <td className="px-5 py-4 font-medium text-gray-900">{item.name}</td>
-                        <td className="px-5 py-4 text-gray-600">
+                        <td className="px-3 sm:px-5 py-3 sm:py-4 font-medium text-gray-900 whitespace-nowrap">{item.name}</td>
+                        <td className="px-3 sm:px-5 py-3 sm:py-4 text-gray-600 whitespace-nowrap">
                           <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
                             {item.category}
                           </span>
                         </td>
-                        <td className="px-5 py-4 text-gray-600 max-w-xs truncate">{item.description || "-"}</td>
-                        <td className="px-5 py-4 text-right">
-                          <div className="inline-flex gap-2">
+                        <td className="hidden sm:table-cell px-3 sm:px-5 py-3 sm:py-4 text-gray-600 max-w-xs truncate">{item.description || "-"}</td>
+                        <td className="px-3 sm:px-5 py-3 sm:py-4 text-right">
+                          <div className="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
                             <button
                               type="button"
                               onClick={() => openEditModal(item)}
-                              className="inline-flex items-center gap-1 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+                              className="whitespace-nowrap inline-flex items-center justify-center gap-1 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
                             >
                               <Pencil size={14} />
                               Edit
@@ -208,7 +208,7 @@ export default function TechStackAdmin() {
                             <button
                               type="button"
                               onClick={() => handleDelete(item.id)}
-                              className="inline-flex items-center gap-1 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-100"
+                              className="whitespace-nowrap inline-flex items-center justify-center gap-1 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-100"
                             >
                               <Trash2 size={14} />
                               Delete
@@ -225,14 +225,14 @@ export default function TechStackAdmin() {
         )}
 
         {isModalOpen ? (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6">
-            <div className="w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-2xl">
-              <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
+          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 px-0 sm:px-4">
+            <div className="w-full max-w-lg overflow-y-auto rounded-t-3xl sm:rounded-3xl bg-white shadow-2xl max-h-[90vh] sm:max-h-none">
+              <div className="flex items-center justify-between border-b border-gray-200 px-5 sm:px-6 py-3 sm:py-4 sticky top-0 bg-white">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                     {editingId ? "Edit Technology" : "Add Technology"}
                   </h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs sm:text-sm text-gray-500">
                     {editingId
                       ? "Update the technology details."
                       : "Add a new technology to the stack."}
@@ -241,7 +241,7 @@ export default function TechStackAdmin() {
                 <button
                   type="button"
                   onClick={handleCloseModal}
-                  className="rounded-full p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900"
+                  className="rounded-full p-1.5 sm:p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900"
                   aria-label="Close form"
                 >
                   <X size={18} />
@@ -307,7 +307,7 @@ export default function TechStackAdmin() {
                     setIsSubmitting(false);
                   }
                 }}
-                className="space-y-4 px-6 py-6"
+                className="space-y-4 px-5 sm:px-6 py-5 sm:py-6"
               >
                 <div className="border-b border-gray-200 pb-4 mb-2">
                   <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">Section</p>

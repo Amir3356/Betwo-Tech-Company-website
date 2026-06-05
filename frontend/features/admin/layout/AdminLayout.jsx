@@ -105,28 +105,28 @@ export default function AdminLayout() {
           <SidebarNav onNavigate={() => setIsMobileOpen(false)} onLogout={handleLogout} />
         </aside>
 
-        <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-500">
-              <Shield size={18} />
+        <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-gray-200 px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-500">
+              <Shield size={16} className="sm:size-[18px]" />
             </div>
-            <h1 className="text-lg font-bold text-gray-900">Betwo Tech</h1>
+            <h1 className="text-base sm:text-lg font-bold text-gray-900">Betwo Tech</h1>
           </div>
           <button
             onClick={() => setIsMobileOpen(true)}
-            className="p-2 rounded-lg hover:bg-gray-100"
+            className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100"
           >
-            <Menu size={24} />
+            <Menu size={22} className="sm:size-6" />
           </button>
         </div>
 
         {isMobileOpen && (
           <div className="lg:hidden fixed inset-0 z-50">
             <div className="absolute inset-0 bg-black/50" onClick={() => setIsMobileOpen(false)} />
-            <aside className="absolute left-0 top-0 h-screen w-[280px] bg-white px-5 py-6 flex flex-col">
-              <div className="flex items-center justify-end mb-6">
-                <button onClick={() => setIsMobileOpen(false)} className="p-2 rounded-lg hover:bg-gray-100">
-                  <X size={24} />
+            <aside className="absolute left-0 top-0 h-screen w-[260px] sm:w-[280px] bg-white px-4 sm:px-5 py-4 sm:py-6 flex flex-col">
+              <div className="flex items-center justify-end mb-4 sm:mb-6">
+                <button onClick={() => setIsMobileOpen(false)} className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100">
+                  <X size={20} className="sm:size-6" />
                 </button>
               </div>
               <SidebarNav onNavigate={() => setIsMobileOpen(false)} onLogout={handleLogout} />
@@ -134,8 +134,8 @@ export default function AdminLayout() {
           </div>
         )}
 
-        <main className="flex-1 overflow-hidden lg:pt-0 pt-16">
-          <div className="lg:p-8 p-4">
+        <main className="flex-1 overflow-hidden lg:pt-0 pt-14 sm:pt-16">
+          <div className="lg:p-8 p-3 sm:p-4">
             <Outlet />
           </div>
         </main>

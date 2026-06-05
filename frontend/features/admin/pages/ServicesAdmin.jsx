@@ -188,26 +188,26 @@ export default function ServicesAdmin() {
         )}
 
         {isModalOpen ? (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6">
-            <div className="w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-              <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
+          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 px-0 sm:px-4">
+            <div className="w-full max-w-2xl overflow-y-auto rounded-t-3xl sm:rounded-3xl bg-white shadow-2xl max-h-[90vh] sm:max-h-none">
+              <div className="flex items-center justify-between border-b border-gray-200 px-5 sm:px-6 py-3 sm:py-4 sticky top-0 bg-white">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">{editingId !== null ? "Edit Service" : "Add Service"}</h3>
-                  <p className="text-sm text-gray-500">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900">{editingId !== null ? "Edit Service" : "Add Service"}</h3>
+                  <p className="text-xs sm:text-sm text-gray-500">
                     {editingId !== null ? "Update the service details shown on the public site." : "Create a new service card for the public portfolio."}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={handleCloseModal}
-                  className="rounded-full p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900"
+                  className="rounded-full p-1.5 sm:p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900"
                   aria-label="Close service form"
                 >
                   <X size={18} />
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4 px-6 py-6">
+              <form onSubmit={handleSubmit} className="space-y-4 px-5 sm:px-6 py-5 sm:py-6">
                 <label className="space-y-2 text-sm font-medium text-gray-700">
                   <span>Title</span>
                   <input
@@ -233,7 +233,7 @@ export default function ServicesAdmin() {
                 <label className="space-y-2 text-sm font-medium text-gray-700">
                   <span>Image</span>
                   <div className="flex items-center gap-3 rounded-xl border border-dashed border-gray-300 bg-gray-50 px-4 py-4">
-                    <Upload size={18} className="text-gray-500" />
+                    <Upload size={18} className="text-gray-500 shrink-0" />
                     <input
                       type="file"
                       accept="image/*"
