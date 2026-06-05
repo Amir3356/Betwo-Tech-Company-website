@@ -186,7 +186,7 @@ export default function WhatWeDo() {
 
         {/* Animated divider */}
         <motion.div
-          className="h-1 bg-gradient-to-r from-sky-500 to-blue-500 rounded-full mx-auto mt-6"
+          className="h-1 bg-gradient-to-r from-slate-400 to-slate-600 dark:from-sky-500 dark:to-blue-500 rounded-full mx-auto mt-6"
           initial={{ width: 0 }}
           whileInView={{ width: 64 }}
           viewport={{ once: true }}
