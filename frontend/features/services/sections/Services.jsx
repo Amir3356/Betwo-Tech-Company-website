@@ -454,14 +454,7 @@ export default function Services() {
                 variants={cardVariant}
                 whileHover={{ y: -8 }}
               >
-                {/* Ghost number */}
-                <div className="absolute -top-6 -right-4 text-9xl font-black text-slate-100 dark:text-slate-700/30 group-hover:text-blue-50 dark:group-hover:text-blue-900/20 group-hover:scale-110 transition-all duration-500 z-0 select-none pointer-events-none">
-                  {step.number}
-                </div>
                 <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl font-bold mb-6 group-hover:scale-110 group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-indigo-500 group-hover:text-white transition-all duration-300">
-                    {step.number}
-                  </div>
                   <h4 className="text-xl sm:text-2xl font-bold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                     {step.title}
                   </h4>
