@@ -5,7 +5,6 @@ import {
   Clock,
   Send,
   ChevronDown,
-  Navigation,
   CheckCircle,
   HelpCircle,
   MessageSquare,
@@ -107,7 +106,6 @@ export default function Contact() {
   const contactInfo = data.contactInfo || [];
   const guaranteed = data.guaranteedResponse || {};
   const form = data.form || {};
-  const office = data.office || {};
   const faqs = data.faq || [];
 
   const sectionVariants = {
@@ -223,139 +221,188 @@ export default function Contact() {
         </div>
       </motion.div>
 
-      {/* ── Contact Form + Office Info ── */}
+      {/* ── Contact Form ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 lg:mb-24">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Form */}
-          <motion.div variants={fadeUp} id="guaranteed-response">
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white mb-6 sm:mb-8">
-              {form.title}
-            </h2>
-            {submitted ? (
-              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-6 sm:p-8 text-center">
-                <CheckCircle className="w-12 sm:w-16 h-12 sm:h-16 text-green-500 mx-auto mb-3 sm:mb-4" />
-                <h3 className="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-2">
-                  Message Sent!
-                </h3>
-                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">
-                  Thank you for reaching out. We&apos;ll get back to you within
-                  24 hours.
-                </p>
+          {/* Left Column - Contact Info (2x2 grid matching homepage) */}
+          <motion.div
+            className="space-y-6"
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6">
+              Contact Information
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {contactInfo.map((info, index) => {
+                const IconComponent = iconMap[info.icon] || Mail;
+                return (
+                  <motion.div
+                    key={index}
+                    variants={cardVariant}
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-fuchsia-400 dark:hover:border-blue-500 transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 bg-slate-200/50 dark:bg-slate-700/30 rounded-lg flex items-center justify-center text-slate-800 dark:text-slate-300 mb-4">
+                      {IconComponent && <IconComponent className="w-6 h-6" />}
+                    </div>
+                    <h4 className="font-bold text-slate-900 dark:text-white mb-2">
+                      {info.title}
+                    </h4>
+                    <p className="text-slate-700 dark:text-slate-300 font-medium mb-1">
+                      {info.content}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-500">
+                      {info.subtext}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Quick Response Badge */}
+            <motion.div
+              className="bg-slate-800 dark:bg-blue-900/20 border border-slate-700 dark:border-blue-800 rounded-xl p-6 mt-8"
+              id="guaranteed-response"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="flex items-start gap-4">
+                <CheckCircle className="w-6 h-6 text-white dark:text-slate-300 shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-bold text-white dark:text-white mb-2">
+                    {guaranteed.title}
+                  </h4>
+                  <p className="text-sm text-white/80 dark:text-slate-400">
+                    {guaranteed.description}
+                  </p>
+                </div>
               </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column - Form (matching homepage style) */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
+              Quick Message
+            </h3>
+
+            {submitted ? (
+              <motion.div
+                className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-8 text-center"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                  Message Sent!
+                </h4>
+                <p className="text-slate-600 dark:text-slate-400">
+                  Thank you for reaching out. We'll get back to you within 24 hours.
+                </p>
+              </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 {error && (
                   <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
                     {error}
                   </div>
                 )}
-                {(form.fields || []).map((field, i) =>
-                  field.type === "textarea" ? (
-                    <div key={i}>
-                      <motion.label
-                        className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.8 }}
-                        transition={{ delay: i * 0.05 }}
-                      >
-                        {field.label}{" "}
-                        {field.required && (
-                          <span className="text-red-500">*</span>
-                        )}
-                      </motion.label>
-                      <textarea
-                        name={field.name}
-                        value={formData[field.name]}
-                        onChange={handleChange}
-                        required={field.required}
-                        rows={field.rows || 5}
-                        className="w-full px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all resize-none text-sm sm:text-base"
-                        placeholder={field.placeholder}
-                      />
-                    </div>
-                  ) : (
-                    <div key={i}>
-                      <motion.label
-                        className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.8 }}
-                        transition={{ delay: i * 0.05 }}
-                      >
-                        {field.label}{" "}
-                        {field.required && (
-                          <span className="text-red-500">*</span>
-                        )}
-                      </motion.label>
-                      <input
-                        type={field.type}
-                        name={field.name}
-                        value={formData[field.name]}
-                        onChange={handleChange}
-                        required={field.required}
-                        className="w-full px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all text-sm sm:text-base"
-                        placeholder={field.placeholder}
-                      />
-                    </div>
-                  ),
-                )}
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                    Full Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                    Message <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                    placeholder="Tell us about your project..."
+                  />
+                </div>
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-slate-900 to-slate-700 hover:from-blue-600 hover:to-indigo-600 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-400 dark:hover:to-indigo-400 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20 dark:shadow-blue-500/20 disabled:cursor-not-allowed disabled:opacity-70 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/25"
+                  className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-blue-400 dark:hover:bg-blue-500 text-white dark:text-black px-6 py-4 rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20 dark:shadow-blue-500/20 hover:-translate-y-1 hover:shadow-xl"
                 >
-                  {isSubmitting ? "Sending..." : form.submitButton}{" "}
-                  <Send className="w-4 sm:w-5 h-4 sm:h-5" />
+                  {isSubmitting ? "Sending..." : "Send Message"} <Send className="w-5 h-5" />
                 </button>
               </form>
             )}
           </motion.div>
+        </motion.div>
+      </div>
 
-          {/* Office Info */}
-          <motion.div variants={fadeUp}>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white mb-6 sm:mb-8">
-              {office.title}
-            </h2>
-            <p className="text-slate-600 dark:text-slate-400 mb-6 sm:mb-8">
-              {office.description}
-            </p>
-            <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-5 sm:p-6 lg:p-8 border border-slate-100 dark:border-slate-800 mb-6 sm:mb-8">
-              <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center text-white shrink-0">
-                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-slate-800 dark:text-white text-base sm:text-lg">
-                    {office.address?.title}
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                    {(office.address?.lines || []).join(" ")}
-                  </p>
-                </div>
-              </div>
-              <button className="w-full bg-gradient-to-r from-slate-900 to-slate-700 hover:from-blue-600 hover:to-indigo-600 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-400 dark:hover:to-indigo-400 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20 dark:shadow-blue-500/20 text-sm sm:text-base hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/25">
-                {office.directionsButton} <Navigation className="w-4 h-4" />
-              </button>
-            </div>
-            <div className="w-full h-48 sm:h-56 lg:h-64 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3598.8894444363227!2d38.76696689242792!3d8.99646765861126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2set!4v1780560661639!5m2!1sen!2set"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </motion.div>
+      {/* ── Google Map Section (matching homepage) ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 lg:mb-24">
+        <motion.div
+          className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="relative w-full h-96 bg-slate-200 dark:bg-slate-800">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3598.8894444363227!2d38.76696689242792!3d8.99646765861126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2set!4v1780560661639!5m2!1sen!2set"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </motion.div>
       </div>
 
