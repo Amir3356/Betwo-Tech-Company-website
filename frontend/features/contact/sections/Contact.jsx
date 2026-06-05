@@ -291,7 +291,7 @@ export default function Contact() {
                     key={index}
                     variants={cardVariant}
                     whileHover={{ y: -4, scale: 1.02 }}
-                    className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-fuchsia-400 dark:hover:border-blue-500 transition-all duration-300"
+                    className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-700 dark:hover:border-blue-500 transition-all duration-300"
                   >
                     <div className="w-12 h-12 bg-slate-200/50 dark:bg-slate-700/30 rounded-lg flex items-center justify-center text-slate-800 dark:text-slate-300 mb-4">
                       {IconComponent && <IconComponent className="w-6 h-6" />}
