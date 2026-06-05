@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import projectsImport from "../../../shared/data/projects.json";
 import { motion, AnimatePresence } from "framer-motion";
-import { Building2, Layers, ArrowUpRight, X } from "lucide-react";
+import { Building2, Layers, ArrowUpRight, X, Search } from "lucide-react";
 import { resolveProjectImageUrl } from "../../../shared/utils/projectImageUrl";
 
 export default function Projects() {
@@ -9,6 +9,8 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
 
   useEffect(() => {
@@ -35,7 +37,11 @@ export default function Projects() {
     loadProjects();
   }, []);
 
-  const filteredProjects = data?.projects;
+  const filteredProjects = data?.projects?.filter((project) => {
+    const matchesSearch = !searchQuery || project.title?.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   if (loading) {
     return (
@@ -152,6 +158,18 @@ export default function Projects() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           />
         </motion.div>
+
+        {/* ── Search Filter ── */}
+        <div className="relative max-w-md mx-auto mb-8 sm:mb-10">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 pointer-events-none" size={18} />
+          <input
+            type="text"
+            placeholder="Search projects..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-sky-500 focus:border-transparent transition-all"
+          />
+        </div>
 
         {/* ── Projects Grid ── */}
         <motion.div
