@@ -390,7 +390,7 @@ export default function Hero() {
                   rounded-full bg-gradient-to-tr from-fuchsia-400 to-purple-500
                   opacity-20 blur-xl"
                 />
-      </motion.button>
+              </motion.div>
             </div>
           ) : null}
         </motion.div>
