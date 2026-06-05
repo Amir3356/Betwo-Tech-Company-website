@@ -165,7 +165,7 @@ export default function TechStackAdmin() {
               </div>
             ) : (
               <div className="overflow-x-auto rounded-3xl border border-gray-200 bg-white shadow-sm">
-                <table className="w-full min-w-[500px] text-left text-sm">
+                <table className="w-full text-left text-sm">
                   <thead>
                     <tr className="border-b border-gray-200 bg-gray-50">
                       <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Icon</th>
@@ -188,8 +188,8 @@ export default function TechStackAdmin() {
                             );
                           })()}
                         </td>
-                        <td className="px-3 sm:px-5 py-3 sm:py-4 font-medium text-gray-900 whitespace-nowrap">{item.name}</td>
-                        <td className="px-3 sm:px-5 py-3 sm:py-4 text-gray-600 whitespace-nowrap">
+                        <td className="px-3 sm:px-5 py-3 sm:py-4 font-medium text-gray-900 break-all sm:break-normal">{item.name}</td>
+                        <td className="px-3 sm:px-5 py-3 sm:py-4 text-gray-600 break-all sm:break-normal">
                           <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
                             {item.category}
                           </span>
