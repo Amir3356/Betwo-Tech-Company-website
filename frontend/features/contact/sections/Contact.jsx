@@ -294,6 +294,7 @@ export default function Contact() {
 
           {/* Right Column - Form (matching homepage style) */}
           <motion.div
+            id="contact-form"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
