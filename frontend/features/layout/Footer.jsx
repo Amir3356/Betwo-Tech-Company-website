@@ -20,9 +20,9 @@ const services = [
 ];
 
 const socialLinks = [
-  { name: "Telegram", url: "#", icon: "telegram" },
-  { name: "WhatsApp", url: "#", icon: "whatsapp" },
-  { name: "TikTok", url: "#", icon: "tiktok" }
+  { name: "Telegram", url: "https://t.me/ForChristAlone", icon: "telegram" },
+  { name: "WhatsApp", url: "https://wa.me/251912882357", icon: "whatsapp" },
+  { name: "TikTok", url: "https://tiktok.com/@Betwo tech", icon: "tiktok" }
 ];
 
 const bottomLinks = [
