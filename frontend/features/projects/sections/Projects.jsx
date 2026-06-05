@@ -9,7 +9,6 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
 
@@ -38,9 +37,7 @@ export default function Projects() {
   }, []);
 
   const filteredProjects = data?.projects?.filter((project) => {
-    const matchesSearch = !searchQuery || project.title?.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    return selectedCategory === "All" || project.category === selectedCategory;
   });
 
   if (loading) {
