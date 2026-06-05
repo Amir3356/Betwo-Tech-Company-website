@@ -216,7 +216,7 @@ export default function Services() {
       )}
 
       {/* ── Comprehensive Services ── */}
-      <div className="bg-slate-50 dark:bg-slate-900 py-12 sm:py-16 lg:py-24">
+      <div id="our-services" className="bg-slate-50 dark:bg-slate-900 py-12 sm:py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 space-y-3 sm:space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/50 dark:bg-slate-700/30 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-300 text-sm font-semibold">
@@ -244,7 +244,7 @@ export default function Services() {
                 whileHover={{ y: -8, scale: 1.02 }}
               >
                 {/* Accent line on hover */}
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-slate-700 to-slate-500 dark:from-blue-500 dark:to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
                 {service.image && (
                   <div className="aspect-[16/10] bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden mb-4 sm:mb-6">
                     <img
