@@ -428,7 +428,7 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              Process
+              Our Process
             </motion.h2>
             <motion.h3
               className="text-xl sm:text-2xl md:text-3xl font-medium text-slate-700 dark:text-slate-300"
