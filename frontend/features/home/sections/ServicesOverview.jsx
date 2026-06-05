@@ -80,7 +80,7 @@ export default function ServicesOverview() {
   const services = comprehensive.services || [];
 
   return (
-    <section className="services-overview py-12 sm:py-16 md:py-20 bg-white dark:bg-slate-950 border-y border-slate-100 dark:border-slate-800">
+    <section id="services" className="services-overview py-12 sm:py-16 md:py-20 bg-white dark:bg-slate-950 border-y border-slate-100 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         {/* Section Header */}
         <motion.div
