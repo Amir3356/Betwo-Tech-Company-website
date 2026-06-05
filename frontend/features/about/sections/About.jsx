@@ -494,7 +494,7 @@ className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 dark:text
       <div className="bg-slate-100 dark:bg-slate-900 py-12 sm:py-16 lg:py-24 text-slate-900 dark:text-white">
         <motion.div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" variants={impactSectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           <motion.div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 space-y-3 sm:space-y-4" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.6 }} transition={{ duration: 0.6 }}>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl md:text-6xl text-slate-800 dark:text-blue-400 font-semibold tracking-wider">{impactSectionLabel}</h3>
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl text-slate-800 dark:text-blue-400 font-semibold tracking-wider">{impactSectionLabel}</h3>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">{aboutData.impact.title}</h2>
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">{aboutData.impact.subtitle}</p>
           </motion.div>
