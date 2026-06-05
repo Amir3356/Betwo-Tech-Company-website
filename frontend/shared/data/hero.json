@@ -3,7 +3,7 @@
   "typedTexts": ["Digital Solution", "Technology"],
   "description": "Betwo Tech specializes in building cutting-edge software solutions that empower businesses to scale and thrive in the digital age.",
   "ctaButtons": [
-    { "text": "Services", "link": "#services", "primary": true },
+    { "text": "Services", "link": "/services", "primary": true },
     { "text": "Contact Us", "link": "/contact#contact-form", "primary": false }
   ],
   "image": {
