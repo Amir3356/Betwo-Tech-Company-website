@@ -32,7 +32,7 @@ export async function getLeadershipById(req, res) {
 }
 
 export async function createLeadershipHandler(req, res) {
-  const { name, position, bio, linkedin, display_order } = req.body || {};
+  const { name, position, bio } = req.body || {};
 
   if (!name || !name.trim()) {
     return res.status(400).json({ message: "Name is required." });
@@ -43,8 +43,6 @@ export async function createLeadershipHandler(req, res) {
       name: name.trim(),
       position: (position || "").trim(),
       bio: bio || "",
-      linkedin: linkedin || "",
-      display_order: display_order || 0,
     });
 
     return res.status(201).json({ message: "Leadership member created.", data: item });
@@ -56,7 +54,7 @@ export async function createLeadershipHandler(req, res) {
 
 export async function updateLeadershipHandler(req, res) {
   const { id } = req.params;
-  const { name, position, bio, linkedin, display_order } = req.body || {};
+  const { name, position, bio } = req.body || {};
 
   if (!name || !name.trim()) {
     return res.status(400).json({ message: "Name is required." });
@@ -72,8 +70,6 @@ export async function updateLeadershipHandler(req, res) {
       name: name.trim(),
       position: (position || existing.position || "").trim(),
       bio: bio ?? existing.bio ?? "",
-      linkedin: linkedin ?? existing.linkedin ?? "",
-      display_order: display_order ?? existing.display_order ?? 0,
     });
 
     return res.json({ message: "Leadership member updated.", data: item });

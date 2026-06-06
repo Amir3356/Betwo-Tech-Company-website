@@ -14,8 +14,6 @@ export default function ExperiencedLeadershipAdmin() {
     name: "",
     position: "",
     bio: "",
-    linkedin: "",
-    display_order: 0,
   });
 
   const loadAll = async () => {
@@ -82,7 +80,7 @@ export default function ExperiencedLeadershipAdmin() {
 
   const resetForm = () => {
     setEditingId(null);
-    setFormData({ name: "", position: "", bio: "", linkedin: "", display_order: 0 });
+    setFormData({ name: "", position: "", bio: "" });
   };
 
   const openCreateModal = () => {
@@ -97,8 +95,6 @@ export default function ExperiencedLeadershipAdmin() {
       name: item.name || "",
       position: item.position || "",
       bio: item.bio || "",
-      linkedin: item.linkedin || "",
-      display_order: item.display_order ?? 0,
     });
     setIsModalOpen(true);
     setError("");
@@ -217,18 +213,15 @@ export default function ExperiencedLeadershipAdmin() {
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr className="border-b border-gray-200 bg-gray-50">
-                      <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Order</th>
                       <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Name</th>
                       <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Position</th>
                       <th className="hidden sm:table-cell px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Bio</th>
-                      <th className="hidden md:table-cell px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">LinkedIn</th>
                       <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700 text-right">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {items.map((item) => (
                       <tr key={item.id} className="border-b border-gray-100 last:border-0 hover:bg-gray-50">
-                        <td className="px-3 sm:px-5 py-3 sm:py-4 text-gray-600">{item.display_order}</td>
                         <td className="px-3 sm:px-5 py-3 sm:py-4 font-medium text-gray-900">{item.name}</td>
                         <td className="px-3 sm:px-5 py-3 sm:py-4 text-gray-600">
                           <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
@@ -236,7 +229,6 @@ export default function ExperiencedLeadershipAdmin() {
                           </span>
                         </td>
                         <td className="hidden sm:table-cell px-3 sm:px-5 py-3 sm:py-4 text-gray-600 max-w-xs truncate">{item.bio || "-"}</td>
-                        <td className="hidden md:table-cell px-3 sm:px-5 py-3 sm:py-4 text-gray-600 max-w-[180px] truncate">{item.linkedin || "-"}</td>
                         <td className="px-3 sm:px-5 py-3 sm:py-4 text-right">
                           <div className="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
                             <button

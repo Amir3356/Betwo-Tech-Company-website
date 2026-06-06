@@ -2,16 +2,15 @@ import { pool } from "../config/db.js";
 
 export async function getAllLeadership() {
   const result = await pool.query(
-    "SELECT * FROM experienced_leadership ORDER BY display_order ASC, created_at DESC"
+    "SELECT * FROM experienced_leadership ORDER BY created_at DESC"
   );
   return result.rows;
 }
 
 export async function createLeadership(data) {
   const result = await pool.query(
-    `INSERT INTO experienced_leadership (name, position, bio, linkedin, display_order)
-     VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-    [data.name, data.position || "", data.bio || "", data.linkedin || "", data.display_order || 0]
+    `INSERT INTO experienced_leadership (name, position, bio) VALUES ($1, $2, $3) RETURNING *`,
+    [data.name, data.position || "", data.bio || ""]
   );
   return result.rows[0];
 }
@@ -23,10 +22,8 @@ export async function findLeadershipById(id) {
 
 export async function updateLeadership(id, data) {
   const result = await pool.query(
-    `UPDATE experienced_leadership
-     SET name = $1, position = $2, bio = $3, linkedin = $4, display_order = $5, updated_at = NOW()
-     WHERE id = $6 RETURNING *`,
-    [data.name, data.position, data.bio, data.linkedin, data.display_order, id]
+    `UPDATE experienced_leadership SET name = $1, position = $2, bio = $3, updated_at = NOW() WHERE id = $4 RETURNING *`,
+    [data.name, data.position, data.bio, id]
   );
   return result.rows[0];
 }
