@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import aboutDataImport from "../../../shared/data/aboutUs.json";
-const leadershipSectionDefaults = { title: "", subtitle: "", description: "" };
 import { motion } from "framer-motion";
 import { getAssetUrl } from "../../../assets/index.js";
 import {
@@ -383,8 +382,8 @@ className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 dark:text
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-slate-900 dark:text-blue-400 font-semibold tracking-wider">{leadershipSection.title || aboutData.leadership?.sectionLabelExperienced || ''}</h3>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">{leadershipSection.subtitle || aboutData.leadership?.heading || ''}</h2>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-slate-900 dark:text-blue-400 font-semibold tracking-wider">{leadershipSection.title}</h3>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">{leadershipSection.subtitle}</h2>
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">{leadershipSection.description || ''}</p>
             </motion.div>
           </div>
