@@ -270,7 +270,7 @@ export default function About() {
             <motion.img
               src={getAssetUrl("Company Overview - built with long-term vision.png") || aboutData.hero.image}
               alt={aboutData.hero.title}
-              className="rounded-2xl shadow-xl w-full object-cover h-52 sm:h-80 md:h-96 lg:h-100"
+              className="rounded-2xl shadow-xl w-full object-contain h-auto"
               whileHover={{ scale: 1.04, rotate: -0.5 }}
               transition={{ type: "spring", stiffness: 220, damping: 18 }}
             />
