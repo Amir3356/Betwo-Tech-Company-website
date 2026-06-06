@@ -240,6 +240,43 @@ export default function AboutUsOverview() {
           </motion.div>
         </motion.div>
 
+        {/* History Section */}
+        {history.length > 0 ? (
+          <motion.div
+            className="mb-12 sm:mb-16 md:mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="text-center mb-8 sm:mb-12">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                {historySection.sectionLabel || 'Our History'}
+              </h3>
+              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                {historySection.description}
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {history.map((item, i) => (
+                <motion.div
+                  key={i}
+                  className="relative bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                >
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">{item.year}</div>
+                  <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{item.title}</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        ) : null}
+
         {/* Core Values Section */}
         <motion.div
           className="text-center mb-8 sm:mb-12"
