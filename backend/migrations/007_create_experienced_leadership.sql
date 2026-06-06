@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS experienced_leadership (
 
 CREATE TABLE IF NOT EXISTS experienced_leadership_section (
   id SERIAL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL DEFAULT 'Experienced Leadership',
-  subtitle VARCHAR(255) NOT NULL DEFAULT 'Visionary Leaders Driving Innovation',
+  title VARCHAR(255) NOT NULL DEFAULT '',
+  subtitle VARCHAR(255) NOT NULL DEFAULT '',
   description TEXT NOT NULL DEFAULT '',
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()

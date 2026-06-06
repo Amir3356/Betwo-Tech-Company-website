@@ -38,9 +38,9 @@ export async function deleteLeadershipById(id) {
 // ─── Section ──────────────────────────────────────────
 
 const defaults = {
-  title: "Experienced Leadership",
-  subtitle: "Visionary Leaders Driving Innovation",
-  description: "Our leadership team brings a strong technical background, business insight, and a commitment to building long-lasting products and partnerships.",
+  title: "",
+  subtitle: "",
+  description: "",
 };
 
 export async function readSection() {
