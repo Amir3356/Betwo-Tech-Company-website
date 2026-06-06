@@ -361,29 +361,6 @@ export default function ExperiencedLeadershipAdmin() {
                   />
                 </label>
 
-                <label className="space-y-2 text-sm font-medium text-gray-700">
-                  <span>LinkedIn URL</span>
-                  <input
-                    name="linkedin"
-                    value={formData.linkedin}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-blue-500"
-                    placeholder="https://linkedin.com/in/..."
-                  />
-                </label>
-
-                <label className="space-y-2 text-sm font-medium text-gray-700">
-                  <span>Display Order</span>
-                  <input
-                    name="display_order"
-                    type="number"
-                    value={formData.display_order}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-blue-500"
-                    placeholder="0"
-                  />
-                </label>
-
                 <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
                   <button
                     type="button"
