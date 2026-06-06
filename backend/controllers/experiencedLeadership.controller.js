@@ -1,3 +1,6 @@
+import path from "path";
+import fs from "fs";
+import { fileURLToPath } from "url";
 import {
   getAllLeadership,
   createLeadership,
@@ -5,6 +8,10 @@ import {
   updateLeadership,
   deleteLeadershipById,
 } from "../models/experiencedLeadership.model.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const uploadDir = path.join(__dirname, "../storage/leadership");
 
 export async function getLeadership(req, res) {
   try {
@@ -33,6 +40,11 @@ export async function getLeadershipById(req, res) {
 
 export async function createLeadershipHandler(req, res) {
   const { name, position, bio } = req.body || {};
+  let image = null;
+
+  if (req.file) {
+    image = `/storage/leadership/${req.file.filename}`;
+  }
 
   if (!name || !name.trim()) {
     return res.status(400).json({ message: "Name is required." });
@@ -43,6 +55,7 @@ export async function createLeadershipHandler(req, res) {
       name: name.trim(),
       position: (position || "").trim(),
       bio: bio || "",
+      image,
     });
 
     return res.status(201).json({ message: "Leadership member created.", data: item });
@@ -66,10 +79,22 @@ export async function updateLeadershipHandler(req, res) {
       return res.status(404).json({ message: "Leadership member not found." });
     }
 
+    let image = existing.image;
+    if (req.file) {
+      if (existing.image) {
+        const oldPath = path.join(__dirname, "..", existing.image);
+        if (fs.existsSync(oldPath)) {
+          fs.unlinkSync(oldPath);
+        }
+      }
+      image = `/storage/leadership/${req.file.filename}`;
+    }
+
     const item = await updateLeadership(id, {
       name: name.trim(),
       position: (position || existing.position || "").trim(),
       bio: bio ?? existing.bio ?? "",
+      image,
     });
 
     return res.json({ message: "Leadership member updated.", data: item });
@@ -86,6 +111,13 @@ export async function deleteLeadershipHandler(req, res) {
     const existing = await findLeadershipById(id);
     if (!existing) {
       return res.status(404).json({ message: "Leadership member not found." });
+    }
+
+    if (existing.image) {
+      const filePath = path.join(__dirname, "..", existing.image);
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
     }
 
     await deleteLeadershipById(id);

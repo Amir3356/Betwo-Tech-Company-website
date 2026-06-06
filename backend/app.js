@@ -28,6 +28,7 @@ function createApp(pool) {
 
   app.use("/storage/projects", express.static(path.join(__dirname, "storage/projects")));
   app.use("/storage/services", express.static(path.join(__dirname, "storage/services")));
+  app.use("/storage/leadership", express.static(path.join(__dirname, "storage/leadership")));
 
   app.get("/health", (_req, res) => res.json({ ok: true }));
 

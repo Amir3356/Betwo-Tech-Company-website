@@ -9,8 +9,8 @@ export async function getAllLeadership() {
 
 export async function createLeadership(data) {
   const result = await pool.query(
-    `INSERT INTO experienced_leadership (name, position, bio) VALUES ($1, $2, $3) RETURNING *`,
-    [data.name, data.position || "", data.bio || ""]
+    `INSERT INTO experienced_leadership (name, position, bio, image) VALUES ($1, $2, $3, $4) RETURNING *`,
+    [data.name, data.position || "", data.bio || "", data.image || null]
   );
   return result.rows[0];
 }
@@ -22,8 +22,8 @@ export async function findLeadershipById(id) {
 
 export async function updateLeadership(id, data) {
   const result = await pool.query(
-    `UPDATE experienced_leadership SET name = $1, position = $2, bio = $3, updated_at = NOW() WHERE id = $4 RETURNING *`,
-    [data.name, data.position, data.bio, id]
+    `UPDATE experienced_leadership SET name = $1, position = $2, bio = $3, image = $4, updated_at = NOW() WHERE id = $5 RETURNING *`,
+    [data.name, data.position, data.bio, data.image ?? null, id]
   );
   return result.rows[0];
 }

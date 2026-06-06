@@ -23,3 +23,4 @@ function createUploadConfig(relativePath) {
 
 export const projectUpload = createUploadConfig("../storage/projects");
 export const serviceUpload = createUploadConfig("../storage/services");
+export const leadershipUpload = createUploadConfig("../storage/leadership");

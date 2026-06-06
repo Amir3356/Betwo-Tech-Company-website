@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Plus, X, LoaderCircle, Pencil, Trash2, Users, Save } from "lucide-react";
+import { Plus, X, LoaderCircle, Pencil, Trash2, Users, Save, Upload } from "lucide-react";
 
 export default function ExperiencedLeadershipAdmin() {
   const [items, setItems] = useState([]);
@@ -14,6 +14,7 @@ export default function ExperiencedLeadershipAdmin() {
     name: "",
     position: "",
     bio: "",
+    image: null,
   });
 
   const loadAll = async () => {
@@ -74,13 +75,16 @@ export default function ExperiencedLeadershipAdmin() {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, files } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: files ? files[0] : value,
+    }));
   };
 
   const resetForm = () => {
     setEditingId(null);
-    setFormData({ name: "", position: "", bio: "" });
+    setFormData({ name: "", position: "", bio: "", image: null });
   };
 
   const openCreateModal = () => {
@@ -95,9 +99,10 @@ export default function ExperiencedLeadershipAdmin() {
       name: item.name || "",
       position: item.position || "",
       bio: item.bio || "",
+      image: null,
     });
-    setIsModalOpen(true);
     setError("");
+    setIsModalOpen(true);
   };
 
   const handleDelete = async (id) => {
@@ -213,6 +218,7 @@ export default function ExperiencedLeadershipAdmin() {
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr className="border-b border-gray-200 bg-gray-50">
+                      <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Image</th>
                       <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Name</th>
                       <th className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Position</th>
                       <th className="hidden sm:table-cell px-3 sm:px-5 py-3 sm:py-4 font-semibold text-gray-700">Bio</th>
@@ -222,6 +228,19 @@ export default function ExperiencedLeadershipAdmin() {
                   <tbody>
                     {items.map((item) => (
                       <tr key={item.id} className="border-b border-gray-100 last:border-0 hover:bg-gray-50">
+                        <td className="px-3 sm:px-5 py-3 sm:py-4">
+                          {item.image ? (
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="h-10 w-10 rounded-full object-cover"
+                            />
+                          ) : (
+                            <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">
+                              <Users size={16} />
+                            </div>
+                          )}
+                        </td>
                         <td className="px-3 sm:px-5 py-3 sm:py-4 font-medium text-gray-900">{item.name}</td>
                         <td className="px-3 sm:px-5 py-3 sm:py-4 text-gray-600">
                           <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
@@ -289,12 +308,19 @@ export default function ExperiencedLeadershipAdmin() {
                   setError("");
 
                   try {
+                    const body = new FormData();
+                    body.append("name", formData.name);
+                    body.append("position", formData.position);
+                    body.append("bio", formData.bio);
+                    if (formData.image) {
+                      body.append("image", formData.image);
+                    }
+
                     if (editingId) {
                       const res = await fetch(`/api/experienced-leadership/${editingId}`, {
                         method: "PUT",
                         credentials: "include",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(formData),
+                        body,
                       });
 
                       const result = await res.json();
@@ -307,8 +333,7 @@ export default function ExperiencedLeadershipAdmin() {
                       const res = await fetch("/api/experienced-leadership", {
                         method: "POST",
                         credentials: "include",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(formData),
+                        body,
                       });
 
                       const result = await res.json();
@@ -326,6 +351,36 @@ export default function ExperiencedLeadershipAdmin() {
                 }}
                 className="space-y-4 px-5 sm:px-6 py-5 sm:py-6"
               >
+                <label className="space-y-2 text-sm font-medium text-gray-700">
+                  <span>Image</span>
+                  <div className="flex items-center gap-4">
+                    {editingId && !formData.image ? (
+                      <img
+                        src={items.find((i) => i.id === editingId)?.image || ""}
+                        alt="Current"
+                        className="h-14 w-14 rounded-full object-cover border"
+                      />
+                    ) : formData.image ? (
+                      <img
+                        src={URL.createObjectURL(formData.image)}
+                        alt="Preview"
+                        className="h-14 w-14 rounded-full object-cover border"
+                      />
+                    ) : null}
+                    <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600 hover:bg-gray-100">
+                      <Upload size={16} />
+                      Choose Image
+                      <input
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        onChange={handleChange}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                </label>
+
                 <label className="space-y-2 text-sm font-medium text-gray-700">
                   <span>Name *</span>
                   <input
