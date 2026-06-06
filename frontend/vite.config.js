@@ -11,12 +11,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.VITE_API_URL || 'http://localhost:5002',
+        target: process.env.VITE_API_URL || 'http://localhost:5003',
         changeOrigin: true,
         secure: false,
       },
       '/storage': {
-        target: process.env.VITE_API_URL || 'http://localhost:5002',
+        target: process.env.VITE_API_URL || 'http://localhost:5003',
         changeOrigin: true,
         secure: false,
       },
