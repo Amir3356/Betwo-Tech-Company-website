@@ -29,23 +29,7 @@
     { "title": "Quality", "description": "We deliver exceptional results through attention to detail and craftsmanship.", "icon": "Star" },
     { "title": "Customer Focus", "description": "Our clients' success is at the heart of every decision we make.", "icon": "Handshake" }
   ],
-  "leadership": {
-    "ceo": {
-      "sectionTitle": "Chief Executive Officer",
-      "countLabel": "1 Leader",
-      "name": "Debeb Ketema Adugna",
-      "role": "Founder & CEO",
-      "description": "Visionary tech leader with 15+ years of experience driving digital transformation across Ethiopian enterprises.",
-      "image": "Executive Leadership.jpg"
-    },
-    "executives": [
-      { "name": "Muluken Tilahun Molla", "role": "Chief Operating Officer", "description": "Technology innovator specializing in scalable cloud architectures and enterprise software systems.", "image": "Executive Leadership  1.jpeg" },
-      { "name": "Ayana Basha Challie", "role": "Chief Technology Officer", "description": "Operations excellence expert focused on scaling business processes and ensuring exceptional client delivery.", "image": "Executive Leadership  2.jpeg" },
-      { "name": "Fikiru Ababe", "role": "Industry Consultant", "description": "Product strategist passionate about creating user-centric solutions that solve real Ethiopian business challenges.", "image": "Executive Leadership 4.jpeg" }
-    ],
-    "executivesSectionTitle": "Executive Leadership",
-    "executivesCountLabel": "3 Leaders"
-  },
+  "leadership": {},
   "history": [
     { "year": "2022", "title": "The Beginning", "description": "Company founded with a vision for scalable solutions." },
     { "year": "2023", "title": "First Milestone", "description": "Delivered first enterprise-grade products." },
