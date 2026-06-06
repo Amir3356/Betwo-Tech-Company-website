@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import aboutDataImport from "../../../shared/data/aboutUs.json";
 import { motion } from "framer-motion";
 import { Shield, Award, Users, Lightbulb, Star, Handshake, ArrowRight, CheckCircle, Code, Database, Smartphone, Settings, Globe, Cloud, Palette, BarChart, Server, PenTool, Zap, Monitor, GitBranch, LayoutTemplate, Repeat, Cpu, Terminal, HardDrive, Tablet, Watch, Box, Layers, Component, Eye, Cog, Wrench, Puzzle, Package, GitPullRequest, Book, FileCode, Braces, Network, Router, Container, Boxes } from "lucide-react";
+import { getAssetUrl } from "../../../assets/index.js";
 
 const techIconMap = {
   Code, Database, Smartphone, Settings, Globe, Shield, Cloud, Palette, BarChart, Server, PenTool, Zap, Monitor, GitBranch, Lightbulb, Award, Users, Star, Handshake, LayoutTemplate, Repeat, Cpu, Terminal, HardDrive, Tablet, Watch, Box, Layers, Component, Eye, Cog, Wrench, Puzzle, Package, GitPullRequest, Book, FileCode, Braces, Network, Router, Container, Boxes,
@@ -269,7 +270,7 @@ export default function AboutUsOverview() {
               </div>
               <div className="mt-8 lg:mt-0">
                 <motion.img
-                  src={culture.image}
+                  src={getAssetUrl("How We Work.png") || culture.image}
                   alt={culture.title}
                   className="rounded-2xl shadow-xl w-full object-cover h-52 sm:h-80 lg:h-96"
                   initial={{ opacity: 0, y: 12 }}
