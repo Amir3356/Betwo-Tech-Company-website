@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import aboutDataImport from "../../../shared/data/aboutUs.json";
 import { motion } from "framer-motion";
-import { Shield, Award, Users, Lightbulb, Star, Handshake, ArrowRight, CheckCircle, Code, Database, Smartphone, Settings, Globe, Cloud, Palette, BarChart, Server, PenTool, Zap, Monitor, GitBranch, LayoutTemplate, Repeat, Cpu, Terminal, HardDrive, Tablet, Watch, Box, Layers, Component, Eye, Cog, Wrench, Puzzle, Package, GitPullRequest, Book, FileCode, Braces, Network, Router, Container, Boxes } from "lucide-react";
+import { Shield, Award, Users, Lightbulb, Star, Handshake, ArrowRight, CheckCircle, Code, Database, Smartphone, Settings, Globe, Cloud, Palette, BarChart, Server, PenTool, Zap, Monitor, GitBranch, LayoutTemplate, Repeat, Cpu, Terminal, HardDrive, Tablet, Watch, Box, Layers, Component, Eye, Cog, Wrench, Puzzle, Package, GitPullRequest, Book, FileCode, Braces, Network, Router, Container, Boxes, Briefcase } from "lucide-react";
 import { getAssetUrl } from "../../../assets/index.js";
 
 const techIconMap = {
@@ -60,6 +60,8 @@ export default function AboutUsOverview() {
   const [data] = useState(aboutDataImport);
   const [sectionMeta, setSectionMeta] = useState({ title: "Our Tech Stack", description: "Cutting-edge technologies we use to build powerful solutions" });
   const [techItems, setTechItems] = useState([]);
+  const [leadershipSection, setLeadershipSection] = useState({ title: "", subtitle: "", description: "" });
+  const [leadershipMembers, setLeadershipMembers] = useState([]);
 
   useEffect(() => {
     const load = async () => {
@@ -79,6 +81,19 @@ export default function AboutUsOverview() {
       } catch {}
     };
     load();
+
+    fetch("/api/experienced-leadership-section")
+      .then((res) => res.json())
+      .then((payload) => {
+        if (payload?.data) setLeadershipSection(payload.data);
+      })
+      .catch(() => {});
+    fetch("/api/experienced-leadership")
+      .then((res) => res.json())
+      .then((payload) => {
+        if (Array.isArray(payload?.data)) setLeadershipMembers(payload.data);
+      })
+      .catch(() => {});
   }, []);
 
   if (!data) {
@@ -283,6 +298,54 @@ export default function AboutUsOverview() {
             </div>
           </motion.div>
         ) : null}
+
+        {/* Experienced Leadership Section */}
+        <motion.div
+          className="mb-12 sm:mb-16 md:mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-slate-900 dark:text-blue-400 font-semibold tracking-wider">{leadershipSection.title}</h3>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mt-4">{leadershipSection.subtitle}</h2>
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-4">{leadershipSection.description || ''}</p>
+          </div>
+          {leadershipMembers.length > 0 ? (
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 sm:mb-8 border-b border-slate-200 dark:border-slate-800 pb-3 sm:pb-4">
+                Our Leadership Team
+                <span className="text-xs sm:text-sm font-normal text-slate-500 bg-slate-200 dark:bg-slate-800 px-2 sm:px-3 py-1 rounded-full ml-2 sm:ml-4">{leadershipMembers.length} {leadershipMembers.length === 1 ? 'Leader' : 'Leaders'}</span>
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                {leadershipMembers.map((leader, i) => (
+                  <div key={leader.id} className="bg-white dark:bg-slate-950 rounded-2xl p-4 sm:p-6 flex flex-col items-center text-center shadow-sm border border-slate-100 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02]">
+                    <div className="w-full aspect-square rounded-xl overflow-hidden mb-3 sm:mb-4 bg-slate-100 dark:bg-slate-800 flex items-center justify-center transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                      {leader.image ? (
+                        <motion.img
+                          src={leader.image}
+                          alt={leader.name}
+                          className="w-full h-full object-cover"
+                          initial={{ opacity: 0, y: 12 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, amount: 0.6 }}
+                          transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }}
+                          whileHover={{ scale: 1.04 }}
+                        />
+                      ) : (
+                        <Users className="h-12 w-12 text-slate-400" />
+                      )}
+                    </div>
+                    <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{leader.name}</h4>
+                    <p className="text-slate-700 dark:text-slate-300 font-medium text-sm mb-3 sm:mb-4">{leader.position}</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 sm:mb-6 grow">{leader.bio}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </motion.div>
 
         {/* Core Values Section */}
         <motion.div
