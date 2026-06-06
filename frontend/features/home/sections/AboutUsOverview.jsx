@@ -87,6 +87,8 @@ export default function AboutUsOverview() {
   const hero = data.hero || {};
   const purpose = data.purpose || {};
   const coreValues = data.coreValues || [];
+  const history = data.history || [];
+  const historySection = data.historySection || {};
 
   return (
     <section className="about-us-overview py-12 sm:py-16 md:py-20 bg-slate-50 dark:bg-slate-900">

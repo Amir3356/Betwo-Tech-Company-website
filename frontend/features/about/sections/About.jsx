@@ -399,17 +399,21 @@ className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 dark:text
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
                   {leadershipMembers.map((leader, i) => (
                     <div key={leader.id} className="bg-white dark:bg-slate-950 rounded-2xl p-4 sm:p-6 flex flex-col items-center text-center shadow-sm border border-slate-100 dark:border-slate-800 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02]">
-                      <div className="w-full aspect-video rounded-xl overflow-hidden mb-3 sm:mb-4 bg-slate-200 transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                        <motion.img
-                          src={leader.image || getAssetUrl(aboutData.leadership?.ceo?.image || '')}
-                          alt={leader.name}
-                          className="w-full h-full object-cover"
-                          initial={{ opacity: 0, y: 12 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, amount: 0.6 }}
-                          transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }}
-                          whileHover={{ scale: 1.04 }}
-                        />
+                      <div className="w-full aspect-square rounded-xl overflow-hidden mb-3 sm:mb-4 bg-slate-100 dark:bg-slate-800 flex items-center justify-center transform transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                        {leader.image ? (
+                          <motion.img
+                            src={leader.image}
+                            alt={leader.name}
+                            className="w-full h-full object-cover"
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.6 }}
+                            transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }}
+                            whileHover={{ scale: 1.04 }}
+                          />
+                        ) : (
+                          <Users className="h-12 w-12 text-slate-400" />
+                        )}
                       </div>
                       <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{leader.name}</h4>
                       <p className="text-slate-700 dark:text-slate-300 font-medium text-sm mb-3 sm:mb-4">{leader.position}</p>
