@@ -87,8 +87,7 @@ export default function AboutUsOverview() {
   const hero = data.hero || {};
   const purpose = data.purpose || {};
   const coreValues = data.coreValues || [];
-  const history = data.history || [];
-  const historySection = data.historySection || {};
+  const culture = data.culture || {};
 
   return (
     <section className="about-us-overview py-12 sm:py-16 md:py-20 bg-slate-50 dark:bg-slate-900">
@@ -240,8 +239,8 @@ export default function AboutUsOverview() {
           </motion.div>
         </motion.div>
 
-        {/* History Section */}
-        {history.length > 0 ? (
+        {/* How We Work Section */}
+        {culture.title ? (
           <motion.div
             className="mb-12 sm:mb-16 md:mb-20"
             initial={{ opacity: 0, y: 30 }}
@@ -249,30 +248,37 @@ export default function AboutUsOverview() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="text-center mb-8 sm:mb-12">
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                {historySection.sectionLabel || 'Our History'}
-              </h3>
-              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                {historySection.description}
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {history.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="relative bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 text-center"
-                  initial={{ opacity: 0, y: 20 }}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+              <div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6">{culture.title}</h2>
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-6 sm:mb-8">{culture.description}</p>
+                <div className="space-y-4 sm:space-y-6">
+                  {culture.points.map((point, i) => {
+                    const IconComponent = iconMap[point.icon];
+                    return (
+                      <div key={i} className="flex gap-3 sm:gap-4">
+                        {IconComponent && <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 flex-shrink-0" />}
+                        <div>
+                          <h4 className="font-bold text-slate-900 dark:text-white">{point.title}</h4>
+                          <p className="text-sm text-slate-600 dark:text-slate-400">{point.description}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="mt-8 lg:mt-0">
+                <motion.img
+                  src={culture.image}
+                  alt={culture.title}
+                  className="rounded-2xl shadow-xl w-full object-cover h-52 sm:h-80 lg:h-96"
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                >
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">{item.year}</div>
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{item.title}</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
-                </motion.div>
-              ))}
+                  viewport={{ once: true, amount: 0.6 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  whileHover={{ scale: 1.04 }}
+                />
+              </div>
             </div>
           </motion.div>
         ) : null}
