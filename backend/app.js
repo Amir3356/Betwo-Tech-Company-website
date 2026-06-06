@@ -10,6 +10,7 @@ import servicesRoutes from "./routes/services.routes.js";
 import techStackRoutes from "./routes/techStack.routes.js";
 import techStackSectionRoutes from "./routes/techStackSection.routes.js";
 import experiencedLeadershipRoutes from "./routes/experiencedLeadership.routes.js";
+import experiencedLeadershipSectionRoutes from "./routes/experiencedLeadershipSection.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -38,6 +39,7 @@ function createApp(pool) {
   app.use("/api/tech-stack", techStackRoutes);
   app.use("/api/tech-stack-section", techStackSectionRoutes);
   app.use("/api/experienced-leadership", experiencedLeadershipRoutes);
+  app.use("/api/experienced-leadership-section", experiencedLeadershipSectionRoutes);
 
   return app;
 }

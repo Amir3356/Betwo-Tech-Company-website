@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { Plus, X, LoaderCircle, Pencil, Trash2, Users } from "lucide-react";
+import { Plus, X, LoaderCircle, Pencil, Trash2, Users, Save } from "lucide-react";
 
 export default function ExperiencedLeadershipAdmin() {
   const [items, setItems] = useState([]);
+  const [sectionMeta, setSectionMeta] = useState({ title: "", subtitle: "", description: "" });
   const [loading, setLoading] = useState(true);
+  const [sectionSaving, setSectionSaving] = useState(false);
   const [error, setError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -21,10 +23,23 @@ export default function ExperiencedLeadershipAdmin() {
     setError("");
 
     try {
-      const res = await fetch("/api/experienced-leadership");
-      const payload = await res.json();
-      if (!res.ok) throw new Error(payload?.message || "Failed to load leadership.");
-      setItems(Array.isArray(payload?.data) ? payload.data : []);
+      const [membersRes, sectionRes] = await Promise.all([
+        fetch("/api/experienced-leadership"),
+        fetch("/api/experienced-leadership-section"),
+      ]);
+
+      const membersPayload = await membersRes.json();
+      const sectionPayload = await sectionRes.json();
+
+      if (!membersRes.ok) throw new Error(membersPayload?.message || "Failed to load leadership.");
+      if (!sectionRes.ok) throw new Error(sectionPayload?.message || "Failed to load section.");
+
+      setItems(Array.isArray(membersPayload?.data) ? membersPayload.data : []);
+      setSectionMeta({
+        title: sectionPayload?.data?.title || "",
+        subtitle: sectionPayload?.data?.subtitle || "",
+        description: sectionPayload?.data?.description || "",
+      });
     } catch (err) {
       setError(err.message || "Failed to load data.");
     } finally {
@@ -33,6 +48,32 @@ export default function ExperiencedLeadershipAdmin() {
   };
 
   useEffect(() => { loadAll(); }, []);
+
+  const saveSectionMeta = async () => {
+    setSectionSaving(true);
+    setError("");
+    try {
+      const res = await fetch("/api/experienced-leadership-section", {
+        method: "PUT",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(sectionMeta),
+      });
+      if (!res.ok) {
+        const result = await res.json();
+        throw new Error(result?.message || "Failed to update section.");
+      }
+    } catch (err) {
+      setError(err.message || "Failed to save section.");
+    } finally {
+      setSectionSaving(false);
+    }
+  };
+
+  const handleSectionChange = (e) => {
+    const { name, value } = e.target;
+    setSectionMeta((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -101,10 +142,60 @@ export default function ExperiencedLeadershipAdmin() {
           </div>
         ) : (
           <>
+            {/* Section Meta */}
+            <div className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Section</p>
+                <button
+                  type="button"
+                  onClick={saveSectionMeta}
+                  disabled={sectionSaving}
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700 disabled:opacity-70"
+                >
+                  {sectionSaving ? (
+                    <LoaderCircle size={16} className="animate-spin" />
+                  ) : (
+                    <Save size={16} />
+                  )}
+                  {sectionSaving ? "Saving..." : "Save Section"}
+                </button>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="space-y-2 text-sm font-medium text-gray-700">
+                  <span>Title</span>
+                  <input
+                    name="title"
+                    value={sectionMeta.title}
+                    onChange={handleSectionChange}
+                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-blue-500"
+                  />
+                </label>
+                <label className="space-y-2 text-sm font-medium text-gray-700">
+                  <span>Subtitle</span>
+                  <input
+                    name="subtitle"
+                    value={sectionMeta.subtitle}
+                    onChange={handleSectionChange}
+                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-blue-500"
+                  />
+                </label>
+              </div>
+              <label className="space-y-2 text-sm font-medium text-gray-700 mt-4 block">
+                <span>Description</span>
+                <textarea
+                  name="description"
+                  value={sectionMeta.description}
+                  onChange={handleSectionChange}
+                  rows={3}
+                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-blue-500"
+                />
+              </label>
+            </div>
+
             <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-start sm:justify-between">
               <div className="text-center sm:text-left">
-                <h2 className="text-3xl font-bold text-gray-900">Experienced Leadership</h2>
-                <p className="mt-1 text-base text-gray-600">Manage your leadership team members.</p>
+                <h2 className="text-2xl font-bold text-gray-900">Members</h2>
+                <p className="mt-1 text-sm text-gray-500">Manage your leadership team members.</p>
               </div>
               <button
                 type="button"
