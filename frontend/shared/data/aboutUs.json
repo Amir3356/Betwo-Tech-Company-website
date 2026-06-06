@@ -30,7 +30,6 @@
     { "title": "Customer Focus", "description": "Our clients' success is at the heart of every decision we make.", "icon": "Handshake" }
   ],
   "leadership": {
-    "description": "Our leadership team brings a strong technical background, business insight, and a commitment to building long-lasting products and partnerships.",
     "ceo": {
       "sectionTitle": "Chief Executive Officer",
       "countLabel": "1 Leader",
@@ -44,8 +43,6 @@
       { "name": "Ayana Basha Challie", "role": "Chief Technology Officer", "description": "Operations excellence expert focused on scaling business processes and ensuring exceptional client delivery.", "image": "Executive Leadership  2.jpeg" },
       { "name": "Fikiru Ababe", "role": "Industry Consultant", "description": "Product strategist passionate about creating user-centric solutions that solve real Ethiopian business challenges.", "image": "Executive Leadership 4.jpeg" }
     ],
-    "sectionLabelExperienced": "Experienced Leadership",
-    "heading": "Visionary Leaders Driving Innovation",
     "executivesSectionTitle": "Executive Leadership",
     "executivesCountLabel": "3 Leaders"
   },

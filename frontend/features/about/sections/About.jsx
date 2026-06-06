@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import aboutDataImport from "../../../shared/data/aboutUs.json";
+const leadershipSectionDefaults = { title: "", subtitle: "", description: "" };
 import { motion } from "framer-motion";
 import { getAssetUrl } from "../../../assets/index.js";
 import {
@@ -182,13 +183,20 @@ export default function About() {
   const [aboutData, setAboutData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [leadershipSection, setLeadershipSection] = useState({ title: "", subtitle: "", description: "" });
 
   const highlightBlueClass = "text-slate-800 dark:text-slate-100";
 
   useEffect(() => {
-    // use statically imported about data
     setAboutData(aboutDataImport);
     setLoading(false);
+
+    fetch("/api/experienced-leadership-section")
+      .then((res) => res.json())
+      .then((payload) => {
+        if (payload?.data) setLeadershipSection(payload.data);
+      })
+      .catch(() => {});
   }, []);
 
   if (loading) {
@@ -367,9 +375,9 @@ className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 dark:text
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-slate-900 dark:text-blue-400 font-semibold tracking-wider">{aboutData.leadership?.sectionLabelExperienced || 'Experienced Leadership'}</h3>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">{aboutData.leadership?.heading || 'Visionary Leaders Driving Innovation'}</h2>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">{aboutData.leadership.description}</p>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-slate-900 dark:text-blue-400 font-semibold tracking-wider">{leadershipSection.title || aboutData.leadership?.sectionLabelExperienced || ''}</h3>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">{leadershipSection.subtitle || aboutData.leadership?.heading || ''}</h2>
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">{leadershipSection.description || aboutData.leadership.description}</p>
             </motion.div>
           </div>
           
