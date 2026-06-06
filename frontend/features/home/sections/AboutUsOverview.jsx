@@ -208,7 +208,7 @@ export default function AboutUsOverview() {
           {/* Right Column - Image */}
           <motion.div className="relative" variants={rightPanelVariants}>
             <motion.img
-              src={hero.image}
+              src={getAssetUrl("Company Overview - built with long-term vision.png") || hero.image}
               alt="About Us"
               className="rounded-2xl shadow-2xl w-full h-auto object-cover"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -268,11 +268,11 @@ export default function AboutUsOverview() {
                   })}
                 </div>
               </div>
-              <div className="mt-8 lg:mt-0">
+              <div className="mt-8 lg:mt-0 rounded-2xl overflow-hidden shadow-xl">
                 <motion.img
                   src={getAssetUrl("How We Work.png") || culture.image}
                   alt={culture.title}
-                  className="rounded-2xl shadow-xl w-full object-cover h-52 sm:h-80 lg:h-96"
+                  className="w-full h-auto object-cover"
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.6 }}

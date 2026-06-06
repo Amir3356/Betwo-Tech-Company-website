@@ -269,7 +269,7 @@ export default function About() {
           </motion.div>
           <motion.div className="relative mt-8 lg:mt-0" variants={rightPanelVariants}>
             <motion.img
-              src={aboutData.hero.image}
+              src={getAssetUrl("Company Overview - built with long-term vision.png") || aboutData.hero.image}
               alt={aboutData.hero.title}
               className="rounded-2xl shadow-xl w-full object-cover h-52 sm:h-80 md:h-96 lg:h-100"
               whileHover={{ scale: 1.04, rotate: -0.5 }}
@@ -532,11 +532,11 @@ className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 dark:text
               ))}
             </div>
           </div>
-          <div className="mt-8 lg:mt-0">
+          <div className="mt-8 lg:mt-0 rounded-2xl overflow-hidden shadow-xl">
             <motion.img
-              src={aboutData.culture.image}
+              src={getAssetUrl("How We Work.png") || aboutData.culture.image}
               alt={aboutData.culture.title}
-              className="rounded-2xl shadow-xl w-full object-cover h-52 sm:h-80 lg:h-96 xl:h-125"
+              className="w-full h-auto object-cover"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.6 }}
