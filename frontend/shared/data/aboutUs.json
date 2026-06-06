@@ -29,7 +29,6 @@
     { "title": "Quality", "description": "We deliver exceptional results through attention to detail and craftsmanship.", "icon": "Star" },
     { "title": "Customer Focus", "description": "Our clients' success is at the heart of every decision we make.", "icon": "Handshake" }
   ],
-  "leadership": {},
   "history": [
     { "year": "2022", "title": "The Beginning", "description": "Company founded with a vision for scalable solutions." },
     { "year": "2023", "title": "First Milestone", "description": "Delivered first enterprise-grade products." },
