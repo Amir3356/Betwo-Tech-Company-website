@@ -17,7 +17,3 @@ CREATE TABLE IF NOT EXISTS experienced_leadership_section (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
-
-INSERT INTO experienced_leadership_section (title, subtitle, description)
-SELECT 'Experienced Leadership', 'Visionary Leaders Driving Innovation', 'Our leadership team brings a strong technical background, business insight, and a commitment to building long-lasting products and partnerships.'
-WHERE NOT EXISTS (SELECT 1 FROM experienced_leadership_section);
