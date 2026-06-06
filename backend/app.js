@@ -9,6 +9,7 @@ import whatWeDoRoutes from "./routes/whatWeDo.routes.js";
 import servicesRoutes from "./routes/services.routes.js";
 import techStackRoutes from "./routes/techStack.routes.js";
 import techStackSectionRoutes from "./routes/techStackSection.routes.js";
+import experiencedLeadershipRoutes from "./routes/experiencedLeadership.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -36,6 +37,7 @@ function createApp(pool) {
   app.use("/api/services", servicesRoutes);
   app.use("/api/tech-stack", techStackRoutes);
   app.use("/api/tech-stack-section", techStackSectionRoutes);
+  app.use("/api/experienced-leadership", experiencedLeadershipRoutes);
 
   return app;
 }

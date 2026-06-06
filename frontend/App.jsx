@@ -17,6 +17,7 @@ import ProjectsAdmin from "./features/admin/pages/ProjectsAdmin";
 import ServicesAdmin from "./features/admin/pages/ServicesAdmin";
 import WhatWeDoAdmin from "./features/admin/pages/WhatWeDoAdmin";
 import TechStackAdmin from "./features/admin/pages/TechStackAdmin";
+import ExperiencedLeadershipAdmin from "./features/admin/pages/ExperiencedLeadershipAdmin";
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
@@ -74,6 +75,7 @@ function AppContent() {
             <Route path="services" element={<ServicesAdmin />} />
             <Route path="what-we-do" element={<WhatWeDoAdmin />} />
             <Route path="tech-stack" element={<TechStackAdmin />} />
+            <Route path="experienced-leadership" element={<ExperiencedLeadershipAdmin />} />
           </Route>
           <Route path="*" element={<div className="p-10 text-white">No route matched: {location.pathname}</div>} />
         </Routes>

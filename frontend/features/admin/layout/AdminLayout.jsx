@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { Mail, LayoutGrid, Shield, ChevronRight, LogOut, Menu, X, Sparkles, Settings, Cpu } from "lucide-react";
+import { Mail, LayoutGrid, Shield, ChevronRight, LogOut, Menu, X, Sparkles, Settings, Cpu, Users } from "lucide-react";
 
 const navigation = [
   { label: "Contact Messages", to: "/admin/contact-messages", icon: Mail },
@@ -8,6 +8,7 @@ const navigation = [
   { label: "Services", to: "/admin/services", icon: Settings },
   { label: "What We Do", to: "/admin/what-we-do", icon: Sparkles },
   { label: "Our Tech Stack", to: "/admin/tech-stack", icon: Cpu },
+  { label: "Experienced Leadership", to: "/admin/experienced-leadership", icon: Users },
 ];
 
 function SidebarNav({ onNavigate, onLogout }) {
