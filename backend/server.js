@@ -4,7 +4,7 @@ import { pool } from "./config/db.js";
 import migrate from "./config/migrate.js";
 
 const app = createApp(pool);
-const port = Number(process.env.PORT || 5000);
+const port = Number(process.env.PORT);
 
 async function startServer() {
   try {
