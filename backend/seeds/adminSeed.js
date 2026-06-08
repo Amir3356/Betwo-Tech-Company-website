@@ -3,8 +3,8 @@ import bcrypt from "bcrypt";
 import { pool } from "../config/db.js";
 
 async function seedAdmin() {
-  const username = process.env.SEED_ADMIN_USERNAME || "Betwo";
-  const password = process.env.SEED_ADMIN_PASSWORD || "1234";
+  const username = process.env.SEED_ADMIN_USERNAME;
+  const password = process.env.SEED_ADMIN_PASSWORD;
   const passwordHash = await bcrypt.hash(password, 10);
 
   try {
